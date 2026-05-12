@@ -1,0 +1,13 @@
+{
+  "rows": 69473,
+  "start": "2009-01-01T00:00:00+00:00",
+  "end": "2026-05-01T23:52:52.210937+00:00",
+  "latest_tweet": {
+    "tweet_id": "2050355768285946255",
+    "date": "2026-05-01T23:24:43+00:00",
+    "source": "xtracker_api",
+    "is_retweet": false,
+    "text": "Try the Grok Imagine agent mode beta! https://t.co/cFXFcVZLgw"
+  },
+  "missing_months": 34
+}

@@ -1,0 +1,293 @@
+# POLYMARKET ELON TWEET BOT — FULL DOCUMENTATION
+# Last updated: March 2026
+
+═══════════════════════════════════════════════════════════════════
+  WHAT THIS BOT DOES (simple version)
+═══════════════════════════════════════════════════════════════════
+
+  Every week Polymarket asks:
+  "How many times will Elon Musk tweet this week?"
+
+  There are 30 brackets like: 280-299, 300-319, 320-339...
+  Each bracket sells YES shares at a price reflecting probability.
+
+  Example:
+    340-359 YES shares at 22¢ = market thinks 22% chance
+    If Elon tweets 340-359 times → shares pay out $1 each (+354%)
+    If he doesn't → shares pay out $0 (-100%)
+
+  Our edge:
+    We use a Poisson statistical model to estimate the REAL probability.
+    If our model says 57% and market says 22% → we buy.
+    We sell when market catches up to our price, or at resolution.
+
+═══════════════════════════════════════════════════════════════════
+  SYSTEM ARCHITECTURE
+═══════════════════════════════════════════════════════════════════
+
+  ┌─────────────────────────────────────────────────────────────┐
+  │                    YOUR MACBOOK                             │
+  │                                                             │
+  │  tweet_watcher.py ──────────────────────────────────────┐  │
+  │  • Polls Twitter GraphQL every 5s                       │  │
+  │  • Detects new tweets (lifetime count changes)          │  │
+  │  • Feeds count to model                                 │  │
+  │                                                         ▼  │
+  │  model.py ──────────────────────────────────────────────┐  │
+  │  • Poisson distribution math                            │  │
+  │  • Predicts probability for each bracket                │  │
+  │  • Adjusts for burst (is Elon tweeting fast right now?) │  │
+  │  • Adjusts for acceleration (getting faster/slower?)    │  │
+  │                                                         │  │
+  │  dynamic_trader.py ◄────────────────────────────────────┘  │
+  │  • Compares model probability vs market price               │
+  │  • Opens positions when edge > 15%                          │
+  │  • Closes on take profit (2x), stop loss (50%), edge gone   │
+  │  • Protects against failures (auth loss, count passing)     │
+  │                                                             │
+  │  market_stream.py                                           │
+  │  • WebSocket to Polymarket orderbook                        │
+  │  • Logs bid/ask/spread/depth every price change             │
+  │  • Logs every trade detected                                │
+  │                                                             │
+  │  model_tracker.py                                           │
+  │  • Logs model predictions every 30s                        │
+  │  • Tracks model vs market agreement over time               │
+  │                                                             │
+  │  tweet_tracker.py                                           │
+  │  • Logs tweet velocity vs model prediction                  │
+  │  • Detects burst patterns and sleep schedule                │
+  └─────────────────────────────────────────────────────────────┘
+
+═══════════════════════════════════════════════════════════════════
+  FILES & WHAT THEY DO
+═══════════════════════════════════════════════════════════════════
+
+  SCRIPTS (run these)
+  ────────────────────────────────────────────────────────────────
+  start_all.sh          → starts everything in 4 tmux panes
+  run.sh                → runs dynamic_trader.py with auto-restart
+
+  CORE BOT
+  ────────────────────────────────────────────────────────────────
+  dynamic_trader.py     → MAIN BOT — opens/closes positions
+  model.py              → Poisson math + burst detection
+  market_reader.py      → fetches bracket prices from Polymarket
+  tweet_watcher.py      → detects new Elon tweets
+
+  MONITORING
+  ────────────────────────────────────────────────────────────────
+  status.py             → full health check (run anytime)
+  decision_logger.py    → explains every buy/skip decision
+  check_pnl.py          → P&L with live prices
+  diagnose.py           → quick model + edge check
+
+  LOGGERS (run in parallel)
+  ────────────────────────────────────────────────────────────────
+  market_stream.py      → logs market microstructure
+  model_tracker.py      → logs model performance
+  tweet_tracker.py      → logs tweet velocity
+
+  DATA FILES (build up automatically)
+  ────────────────────────────────────────────────────────────────
+  dynamic_trades.json          → all trades + current positions + P&L
+  market_microstructure.json   → bid/ask/spread/depth over time
+  market_trades.json           → every detected trade
+  model_performance.json       → model predictions over time
+  tweet_performance.json       → tweet velocity vs model
+
+  CONFIG
+  ────────────────────────────────────────────────────────────────
+  .env                  → Twitter auth tokens (re-extract if 401 errors)
+
+═══════════════════════════════════════════════════════════════════
+  HOW THE TRADING LOGIC WORKS
+═══════════════════════════════════════════════════════════════════
+
+  STEP 1: GET TWEET COUNT
+  ┌─────────────────────────────────────────────────────────┐
+  │  Poll Twitter every 5s                                  │
+  │  weekly_count = lifetime_count - BASELINE_LIFETIME      │
+  │  BASELINE_LIFETIME = lifetime tweets at market start     │
+  └─────────────────────────────────────────────────────────┘
+
+  STEP 2: RUN MODEL
+  ┌─────────────────────────────────────────────────────────┐
+  │  For each future hour until May 5:                      │
+  │    base_rate = HOURLY_RATES[hour]  (tweets/hour)        │
+  │    × burst_factor   (are we in a tweet storm?)          │
+  │    × accel_factor   (is rate speeding up?)              │
+  │    × burst_decay    (effect fades over 2 hours)         │
+  │                                                         │
+  │  lambda = sum of all adjusted rates                     │
+  │  P(bracket) = Poisson PMF sum over bracket range        │
+  └─────────────────────────────────────────────────────────┘
+
+  STEP 3: CALCULATE EDGE
+  ┌─────────────────────────────────────────────────────────┐
+  │  raw_edge  = model_probability - market_ask_price       │
+  │  true_edge = raw_edge - spread - fee - slippage         │
+  │                       - model_error_buffer              │
+  │            = raw_edge - 8.5%                            │
+  │                                                         │
+  │  Example:                                               │
+  │    model says 57%, market ask 22%                       │
+  │    raw_edge  = 57% - 22% = 35%                          │
+  │    true_edge = 35% - 8.5% = 26.5%  ← profitable        │
+  └─────────────────────────────────────────────────────────┘
+
+  STEP 4: ENTRY CHECKS (all must pass)
+  ┌─────────────────────────────────────────────────────────┐
+  │  ✅ raw_edge > 15%                                      │
+  │  ✅ true_edge > 5%                                      │
+  │  ✅ spread < 2.5¢ (low price) or < 10% (high price)     │
+  │  ✅ hours_left > 2                                      │
+  │  ✅ if hours_left < 6: need 25%+ edge                   │
+  └─────────────────────────────────────────────────────────┘
+
+  STEP 5: POSITION SIZING (Kelly Criterion)
+  ┌─────────────────────────────────────────────────────────┐
+  │  Kelly % = (odds × edge - loss_prob) / odds             │
+  │  bet size = Kelly% × 0.25 × bankroll   (quarter Kelly)  │
+  │                                                         │
+  │  Example at 26.5% edge, 22¢ price:                      │
+  │    odds = (1/0.22) - 1 = 3.55x                          │
+  │    kelly = (3.55×0.265 - 0.735) / 3.55 = 6.7%          │
+  │    quarter kelly = 6.7% × 0.25 = 1.7%                  │
+  │    bet = 1.7% × €1000 = €17... ×2 (half kelly) = €34   │
+  └─────────────────────────────────────────────────────────┘
+
+  STEP 6: EXIT CONDITIONS
+  ┌─────────────────────────────────────────────────────────┐
+  │  TAKE PROFIT:  price reaches 2× entry price             │
+  │  STOP LOSS:    price drops to 50% of entry price        │
+  │  EDGE GONE:    true_edge drops below 5%                 │
+  │  SAFETY:       Twitter blind >10min with positions      │
+  │  SAFETY:       <6h left AND position down 30%+          │
+  │  SAFETY:       count surpasses bracket's high           │
+  │  MARKET END:   close everything at resolution           │
+  └─────────────────────────────────────────────────────────┘
+
+═══════════════════════════════════════════════════════════════════
+  DAILY ROUTINE
+═══════════════════════════════════════════════════════════════════
+
+  MORNING (2 min)
+  ───────────────
+  1. Check xtracker.polymarket.com/user/elonmusk (tweet count)
+  2. python3 status.py
+  3. If Twitter errors → re-extract tokens from browser
+
+  EVERY FEW HOURS
+  ───────────────
+  tmux attach -t polybot
+  # Check all 4 panes look healthy
+  # Ctrl+B D to detach
+
+  IF SOMETHING LOOKS WRONG
+  ─────────────────────────
+  python3 decision_logger.py
+  # Shows exactly why bot is/isn't trading
+
+  IF BOT CRASHED
+  ───────────────
+  tmux kill-server
+  bash ~/polybot/start_all.sh
+  tmux attach -t polybot
+
+═══════════════════════════════════════════════════════════════════
+  FAILURE CASES & WHAT HAPPENS
+═══════════════════════════════════════════════════════════════════
+
+  ┌──────────────────────────────┬─────────────────────────────┐
+  │ FAILURE                      │ BOT RESPONSE                │
+  ├──────────────────────────────┼─────────────────────────────┤
+  │ Twitter tokens expire        │ Shows 🚨 AUTH FAILED alert  │
+  │ (you'll see Tweets:0)        │ After 10min: auto-closes    │
+  │                              │ Fix: re-extract tokens      │
+  ├──────────────────────────────┼─────────────────────────────┤
+  │ Elon goes on tweet storm     │ burst_factor kicks in       │
+  │                              │ lambda increases            │
+  │                              │ model reprices immediately  │
+  ├──────────────────────────────┼─────────────────────────────┤
+  │ Count passes bracket high    │ Auto-closes position        │
+  │ (can't win anymore)          │ immediately                 │
+  ├──────────────────────────────┼─────────────────────────────┤
+  │ <6h left, down 30%           │ Auto-closes to preserve     │
+  │                              │ remaining capital           │
+  ├──────────────────────────────┼─────────────────────────────┤
+  │ Polymarket WS disconnects    │ Auto-reconnects in 3s       │
+  ├──────────────────────────────┼─────────────────────────────┤
+  │ Bot crashes                  │ run.sh auto-restarts it     │
+  │                              │ (watchdog in run.sh)        │
+  ├──────────────────────────────┼─────────────────────────────┤
+  │ Model wrong (wrong bracket)  │ Stop loss at -50%           │
+  │                              │ Paper trade to calibrate    │
+  ├──────────────────────────────┼─────────────────────────────┤
+  │ Mac sleeps                   │ caffeinate -dims prevents   │
+  │                              │ sleep while running         │
+  └──────────────────────────────┴─────────────────────────────┘
+
+═══════════════════════════════════════════════════════════════════
+  KEY NUMBERS TO KNOW
+═══════════════════════════════════════════════════════════════════
+
+  BASELINE_LIFETIME = 100848 ← estimated lifetime tweets at April 28 start
+                               (confirm with: python3 config.py --manual <count>)
+  KELLY_FRACTION    = 0.25   ← quarter Kelly (conservative sizing)
+  MIN_EDGE          = 15%    ← minimum raw edge to open position
+  TOTAL_FRICTION    = 8.5%   ← spread + fee + slippage + model error
+  TAKE_PROFIT       = 2x     ← sell when price doubles
+  STOP_LOSS         = 50%    ← sell when price halves
+  TWITTER_POLL      = 5s     ← how often we check for new tweets
+
+═══════════════════════════════════════════════════════════════════
+  MODEL CALIBRATION HISTORY
+═══════════════════════════════════════════════════════════════════
+
+  Resolved weekly counts (actual bracket winners):
+    Mar 10-17:  280-299  (~289 tweets)
+    Mar 17-24:  360-379  (~369 tweets)  ← outlier week
+    Mar 24-31:  220-239  (~229 tweets)
+    Mar 31-Apr7: 260-279 (~269 tweets)
+    Apr 7-14:   280-299  (~289 tweets)
+    Apr 14-21:  220-239  (~229 tweets)
+    Apr 21-28:  220-239  (~229 tweets)
+
+  Average: ~271 tweets/week (excl. outlier: ~256/week)
+  Old model predicted: ~430/week  ← was 60% too high
+  Recalibrated Apr 2026: ~259/week (0.60× scale on all hourly rates)
+
+═══════════════════════════════════════════════════════════════════
+  UPGRADE ROADMAP
+═══════════════════════════════════════════════════════════════════
+
+  CURRENT (Apr 28 - May 5 market)
+  → Refresh Twitter tokens (re-extract from browser)
+  → Confirm baseline: python3 config.py --manual <count>
+  → Decide: paper trade again OR go live with real €
+
+  IF GOING LIVE (recommended: €50-100 first)
+  → Add Telegram alerts for trade notifications
+  → Consider VPS for 24/7 uptime (Hetzner €16/month)
+
+  MONTH 2+ (if consistently profitable)
+  → Scale to €500 per market
+  → Two-node architecture for redundancy
+
+═══════════════════════════════════════════════════════════════════
+  QUICK COMMAND REFERENCE
+═══════════════════════════════════════════════════════════════════
+
+  bash start_all.sh              → start everything
+  tmux attach -t polybot         → see all 4 panes
+  tmux kill-server               → stop everything
+  Ctrl+B then D                  → detach from tmux
+  Ctrl+B then arrows             → switch panes
+  Ctrl+B then Z                  → zoom one pane
+
+  python3 status.py              → full health check
+  python3 decision_logger.py     → why is bot buying/skipping?
+  python3 check_pnl.py           → P&L with live prices
+  python3 market_reader.py       → current bracket prices
+  python3 diagnose.py            → quick model check

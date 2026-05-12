@@ -1,0 +1,86 @@
+{
+  "asof_utc": "2026-05-02T00:46:33.185910+00:00",
+  "log_path": "/Users/andreiojoc/polybot/terminal/paper_trade_events_recency_fee_v2.jsonl",
+  "rows": 8,
+  "buys": 8,
+  "sells": 0,
+  "open_positions": 8,
+  "realized_pnl": 0.0,
+  "unrealized_pnl": -10.763662999999973,
+  "equity": 989.236337,
+  "short_hold_fee_paid": 0.0,
+  "open_positions_detail": [
+    {
+      "event_slug": "elon-musk-of-tweets-april-28-may-5",
+      "label": "200-219",
+      "side": "YES",
+      "entry_price": 0.13,
+      "mark": 0.125,
+      "cost": 160.0,
+      "mtm_pnl": -6.153874999999999
+    },
+    {
+      "event_slug": "elon-musk-of-tweets-may-2-may-4",
+      "label": "65-89",
+      "side": "YES",
+      "entry_price": 0.27,
+      "mark": 0.265,
+      "cost": 160.0,
+      "mtm_pnl": -2.9628549999999905
+    },
+    {
+      "event_slug": "elon-musk-of-tweets-may-2026",
+      "label": "1160-1199",
+      "side": "YES",
+      "entry_price": 0.101,
+      "mark": 0.1005,
+      "cost": 160.0,
+      "mtm_pnl": -0.7921210000000087
+    },
+    {
+      "event_slug": "elon-musk-of-tweets-may-2-may-4",
+      "label": "40-64",
+      "side": "NO",
+      "entry_price": 0.51,
+      "mark": 0.505,
+      "cost": 56.0,
+      "mtm_pnl": -0.5489800000000002
+    },
+    {
+      "event_slug": "elon-musk-of-tweets-may-1-may-8",
+      "label": "200-219",
+      "side": "NO",
+      "entry_price": 0.82,
+      "mark": 0.815,
+      "cost": 56.0,
+      "mtm_pnl": -0.3412049999999951
+    },
+    {
+      "event_slug": "elon-musk-of-tweets-may-1-may-8",
+      "label": "260-279",
+      "side": "YES",
+      "entry_price": 0.07,
+      "mark": 0.07,
+      "cost": 160.0,
+      "mtm_pnl": -1.9999999977926564e-05
+    },
+    {
+      "event_slug": "elon-musk-of-tweets-may-2026",
+      "label": "1200-1239",
+      "side": "YES",
+      "entry_price": 0.055,
+      "mark": 0.055,
+      "cost": 56.0,
+      "mtm_pnl": 1.0000000003174137e-05
+    },
+    {
+      "event_slug": "elon-musk-of-tweets-april-28-may-5",
+      "label": "140-159",
+      "side": "NO",
+      "entry_price": 0.79,
+      "mark": 0.7905,
+      "cost": 56.0,
+      "mtm_pnl": 0.035382999999995945
+    }
+  ]
+}

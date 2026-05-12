@@ -1,0 +1,34 @@
+[
+  {
+    "competitor_id": "b_0000",
+    "net_pnl": 30848.724452509163,
+    "max_drawdown": 0.12506895142808583,
+    "sharpe": 5.497962469133672,
+    "trades": 459,
+    "diagnosis": "drawdown too large; stop-loss churn"
+  },
+  {
+    "competitor_id": "a_0007",
+    "net_pnl": 37296.942830463806,
+    "max_drawdown": 0.12316182971979982,
+    "sharpe": 5.275389644628482,
+    "trades": 464,
+    "diagnosis": "drawdown too large; stop-loss churn"
+  },
+  {
+    "competitor_id": "baseline",
+    "net_pnl": 49230.14515067652,
+    "max_drawdown": 0.08251278872053845,
+    "sharpe": 4.788062333167764,
+    "trades": 487,
+    "diagnosis": "stop-loss churn"
+  },
+  {
+    "competitor_id": "a_0003",
+    "net_pnl": 24255.87595579295,
+    "max_drawdown": 0.06589972163651377,
+    "sharpe": 6.259871382270551,
+    "trades": 385,
+    "diagnosis": "weak composite balance versus peers"
+  }
+]

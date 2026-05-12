@@ -1,0 +1,100 @@
+{
+  "run_dir": "data/reports/sweeps/20260502_225520",
+  "created_at_utc": "2026-05-02T22:55:21.211066+00:00",
+  "inputs": {
+    "tweets": "data/tweets_all.csv",
+    "seed": 7,
+    "stage_a": 8,
+    "stage_b": 4,
+    "finalists": 2,
+    "templates": [
+      {
+        "name": "2d",
+        "horizon_h": 48.0,
+        "stride_h": 24.0,
+        "bracket_set": "2d"
+      },
+      {
+        "name": "weekly",
+        "horizon_h": 168.0,
+        "stride_h": 168.0,
+        "bracket_set": "weekly"
+      }
+    ],
+    "dev_windows": [],
+    "holdout_windows": []
+  },
+  "recommendations": {
+    "best_performer": null,
+    "most_robust": null,
+    "best_risk_adjusted": null,
+    "guardrail": "winner must beat baseline on higher risk-adjusted return and lower/equal drawdown"
+  },
+  "finalist_config_paths": [
+    "data/reports/sweeps/20260502_225520/finalist_configs/rank_01_a_0000.json",
+    "data/reports/sweeps/20260502_225520/finalist_configs/rank_02_a_0001.json"
+  ],
+  "baseline_holdout": {
+    "competitor_id": "baseline",
+    "stage": "C",
+    "net_pnl": 0.0,
+    "realized_pnl": 0,
+    "gross_pnl_before_fees": 0,
+    "fee_drag": 0,
+    "max_drawdown": 0.0,
+    "sharpe": 0.0,
+    "sortino": 0.0,
+    "window_return_std": 0.0,
+    "worst_window_pnl": 0.0,
+    "worst_trade_pnl": 0.0,
+    "trades": 0,
+    "unique_events": 0,
+    "unique_event_brackets": 0,
+    "top_key_pnl_share": 0.0,
+    "pnl_hhi": 0.0,
+    "stop_loss_churn": 0.0,
+    "take_profit_count": 0,
+    "stop_loss_count": 0,
+    "edge_decay_count": 0,
+    "signal_flip_count": 0,
+    "resolution_count": 0,
+    "param_nb_phi": 20.0,
+    "param_hawkes_beta": 0.18,
+    "param_hawkes_alpha": 0.3,
+    "param_rate_prior_strength_h": 24.0,
+    "param_uncertainty": 0.05,
+    "param_entry_edge": 0.08,
+    "param_spread_floor_multiplier": 0.7,
+    "param_min_entry_price": 0.04,
+    "param_stop_loss": 0.3,
+    "param_take_profit": 0.3,
+    "param_exit_edge": 0.015,
+    "param_signal_flip_min_edge_gap": 0.06,
+    "param_signal_flip_max_loss_pct": 0.03,
+    "param_key_stop_loss_cooldown_s": 7200.0,
+    "param_event_stop_loss_cooldown_s": 3600.0,
+    "param_key_lock_streak_count": 2,
+    "param_key_lock_duration_s": 21600.0,
+    "param_risk_per_trade_pct": 0.06,
+    "param_micro_price_max_cost": 60.0,
+    "param_max_event_exposure_pct": 0.4,
+    "param_stop_loss_dwell_s": 600.0,
+    "param_entry_alignment_max_gap": 0.55,
+    "param_position_size_disagreement_penalty": 1.5,
+    "param_max_positions": 8,
+    "param_min_trade_cost": 25.0,
+    "param_micro_price_threshold": 0.2,
+    "param_slippage_rate": 0.005,
+    "param_fee_category": "mentions",
+    "param_bankroll": 1000.0
+  },
+  "top10_competitor_ids": [
+    "a_0000",
+    "a_0001"
+  ],
+  "notes": [
+    "Price source: deterministic synthetic market maker (no real CLOB logs provided via --price-logs). Pass --price-logs real_input_ticks.jsonl.gz to use real execution prices.",
+    "Costs use Polymarket's documented taker-fee formula via model.fees.FeeModel.",
+    "Stage C is held out from Stage A/B selection."
+  ]
+}

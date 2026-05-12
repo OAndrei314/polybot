@@ -1,0 +1,12 @@
+{"kind":"connecting","method":"direct_sse","ts":1777983974.955447}
+{"kind":"connected","method":"direct_sse","ts":1777983975.554517}
+{"kind":"frame","topic":"/system/config","method":"direct_sse","ts":1777983975.555393}
+{"kind":"frame","topic":"/system/subscriptions","method":"direct_sse","ts":1777983975.557826,"subscriptions":"{\"subscriptions\":{\"errors\":[{\"topic\":\"/system/config\",\"code\":32,\"message\":\"Unauthorized\"}]}}"}
+{"kind":"subscribed","status":200,"ok":true,"method":"direct_sse","ts":1777983975.88143}
+{"kind":"poll","status":429,"elapsed_ms":160.7,"method":"gql_user_tweets","ts":1777983975.8998249}
+{"kind":"poll","status":429,"elapsed_ms":186.5,"method":"gql_user_tweets","ts":1777984035.978227}
+{"kind":"connecting","method":"direct_sse","ts":1777984101.5649228}
+{"kind":"connected","method":"direct_sse","ts":1777984101.812887}
+{"kind":"frame","topic":"/system/config","method":"direct_sse","ts":1777984101.813674}
+{"kind":"frame","topic":"/system/subscriptions","method":"direct_sse","ts":1777984101.8197389,"subscriptions":"{\"subscriptions\":{\"errors\":[{\"topic\":\"/system/config\",\"code\":32,\"message\":\"Unauthorized\"}]}}"}
+{"kind":"subscribed","status":200,"ok":true,"method":"direct_sse","ts":1777984102.150342}

@@ -1,0 +1,214 @@
+{
+  "ts": "2026-05-02T10:53:15.048928+00:00",
+  "days": {
+    "b_0000": [
+      {
+        "day": "2026-05-02",
+        "start_equity": 1000.0,
+        "end_equity": 1000.0,
+        "day_pnl": 0.0,
+        "day_return": 0.0,
+        "max_drawdown": 0.0,
+        "samples": 1
+      }
+    ],
+    "a_0003": [
+      {
+        "day": "2026-05-02",
+        "start_equity": 1000.0,
+        "end_equity": 1000.0,
+        "day_pnl": 0.0,
+        "day_return": 0.0,
+        "max_drawdown": 0.0,
+        "samples": 1
+      }
+    ],
+    "a_0007": [
+      {
+        "day": "2026-05-02",
+        "start_equity": 1000.0,
+        "end_equity": 1000.0,
+        "day_pnl": 0.0,
+        "day_return": 0.0,
+        "max_drawdown": 0.0,
+        "samples": 1
+      }
+    ],
+    "b_0004": [
+      {
+        "day": "2026-05-02",
+        "start_equity": 1000.0,
+        "end_equity": 1000.0,
+        "day_pnl": 0.0,
+        "day_return": 0.0,
+        "max_drawdown": 0.0,
+        "samples": 1
+      }
+    ],
+    "b_0001": [
+      {
+        "day": "2026-05-02",
+        "start_equity": 1000.0,
+        "end_equity": 1000.0,
+        "day_pnl": 0.0,
+        "day_return": 0.0,
+        "max_drawdown": 0.0,
+        "samples": 1
+      }
+    ],
+    "b_0005": [
+      {
+        "day": "2026-05-02",
+        "start_equity": 1000.0,
+        "end_equity": 1000.0,
+        "day_pnl": 0.0,
+        "day_return": 0.0,
+        "max_drawdown": 0.0,
+        "samples": 1
+      }
+    ],
+    "b_0003": [
+      {
+        "day": "2026-05-02",
+        "start_equity": 1000.0,
+        "end_equity": 1000.0,
+        "day_pnl": 0.0,
+        "day_return": 0.0,
+        "max_drawdown": 0.0,
+        "samples": 1
+      }
+    ],
+    "a_0004": [
+      {
+        "day": "2026-05-02",
+        "start_equity": 1000.0,
+        "end_equity": 1000.0,
+        "day_pnl": 0.0,
+        "day_return": 0.0,
+        "max_drawdown": 0.0,
+        "samples": 1
+      }
+    ],
+    "b_0002": [
+      {
+        "day": "2026-05-02",
+        "start_equity": 1000.0,
+        "end_equity": 1000.0,
+        "day_pnl": 0.0,
+        "day_return": 0.0,
+        "max_drawdown": 0.0,
+        "samples": 1
+      }
+    ],
+    "a_0009": [
+      {
+        "day": "2026-05-02",
+        "start_equity": 1000.0,
+        "end_equity": 1000.0,
+        "day_pnl": 0.0,
+        "day_return": 0.0,
+        "max_drawdown": 0.0,
+        "samples": 1
+      }
+    ],
+    "baseline": [
+      {
+        "day": "2026-05-02",
+        "start_equity": 1000.0,
+        "end_equity": 1000.0,
+        "day_pnl": 0.0,
+        "day_return": 0.0,
+        "max_drawdown": 0.0,
+        "samples": 1
+      }
+    ],
+    "a_0006": [
+      {
+        "day": "2026-05-02",
+        "start_equity": 1000.0,
+        "end_equity": 1000.0,
+        "day_pnl": 0.0,
+        "day_return": 0.0,
+        "max_drawdown": 0.0,
+        "samples": 1
+      }
+    ],
+    "a_0000": [
+      {
+        "day": "2026-05-02",
+        "start_equity": 1000.0,
+        "end_equity": 1000.0,
+        "day_pnl": 0.0,
+        "day_return": 0.0,
+        "max_drawdown": 0.0,
+        "samples": 1
+      }
+    ],
+    "a_0010": [
+      {
+        "day": "2026-05-02",
+        "start_equity": 1000.0,
+        "end_equity": 1000.0,
+        "day_pnl": 0.0,
+        "day_return": 0.0,
+        "max_drawdown": 0.0,
+        "samples": 1
+      }
+    ],
+    "a_0001": [
+      {
+        "day": "2026-05-02",
+        "start_equity": 1000.0,
+        "end_equity": 1000.0,
+        "day_pnl": 0.0,
+        "day_return": 0.0,
+        "max_drawdown": 0.0,
+        "samples": 1
+      }
+    ],
+    "a_0002": [
+      {
+        "day": "2026-05-02",
+        "start_equity": 1000.0,
+        "end_equity": 1000.0,
+        "day_pnl": 0.0,
+        "day_return": 0.0,
+        "max_drawdown": 0.0,
+        "samples": 1
+      }
+    ],
+    "a_0008": [
+      {
+        "day": "2026-05-02",
+        "start_equity": 1000.0,
+        "end_equity": 1000.0,
+        "day_pnl": 0.0,
+        "day_return": 0.0,
+        "max_drawdown": 0.0,
+        "samples": 1
+      }
+    ],
+    "a_0005": [
+      {
+        "day": "2026-05-02",
+        "start_equity": 1000.0,
+        "end_equity": 1000.0,
+        "day_pnl": 0.0,
+        "day_return": 0.0,
+        "max_drawdown": 0.0,
+        "samples": 1
+      }
+    ],
+    "a_0011": [
+      {
+        "day": "2026-05-02",
+        "start_equity": 1000.0,
+        "end_equity": 1000.0,
+        "day_pnl": 0.0,
+        "day_return": 0.0,
+        "max_drawdown": 0.0,
+        "samples": 1
+      }
+    ]
+  }
+}

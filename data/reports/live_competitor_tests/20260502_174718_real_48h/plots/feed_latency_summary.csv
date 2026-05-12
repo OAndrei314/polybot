@@ -1,0 +1,5 @@
+ts,gap_s,price_rows,changed_price_rows,synthetic_price_rows,inferred_missing_bbo_rows,ws_connected,ws_ok,last_ws_event_age_s,tracked_tokens,stale_tokens,empty_tokens,max_bbo_age_s
+2026-05-02 17:47:39.522692+00:00,,105,105,0,0,True,True,0.001,342,0,132,0.114
+2026-05-02 17:48:04.126068+00:00,24.603376,105,4,0,0,True,True,0.051,342,2,132,6.615
+2026-05-02 17:48:32.425725+00:00,28.299657,105,4,0,0,True,True,0.04,342,2,132,7.321
+2026-05-02 17:48:59.659618+00:00,27.233893,105,4,0,0,True,True,0.074,342,0,132,4.547

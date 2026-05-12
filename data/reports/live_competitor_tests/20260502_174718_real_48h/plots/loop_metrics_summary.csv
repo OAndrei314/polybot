@@ -1,0 +1,4 @@
+ts,loop_elapsed_s,tick_s,account_count,price_rows,synthetic_price_rows,price_feed_state
+2026-05-02 17:47:39.522692+00:00,24.402,10.0,100,105,0,"{'ws_connected': True, 'ws_ok': True, 'last_ws_event_age_s': 0.001, 'tracked_tokens': 342, 'bbo_tokens': 334, 'stale_tokens': 0, 'empty_tokens': 132, 'max_bbo_age_s': 0.114, 'stale_after_s': 6.0}"
+2026-05-02 17:48:04.126068+00:00,28.091,10.0,100,105,0,"{'ws_connected': True, 'ws_ok': True, 'last_ws_event_age_s': 0.051, 'tracked_tokens': 342, 'bbo_tokens': 334, 'stale_tokens': 2, 'empty_tokens': 132, 'max_bbo_age_s': 6.615, 'stale_after_s': 6.0}"
+2026-05-02 17:48:32.425725+00:00,27.027,10.0,100,105,0,"{'ws_connected': True, 'ws_ok': True, 'last_ws_event_age_s': 0.04, 'tracked_tokens': 342, 'bbo_tokens': 334, 'stale_tokens': 2, 'empty_tokens': 132, 'max_bbo_age_s': 7.321, 'stale_after_s': 6.0}"

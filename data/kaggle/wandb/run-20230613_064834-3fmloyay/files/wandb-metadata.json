@@ -1,0 +1,16 @@
+{
+    "os": "Linux-5.15.109+-x86_64-with-debian-bullseye-sid",
+    "python": "3.7.12",
+    "heartbeatAt": "2023-06-13T06:48:36.466418",
+    "startedAt": "2023-06-13T06:48:34.591603",
+    "docker": null,
+    "cpu_count": 4,
+    "cuda": null,
+    "args": null,
+    "state": "running",
+    "program": "kaggle.ipynb",
+    "root": "/kaggle/working",
+    "host": "cd8d08aa5c86",
+    "username": "root",
+    "executable": "/opt/conda/bin/python"
+}

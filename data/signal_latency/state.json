@@ -1,0 +1,29 @@
+{
+  "started_at": 1777983974.9132202,
+  "uptime_s": 120.9,
+  "tweets_seen": 0,
+  "per_method": {
+    "direct_sse": {
+      "detections": 0,
+      "events": 5,
+      "lat_ms_count": 0,
+      "lat_ms_mean": null,
+      "lat_ms_p50": null,
+      "lat_ms_min": null,
+      "lat_ms_max": null
+    },
+    "gql_user_tweets": {
+      "detections": 0,
+      "events": 2,
+      "lat_ms_count": 0,
+      "lat_ms_mean": null,
+      "lat_ms_p50": null,
+      "lat_ms_min": null,
+      "lat_ms_max": null
+    }
+  },
+  "first_to_detect_wins": {},
+  "first_to_detect_margins_ms": {},
+  "now": 1777984095.7933922,
+  "now_iso": "2026-05-05T12:28:15.793395+00:00"
+}

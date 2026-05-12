@@ -1,0 +1,46 @@
+[
+  {
+    "competitor_id": "a_0003",
+    "net_pnl": 24255.87595579295,
+    "gross_pnl_before_fees": 25515.37008579298,
+    "fee_drag": 1259.49413,
+    "risk_rule_impact_by_reason": {
+      "edge_decay": 16.16797711580466,
+      "resolution_loss": -246.94943004411138,
+      "resolution_win": 843.1357914549321,
+      "stop_loss": -4284.87648826383,
+      "take_profit": 27941.55301368029,
+      "validation_end": -13.154908150109911
+    },
+    "pnl_by_market_template": {
+      "2d": 18313.17511748865,
+      "weekly": 5942.700838304327
+    },
+    "concentration": {
+      "top_key_pnl_share": 0.018463132492965113,
+      "unique_event_brackets": 238
+    }
+  },
+  {
+    "competitor_id": "b_0000",
+    "net_pnl": 21941.00586565742,
+    "gross_pnl_before_fees": 23056.753045657446,
+    "fee_drag": 1115.74718,
+    "risk_rule_impact_by_reason": {
+      "edge_decay": 20.839297830438525,
+      "resolution_loss": -315.0434758917032,
+      "resolution_win": 847.6530124461846,
+      "stop_loss": -3778.936055450948,
+      "take_profit": 25180.880800287396,
+      "validation_end": -14.38771356391873
+    },
+    "pnl_by_market_template": {
+      "2d": 17084.675032006537,
+      "weekly": 4856.330833650912
+    },
+    "concentration": {
+      "top_key_pnl_share": 0.019492491767711742,
+      "unique_event_brackets": 241
+    }
+  }
+]

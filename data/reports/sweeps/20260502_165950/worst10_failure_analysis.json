@@ -1,0 +1,82 @@
+[
+  {
+    "competitor_id": "baseline",
+    "net_pnl": 0.0,
+    "max_drawdown": 0.0,
+    "sharpe": 0.0,
+    "trades": 0,
+    "diagnosis": "trade starvation from entry/min-price/spread filters"
+  },
+  {
+    "competitor_id": "a_0000",
+    "net_pnl": 0.0,
+    "max_drawdown": 0.0,
+    "sharpe": 0.0,
+    "trades": 0,
+    "diagnosis": "trade starvation from entry/min-price/spread filters"
+  },
+  {
+    "competitor_id": "a_0001",
+    "net_pnl": 0.0,
+    "max_drawdown": 0.0,
+    "sharpe": 0.0,
+    "trades": 0,
+    "diagnosis": "trade starvation from entry/min-price/spread filters"
+  },
+  {
+    "competitor_id": "a_0002",
+    "net_pnl": 0.0,
+    "max_drawdown": 0.0,
+    "sharpe": 0.0,
+    "trades": 0,
+    "diagnosis": "trade starvation from entry/min-price/spread filters"
+  },
+  {
+    "competitor_id": "a_0003",
+    "net_pnl": 0.0,
+    "max_drawdown": 0.0,
+    "sharpe": 0.0,
+    "trades": 0,
+    "diagnosis": "trade starvation from entry/min-price/spread filters"
+  },
+  {
+    "competitor_id": "a_0004",
+    "net_pnl": 0.0,
+    "max_drawdown": 0.0,
+    "sharpe": 0.0,
+    "trades": 0,
+    "diagnosis": "trade starvation from entry/min-price/spread filters"
+  },
+  {
+    "competitor_id": "a_0005",
+    "net_pnl": 0.0,
+    "max_drawdown": 0.0,
+    "sharpe": 0.0,
+    "trades": 0,
+    "diagnosis": "trade starvation from entry/min-price/spread filters"
+  },
+  {
+    "competitor_id": "a_0006",
+    "net_pnl": 0.0,
+    "max_drawdown": 0.0,
+    "sharpe": 0.0,
+    "trades": 0,
+    "diagnosis": "trade starvation from entry/min-price/spread filters"
+  },
+  {
+    "competitor_id": "a_0007",
+    "net_pnl": 0.0,
+    "max_drawdown": 0.0,
+    "sharpe": 0.0,
+    "trades": 0,
+    "diagnosis": "trade starvation from entry/min-price/spread filters"
+  },
+  {
+    "competitor_id": "a_0008",
+    "net_pnl": 0.0,
+    "max_drawdown": 0.0,
+    "sharpe": 0.0,
+    "trades": 0,
+    "diagnosis": "trade starvation from entry/min-price/spread filters"
+  }
+]

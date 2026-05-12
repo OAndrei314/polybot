@@ -1,0 +1,68 @@
+[
+  {
+    "competitor_id": "a_0003",
+    "net_pnl": 24255.87595579295,
+    "gross_pnl_before_fees": 25515.37008579298,
+    "fee_drag": 1259.49413,
+    "risk_rule_impact_by_reason": {
+      "edge_decay": 16.16797711580466,
+      "resolution_loss": -246.94943004411138,
+      "resolution_win": 843.1357914549321,
+      "stop_loss": -4284.87648826383,
+      "take_profit": 27941.55301368029,
+      "validation_end": -13.154908150109911
+    },
+    "pnl_by_market_template": {
+      "2d": 18313.17511748865,
+      "weekly": 5942.700838304327
+    },
+    "concentration": {
+      "top_key_pnl_share": 0.018463132492965113,
+      "unique_event_brackets": 238
+    }
+  },
+  {
+    "competitor_id": "a_0007",
+    "net_pnl": 37296.942830463806,
+    "gross_pnl_before_fees": 39230.41135046385,
+    "fee_drag": 1933.46852,
+    "risk_rule_impact_by_reason": {
+      "edge_decay": 3.1207039897063567,
+      "resolution_loss": -657.337473869725,
+      "resolution_win": 2248.313596031814,
+      "stop_loss": -8921.930673790555,
+      "take_profit": 44644.88632727269,
+      "validation_end": -20.10964917007462
+    },
+    "pnl_by_market_template": {
+      "2d": 29447.274201564825,
+      "weekly": 7849.668628899022
+    },
+    "concentration": {
+      "top_key_pnl_share": 0.03360757361429264,
+      "unique_event_brackets": 258
+    }
+  },
+  {
+    "competitor_id": "b_0000",
+    "net_pnl": 30848.724452509163,
+    "gross_pnl_before_fees": 32362.605322509175,
+    "fee_drag": 1513.88087,
+    "risk_rule_impact_by_reason": {
+      "edge_decay": 3.0142815932299882,
+      "resolution_loss": -570.8706078202235,
+      "resolution_win": 2094.9089026199217,
+      "stop_loss": -7024.338376227484,
+      "take_profit": 36365.07515090209,
+      "validation_end": -19.064898558401595
+    },
+    "pnl_by_market_template": {
+      "2d": 24971.64846205283,
+      "weekly": 5877.075990456336
+    },
+    "concentration": {
+      "top_key_pnl_share": 0.03988217268863008,
+      "unique_event_brackets": 258
+    }
+  }
+]

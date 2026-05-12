@@ -1,0 +1,1116 @@
+{
+  "ts": "2026-05-05T13:48:30.589017+00:00",
+  "days": {
+    "baseline": [
+      {
+        "day": "2026-05-05",
+        "start_equity": 989.251687350058,
+        "end_equity": 989.251687350058,
+        "day_pnl": 0.0,
+        "day_return": 0.0,
+        "max_drawdown": 0.0,
+        "samples": 1
+      }
+    ],
+    "a_0012": [
+      {
+        "day": "2026-05-05",
+        "start_equity": 985.4563194996982,
+        "end_equity": 985.4563194996982,
+        "day_pnl": 0.0,
+        "day_return": 0.0,
+        "max_drawdown": 0.0,
+        "samples": 1
+      }
+    ],
+    "b_0016": [
+      {
+        "day": "2026-05-05",
+        "start_equity": 991.4943102540426,
+        "end_equity": 991.4943102540426,
+        "day_pnl": 0.0,
+        "day_return": 0.0,
+        "max_drawdown": 0.0,
+        "samples": 1
+      }
+    ],
+    "a_0001": [
+      {
+        "day": "2026-05-05",
+        "start_equity": 990.2792734021876,
+        "end_equity": 990.2792734021876,
+        "day_pnl": 0.0,
+        "day_return": 0.0,
+        "max_drawdown": 0.0,
+        "samples": 1
+      }
+    ],
+    "a_0054": [
+      {
+        "day": "2026-05-05",
+        "start_equity": 998.7757097050305,
+        "end_equity": 998.7757097050305,
+        "day_pnl": 0.0,
+        "day_return": 0.0,
+        "max_drawdown": 0.0,
+        "samples": 1
+      }
+    ],
+    "b_0010": [
+      {
+        "day": "2026-05-05",
+        "start_equity": 991.9239635918619,
+        "end_equity": 991.9239635918619,
+        "day_pnl": 0.0,
+        "day_return": 0.0,
+        "max_drawdown": 0.0,
+        "samples": 1
+      }
+    ],
+    "b16_tgt_01": [
+      {
+        "day": "2026-05-05",
+        "start_equity": 991.8913140039615,
+        "end_equity": 991.8913140039615,
+        "day_pnl": 0.0,
+        "day_return": 0.0,
+        "max_drawdown": 0.0,
+        "samples": 1
+      }
+    ],
+    "b16_tgt_02": [
+      {
+        "day": "2026-05-05",
+        "start_equity": 991.7478163351501,
+        "end_equity": 991.7478163351501,
+        "day_pnl": 0.0,
+        "day_return": 0.0,
+        "max_drawdown": 0.0,
+        "samples": 1
+      }
+    ],
+    "b16_tgt_03": [
+      {
+        "day": "2026-05-05",
+        "start_equity": 991.6684143160902,
+        "end_equity": 991.6684143160902,
+        "day_pnl": 0.0,
+        "day_return": 0.0,
+        "max_drawdown": 0.0,
+        "samples": 1
+      }
+    ],
+    "b16_tgt_04": [
+      {
+        "day": "2026-05-05",
+        "start_equity": 991.5935620617356,
+        "end_equity": 991.5935620617356,
+        "day_pnl": 0.0,
+        "day_return": 0.0,
+        "max_drawdown": 0.0,
+        "samples": 1
+      }
+    ],
+    "b16_tgt_05": [
+      {
+        "day": "2026-05-05",
+        "start_equity": 992.1570794345396,
+        "end_equity": 992.1570794345396,
+        "day_pnl": 0.0,
+        "day_return": 0.0,
+        "max_drawdown": 0.0,
+        "samples": 1
+      }
+    ],
+    "b16_tgt_06": [
+      {
+        "day": "2026-05-05",
+        "start_equity": 991.2342332957585,
+        "end_equity": 991.2342332957585,
+        "day_pnl": 0.0,
+        "day_return": 0.0,
+        "max_drawdown": 0.0,
+        "samples": 1
+      }
+    ],
+    "b16_tgt_07": [
+      {
+        "day": "2026-05-05",
+        "start_equity": 991.2185898219234,
+        "end_equity": 991.2185898219234,
+        "day_pnl": 0.0,
+        "day_return": 0.0,
+        "max_drawdown": 0.0,
+        "samples": 1
+      }
+    ],
+    "b16_tgt_08": [
+      {
+        "day": "2026-05-05",
+        "start_equity": 991.5514389808699,
+        "end_equity": 991.5514389808699,
+        "day_pnl": 0.0,
+        "day_return": 0.0,
+        "max_drawdown": 0.0,
+        "samples": 1
+      }
+    ],
+    "b16_tgt_09": [
+      {
+        "day": "2026-05-05",
+        "start_equity": 991.210475017644,
+        "end_equity": 991.210475017644,
+        "day_pnl": 0.0,
+        "day_return": 0.0,
+        "max_drawdown": 0.0,
+        "samples": 1
+      }
+    ],
+    "b16_tgt_10": [
+      {
+        "day": "2026-05-05",
+        "start_equity": 991.4261652553471,
+        "end_equity": 991.4261652553471,
+        "day_pnl": 0.0,
+        "day_return": 0.0,
+        "max_drawdown": 0.0,
+        "samples": 1
+      }
+    ],
+    "b16_tgt_11": [
+      {
+        "day": "2026-05-05",
+        "start_equity": 991.4389022586253,
+        "end_equity": 991.4389022586253,
+        "day_pnl": 0.0,
+        "day_return": 0.0,
+        "max_drawdown": 0.0,
+        "samples": 1
+      }
+    ],
+    "b16_tgt_12": [
+      {
+        "day": "2026-05-05",
+        "start_equity": 991.5342999691387,
+        "end_equity": 991.5342999691387,
+        "day_pnl": 0.0,
+        "day_return": 0.0,
+        "max_drawdown": 0.0,
+        "samples": 1
+      }
+    ],
+    "b16_tgt_13": [
+      {
+        "day": "2026-05-05",
+        "start_equity": 991.4900644797135,
+        "end_equity": 991.4900644797135,
+        "day_pnl": 0.0,
+        "day_return": 0.0,
+        "max_drawdown": 0.0,
+        "samples": 1
+      }
+    ],
+    "b16_tgt_14": [
+      {
+        "day": "2026-05-05",
+        "start_equity": 991.5092668053181,
+        "end_equity": 991.5092668053181,
+        "day_pnl": 0.0,
+        "day_return": 0.0,
+        "max_drawdown": 0.0,
+        "samples": 1
+      }
+    ],
+    "b16_tgt_15": [
+      {
+        "day": "2026-05-05",
+        "start_equity": 991.8814894655691,
+        "end_equity": 991.8814894655691,
+        "day_pnl": 0.0,
+        "day_return": 0.0,
+        "max_drawdown": 0.0,
+        "samples": 1
+      }
+    ],
+    "b16_tgt_16": [
+      {
+        "day": "2026-05-05",
+        "start_equity": 991.4823384498573,
+        "end_equity": 991.4823384498573,
+        "day_pnl": 0.0,
+        "day_return": 0.0,
+        "max_drawdown": 0.0,
+        "samples": 1
+      }
+    ],
+    "b16_tgt_17": [
+      {
+        "day": "2026-05-05",
+        "start_equity": 990.9927236085039,
+        "end_equity": 990.9927236085039,
+        "day_pnl": 0.0,
+        "day_return": 0.0,
+        "max_drawdown": 0.0,
+        "samples": 1
+      }
+    ],
+    "b16_tgt_18": [
+      {
+        "day": "2026-05-05",
+        "start_equity": 991.0360457047557,
+        "end_equity": 991.0360457047557,
+        "day_pnl": 0.0,
+        "day_return": 0.0,
+        "max_drawdown": 0.0,
+        "samples": 1
+      }
+    ],
+    "b16_tgt_19": [
+      {
+        "day": "2026-05-05",
+        "start_equity": 991.549183821007,
+        "end_equity": 991.549183821007,
+        "day_pnl": 0.0,
+        "day_return": 0.0,
+        "max_drawdown": 0.0,
+        "samples": 1
+      }
+    ],
+    "b16_tgt_20": [
+      {
+        "day": "2026-05-05",
+        "start_equity": 991.9309188190986,
+        "end_equity": 991.9309188190986,
+        "day_pnl": 0.0,
+        "day_return": 0.0,
+        "max_drawdown": 0.0,
+        "samples": 1
+      }
+    ],
+    "a12_tgt_01": [
+      {
+        "day": "2026-05-05",
+        "start_equity": 985.8337919483491,
+        "end_equity": 985.8337919483491,
+        "day_pnl": 0.0,
+        "day_return": 0.0,
+        "max_drawdown": 0.0,
+        "samples": 1
+      }
+    ],
+    "a12_tgt_02": [
+      {
+        "day": "2026-05-05",
+        "start_equity": 985.9149181927735,
+        "end_equity": 985.9149181927735,
+        "day_pnl": 0.0,
+        "day_return": 0.0,
+        "max_drawdown": 0.0,
+        "samples": 1
+      }
+    ],
+    "a12_tgt_03": [
+      {
+        "day": "2026-05-05",
+        "start_equity": 985.2042414448424,
+        "end_equity": 985.2042414448424,
+        "day_pnl": 0.0,
+        "day_return": 0.0,
+        "max_drawdown": 0.0,
+        "samples": 1
+      }
+    ],
+    "a12_tgt_04": [
+      {
+        "day": "2026-05-05",
+        "start_equity": 986.3844205447887,
+        "end_equity": 986.3844205447887,
+        "day_pnl": 0.0,
+        "day_return": 0.0,
+        "max_drawdown": 0.0,
+        "samples": 1
+      }
+    ],
+    "a12_tgt_05": [
+      {
+        "day": "2026-05-05",
+        "start_equity": 985.0463052311618,
+        "end_equity": 985.0463052311618,
+        "day_pnl": 0.0,
+        "day_return": 0.0,
+        "max_drawdown": 0.0,
+        "samples": 1
+      }
+    ],
+    "a12_tgt_06": [
+      {
+        "day": "2026-05-05",
+        "start_equity": 985.8003052403567,
+        "end_equity": 985.8003052403567,
+        "day_pnl": 0.0,
+        "day_return": 0.0,
+        "max_drawdown": 0.0,
+        "samples": 1
+      }
+    ],
+    "a12_tgt_07": [
+      {
+        "day": "2026-05-05",
+        "start_equity": 985.8665942749751,
+        "end_equity": 985.8665942749751,
+        "day_pnl": 0.0,
+        "day_return": 0.0,
+        "max_drawdown": 0.0,
+        "samples": 1
+      }
+    ],
+    "a12_tgt_08": [
+      {
+        "day": "2026-05-05",
+        "start_equity": 984.479416270211,
+        "end_equity": 984.479416270211,
+        "day_pnl": 0.0,
+        "day_return": 0.0,
+        "max_drawdown": 0.0,
+        "samples": 1
+      }
+    ],
+    "a12_tgt_09": [
+      {
+        "day": "2026-05-05",
+        "start_equity": 986.6416735466127,
+        "end_equity": 986.6416735466127,
+        "day_pnl": 0.0,
+        "day_return": 0.0,
+        "max_drawdown": 0.0,
+        "samples": 1
+      }
+    ],
+    "a12_tgt_10": [
+      {
+        "day": "2026-05-05",
+        "start_equity": 984.9599387490056,
+        "end_equity": 984.9599387490056,
+        "day_pnl": 0.0,
+        "day_return": 0.0,
+        "max_drawdown": 0.0,
+        "samples": 1
+      }
+    ],
+    "a12_tgt_11": [
+      {
+        "day": "2026-05-05",
+        "start_equity": 985.9389325366496,
+        "end_equity": 985.9389325366496,
+        "day_pnl": 0.0,
+        "day_return": 0.0,
+        "max_drawdown": 0.0,
+        "samples": 1
+      }
+    ],
+    "a12_tgt_12": [
+      {
+        "day": "2026-05-05",
+        "start_equity": 984.7201176105046,
+        "end_equity": 984.7201176105046,
+        "day_pnl": 0.0,
+        "day_return": 0.0,
+        "max_drawdown": 0.0,
+        "samples": 1
+      }
+    ],
+    "a12_tgt_13": [
+      {
+        "day": "2026-05-05",
+        "start_equity": 986.3147948603686,
+        "end_equity": 986.3147948603686,
+        "day_pnl": 0.0,
+        "day_return": 0.0,
+        "max_drawdown": 0.0,
+        "samples": 1
+      }
+    ],
+    "a12_tgt_14": [
+      {
+        "day": "2026-05-05",
+        "start_equity": 984.7272370146392,
+        "end_equity": 984.7272370146392,
+        "day_pnl": 0.0,
+        "day_return": 0.0,
+        "max_drawdown": 0.0,
+        "samples": 1
+      }
+    ],
+    "a12_tgt_15": [
+      {
+        "day": "2026-05-05",
+        "start_equity": 985.1742183680053,
+        "end_equity": 985.1742183680053,
+        "day_pnl": 0.0,
+        "day_return": 0.0,
+        "max_drawdown": 0.0,
+        "samples": 1
+      }
+    ],
+    "a12_tgt_16": [
+      {
+        "day": "2026-05-05",
+        "start_equity": 984.7260897041072,
+        "end_equity": 984.7260897041072,
+        "day_pnl": 0.0,
+        "day_return": 0.0,
+        "max_drawdown": 0.0,
+        "samples": 1
+      }
+    ],
+    "a12_tgt_17": [
+      {
+        "day": "2026-05-05",
+        "start_equity": 985.0710580109003,
+        "end_equity": 985.0710580109003,
+        "day_pnl": 0.0,
+        "day_return": 0.0,
+        "max_drawdown": 0.0,
+        "samples": 1
+      }
+    ],
+    "a12_tgt_18": [
+      {
+        "day": "2026-05-05",
+        "start_equity": 985.316154326162,
+        "end_equity": 985.316154326162,
+        "day_pnl": 0.0,
+        "day_return": 0.0,
+        "max_drawdown": 0.0,
+        "samples": 1
+      }
+    ],
+    "a12_tgt_19": [
+      {
+        "day": "2026-05-05",
+        "start_equity": 984.9750308547426,
+        "end_equity": 984.9750308547426,
+        "day_pnl": 0.0,
+        "day_return": 0.0,
+        "max_drawdown": 0.0,
+        "samples": 1
+      }
+    ],
+    "a12_tgt_20": [
+      {
+        "day": "2026-05-05",
+        "start_equity": 985.143074123036,
+        "end_equity": 985.143074123036,
+        "day_pnl": 0.0,
+        "day_return": 0.0,
+        "max_drawdown": 0.0,
+        "samples": 1
+      }
+    ],
+    "cross_01": [
+      {
+        "day": "2026-05-05",
+        "start_equity": 978.8548767941534,
+        "end_equity": 978.8548767941534,
+        "day_pnl": 0.0,
+        "day_return": 0.0,
+        "max_drawdown": 0.0,
+        "samples": 1
+      }
+    ],
+    "cross_02": [
+      {
+        "day": "2026-05-05",
+        "start_equity": 985.4845018602459,
+        "end_equity": 985.4845018602459,
+        "day_pnl": 0.0,
+        "day_return": 0.0,
+        "max_drawdown": 0.0,
+        "samples": 1
+      }
+    ],
+    "cross_03": [
+      {
+        "day": "2026-05-05",
+        "start_equity": 991.8638311672221,
+        "end_equity": 991.8638311672221,
+        "day_pnl": 0.0,
+        "day_return": 0.0,
+        "max_drawdown": 0.0,
+        "samples": 1
+      }
+    ],
+    "cross_04": [
+      {
+        "day": "2026-05-05",
+        "start_equity": 991.4879411369592,
+        "end_equity": 991.4879411369592,
+        "day_pnl": 0.0,
+        "day_return": 0.0,
+        "max_drawdown": 0.0,
+        "samples": 1
+      }
+    ],
+    "cross_05": [
+      {
+        "day": "2026-05-05",
+        "start_equity": 991.6439891199472,
+        "end_equity": 991.6439891199472,
+        "day_pnl": 0.0,
+        "day_return": 0.0,
+        "max_drawdown": 0.0,
+        "samples": 1
+      }
+    ],
+    "cross_06": [
+      {
+        "day": "2026-05-05",
+        "start_equity": 985.4967216314151,
+        "end_equity": 985.4967216314151,
+        "day_pnl": 0.0,
+        "day_return": 0.0,
+        "max_drawdown": 0.0,
+        "samples": 1
+      }
+    ],
+    "cross_07": [
+      {
+        "day": "2026-05-05",
+        "start_equity": 995.3031465656867,
+        "end_equity": 995.3031465656867,
+        "day_pnl": 0.0,
+        "day_return": 0.0,
+        "max_drawdown": 0.0,
+        "samples": 1
+      }
+    ],
+    "cross_08": [
+      {
+        "day": "2026-05-05",
+        "start_equity": 978.8549677064401,
+        "end_equity": 978.8549677064401,
+        "day_pnl": 0.0,
+        "day_return": 0.0,
+        "max_drawdown": 0.0,
+        "samples": 1
+      }
+    ],
+    "cross_09": [
+      {
+        "day": "2026-05-05",
+        "start_equity": 985.4563616327714,
+        "end_equity": 985.4563616327714,
+        "day_pnl": 0.0,
+        "day_return": 0.0,
+        "max_drawdown": 0.0,
+        "samples": 1
+      }
+    ],
+    "cross_10": [
+      {
+        "day": "2026-05-05",
+        "start_equity": 995.3316478285668,
+        "end_equity": 995.3316478285668,
+        "day_pnl": 0.0,
+        "day_return": 0.0,
+        "max_drawdown": 0.0,
+        "samples": 1
+      }
+    ],
+    "cross_11": [
+      {
+        "day": "2026-05-05",
+        "start_equity": 978.8385209682019,
+        "end_equity": 978.8385209682019,
+        "day_pnl": 0.0,
+        "day_return": 0.0,
+        "max_drawdown": 0.0,
+        "samples": 1
+      }
+    ],
+    "cross_12": [
+      {
+        "day": "2026-05-05",
+        "start_equity": 994.3165502379177,
+        "end_equity": 994.3165502379177,
+        "day_pnl": 0.0,
+        "day_return": 0.0,
+        "max_drawdown": 0.0,
+        "samples": 1
+      }
+    ],
+    "cross_13": [
+      {
+        "day": "2026-05-05",
+        "start_equity": 992.2425316654848,
+        "end_equity": 992.2425316654848,
+        "day_pnl": 0.0,
+        "day_return": 0.0,
+        "max_drawdown": 0.0,
+        "samples": 1
+      }
+    ],
+    "cross_14": [
+      {
+        "day": "2026-05-05",
+        "start_equity": 978.8385795426697,
+        "end_equity": 978.8385795426697,
+        "day_pnl": 0.0,
+        "day_return": 0.0,
+        "max_drawdown": 0.0,
+        "samples": 1
+      }
+    ],
+    "cross_15": [
+      {
+        "day": "2026-05-05",
+        "start_equity": 979.1898298620442,
+        "end_equity": 979.1898298620442,
+        "day_pnl": 0.0,
+        "day_return": 0.0,
+        "max_drawdown": 0.0,
+        "samples": 1
+      }
+    ],
+    "cross_16": [
+      {
+        "day": "2026-05-05",
+        "start_equity": 985.4967384208371,
+        "end_equity": 985.4967384208371,
+        "day_pnl": 0.0,
+        "day_return": 0.0,
+        "max_drawdown": 0.0,
+        "samples": 1
+      }
+    ],
+    "cross_17": [
+      {
+        "day": "2026-05-05",
+        "start_equity": 994.3165516272657,
+        "end_equity": 994.3165516272657,
+        "day_pnl": 0.0,
+        "day_return": 0.0,
+        "max_drawdown": 0.0,
+        "samples": 1
+      }
+    ],
+    "cross_18": [
+      {
+        "day": "2026-05-05",
+        "start_equity": 985.0717545161249,
+        "end_equity": 985.0717545161249,
+        "day_pnl": 0.0,
+        "day_return": 0.0,
+        "max_drawdown": 0.0,
+        "samples": 1
+      }
+    ],
+    "cross_19": [
+      {
+        "day": "2026-05-05",
+        "start_equity": 994.1544608469574,
+        "end_equity": 994.1544608469574,
+        "day_pnl": 0.0,
+        "day_return": 0.0,
+        "max_drawdown": 0.0,
+        "samples": 1
+      }
+    ],
+    "cross_20": [
+      {
+        "day": "2026-05-05",
+        "start_equity": 994.3214710443192,
+        "end_equity": 994.3214710443192,
+        "day_pnl": 0.0,
+        "day_return": 0.0,
+        "max_drawdown": 0.0,
+        "samples": 1
+      }
+    ],
+    "cross_21": [
+      {
+        "day": "2026-05-05",
+        "start_equity": 991.4946875405876,
+        "end_equity": 991.4946875405876,
+        "day_pnl": 0.0,
+        "day_return": 0.0,
+        "max_drawdown": 0.0,
+        "samples": 1
+      }
+    ],
+    "cross_22": [
+      {
+        "day": "2026-05-05",
+        "start_equity": 993.9907476517152,
+        "end_equity": 993.9907476517152,
+        "day_pnl": 0.0,
+        "day_return": 0.0,
+        "max_drawdown": 0.0,
+        "samples": 1
+      }
+    ],
+    "cross_23": [
+      {
+        "day": "2026-05-05",
+        "start_equity": 978.8552302606578,
+        "end_equity": 978.8552302606578,
+        "day_pnl": 0.0,
+        "day_return": 0.0,
+        "max_drawdown": 0.0,
+        "samples": 1
+      }
+    ],
+    "cross_24": [
+      {
+        "day": "2026-05-05",
+        "start_equity": 985.8827611421947,
+        "end_equity": 985.8827611421947,
+        "day_pnl": 0.0,
+        "day_return": 0.0,
+        "max_drawdown": 0.0,
+        "samples": 1
+      }
+    ],
+    "cross_25": [
+      {
+        "day": "2026-05-05",
+        "start_equity": 979.732651875438,
+        "end_equity": 979.732651875438,
+        "day_pnl": 0.0,
+        "day_return": 0.0,
+        "max_drawdown": 0.0,
+        "samples": 1
+      }
+    ],
+    "b10_v01": [
+      {
+        "day": "2026-05-05",
+        "start_equity": 992.4854161169721,
+        "end_equity": 992.4854161169721,
+        "day_pnl": 0.0,
+        "day_return": 0.0,
+        "max_drawdown": 0.0,
+        "samples": 1
+      }
+    ],
+    "b10_v02": [
+      {
+        "day": "2026-05-05",
+        "start_equity": 992.9817622459263,
+        "end_equity": 992.9817622459263,
+        "day_pnl": 0.0,
+        "day_return": 0.0,
+        "max_drawdown": 0.0,
+        "samples": 1
+      }
+    ],
+    "b10_v03": [
+      {
+        "day": "2026-05-05",
+        "start_equity": 992.534393935297,
+        "end_equity": 992.534393935297,
+        "day_pnl": 0.0,
+        "day_return": 0.0,
+        "max_drawdown": 0.0,
+        "samples": 1
+      }
+    ],
+    "b10_v04": [
+      {
+        "day": "2026-05-05",
+        "start_equity": 984.7584880829302,
+        "end_equity": 984.7584880829302,
+        "day_pnl": 0.0,
+        "day_return": 0.0,
+        "max_drawdown": 0.0,
+        "samples": 1
+      }
+    ],
+    "b10_v05": [
+      {
+        "day": "2026-05-05",
+        "start_equity": 983.3061678751891,
+        "end_equity": 983.3061678751891,
+        "day_pnl": 0.0,
+        "day_return": 0.0,
+        "max_drawdown": 0.0,
+        "samples": 1
+      }
+    ],
+    "b10_v06": [
+      {
+        "day": "2026-05-05",
+        "start_equity": 984.4060042116394,
+        "end_equity": 984.4060042116394,
+        "day_pnl": 0.0,
+        "day_return": 0.0,
+        "max_drawdown": 0.0,
+        "samples": 1
+      }
+    ],
+    "b10_v07": [
+      {
+        "day": "2026-05-05",
+        "start_equity": 992.5648533347339,
+        "end_equity": 992.5648533347339,
+        "day_pnl": 0.0,
+        "day_return": 0.0,
+        "max_drawdown": 0.0,
+        "samples": 1
+      }
+    ],
+    "b10_v08": [
+      {
+        "day": "2026-05-05",
+        "start_equity": 993.8696307647187,
+        "end_equity": 993.8696307647187,
+        "day_pnl": 0.0,
+        "day_return": 0.0,
+        "max_drawdown": 0.0,
+        "samples": 1
+      }
+    ],
+    "b10_v09": [
+      {
+        "day": "2026-05-05",
+        "start_equity": 993.4603678683175,
+        "end_equity": 993.4603678683175,
+        "day_pnl": 0.0,
+        "day_return": 0.0,
+        "max_drawdown": 0.0,
+        "samples": 1
+      }
+    ],
+    "b10_v10": [
+      {
+        "day": "2026-05-05",
+        "start_equity": 981.5971608555943,
+        "end_equity": 981.5971608555943,
+        "day_pnl": 0.0,
+        "day_return": 0.0,
+        "max_drawdown": 0.0,
+        "samples": 1
+      }
+    ],
+    "b10_v11": [
+      {
+        "day": "2026-05-05",
+        "start_equity": 990.470439352358,
+        "end_equity": 990.470439352358,
+        "day_pnl": 0.0,
+        "day_return": 0.0,
+        "max_drawdown": 0.0,
+        "samples": 1
+      }
+    ],
+    "b10_v12": [
+      {
+        "day": "2026-05-05",
+        "start_equity": 993.3323578659647,
+        "end_equity": 993.3323578659647,
+        "day_pnl": 0.0,
+        "day_return": 0.0,
+        "max_drawdown": 0.0,
+        "samples": 1
+      }
+    ],
+    "b10_v13": [
+      {
+        "day": "2026-05-05",
+        "start_equity": 991.2664085061035,
+        "end_equity": 991.2664085061035,
+        "day_pnl": 0.0,
+        "day_return": 0.0,
+        "max_drawdown": 0.0,
+        "samples": 1
+      }
+    ],
+    "b10_v14": [
+      {
+        "day": "2026-05-05",
+        "start_equity": 993.5795792153708,
+        "end_equity": 993.5795792153708,
+        "day_pnl": 0.0,
+        "day_return": 0.0,
+        "max_drawdown": 0.0,
+        "samples": 1
+      }
+    ],
+    "b10_v15": [
+      {
+        "day": "2026-05-05",
+        "start_equity": 983.2089083847368,
+        "end_equity": 983.2089083847368,
+        "day_pnl": 0.0,
+        "day_return": 0.0,
+        "max_drawdown": 0.0,
+        "samples": 1
+      }
+    ],
+    "b10_v16": [
+      {
+        "day": "2026-05-05",
+        "start_equity": 983.8564959690615,
+        "end_equity": 983.8564959690615,
+        "day_pnl": 0.0,
+        "day_return": 0.0,
+        "max_drawdown": 0.0,
+        "samples": 1
+      }
+    ],
+    "b10_v17": [
+      {
+        "day": "2026-05-05",
+        "start_equity": 992.2937221482471,
+        "end_equity": 992.2937221482471,
+        "day_pnl": 0.0,
+        "day_return": 0.0,
+        "max_drawdown": 0.0,
+        "samples": 1
+      }
+    ],
+    "b10_v18": [
+      {
+        "day": "2026-05-05",
+        "start_equity": 983.9068467400144,
+        "end_equity": 983.9068467400144,
+        "day_pnl": 0.0,
+        "day_return": 0.0,
+        "max_drawdown": 0.0,
+        "samples": 1
+      }
+    ],
+    "b10_v19": [
+      {
+        "day": "2026-05-05",
+        "start_equity": 992.4514265372262,
+        "end_equity": 992.4514265372262,
+        "day_pnl": 0.0,
+        "day_return": 0.0,
+        "max_drawdown": 0.0,
+        "samples": 1
+      }
+    ],
+    "b10_v20": [
+      {
+        "day": "2026-05-05",
+        "start_equity": 992.7673914105587,
+        "end_equity": 992.7673914105587,
+        "day_pnl": 0.0,
+        "day_return": 0.0,
+        "max_drawdown": 0.0,
+        "samples": 1
+      }
+    ],
+    "a01_v01": [
+      {
+        "day": "2026-05-05",
+        "start_equity": 990.0212359131457,
+        "end_equity": 990.0212359131457,
+        "day_pnl": 0.0,
+        "day_return": 0.0,
+        "max_drawdown": 0.0,
+        "samples": 1
+      }
+    ],
+    "a01_v02": [
+      {
+        "day": "2026-05-05",
+        "start_equity": 994.5837433166748,
+        "end_equity": 994.5837433166748,
+        "day_pnl": 0.0,
+        "day_return": 0.0,
+        "max_drawdown": 0.0,
+        "samples": 1
+      }
+    ],
+    "a01_v03": [
+      {
+        "day": "2026-05-05",
+        "start_equity": 986.7241405817815,
+        "end_equity": 986.7241405817815,
+        "day_pnl": 0.0,
+        "day_return": 0.0,
+        "max_drawdown": 0.0,
+        "samples": 1
+      }
+    ],
+    "a01_v04": [
+      {
+        "day": "2026-05-05",
+        "start_equity": 990.0632245239235,
+        "end_equity": 990.0632245239235,
+        "day_pnl": 0.0,
+        "day_return": 0.0,
+        "max_drawdown": 0.0,
+        "samples": 1
+      }
+    ],
+    "a01_v05": [
+      {
+        "day": "2026-05-05",
+        "start_equity": 990.1013945816937,
+        "end_equity": 990.1013945816937,
+        "day_pnl": 0.0,
+        "day_return": 0.0,
+        "max_drawdown": 0.0,
+        "samples": 1
+      }
+    ],
+    "a54_v01": [
+      {
+        "day": "2026-05-05",
+        "start_equity": 998.7754581451138,
+        "end_equity": 998.7754581451138,
+        "day_pnl": 0.0,
+        "day_return": 0.0,
+        "max_drawdown": 0.0,
+        "samples": 1
+      }
+    ],
+    "a54_v02": [
+      {
+        "day": "2026-05-05",
+        "start_equity": 998.7332386614988,
+        "end_equity": 998.7332386614988,
+        "day_pnl": 0.0,
+        "day_return": 0.0,
+        "max_drawdown": 0.0,
+        "samples": 1
+      }
+    ],
+    "a54_v03": [
+      {
+        "day": "2026-05-05",
+        "start_equity": 998.6099159445362,
+        "end_equity": 998.6099159445362,
+        "day_pnl": 0.0,
+        "day_return": 0.0,
+        "max_drawdown": 0.0,
+        "samples": 1
+      }
+    ],
+    "a54_v04": [
+      {
+        "day": "2026-05-05",
+        "start_equity": 998.711373571781,
+        "end_equity": 998.711373571781,
+        "day_pnl": 0.0,
+        "day_return": 0.0,
+        "max_drawdown": 0.0,
+        "samples": 1
+      }
+    ],
+    "a54_v05": [
+      {
+        "day": "2026-05-05",
+        "start_equity": 998.6857848569091,
+        "end_equity": 998.6857848569091,
+        "day_pnl": 0.0,
+        "day_return": 0.0,
+        "max_drawdown": 0.0,
+        "samples": 1
+      }
+    ]
+  }
+}

@@ -1,0 +1,10 @@
+
+retreive new tweets ...
+
+
+211it [00:04, 48.87it/s]
+new tweets retrieved: 248
+past tweets: (5888, 16)
+new tweets: 248 past tweets: 5888 all tweets: 6136
+248it [00:05, 45.54it/s]
+100%|██████████| 248/248 [00:00<00:00, 281.48it/s]

@@ -1,0 +1,18 @@
+{
+  "local_archive_files": [
+    "elonmusk-ALL-2025-12-10.json",
+    "elonmusk_tweets_2025-11-02T01-12-31-543Z.json"
+  ],
+  "local_archive_unique_ids": 18390,
+  "merged_total_ids": 69476,
+  "overlap_with_merged_ids": 18390,
+  "new_only_ids_not_in_merged": 0,
+  "local_archive_rows_in_merged": 17740,
+  "local_archive_date_min": "2010-06-04 18:31:57+00:00",
+  "local_archive_date_max": "2025-10-30 23:39:52+00:00",
+  "three_missing_ids_added_from_download": [
+    "1754053261190181003",
+    "1818392953800548382",
+    "1981044360700412197"
+  ]
+}

@@ -1,0 +1,18 @@
+[
+  {
+    "competitor_id": "b_0000",
+    "net_pnl": 5072.6984839307515,
+    "max_drawdown": 0.03610313485420951,
+    "sharpe": 12.410037484642922,
+    "trades": 26,
+    "diagnosis": "weak composite balance versus peers"
+  },
+  {
+    "competitor_id": "baseline",
+    "net_pnl": 6142.7221983187555,
+    "max_drawdown": 0.05374205131812057,
+    "sharpe": 13.145380103443506,
+    "trades": 36,
+    "diagnosis": "weak composite balance versus peers"
+  }
+]

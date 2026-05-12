@@ -1,0 +1,11 @@
+{
+  "total_tweets": 69476,
+  "dataset_days": 5811,
+  "recency_half_life_days": 365.0,
+  "overall_rate_per_hour": 1.426507822156259,
+  "rt_excitation_alpha": 0.2070268760642169,
+  "sentiment_mean": 0.09716938111765572,
+  "sentiment_std": 0.3914429908800277,
+  "retweet_followup_prob_60m": 0.887179414201328,
+  "original_followup_prob_60m": 0.8652779974364002
+}

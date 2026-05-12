@@ -1,0 +1,220 @@
+#!/Users/andreiojoc/polybot/venv/bin/python
+from __future__ import annotations
+
+import argparse
+import json
+import re
+from datetime import datetime, timezone
+from pathlib import Path
+
+
+HERE = Path(__file__).resolve().parent
+EVENT_URL = "https://www.polymarket.com/event/elon-musk-of-tweets-april-28-may-5"
+
+from market_reader import get_market_data  # noqa: E402
+from model import bracket_probability, expected_tweets_remaining, parse_bracket  # noqa: E402
+from xtracker_reader import get_elon_weekly_count  # noqa: E402
+from playwright.sync_api import sync_playwright  # noqa: E402
+
+
+def short_label(question: str) -> str:
+    return (
+        question.replace("Will Elon Musk post ", "")
+        .replace(" tweets from April 28 to May 5, 2026?", "")
+        .strip()
+    )
+
+
+def latest_cached_weekly_count() -> int | None:
+    path = HERE / "xtracker_count_events.jsonl"
+    if not path.exists():
+        return None
+    try:
+        lines = [ln for ln in path.read_text().splitlines() if ln.strip()]
+        if not lines:
+            return None
+        row = json.loads(lines[-1])
+        weekly = row.get("weekly_count")
+        return int(weekly) if weekly is not None else None
+    except Exception:
+        return None
+
+
+def get_weekly_count() -> tuple[int | None, str]:
+    try:
+        row = get_elon_weekly_count() or {}
+        weekly = row.get("weekly_count")
+        if weekly is not None:
+            return int(weekly), "live_xtracker"
+    except Exception:
+        pass
+    cached = latest_cached_weekly_count()
+    if cached is not None:
+        return cached, "cached_xtracker"
+    return None, "unavailable"
+
+
+def _parse_pct(raw: str) -> float:
+    raw = raw.strip()
+    if raw == "<1%":
+        return 0.005
+    return float(raw.rstrip("%")) / 100.0
+
+
+def _clean_quote(cents: str) -> float | None:
+    value = float(cents) / 100.0
+    return None if value <= 0.0 else value
+
+
+def fetch_ui_quotes() -> tuple[dict[str, dict], int | None]:
+    pattern = re.compile(
+        r"(?P<label>\d+-\d+|500\+)\s+"
+        r"\$(?P<volume>[\d,]+)\s+Vol\.\s+"
+        r"(?P<ui_pct><1%|\d+%)\s+"
+        r"Buy Yes\s+(?P<buy_yes>\d+(?:\.\d+)?)¢\s+"
+        r"Buy No\s+(?P<buy_no>\d+(?:\.\d+)?)¢",
+        re.S,
+    )
+
+    with sync_playwright() as p:
+        browser = p.chromium.launch(headless=True)
+        page = browser.new_page()
+        page.goto(EVENT_URL, wait_until="domcontentloaded", timeout=60000)
+        page.wait_for_timeout(8000)
+        body_text = page.locator("body").inner_text()
+        browser.close()
+
+    m = re.search(r"TWEET COUNT\s+(\d+)", body_text)
+    ui_tweet_count = int(m.group(1)) if m else None
+
+    rows: dict[str, dict] = {}
+    for match in pattern.finditer(body_text):
+        label = match.group("label")
+        rows[label] = {
+            "label": label,
+            "volume": int(match.group("volume").replace(",", "")),
+            "ui_pct": _parse_pct(match.group("ui_pct")),
+            "ui_pct_raw": match.group("ui_pct"),
+            "buy_yes": _clean_quote(match.group("buy_yes")),
+            "buy_no": _clean_quote(match.group("buy_no")),
+        }
+    return rows, ui_tweet_count
+
+
+def build_rows(weekly_count: int) -> tuple[list[dict], float, str, int | None]:
+    lam = expected_tweets_remaining()
+    gamma_brackets = get_market_data() or []
+    gamma_by_label = {short_label(b["label"]): b for b in gamma_brackets}
+
+    ui_rows, ui_tweet_count = fetch_ui_quotes()
+
+    rows: list[dict] = []
+    all_labels = sorted(set(gamma_by_label) | set(ui_rows), key=lambda x: (parse_bracket(x) or (9999, 9999)))
+    for label in all_labels:
+        parsed = parse_bracket(label)
+        if not parsed:
+            continue
+        low, high = parsed
+        model_yes = bracket_probability(low, high, weekly_count, lam)
+        ui = ui_rows.get(label, {})
+        gamma = gamma_by_label.get(label, {})
+        buy_yes = ui.get("buy_yes")
+        if buy_yes is None:
+            buy_yes = float(gamma.get("best_ask", gamma.get("yes_price", 0.0)) or 0.0)
+
+        buy_no = ui.get("buy_no")
+        ui_pct = float(ui.get("ui_pct", gamma.get("yes_price", 0.0)) or 0.0)
+        edge_buy_yes = model_yes - buy_yes
+        edge_buy_no = None if buy_no is None else (1.0 - model_yes) - buy_no
+        if edge_buy_yes > 0.03:
+            signal = "BUY YES"
+        elif edge_buy_no is not None and edge_buy_no > 0.03:
+            signal = "BUY NO"
+        else:
+            signal = "skip"
+
+        rows.append(
+            {
+                "label": label,
+                "ui_pct": ui_pct,
+                "ui_pct_raw": ui.get("ui_pct_raw"),
+                "buy_yes": buy_yes,
+                "buy_no": buy_no,
+                "model_yes": model_yes,
+                "edge_buy_yes": edge_buy_yes,
+                "edge_buy_no": edge_buy_no,
+                "signal": signal,
+                "volume": ui.get("volume"),
+            }
+        )
+
+    rows.sort(key=lambda r: (-r["buy_yes"], parse_bracket(r["label"]) or (9999, 9999)))
+    return rows, lam, "polymarket_ui_playwright", ui_tweet_count
+
+
+def print_table(rows: list[dict], weekly_count: int, source: str, lam: float, ui_tweet_count: int | None) -> None:
+    now = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M:%S UTC")
+    print(f"Bracket prices at {now}")
+    header = f"weekly_count(model)={weekly_count} source={source} expected_more={lam:.1f} projected_total={weekly_count + lam:.1f}"
+    if ui_tweet_count is not None:
+        header += f" ui_tweet_count={ui_tweet_count}"
+    print(header)
+    print("-" * 118)
+    print(
+        f"{'Bracket':<10} {'UI %':>6} {'Buy YES':>8} {'Buy NO':>8} "
+        f"{'Model YES':>10} {'Edge YES':>9} {'Edge NO':>9} {'Signal':>10}"
+    )
+    print("-" * 118)
+    for row in rows:
+        ui_pct_str = row["ui_pct_raw"] if row.get("ui_pct_raw") else f"{row['ui_pct']*100:.0f}%"
+        buy_no_str = "n/a" if row["buy_no"] is None else f"{row['buy_no']:.1%}"
+        edge_no_str = "n/a" if row["edge_buy_no"] is None else f"{row['edge_buy_no']:+.1%}"
+        print(
+            f"{row['label']:<10} "
+            f"{ui_pct_str:>6} "
+            f"{row['buy_yes']:>7.1%} "
+            f"{buy_no_str:>8} "
+            f"{row['model_yes']:>9.1%} "
+            f"{row['edge_buy_yes']:>+8.1%} "
+            f"{edge_no_str:>9} "
+            f"{row['signal']:>10}"
+        )
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser(description="Show live bracket prices and model edges for the Elon tweet market.")
+    parser.add_argument("--json", action="store_true", help="Print JSON instead of a table.")
+    parser.add_argument("--weekly-count", type=int, help="Override weekly count instead of using xtracker.")
+    args = parser.parse_args()
+
+    weekly_count = args.weekly_count
+    if weekly_count is None:
+        weekly_count, weekly_source = get_weekly_count()
+    else:
+        weekly_source = "manual"
+
+    if weekly_count is None:
+        print("Could not determine weekly_count from xtracker.")
+        return 1
+
+    rows, lam, source, ui_tweet_count = build_rows(weekly_count)
+    payload = {
+        "weekly_count": weekly_count,
+        "weekly_source": weekly_source,
+        "source": source,
+        "ui_tweet_count": ui_tweet_count,
+        "expected_more": lam,
+        "projected_total": weekly_count + lam,
+        "rows": rows,
+    }
+
+    if args.json:
+        print(json.dumps(payload, indent=2))
+        return 0
+
+    print_table(rows, weekly_count, source, lam, ui_tweet_count)
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

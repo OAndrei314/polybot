@@ -1,0 +1,1589 @@
+[H[J========================================================================================================================
+POLYBOT PAPER TRADE | 2026-05-02 08:38:54 UTC | credit_per_model=$1000
+========================================================================================================================
+DATA STREAM HEALTH
+SOURCE                                                 STATUS
+Elon Musk Twitter stream                               NO    
+XTracker stream                                        YES   
+Polymarket prices (all brackets)                       YES   
+Polymarket details: priced=162/162 live=159/162 ws_ok=True
+Costs: fee=0.020 slippage=0.005 uncertainty=0.050 min_trade_cost=25.0 quick_fee<900s=0.010 count_cd=45s ended_cd=900s
+SELL RULES: take_profit>=22.0% | stop_loss<=-14.0% | edge_decay(true_edge<=1.5%) | signal_flip(gap>=0.060, max_loss=3.0%)
+REENTRY GUARDS: key_cd=60s stoploss_cd=7200s flip_key_cd=1800s flip_event_cd=900s stoploss_event_cd=3600s lock=2x/21600s min_hold=600s reentry_edge+=0.020 sl_reentry_edge+=0.060
+------------------------------------------------------------------------------------------------------------------------
+cash=1000.00 unreal=+0.00 realized=+0.00 equity=1000.00 total_pnl=+0.00 positions=0 closed=0
+tweet_count=None source=none age=Nones sentiment=0.0021 density_h=0.5
+entry_gate=BLOCKED_twitter_stream_off
+latest_tweet_time=n/a tweet_id=None
+latest_tweet_text=n/a
+------------------------------------------------------------------------------------------------------------------------
+BET TWEET COUNTS (ALL EVENTS)
+EVENT                                  COUNT    REMAINING         SOURCE
+------------------------------------------------------------------------------------------------------------------------
+elon-musk-of-tweets-april-28-may-5        78       3d 07h  xtracker+live
+elon-musk-of-tweets-may-1-may-8           27       6d 07h  xtracker+live
+elon-musk-of-tweets-april-30-may-2        50      07h 21m  xtracker+live
+elon-musk-of-tweets-may-2-may-4            0       2d 07h  xtracker+live
+elon-musk-of-tweets-may-2026              37      29d 19h  xtracker+live
+elon-musk-of-tweets-may-5-may-12           0      10d 07h  xtracker+live
+------------------------------------------------------------------------------------------------------------------------
+OPEN POSITIONS (all)
+EVENT                              BRACKET SIDE HEDGE ENTRY   MARK  COST$  TRUE_E  P(MONEY) PICK_SIG CUR_CNT
+------------------------------------------------------------------------------------------------------------------------
+[H[J========================================================================================================================
+POLYBOT PAPER TRADE | 2026-05-02 08:39:04 UTC | credit_per_model=$1000
+========================================================================================================================
+DATA STREAM HEALTH
+SOURCE                                                 STATUS
+Elon Musk Twitter stream                               NO    
+XTracker stream                                        YES   
+Polymarket prices (all brackets)                       YES   
+Polymarket details: priced=162/162 live=159/162 ws_ok=True
+Costs: fee=0.020 slippage=0.005 uncertainty=0.050 min_trade_cost=25.0 quick_fee<900s=0.010 count_cd=45s ended_cd=900s
+SELL RULES: take_profit>=22.0% | stop_loss<=-14.0% | edge_decay(true_edge<=1.5%) | signal_flip(gap>=0.060, max_loss=3.0%)
+REENTRY GUARDS: key_cd=60s stoploss_cd=7200s flip_key_cd=1800s flip_event_cd=900s stoploss_event_cd=3600s lock=2x/21600s min_hold=600s reentry_edge+=0.020 sl_reentry_edge+=0.060
+------------------------------------------------------------------------------------------------------------------------
+cash=1000.00 unreal=+0.00 realized=+0.00 equity=1000.00 total_pnl=+0.00 positions=0 closed=0
+tweet_count=None source=none age=Nones sentiment=0.0021 density_h=0.5
+entry_gate=BLOCKED_twitter_stream_off
+latest_tweet_time=n/a tweet_id=None
+latest_tweet_text=n/a
+------------------------------------------------------------------------------------------------------------------------
+BET TWEET COUNTS (ALL EVENTS)
+EVENT                                  COUNT    REMAINING         SOURCE
+------------------------------------------------------------------------------------------------------------------------
+elon-musk-of-tweets-april-28-may-5        78       3d 07h  xtracker+live
+elon-musk-of-tweets-may-1-may-8           27       6d 07h  xtracker+live
+elon-musk-of-tweets-april-30-may-2        50      07h 20m  xtracker+live
+elon-musk-of-tweets-may-2-may-4            0       2d 07h  xtracker+live
+elon-musk-of-tweets-may-2026              37      29d 19h  xtracker+live
+elon-musk-of-tweets-may-5-may-12           0      10d 07h  xtracker+live
+------------------------------------------------------------------------------------------------------------------------
+OPEN POSITIONS (all)
+EVENT                              BRACKET SIDE HEDGE ENTRY   MARK  COST$  TRUE_E  P(MONEY) PICK_SIG CUR_CNT
+------------------------------------------------------------------------------------------------------------------------
+[H[J========================================================================================================================
+POLYBOT PAPER TRADE | 2026-05-02 08:39:11 UTC | credit_per_model=$1000
+========================================================================================================================
+DATA STREAM HEALTH
+SOURCE                                                 STATUS
+Elon Musk Twitter stream                               NO    
+XTracker stream                                        YES   
+Polymarket prices (all brackets)                       YES   
+Polymarket details: priced=162/162 live=159/162 ws_ok=True
+Costs: fee=0.020 slippage=0.005 uncertainty=0.050 min_trade_cost=25.0 quick_fee<900s=0.010 count_cd=45s ended_cd=900s
+SELL RULES: take_profit>=22.0% | stop_loss<=-14.0% | edge_decay(true_edge<=1.5%) | signal_flip(gap>=0.060, max_loss=3.0%)
+REENTRY GUARDS: key_cd=60s stoploss_cd=7200s flip_key_cd=1800s flip_event_cd=900s stoploss_event_cd=3600s lock=2x/21600s min_hold=600s reentry_edge+=0.020 sl_reentry_edge+=0.060
+------------------------------------------------------------------------------------------------------------------------
+cash=1000.00 unreal=+0.00 realized=+0.00 equity=1000.00 total_pnl=+0.00 positions=0 closed=0
+tweet_count=None source=none age=Nones sentiment=0.0021 density_h=0.5
+entry_gate=BLOCKED_twitter_stream_off
+latest_tweet_time=n/a tweet_id=None
+latest_tweet_text=n/a
+------------------------------------------------------------------------------------------------------------------------
+BET TWEET COUNTS (ALL EVENTS)
+EVENT                                  COUNT    REMAINING         SOURCE
+------------------------------------------------------------------------------------------------------------------------
+elon-musk-of-tweets-april-28-may-5        78       3d 07h  xtracker+live
+elon-musk-of-tweets-may-1-may-8           27       6d 07h  xtracker+live
+elon-musk-of-tweets-april-30-may-2        50      07h 20m  xtracker+live
+elon-musk-of-tweets-may-2-may-4            0       2d 07h  xtracker+live
+elon-musk-of-tweets-may-2026              37      29d 19h  xtracker+live
+elon-musk-of-tweets-may-5-may-12           0      10d 07h  xtracker+live
+------------------------------------------------------------------------------------------------------------------------
+OPEN POSITIONS (all)
+EVENT                              BRACKET SIDE HEDGE ENTRY   MARK  COST$  TRUE_E  P(MONEY) PICK_SIG CUR_CNT
+------------------------------------------------------------------------------------------------------------------------
+[H[J========================================================================================================================
+POLYBOT PAPER TRADE | 2026-05-02 08:39:22 UTC | credit_per_model=$1000
+========================================================================================================================
+DATA STREAM HEALTH
+SOURCE                                                 STATUS
+Elon Musk Twitter stream                               YES   
+XTracker stream                                        YES   
+Polymarket prices (all brackets)                       YES   
+Polymarket details: priced=162/162 live=159/162 ws_ok=True
+Costs: fee=0.020 slippage=0.005 uncertainty=0.050 min_trade_cost=25.0 quick_fee<900s=0.010 count_cd=45s ended_cd=900s
+SELL RULES: take_profit>=22.0% | stop_loss<=-14.0% | edge_decay(true_edge<=1.5%) | signal_flip(gap>=0.060, max_loss=3.0%)
+REENTRY GUARDS: key_cd=60s stoploss_cd=7200s flip_key_cd=1800s flip_event_cd=900s stoploss_event_cd=3600s lock=2x/21600s min_hold=600s reentry_edge+=0.020 sl_reentry_edge+=0.060
+------------------------------------------------------------------------------------------------------------------------
+cash=840.00 unreal=-1.90 realized=+0.00 equity=998.10 total_pnl=-1.90 positions=1 closed=0
+tweet_count=102051 source=graphql_user_tweets age=0.546s sentiment=0.0021 density_h=0.5
+entry_gate=OPEN
+latest_tweet_time=n/a tweet_id=None
+latest_tweet_text=n/a
+------------------------------------------------------------------------------------------------------------------------
+BET TWEET COUNTS (ALL EVENTS)
+EVENT                                  COUNT    REMAINING         SOURCE
+------------------------------------------------------------------------------------------------------------------------
+elon-musk-of-tweets-april-28-may-5        78       3d 07h  xtracker+live
+elon-musk-of-tweets-may-1-may-8           27       6d 07h  xtracker+live
+elon-musk-of-tweets-april-30-may-2        50      07h 20m  xtracker+live
+elon-musk-of-tweets-may-2-may-4            0       2d 07h  xtracker+live
+elon-musk-of-tweets-may-2026              37      29d 19h  xtracker+live
+elon-musk-of-tweets-may-5-may-12           0      10d 07h  xtracker+live
+------------------------------------------------------------------------------------------------------------------------
+OPEN POSITIONS (all)
+EVENT                              BRACKET SIDE HEDGE ENTRY   MARK  COST$  TRUE_E  P(MONEY) PICK_SIG CUR_CNT
+------------------------------------------------------------------------------------------------------------------------
+elon-musk-of-tweets-may-2-may-4      40-64   NO    NO  0.420  0.415  160.0  0.2022    0.6522   BUY_NO        0
+------------------------------------------------------------------------------------------------------------------------
+LAST_FILL BUY elon-musk-of-tweets-may-2-may-4 40-64 NO px=0.42 true=0.202193
+[H[J========================================================================================================================
+POLYBOT PAPER TRADE | 2026-05-02 08:39:28 UTC | credit_per_model=$1000
+========================================================================================================================
+DATA STREAM HEALTH
+SOURCE                                                 STATUS
+Elon Musk Twitter stream                               YES   
+XTracker stream                                        YES   
+Polymarket prices (all brackets)                       YES   
+Polymarket details: priced=162/162 live=159/162 ws_ok=True
+Costs: fee=0.020 slippage=0.005 uncertainty=0.050 min_trade_cost=25.0 quick_fee<900s=0.010 count_cd=45s ended_cd=900s
+SELL RULES: take_profit>=22.0% | stop_loss<=-14.0% | edge_decay(true_edge<=1.5%) | signal_flip(gap>=0.060, max_loss=3.0%)
+REENTRY GUARDS: key_cd=60s stoploss_cd=7200s flip_key_cd=1800s flip_event_cd=900s stoploss_event_cd=3600s lock=2x/21600s min_hold=600s reentry_edge+=0.020 sl_reentry_edge+=0.060
+------------------------------------------------------------------------------------------------------------------------
+cash=840.00 unreal=-1.90 realized=+0.00 equity=998.10 total_pnl=-1.90 positions=1 closed=0
+tweet_count=102051 source=graphql_user_tweets age=0.736s sentiment=0.0021 density_h=0.5
+entry_gate=OPEN
+latest_tweet_time=n/a tweet_id=None
+latest_tweet_text=n/a
+------------------------------------------------------------------------------------------------------------------------
+BET TWEET COUNTS (ALL EVENTS)
+EVENT                                  COUNT    REMAINING         SOURCE
+------------------------------------------------------------------------------------------------------------------------
+elon-musk-of-tweets-april-28-may-5        78       3d 07h  xtracker+live
+elon-musk-of-tweets-may-1-may-8           27       6d 07h  xtracker+live
+elon-musk-of-tweets-april-30-may-2        50      07h 20m  xtracker+live
+elon-musk-of-tweets-may-2-may-4            0       2d 07h  xtracker+live
+elon-musk-of-tweets-may-2026              37      29d 19h  xtracker+live
+elon-musk-of-tweets-may-5-may-12           0      10d 07h  xtracker+live
+------------------------------------------------------------------------------------------------------------------------
+OPEN POSITIONS (all)
+EVENT                              BRACKET SIDE HEDGE ENTRY   MARK  COST$  TRUE_E  P(MONEY) PICK_SIG CUR_CNT
+------------------------------------------------------------------------------------------------------------------------
+elon-musk-of-tweets-may-2-may-4      40-64   NO    NO  0.420  0.415  160.0  0.2022    0.6522   BUY_NO        0
+------------------------------------------------------------------------------------------------------------------------
+LAST_FILL BUY elon-musk-of-tweets-may-2-may-4 40-64 NO px=0.42 true=0.202193
+[H[J========================================================================================================================
+POLYBOT PAPER TRADE | 2026-05-02 08:39:36 UTC | credit_per_model=$1000
+========================================================================================================================
+DATA STREAM HEALTH
+SOURCE                                                 STATUS
+Elon Musk Twitter stream                               YES   
+XTracker stream                                        YES   
+Polymarket prices (all brackets)                       YES   
+Polymarket details: priced=162/162 live=159/162 ws_ok=True
+Costs: fee=0.020 slippage=0.005 uncertainty=0.050 min_trade_cost=25.0 quick_fee<900s=0.010 count_cd=45s ended_cd=900s
+SELL RULES: take_profit>=22.0% | stop_loss<=-14.0% | edge_decay(true_edge<=1.5%) | signal_flip(gap>=0.060, max_loss=3.0%)
+REENTRY GUARDS: key_cd=60s stoploss_cd=7200s flip_key_cd=1800s flip_event_cd=900s stoploss_event_cd=3600s lock=2x/21600s min_hold=600s reentry_edge+=0.020 sl_reentry_edge+=0.060
+------------------------------------------------------------------------------------------------------------------------
+cash=840.00 unreal=-1.90 realized=+0.00 equity=998.10 total_pnl=-1.90 positions=1 closed=0
+tweet_count=102051 source=graphql_user_tweets age=1.094s sentiment=0.0021 density_h=0.5
+entry_gate=OPEN
+latest_tweet_time=n/a tweet_id=None
+latest_tweet_text=n/a
+------------------------------------------------------------------------------------------------------------------------
+BET TWEET COUNTS (ALL EVENTS)
+EVENT                                  COUNT    REMAINING         SOURCE
+------------------------------------------------------------------------------------------------------------------------
+elon-musk-of-tweets-april-28-may-5        78       3d 07h  xtracker+live
+elon-musk-of-tweets-may-1-may-8           27       6d 07h  xtracker+live
+elon-musk-of-tweets-april-30-may-2        50      07h 20m  xtracker+live
+elon-musk-of-tweets-may-2-may-4            0       2d 07h  xtracker+live
+elon-musk-of-tweets-may-2026              37      29d 19h  xtracker+live
+elon-musk-of-tweets-may-5-may-12           0      10d 07h  xtracker+live
+------------------------------------------------------------------------------------------------------------------------
+OPEN POSITIONS (all)
+EVENT                              BRACKET SIDE HEDGE ENTRY   MARK  COST$  TRUE_E  P(MONEY) PICK_SIG CUR_CNT
+------------------------------------------------------------------------------------------------------------------------
+elon-musk-of-tweets-may-2-may-4      40-64   NO    NO  0.420  0.415  160.0  0.2022    0.6522   BUY_NO        0
+------------------------------------------------------------------------------------------------------------------------
+LAST_FILL BUY elon-musk-of-tweets-may-2-may-4 40-64 NO px=0.42 true=0.202193
+[H[J========================================================================================================================
+POLYBOT PAPER TRADE | 2026-05-02 08:39:43 UTC | credit_per_model=$1000
+========================================================================================================================
+DATA STREAM HEALTH
+SOURCE                                                 STATUS
+Elon Musk Twitter stream                               YES   
+XTracker stream                                        YES   
+Polymarket prices (all brackets)                       YES   
+Polymarket details: priced=162/162 live=159/162 ws_ok=True
+Costs: fee=0.020 slippage=0.005 uncertainty=0.050 min_trade_cost=25.0 quick_fee<900s=0.010 count_cd=45s ended_cd=900s
+SELL RULES: take_profit>=22.0% | stop_loss<=-14.0% | edge_decay(true_edge<=1.5%) | signal_flip(gap>=0.060, max_loss=3.0%)
+REENTRY GUARDS: key_cd=60s stoploss_cd=7200s flip_key_cd=1800s flip_event_cd=900s stoploss_event_cd=3600s lock=2x/21600s min_hold=600s reentry_edge+=0.020 sl_reentry_edge+=0.060
+------------------------------------------------------------------------------------------------------------------------
+cash=840.00 unreal=-1.90 realized=+0.00 equity=998.10 total_pnl=-1.90 positions=1 closed=0
+tweet_count=102051 source=graphql_user_tweets age=0.875s sentiment=0.0021 density_h=0.5
+entry_gate=OPEN
+latest_tweet_time=n/a tweet_id=None
+latest_tweet_text=n/a
+------------------------------------------------------------------------------------------------------------------------
+BET TWEET COUNTS (ALL EVENTS)
+EVENT                                  COUNT    REMAINING         SOURCE
+------------------------------------------------------------------------------------------------------------------------
+elon-musk-of-tweets-april-28-may-5        78       3d 07h  xtracker+live
+elon-musk-of-tweets-may-1-may-8           27       6d 07h  xtracker+live
+elon-musk-of-tweets-april-30-may-2        50      07h 20m  xtracker+live
+elon-musk-of-tweets-may-2-may-4            0       2d 07h  xtracker+live
+elon-musk-of-tweets-may-2026              37      29d 19h  xtracker+live
+elon-musk-of-tweets-may-5-may-12           0      10d 07h  xtracker+live
+------------------------------------------------------------------------------------------------------------------------
+OPEN POSITIONS (all)
+EVENT                              BRACKET SIDE HEDGE ENTRY   MARK  COST$  TRUE_E  P(MONEY) PICK_SIG CUR_CNT
+------------------------------------------------------------------------------------------------------------------------
+elon-musk-of-tweets-may-2-may-4      40-64   NO    NO  0.420  0.415  160.0  0.2022    0.6522   BUY_NO        0
+------------------------------------------------------------------------------------------------------------------------
+LAST_FILL BUY elon-musk-of-tweets-may-2-may-4 40-64 NO px=0.42 true=0.202193
+[H[J========================================================================================================================
+POLYBOT PAPER TRADE | 2026-05-02 08:39:52 UTC | credit_per_model=$1000
+========================================================================================================================
+DATA STREAM HEALTH
+SOURCE                                                 STATUS
+Elon Musk Twitter stream                               YES   
+XTracker stream                                        YES   
+Polymarket prices (all brackets)                       YES   
+Polymarket details: priced=162/162 live=159/162 ws_ok=True
+Costs: fee=0.020 slippage=0.005 uncertainty=0.050 min_trade_cost=25.0 quick_fee<900s=0.010 count_cd=45s ended_cd=900s
+SELL RULES: take_profit>=22.0% | stop_loss<=-14.0% | edge_decay(true_edge<=1.5%) | signal_flip(gap>=0.060, max_loss=3.0%)
+REENTRY GUARDS: key_cd=60s stoploss_cd=7200s flip_key_cd=1800s flip_event_cd=900s stoploss_event_cd=3600s lock=2x/21600s min_hold=600s reentry_edge+=0.020 sl_reentry_edge+=0.060
+------------------------------------------------------------------------------------------------------------------------
+cash=840.00 unreal=-1.90 realized=+0.00 equity=998.10 total_pnl=-1.90 positions=1 closed=0
+tweet_count=102051 source=graphql_user_tweets age=0.46s sentiment=0.0021 density_h=0.5
+entry_gate=OPEN
+latest_tweet_time=n/a tweet_id=None
+latest_tweet_text=n/a
+------------------------------------------------------------------------------------------------------------------------
+BET TWEET COUNTS (ALL EVENTS)
+EVENT                                  COUNT    REMAINING         SOURCE
+------------------------------------------------------------------------------------------------------------------------
+elon-musk-of-tweets-april-28-may-5        78       3d 07h  xtracker+live
+elon-musk-of-tweets-may-1-may-8           27       6d 07h  xtracker+live
+elon-musk-of-tweets-april-30-may-2        50      07h 20m  xtracker+live
+elon-musk-of-tweets-may-2-may-4            0       2d 07h  xtracker+live
+elon-musk-of-tweets-may-2026              37      29d 19h  xtracker+live
+elon-musk-of-tweets-may-5-may-12           0      10d 07h  xtracker+live
+------------------------------------------------------------------------------------------------------------------------
+OPEN POSITIONS (all)
+EVENT                              BRACKET SIDE HEDGE ENTRY   MARK  COST$  TRUE_E  P(MONEY) PICK_SIG CUR_CNT
+------------------------------------------------------------------------------------------------------------------------
+elon-musk-of-tweets-may-2-may-4      40-64   NO    NO  0.420  0.415  160.0  0.2022    0.6522   BUY_NO        0
+------------------------------------------------------------------------------------------------------------------------
+LAST_FILL BUY elon-musk-of-tweets-may-2-may-4 40-64 NO px=0.42 true=0.202193
+[H[J========================================================================================================================
+POLYBOT PAPER TRADE | 2026-05-02 08:39:58 UTC | credit_per_model=$1000
+========================================================================================================================
+DATA STREAM HEALTH
+SOURCE                                                 STATUS
+Elon Musk Twitter stream                               YES   
+XTracker stream                                        YES   
+Polymarket prices (all brackets)                       YES   
+Polymarket details: priced=162/162 live=159/162 ws_ok=True
+Costs: fee=0.020 slippage=0.005 uncertainty=0.050 min_trade_cost=25.0 quick_fee<900s=0.010 count_cd=45s ended_cd=900s
+SELL RULES: take_profit>=22.0% | stop_loss<=-14.0% | edge_decay(true_edge<=1.5%) | signal_flip(gap>=0.060, max_loss=3.0%)
+REENTRY GUARDS: key_cd=60s stoploss_cd=7200s flip_key_cd=1800s flip_event_cd=900s stoploss_event_cd=3600s lock=2x/21600s min_hold=600s reentry_edge+=0.020 sl_reentry_edge+=0.060
+------------------------------------------------------------------------------------------------------------------------
+cash=840.00 unreal=-1.90 realized=+0.00 equity=998.10 total_pnl=-1.90 positions=1 closed=0
+tweet_count=102051 source=graphql_user_tweets age=0.539s sentiment=0.0021 density_h=0.5
+entry_gate=OPEN
+latest_tweet_time=n/a tweet_id=None
+latest_tweet_text=n/a
+------------------------------------------------------------------------------------------------------------------------
+BET TWEET COUNTS (ALL EVENTS)
+EVENT                                  COUNT    REMAINING         SOURCE
+------------------------------------------------------------------------------------------------------------------------
+elon-musk-of-tweets-april-28-may-5        78       3d 07h  xtracker+live
+elon-musk-of-tweets-may-1-may-8           27       6d 07h  xtracker+live
+elon-musk-of-tweets-april-30-may-2        50      07h 20m  xtracker+live
+elon-musk-of-tweets-may-2-may-4            0       2d 07h  xtracker+live
+elon-musk-of-tweets-may-2026              37      29d 19h  xtracker+live
+elon-musk-of-tweets-may-5-may-12           0      10d 07h  xtracker+live
+------------------------------------------------------------------------------------------------------------------------
+OPEN POSITIONS (all)
+EVENT                              BRACKET SIDE HEDGE ENTRY   MARK  COST$  TRUE_E  P(MONEY) PICK_SIG CUR_CNT
+------------------------------------------------------------------------------------------------------------------------
+elon-musk-of-tweets-may-2-may-4      40-64   NO    NO  0.420  0.415  160.0  0.2022    0.6522   BUY_NO        0
+------------------------------------------------------------------------------------------------------------------------
+LAST_FILL BUY elon-musk-of-tweets-may-2-may-4 40-64 NO px=0.42 true=0.202193
+[H[J========================================================================================================================
+POLYBOT PAPER TRADE | 2026-05-02 08:40:07 UTC | credit_per_model=$1000
+========================================================================================================================
+DATA STREAM HEALTH
+SOURCE                                                 STATUS
+Elon Musk Twitter stream                               YES   
+XTracker stream                                        YES   
+Polymarket prices (all brackets)                       YES   
+Polymarket details: priced=162/162 live=159/162 ws_ok=True
+Costs: fee=0.020 slippage=0.005 uncertainty=0.050 min_trade_cost=25.0 quick_fee<900s=0.010 count_cd=45s ended_cd=900s
+SELL RULES: take_profit>=22.0% | stop_loss<=-14.0% | edge_decay(true_edge<=1.5%) | signal_flip(gap>=0.060, max_loss=3.0%)
+REENTRY GUARDS: key_cd=60s stoploss_cd=7200s flip_key_cd=1800s flip_event_cd=900s stoploss_event_cd=3600s lock=2x/21600s min_hold=600s reentry_edge+=0.020 sl_reentry_edge+=0.060
+------------------------------------------------------------------------------------------------------------------------
+cash=840.00 unreal=-1.90 realized=+0.00 equity=998.10 total_pnl=-1.90 positions=1 closed=0
+tweet_count=102051 source=graphql_user_tweets age=0.916s sentiment=0.0021 density_h=0.5
+entry_gate=OPEN
+latest_tweet_time=n/a tweet_id=None
+latest_tweet_text=n/a
+------------------------------------------------------------------------------------------------------------------------
+BET TWEET COUNTS (ALL EVENTS)
+EVENT                                  COUNT    REMAINING         SOURCE
+------------------------------------------------------------------------------------------------------------------------
+elon-musk-of-tweets-april-28-may-5        78       3d 07h  xtracker+live
+elon-musk-of-tweets-may-1-may-8           27       6d 07h  xtracker+live
+elon-musk-of-tweets-april-30-may-2        50      07h 19m  xtracker+live
+elon-musk-of-tweets-may-2-may-4            0       2d 07h  xtracker+live
+elon-musk-of-tweets-may-2026              37      29d 19h  xtracker+live
+elon-musk-of-tweets-may-5-may-12           0      10d 07h  xtracker+live
+------------------------------------------------------------------------------------------------------------------------
+OPEN POSITIONS (all)
+EVENT                              BRACKET SIDE HEDGE ENTRY   MARK  COST$  TRUE_E  P(MONEY) PICK_SIG CUR_CNT
+------------------------------------------------------------------------------------------------------------------------
+elon-musk-of-tweets-may-2-may-4      40-64   NO    NO  0.420  0.415  160.0  0.2022    0.6522   BUY_NO        0
+------------------------------------------------------------------------------------------------------------------------
+LAST_FILL BUY elon-musk-of-tweets-may-2-may-4 40-64 NO px=0.42 true=0.202193
+[H[J========================================================================================================================
+POLYBOT PAPER TRADE | 2026-05-02 08:40:14 UTC | credit_per_model=$1000
+========================================================================================================================
+DATA STREAM HEALTH
+SOURCE                                                 STATUS
+Elon Musk Twitter stream                               YES   
+XTracker stream                                        YES   
+Polymarket prices (all brackets)                       YES   
+Polymarket details: priced=162/162 live=159/162 ws_ok=True
+Costs: fee=0.020 slippage=0.005 uncertainty=0.050 min_trade_cost=25.0 quick_fee<900s=0.010 count_cd=45s ended_cd=900s
+SELL RULES: take_profit>=22.0% | stop_loss<=-14.0% | edge_decay(true_edge<=1.5%) | signal_flip(gap>=0.060, max_loss=3.0%)
+REENTRY GUARDS: key_cd=60s stoploss_cd=7200s flip_key_cd=1800s flip_event_cd=900s stoploss_event_cd=3600s lock=2x/21600s min_hold=600s reentry_edge+=0.020 sl_reentry_edge+=0.060
+------------------------------------------------------------------------------------------------------------------------
+cash=840.00 unreal=-1.90 realized=+0.00 equity=998.10 total_pnl=-1.90 positions=1 closed=0
+tweet_count=102051 source=graphql_user_tweets age=0.618s sentiment=0.0021 density_h=0.5
+entry_gate=OPEN
+latest_tweet_time=n/a tweet_id=None
+latest_tweet_text=n/a
+------------------------------------------------------------------------------------------------------------------------
+BET TWEET COUNTS (ALL EVENTS)
+EVENT                                  COUNT    REMAINING         SOURCE
+------------------------------------------------------------------------------------------------------------------------
+elon-musk-of-tweets-april-28-may-5        78       3d 07h  xtracker+live
+elon-musk-of-tweets-may-1-may-8           27       6d 07h  xtracker+live
+elon-musk-of-tweets-april-30-may-2        50      07h 19m  xtracker+live
+elon-musk-of-tweets-may-2-may-4            0       2d 07h  xtracker+live
+elon-musk-of-tweets-may-2026              37      29d 19h  xtracker+live
+elon-musk-of-tweets-may-5-may-12           0      10d 07h  xtracker+live
+------------------------------------------------------------------------------------------------------------------------
+OPEN POSITIONS (all)
+EVENT                              BRACKET SIDE HEDGE ENTRY   MARK  COST$  TRUE_E  P(MONEY) PICK_SIG CUR_CNT
+------------------------------------------------------------------------------------------------------------------------
+elon-musk-of-tweets-may-2-may-4      40-64   NO    NO  0.420  0.415  160.0  0.2022    0.6522   BUY_NO        0
+------------------------------------------------------------------------------------------------------------------------
+LAST_FILL BUY elon-musk-of-tweets-may-2-may-4 40-64 NO px=0.42 true=0.202193
+[H[J========================================================================================================================
+POLYBOT PAPER TRADE | 2026-05-02 08:40:24 UTC | credit_per_model=$1000
+========================================================================================================================
+DATA STREAM HEALTH
+SOURCE                                                 STATUS
+Elon Musk Twitter stream                               YES   
+XTracker stream                                        YES   
+Polymarket prices (all brackets)                       YES   
+Polymarket details: priced=162/162 live=159/162 ws_ok=True
+Costs: fee=0.020 slippage=0.005 uncertainty=0.050 min_trade_cost=25.0 quick_fee<900s=0.010 count_cd=45s ended_cd=900s
+SELL RULES: take_profit>=22.0% | stop_loss<=-14.0% | edge_decay(true_edge<=1.5%) | signal_flip(gap>=0.060, max_loss=3.0%)
+REENTRY GUARDS: key_cd=60s stoploss_cd=7200s flip_key_cd=1800s flip_event_cd=900s stoploss_event_cd=3600s lock=2x/21600s min_hold=600s reentry_edge+=0.020 sl_reentry_edge+=0.060
+------------------------------------------------------------------------------------------------------------------------
+cash=840.00 unreal=-1.90 realized=+0.00 equity=998.10 total_pnl=-1.90 positions=1 closed=0
+tweet_count=102051 source=graphql_user_tweets age=0.673s sentiment=0.0021 density_h=0.5
+entry_gate=OPEN
+latest_tweet_time=n/a tweet_id=None
+latest_tweet_text=n/a
+------------------------------------------------------------------------------------------------------------------------
+BET TWEET COUNTS (ALL EVENTS)
+EVENT                                  COUNT    REMAINING         SOURCE
+------------------------------------------------------------------------------------------------------------------------
+elon-musk-of-tweets-april-28-may-5        78       3d 07h  xtracker+live
+elon-musk-of-tweets-may-1-may-8           27       6d 07h  xtracker+live
+elon-musk-of-tweets-april-30-may-2        50      07h 19m  xtracker+live
+elon-musk-of-tweets-may-2-may-4            0       2d 07h  xtracker+live
+elon-musk-of-tweets-may-2026              37      29d 19h  xtracker+live
+elon-musk-of-tweets-may-5-may-12           0      10d 07h  xtracker+live
+------------------------------------------------------------------------------------------------------------------------
+OPEN POSITIONS (all)
+EVENT                              BRACKET SIDE HEDGE ENTRY   MARK  COST$  TRUE_E  P(MONEY) PICK_SIG CUR_CNT
+------------------------------------------------------------------------------------------------------------------------
+elon-musk-of-tweets-may-2-may-4      40-64   NO    NO  0.420  0.415  160.0  0.2022    0.6522   BUY_NO        0
+------------------------------------------------------------------------------------------------------------------------
+LAST_FILL BUY elon-musk-of-tweets-may-2-may-4 40-64 NO px=0.42 true=0.202193
+[H[J========================================================================================================================
+POLYBOT PAPER TRADE | 2026-05-02 08:40:32 UTC | credit_per_model=$1000
+========================================================================================================================
+DATA STREAM HEALTH
+SOURCE                                                 STATUS
+Elon Musk Twitter stream                               YES   
+XTracker stream                                        YES   
+Polymarket prices (all brackets)                       YES   
+Polymarket details: priced=162/162 live=159/162 ws_ok=True
+Costs: fee=0.020 slippage=0.005 uncertainty=0.050 min_trade_cost=25.0 quick_fee<900s=0.010 count_cd=45s ended_cd=900s
+SELL RULES: take_profit>=22.0% | stop_loss<=-14.0% | edge_decay(true_edge<=1.5%) | signal_flip(gap>=0.060, max_loss=3.0%)
+REENTRY GUARDS: key_cd=60s stoploss_cd=7200s flip_key_cd=1800s flip_event_cd=900s stoploss_event_cd=3600s lock=2x/21600s min_hold=600s reentry_edge+=0.020 sl_reentry_edge+=0.060
+------------------------------------------------------------------------------------------------------------------------
+cash=840.00 unreal=-1.90 realized=+0.00 equity=998.10 total_pnl=-1.90 positions=1 closed=0
+tweet_count=102051 source=graphql_user_tweets age=0.571s sentiment=0.0021 density_h=0.5
+entry_gate=OPEN
+latest_tweet_time=n/a tweet_id=None
+latest_tweet_text=n/a
+------------------------------------------------------------------------------------------------------------------------
+BET TWEET COUNTS (ALL EVENTS)
+EVENT                                  COUNT    REMAINING         SOURCE
+------------------------------------------------------------------------------------------------------------------------
+elon-musk-of-tweets-april-28-may-5        78       3d 07h  xtracker+live
+elon-musk-of-tweets-may-1-may-8           27       6d 07h  xtracker+live
+elon-musk-of-tweets-april-30-may-2        50      07h 19m  xtracker+live
+elon-musk-of-tweets-may-2-may-4            0       2d 07h  xtracker+live
+elon-musk-of-tweets-may-2026              37      29d 19h  xtracker+live
+elon-musk-of-tweets-may-5-may-12           0      10d 07h  xtracker+live
+------------------------------------------------------------------------------------------------------------------------
+OPEN POSITIONS (all)
+EVENT                              BRACKET SIDE HEDGE ENTRY   MARK  COST$  TRUE_E  P(MONEY) PICK_SIG CUR_CNT
+------------------------------------------------------------------------------------------------------------------------
+elon-musk-of-tweets-may-2-may-4      40-64   NO    NO  0.420  0.415  160.0  0.2022    0.6522   BUY_NO        0
+------------------------------------------------------------------------------------------------------------------------
+LAST_FILL BUY elon-musk-of-tweets-may-2-may-4 40-64 NO px=0.42 true=0.202193
+[H[J========================================================================================================================
+POLYBOT PAPER TRADE | 2026-05-02 08:40:38 UTC | credit_per_model=$1000
+========================================================================================================================
+DATA STREAM HEALTH
+SOURCE                                                 STATUS
+Elon Musk Twitter stream                               YES   
+XTracker stream                                        YES   
+Polymarket prices (all brackets)                       YES   
+Polymarket details: priced=162/162 live=159/162 ws_ok=True
+Costs: fee=0.020 slippage=0.005 uncertainty=0.050 min_trade_cost=25.0 quick_fee<900s=0.010 count_cd=45s ended_cd=900s
+SELL RULES: take_profit>=22.0% | stop_loss<=-14.0% | edge_decay(true_edge<=1.5%) | signal_flip(gap>=0.060, max_loss=3.0%)
+REENTRY GUARDS: key_cd=60s stoploss_cd=7200s flip_key_cd=1800s flip_event_cd=900s stoploss_event_cd=3600s lock=2x/21600s min_hold=600s reentry_edge+=0.020 sl_reentry_edge+=0.060
+------------------------------------------------------------------------------------------------------------------------
+cash=840.00 unreal=-1.90 realized=+0.00 equity=998.10 total_pnl=-1.90 positions=1 closed=0
+tweet_count=102051 source=graphql_user_tweets age=0.467s sentiment=0.0021 density_h=0.5
+entry_gate=OPEN
+latest_tweet_time=n/a tweet_id=None
+latest_tweet_text=n/a
+------------------------------------------------------------------------------------------------------------------------
+BET TWEET COUNTS (ALL EVENTS)
+EVENT                                  COUNT    REMAINING         SOURCE
+------------------------------------------------------------------------------------------------------------------------
+elon-musk-of-tweets-april-28-may-5        78       3d 07h  xtracker+live
+elon-musk-of-tweets-may-1-may-8           27       6d 07h  xtracker+live
+elon-musk-of-tweets-april-30-may-2        50      07h 19m  xtracker+live
+elon-musk-of-tweets-may-2-may-4            0       2d 07h  xtracker+live
+elon-musk-of-tweets-may-2026              37      29d 19h  xtracker+live
+elon-musk-of-tweets-may-5-may-12           0      10d 07h  xtracker+live
+------------------------------------------------------------------------------------------------------------------------
+OPEN POSITIONS (all)
+EVENT                              BRACKET SIDE HEDGE ENTRY   MARK  COST$  TRUE_E  P(MONEY) PICK_SIG CUR_CNT
+------------------------------------------------------------------------------------------------------------------------
+elon-musk-of-tweets-may-2-may-4      40-64   NO    NO  0.420  0.415  160.0  0.2022    0.6522   BUY_NO        0
+------------------------------------------------------------------------------------------------------------------------
+LAST_FILL BUY elon-musk-of-tweets-may-2-may-4 40-64 NO px=0.42 true=0.202193
+[H[J========================================================================================================================
+POLYBOT PAPER TRADE | 2026-05-02 08:40:48 UTC | credit_per_model=$1000
+========================================================================================================================
+DATA STREAM HEALTH
+SOURCE                                                 STATUS
+Elon Musk Twitter stream                               YES   
+XTracker stream                                        YES   
+Polymarket prices (all brackets)                       YES   
+Polymarket details: priced=162/162 live=159/162 ws_ok=True
+Costs: fee=0.020 slippage=0.005 uncertainty=0.050 min_trade_cost=25.0 quick_fee<900s=0.010 count_cd=45s ended_cd=900s
+SELL RULES: take_profit>=22.0% | stop_loss<=-14.0% | edge_decay(true_edge<=1.5%) | signal_flip(gap>=0.060, max_loss=3.0%)
+REENTRY GUARDS: key_cd=60s stoploss_cd=7200s flip_key_cd=1800s flip_event_cd=900s stoploss_event_cd=3600s lock=2x/21600s min_hold=600s reentry_edge+=0.020 sl_reentry_edge+=0.060
+------------------------------------------------------------------------------------------------------------------------
+cash=840.00 unreal=-1.90 realized=+0.00 equity=998.10 total_pnl=-1.90 positions=1 closed=0
+tweet_count=102051 source=graphql_user_tweets age=0.63s sentiment=0.0021 density_h=0.5
+entry_gate=OPEN
+latest_tweet_time=n/a tweet_id=None
+latest_tweet_text=n/a
+------------------------------------------------------------------------------------------------------------------------
+BET TWEET COUNTS (ALL EVENTS)
+EVENT                                  COUNT    REMAINING         SOURCE
+------------------------------------------------------------------------------------------------------------------------
+elon-musk-of-tweets-april-28-may-5        78       3d 07h  xtracker+live
+elon-musk-of-tweets-may-1-may-8           27       6d 07h  xtracker+live
+elon-musk-of-tweets-april-30-may-2        50      07h 19m  xtracker+live
+elon-musk-of-tweets-may-2-may-4            0       2d 07h  xtracker+live
+elon-musk-of-tweets-may-2026              37      29d 19h  xtracker+live
+elon-musk-of-tweets-may-5-may-12           0      10d 07h  xtracker+live
+------------------------------------------------------------------------------------------------------------------------
+OPEN POSITIONS (all)
+EVENT                              BRACKET SIDE HEDGE ENTRY   MARK  COST$  TRUE_E  P(MONEY) PICK_SIG CUR_CNT
+------------------------------------------------------------------------------------------------------------------------
+elon-musk-of-tweets-may-2-may-4      40-64   NO    NO  0.420  0.415  160.0  0.2022    0.6522   BUY_NO        0
+------------------------------------------------------------------------------------------------------------------------
+LAST_FILL BUY elon-musk-of-tweets-may-2-may-4 40-64 NO px=0.42 true=0.202193
+[H[J========================================================================================================================
+POLYBOT PAPER TRADE | 2026-05-02 08:40:58 UTC | credit_per_model=$1000
+========================================================================================================================
+DATA STREAM HEALTH
+SOURCE                                                 STATUS
+Elon Musk Twitter stream                               YES   
+XTracker stream                                        YES   
+Polymarket prices (all brackets)                       YES   
+Polymarket details: priced=162/162 live=159/162 ws_ok=True
+Costs: fee=0.020 slippage=0.005 uncertainty=0.050 min_trade_cost=25.0 quick_fee<900s=0.010 count_cd=45s ended_cd=900s
+SELL RULES: take_profit>=22.0% | stop_loss<=-14.0% | edge_decay(true_edge<=1.5%) | signal_flip(gap>=0.060, max_loss=3.0%)
+REENTRY GUARDS: key_cd=60s stoploss_cd=7200s flip_key_cd=1800s flip_event_cd=900s stoploss_event_cd=3600s lock=2x/21600s min_hold=600s reentry_edge+=0.020 sl_reentry_edge+=0.060
+------------------------------------------------------------------------------------------------------------------------
+cash=840.00 unreal=-1.90 realized=+0.00 equity=998.10 total_pnl=-1.90 positions=1 closed=0
+tweet_count=102051 source=graphql_user_tweets age=1.297s sentiment=0.0021 density_h=0.5
+entry_gate=OPEN
+latest_tweet_time=n/a tweet_id=None
+latest_tweet_text=n/a
+------------------------------------------------------------------------------------------------------------------------
+BET TWEET COUNTS (ALL EVENTS)
+EVENT                                  COUNT    REMAINING         SOURCE
+------------------------------------------------------------------------------------------------------------------------
+elon-musk-of-tweets-april-28-may-5        78       3d 07h  xtracker+live
+elon-musk-of-tweets-may-1-may-8           27       6d 07h  xtracker+live
+elon-musk-of-tweets-april-30-may-2        50      07h 19m  xtracker+live
+elon-musk-of-tweets-may-2-may-4            0       2d 07h  xtracker+live
+elon-musk-of-tweets-may-2026              37      29d 19h  xtracker+live
+elon-musk-of-tweets-may-5-may-12           0      10d 07h  xtracker+live
+------------------------------------------------------------------------------------------------------------------------
+OPEN POSITIONS (all)
+EVENT                              BRACKET SIDE HEDGE ENTRY   MARK  COST$  TRUE_E  P(MONEY) PICK_SIG CUR_CNT
+------------------------------------------------------------------------------------------------------------------------
+elon-musk-of-tweets-may-2-may-4      40-64   NO    NO  0.420  0.415  160.0  0.2022    0.6522   BUY_NO        0
+------------------------------------------------------------------------------------------------------------------------
+LAST_FILL BUY elon-musk-of-tweets-may-2-may-4 40-64 NO px=0.42 true=0.202193
+[H[J========================================================================================================================
+POLYBOT PAPER TRADE | 2026-05-02 08:41:03 UTC | credit_per_model=$1000
+========================================================================================================================
+DATA STREAM HEALTH
+SOURCE                                                 STATUS
+Elon Musk Twitter stream                               YES   
+XTracker stream                                        YES   
+Polymarket prices (all brackets)                       YES   
+Polymarket details: priced=162/162 live=159/162 ws_ok=True
+Costs: fee=0.020 slippage=0.005 uncertainty=0.050 min_trade_cost=25.0 quick_fee<900s=0.010 count_cd=45s ended_cd=900s
+SELL RULES: take_profit>=22.0% | stop_loss<=-14.0% | edge_decay(true_edge<=1.5%) | signal_flip(gap>=0.060, max_loss=3.0%)
+REENTRY GUARDS: key_cd=60s stoploss_cd=7200s flip_key_cd=1800s flip_event_cd=900s stoploss_event_cd=3600s lock=2x/21600s min_hold=600s reentry_edge+=0.020 sl_reentry_edge+=0.060
+------------------------------------------------------------------------------------------------------------------------
+cash=840.00 unreal=-1.90 realized=+0.00 equity=998.10 total_pnl=-1.90 positions=1 closed=0
+tweet_count=102051 source=graphql_user_tweets age=0.787s sentiment=0.0021 density_h=0.5
+entry_gate=OPEN
+latest_tweet_time=n/a tweet_id=None
+latest_tweet_text=n/a
+------------------------------------------------------------------------------------------------------------------------
+BET TWEET COUNTS (ALL EVENTS)
+EVENT                                  COUNT    REMAINING         SOURCE
+------------------------------------------------------------------------------------------------------------------------
+elon-musk-of-tweets-april-28-may-5        78       3d 07h  xtracker+live
+elon-musk-of-tweets-may-1-may-8           27       6d 07h  xtracker+live
+elon-musk-of-tweets-april-30-may-2        50      07h 18m  xtracker+live
+elon-musk-of-tweets-may-2-may-4            0       2d 07h  xtracker+live
+elon-musk-of-tweets-may-2026              37      29d 19h  xtracker+live
+elon-musk-of-tweets-may-5-may-12           0      10d 07h  xtracker+live
+------------------------------------------------------------------------------------------------------------------------
+OPEN POSITIONS (all)
+EVENT                              BRACKET SIDE HEDGE ENTRY   MARK  COST$  TRUE_E  P(MONEY) PICK_SIG CUR_CNT
+------------------------------------------------------------------------------------------------------------------------
+elon-musk-of-tweets-may-2-may-4      40-64   NO    NO  0.420  0.415  160.0  0.2022    0.6522   BUY_NO        0
+------------------------------------------------------------------------------------------------------------------------
+LAST_FILL BUY elon-musk-of-tweets-may-2-may-4 40-64 NO px=0.42 true=0.202193
+[H[J========================================================================================================================
+POLYBOT PAPER TRADE | 2026-05-02 08:41:13 UTC | credit_per_model=$1000
+========================================================================================================================
+DATA STREAM HEALTH
+SOURCE                                                 STATUS
+Elon Musk Twitter stream                               YES   
+XTracker stream                                        YES   
+Polymarket prices (all brackets)                       YES   
+Polymarket details: priced=162/162 live=159/162 ws_ok=True
+Costs: fee=0.020 slippage=0.005 uncertainty=0.050 min_trade_cost=25.0 quick_fee<900s=0.010 count_cd=45s ended_cd=900s
+SELL RULES: take_profit>=22.0% | stop_loss<=-14.0% | edge_decay(true_edge<=1.5%) | signal_flip(gap>=0.060, max_loss=3.0%)
+REENTRY GUARDS: key_cd=60s stoploss_cd=7200s flip_key_cd=1800s flip_event_cd=900s stoploss_event_cd=3600s lock=2x/21600s min_hold=600s reentry_edge+=0.020 sl_reentry_edge+=0.060
+------------------------------------------------------------------------------------------------------------------------
+cash=840.00 unreal=-1.90 realized=+0.00 equity=998.10 total_pnl=-1.90 positions=1 closed=0
+tweet_count=102051 source=graphql_user_tweets age=0.759s sentiment=0.0021 density_h=0.5
+entry_gate=OPEN
+latest_tweet_time=n/a tweet_id=None
+latest_tweet_text=n/a
+------------------------------------------------------------------------------------------------------------------------
+BET TWEET COUNTS (ALL EVENTS)
+EVENT                                  COUNT    REMAINING         SOURCE
+------------------------------------------------------------------------------------------------------------------------
+elon-musk-of-tweets-april-28-may-5        78       3d 07h  xtracker+live
+elon-musk-of-tweets-may-1-may-8           27       6d 07h  xtracker+live
+elon-musk-of-tweets-april-30-may-2        50      07h 18m  xtracker+live
+elon-musk-of-tweets-may-2-may-4            0       2d 07h  xtracker+live
+elon-musk-of-tweets-may-2026              37      29d 19h  xtracker+live
+elon-musk-of-tweets-may-5-may-12           0      10d 07h  xtracker+live
+------------------------------------------------------------------------------------------------------------------------
+OPEN POSITIONS (all)
+EVENT                              BRACKET SIDE HEDGE ENTRY   MARK  COST$  TRUE_E  P(MONEY) PICK_SIG CUR_CNT
+------------------------------------------------------------------------------------------------------------------------
+elon-musk-of-tweets-may-2-may-4      40-64   NO    NO  0.420  0.415  160.0  0.2022    0.6522   BUY_NO        0
+------------------------------------------------------------------------------------------------------------------------
+LAST_FILL BUY elon-musk-of-tweets-may-2-may-4 40-64 NO px=0.42 true=0.202193
+[H[J========================================================================================================================
+POLYBOT PAPER TRADE | 2026-05-02 08:41:20 UTC | credit_per_model=$1000
+========================================================================================================================
+DATA STREAM HEALTH
+SOURCE                                                 STATUS
+Elon Musk Twitter stream                               YES   
+XTracker stream                                        YES   
+Polymarket prices (all brackets)                       YES   
+Polymarket details: priced=162/162 live=159/162 ws_ok=True
+Costs: fee=0.020 slippage=0.005 uncertainty=0.050 min_trade_cost=25.0 quick_fee<900s=0.010 count_cd=45s ended_cd=900s
+SELL RULES: take_profit>=22.0% | stop_loss<=-14.0% | edge_decay(true_edge<=1.5%) | signal_flip(gap>=0.060, max_loss=3.0%)
+REENTRY GUARDS: key_cd=60s stoploss_cd=7200s flip_key_cd=1800s flip_event_cd=900s stoploss_event_cd=3600s lock=2x/21600s min_hold=600s reentry_edge+=0.020 sl_reentry_edge+=0.060
+------------------------------------------------------------------------------------------------------------------------
+cash=840.00 unreal=-1.90 realized=+0.00 equity=998.10 total_pnl=-1.90 positions=1 closed=0
+tweet_count=102051 source=graphql_user_tweets age=0.545s sentiment=0.0021 density_h=0.5
+entry_gate=OPEN
+latest_tweet_time=n/a tweet_id=None
+latest_tweet_text=n/a
+------------------------------------------------------------------------------------------------------------------------
+BET TWEET COUNTS (ALL EVENTS)
+EVENT                                  COUNT    REMAINING         SOURCE
+------------------------------------------------------------------------------------------------------------------------
+elon-musk-of-tweets-april-28-may-5        78       3d 07h  xtracker+live
+elon-musk-of-tweets-may-1-may-8           27       6d 07h  xtracker+live
+elon-musk-of-tweets-april-30-may-2        50      07h 18m  xtracker+live
+elon-musk-of-tweets-may-2-may-4            0       2d 07h  xtracker+live
+elon-musk-of-tweets-may-2026              37      29d 19h  xtracker+live
+elon-musk-of-tweets-may-5-may-12           0      10d 07h  xtracker+live
+------------------------------------------------------------------------------------------------------------------------
+OPEN POSITIONS (all)
+EVENT                              BRACKET SIDE HEDGE ENTRY   MARK  COST$  TRUE_E  P(MONEY) PICK_SIG CUR_CNT
+------------------------------------------------------------------------------------------------------------------------
+elon-musk-of-tweets-may-2-may-4      40-64   NO    NO  0.420  0.415  160.0  0.2022    0.6522   BUY_NO        0
+------------------------------------------------------------------------------------------------------------------------
+LAST_FILL BUY elon-musk-of-tweets-may-2-may-4 40-64 NO px=0.42 true=0.202193
+[H[J========================================================================================================================
+POLYBOT PAPER TRADE | 2026-05-02 08:41:28 UTC | credit_per_model=$1000
+========================================================================================================================
+DATA STREAM HEALTH
+SOURCE                                                 STATUS
+Elon Musk Twitter stream                               YES   
+XTracker stream                                        YES   
+Polymarket prices (all brackets)                       YES   
+Polymarket details: priced=162/162 live=159/162 ws_ok=True
+Costs: fee=0.020 slippage=0.005 uncertainty=0.050 min_trade_cost=25.0 quick_fee<900s=0.010 count_cd=45s ended_cd=900s
+SELL RULES: take_profit>=22.0% | stop_loss<=-14.0% | edge_decay(true_edge<=1.5%) | signal_flip(gap>=0.060, max_loss=3.0%)
+REENTRY GUARDS: key_cd=60s stoploss_cd=7200s flip_key_cd=1800s flip_event_cd=900s stoploss_event_cd=3600s lock=2x/21600s min_hold=600s reentry_edge+=0.020 sl_reentry_edge+=0.060
+------------------------------------------------------------------------------------------------------------------------
+cash=840.00 unreal=-1.90 realized=+0.00 equity=998.10 total_pnl=-1.90 positions=1 closed=0
+tweet_count=102051 source=graphql_user_tweets age=0.497s sentiment=0.0021 density_h=0.5
+entry_gate=OPEN
+latest_tweet_time=n/a tweet_id=None
+latest_tweet_text=n/a
+------------------------------------------------------------------------------------------------------------------------
+BET TWEET COUNTS (ALL EVENTS)
+EVENT                                  COUNT    REMAINING         SOURCE
+------------------------------------------------------------------------------------------------------------------------
+elon-musk-of-tweets-april-28-may-5        78       3d 07h  xtracker+live
+elon-musk-of-tweets-may-1-may-8           27       6d 07h  xtracker+live
+elon-musk-of-tweets-april-30-may-2        50      07h 18m  xtracker+live
+elon-musk-of-tweets-may-2-may-4            0       2d 07h  xtracker+live
+elon-musk-of-tweets-may-2026              37      29d 19h  xtracker+live
+elon-musk-of-tweets-may-5-may-12           0      10d 07h  xtracker+live
+------------------------------------------------------------------------------------------------------------------------
+OPEN POSITIONS (all)
+EVENT                              BRACKET SIDE HEDGE ENTRY   MARK  COST$  TRUE_E  P(MONEY) PICK_SIG CUR_CNT
+------------------------------------------------------------------------------------------------------------------------
+elon-musk-of-tweets-may-2-may-4      40-64   NO    NO  0.420  0.415  160.0  0.2022    0.6522   BUY_NO        0
+------------------------------------------------------------------------------------------------------------------------
+LAST_FILL BUY elon-musk-of-tweets-may-2-may-4 40-64 NO px=0.42 true=0.202193
+[H[J========================================================================================================================
+POLYBOT PAPER TRADE | 2026-05-02 08:41:34 UTC | credit_per_model=$1000
+========================================================================================================================
+DATA STREAM HEALTH
+SOURCE                                                 STATUS
+Elon Musk Twitter stream                               YES   
+XTracker stream                                        YES   
+Polymarket prices (all brackets)                       YES   
+Polymarket details: priced=162/162 live=159/162 ws_ok=True
+Costs: fee=0.020 slippage=0.005 uncertainty=0.050 min_trade_cost=25.0 quick_fee<900s=0.010 count_cd=45s ended_cd=900s
+SELL RULES: take_profit>=22.0% | stop_loss<=-14.0% | edge_decay(true_edge<=1.5%) | signal_flip(gap>=0.060, max_loss=3.0%)
+REENTRY GUARDS: key_cd=60s stoploss_cd=7200s flip_key_cd=1800s flip_event_cd=900s stoploss_event_cd=3600s lock=2x/21600s min_hold=600s reentry_edge+=0.020 sl_reentry_edge+=0.060
+------------------------------------------------------------------------------------------------------------------------
+cash=840.00 unreal=-1.90 realized=+0.00 equity=998.10 total_pnl=-1.90 positions=1 closed=0
+tweet_count=102051 source=graphql_user_tweets age=0.72s sentiment=0.0021 density_h=0.5
+entry_gate=OPEN
+latest_tweet_time=n/a tweet_id=None
+latest_tweet_text=n/a
+------------------------------------------------------------------------------------------------------------------------
+BET TWEET COUNTS (ALL EVENTS)
+EVENT                                  COUNT    REMAINING         SOURCE
+------------------------------------------------------------------------------------------------------------------------
+elon-musk-of-tweets-april-28-may-5        78       3d 07h  xtracker+live
+elon-musk-of-tweets-may-1-may-8           27       6d 07h  xtracker+live
+elon-musk-of-tweets-april-30-may-2        50      07h 18m  xtracker+live
+elon-musk-of-tweets-may-2-may-4            0       2d 07h  xtracker+live
+elon-musk-of-tweets-may-2026              37      29d 19h  xtracker+live
+elon-musk-of-tweets-may-5-may-12           0      10d 07h  xtracker+live
+------------------------------------------------------------------------------------------------------------------------
+OPEN POSITIONS (all)
+EVENT                              BRACKET SIDE HEDGE ENTRY   MARK  COST$  TRUE_E  P(MONEY) PICK_SIG CUR_CNT
+------------------------------------------------------------------------------------------------------------------------
+elon-musk-of-tweets-may-2-may-4      40-64   NO    NO  0.420  0.415  160.0  0.2022    0.6522   BUY_NO        0
+------------------------------------------------------------------------------------------------------------------------
+LAST_FILL BUY elon-musk-of-tweets-may-2-may-4 40-64 NO px=0.42 true=0.202193
+[H[J========================================================================================================================
+POLYBOT PAPER TRADE | 2026-05-02 08:41:43 UTC | credit_per_model=$1000
+========================================================================================================================
+DATA STREAM HEALTH
+SOURCE                                                 STATUS
+Elon Musk Twitter stream                               YES   
+XTracker stream                                        YES   
+Polymarket prices (all brackets)                       YES   
+Polymarket details: priced=162/162 live=159/162 ws_ok=True
+Costs: fee=0.020 slippage=0.005 uncertainty=0.050 min_trade_cost=25.0 quick_fee<900s=0.010 count_cd=45s ended_cd=900s
+SELL RULES: take_profit>=22.0% | stop_loss<=-14.0% | edge_decay(true_edge<=1.5%) | signal_flip(gap>=0.060, max_loss=3.0%)
+REENTRY GUARDS: key_cd=60s stoploss_cd=7200s flip_key_cd=1800s flip_event_cd=900s stoploss_event_cd=3600s lock=2x/21600s min_hold=600s reentry_edge+=0.020 sl_reentry_edge+=0.060
+------------------------------------------------------------------------------------------------------------------------
+cash=840.00 unreal=-1.90 realized=+0.00 equity=998.10 total_pnl=-1.90 positions=1 closed=0
+tweet_count=102051 source=graphql_user_tweets age=0.477s sentiment=0.0021 density_h=0.5
+entry_gate=OPEN
+latest_tweet_time=n/a tweet_id=None
+latest_tweet_text=n/a
+------------------------------------------------------------------------------------------------------------------------
+BET TWEET COUNTS (ALL EVENTS)
+EVENT                                  COUNT    REMAINING         SOURCE
+------------------------------------------------------------------------------------------------------------------------
+elon-musk-of-tweets-april-28-may-5        78       3d 07h  xtracker+live
+elon-musk-of-tweets-may-1-may-8           27       6d 07h  xtracker+live
+elon-musk-of-tweets-april-30-may-2        50      07h 18m  xtracker+live
+elon-musk-of-tweets-may-2-may-4            0       2d 07h  xtracker+live
+elon-musk-of-tweets-may-2026              37      29d 19h  xtracker+live
+elon-musk-of-tweets-may-5-may-12           0      10d 07h  xtracker+live
+------------------------------------------------------------------------------------------------------------------------
+OPEN POSITIONS (all)
+EVENT                              BRACKET SIDE HEDGE ENTRY   MARK  COST$  TRUE_E  P(MONEY) PICK_SIG CUR_CNT
+------------------------------------------------------------------------------------------------------------------------
+elon-musk-of-tweets-may-2-may-4      40-64   NO    NO  0.420  0.415  160.0  0.2022    0.6522   BUY_NO        0
+------------------------------------------------------------------------------------------------------------------------
+LAST_FILL BUY elon-musk-of-tweets-may-2-may-4 40-64 NO px=0.42 true=0.202193
+[H[J========================================================================================================================
+POLYBOT PAPER TRADE | 2026-05-02 08:41:51 UTC | credit_per_model=$1000
+========================================================================================================================
+DATA STREAM HEALTH
+SOURCE                                                 STATUS
+Elon Musk Twitter stream                               YES   
+XTracker stream                                        YES   
+Polymarket prices (all brackets)                       YES   
+Polymarket details: priced=162/162 live=159/162 ws_ok=True
+Costs: fee=0.020 slippage=0.005 uncertainty=0.050 min_trade_cost=25.0 quick_fee<900s=0.010 count_cd=45s ended_cd=900s
+SELL RULES: take_profit>=22.0% | stop_loss<=-14.0% | edge_decay(true_edge<=1.5%) | signal_flip(gap>=0.060, max_loss=3.0%)
+REENTRY GUARDS: key_cd=60s stoploss_cd=7200s flip_key_cd=1800s flip_event_cd=900s stoploss_event_cd=3600s lock=2x/21600s min_hold=600s reentry_edge+=0.020 sl_reentry_edge+=0.060
+------------------------------------------------------------------------------------------------------------------------
+cash=840.00 unreal=-1.90 realized=+0.00 equity=998.10 total_pnl=-1.90 positions=1 closed=0
+tweet_count=102051 source=graphql_user_tweets age=0.61s sentiment=0.0021 density_h=0.5
+entry_gate=OPEN
+latest_tweet_time=n/a tweet_id=None
+latest_tweet_text=n/a
+------------------------------------------------------------------------------------------------------------------------
+BET TWEET COUNTS (ALL EVENTS)
+EVENT                                  COUNT    REMAINING         SOURCE
+------------------------------------------------------------------------------------------------------------------------
+elon-musk-of-tweets-april-28-may-5        78       3d 07h  xtracker+live
+elon-musk-of-tweets-may-1-may-8           27       6d 07h  xtracker+live
+elon-musk-of-tweets-april-30-may-2        50      07h 18m  xtracker+live
+elon-musk-of-tweets-may-2-may-4            0       2d 07h  xtracker+live
+elon-musk-of-tweets-may-2026              37      29d 19h  xtracker+live
+elon-musk-of-tweets-may-5-may-12           0      10d 07h  xtracker+live
+------------------------------------------------------------------------------------------------------------------------
+OPEN POSITIONS (all)
+EVENT                              BRACKET SIDE HEDGE ENTRY   MARK  COST$  TRUE_E  P(MONEY) PICK_SIG CUR_CNT
+------------------------------------------------------------------------------------------------------------------------
+elon-musk-of-tweets-may-2-may-4      40-64   NO    NO  0.420  0.415  160.0  0.2021    0.6521   BUY_NO        0
+------------------------------------------------------------------------------------------------------------------------
+LAST_FILL BUY elon-musk-of-tweets-may-2-may-4 40-64 NO px=0.42 true=0.202193
+[H[J========================================================================================================================
+POLYBOT PAPER TRADE | 2026-05-02 08:42:01 UTC | credit_per_model=$1000
+========================================================================================================================
+DATA STREAM HEALTH
+SOURCE                                                 STATUS
+Elon Musk Twitter stream                               YES   
+XTracker stream                                        YES   
+Polymarket prices (all brackets)                       YES   
+Polymarket details: priced=162/162 live=159/162 ws_ok=True
+Costs: fee=0.020 slippage=0.005 uncertainty=0.050 min_trade_cost=25.0 quick_fee<900s=0.010 count_cd=45s ended_cd=900s
+SELL RULES: take_profit>=22.0% | stop_loss<=-14.0% | edge_decay(true_edge<=1.5%) | signal_flip(gap>=0.060, max_loss=3.0%)
+REENTRY GUARDS: key_cd=60s stoploss_cd=7200s flip_key_cd=1800s flip_event_cd=900s stoploss_event_cd=3600s lock=2x/21600s min_hold=600s reentry_edge+=0.020 sl_reentry_edge+=0.060
+------------------------------------------------------------------------------------------------------------------------
+cash=840.00 unreal=-1.90 realized=+0.00 equity=998.10 total_pnl=-1.90 positions=1 closed=0
+tweet_count=102051 source=graphql_user_tweets age=0.798s sentiment=0.0021 density_h=0.5
+entry_gate=OPEN
+latest_tweet_time=n/a tweet_id=None
+latest_tweet_text=n/a
+------------------------------------------------------------------------------------------------------------------------
+BET TWEET COUNTS (ALL EVENTS)
+EVENT                                  COUNT    REMAINING         SOURCE
+------------------------------------------------------------------------------------------------------------------------
+elon-musk-of-tweets-april-28-may-5        78       3d 07h  xtracker+live
+elon-musk-of-tweets-may-1-may-8           27       6d 07h  xtracker+live
+elon-musk-of-tweets-april-30-may-2        50      07h 17m  xtracker+live
+elon-musk-of-tweets-may-2-may-4            0       2d 07h  xtracker+live
+elon-musk-of-tweets-may-2026              37      29d 19h  xtracker+live
+elon-musk-of-tweets-may-5-may-12           0      10d 07h  xtracker+live
+------------------------------------------------------------------------------------------------------------------------
+OPEN POSITIONS (all)
+EVENT                              BRACKET SIDE HEDGE ENTRY   MARK  COST$  TRUE_E  P(MONEY) PICK_SIG CUR_CNT
+------------------------------------------------------------------------------------------------------------------------
+elon-musk-of-tweets-may-2-may-4      40-64   NO    NO  0.420  0.415  160.0  0.2021    0.6521   BUY_NO        0
+------------------------------------------------------------------------------------------------------------------------
+LAST_FILL BUY elon-musk-of-tweets-may-2-may-4 40-64 NO px=0.42 true=0.202193
+[H[J========================================================================================================================
+POLYBOT PAPER TRADE | 2026-05-02 08:42:07 UTC | credit_per_model=$1000
+========================================================================================================================
+DATA STREAM HEALTH
+SOURCE                                                 STATUS
+Elon Musk Twitter stream                               YES   
+XTracker stream                                        YES   
+Polymarket prices (all brackets)                       YES   
+Polymarket details: priced=162/162 live=159/162 ws_ok=True
+Costs: fee=0.020 slippage=0.005 uncertainty=0.050 min_trade_cost=25.0 quick_fee<900s=0.010 count_cd=45s ended_cd=900s
+SELL RULES: take_profit>=22.0% | stop_loss<=-14.0% | edge_decay(true_edge<=1.5%) | signal_flip(gap>=0.060, max_loss=3.0%)
+REENTRY GUARDS: key_cd=60s stoploss_cd=7200s flip_key_cd=1800s flip_event_cd=900s stoploss_event_cd=3600s lock=2x/21600s min_hold=600s reentry_edge+=0.020 sl_reentry_edge+=0.060
+------------------------------------------------------------------------------------------------------------------------
+cash=840.00 unreal=-1.90 realized=+0.00 equity=998.10 total_pnl=-1.90 positions=1 closed=0
+tweet_count=102051 source=graphql_user_tweets age=0.481s sentiment=0.0021 density_h=0.5
+entry_gate=OPEN
+latest_tweet_time=n/a tweet_id=None
+latest_tweet_text=n/a
+------------------------------------------------------------------------------------------------------------------------
+BET TWEET COUNTS (ALL EVENTS)
+EVENT                                  COUNT    REMAINING         SOURCE
+------------------------------------------------------------------------------------------------------------------------
+elon-musk-of-tweets-april-28-may-5        78       3d 07h  xtracker+live
+elon-musk-of-tweets-may-1-may-8           27       6d 07h  xtracker+live
+elon-musk-of-tweets-april-30-may-2        50      07h 17m  xtracker+live
+elon-musk-of-tweets-may-2-may-4            0       2d 07h  xtracker+live
+elon-musk-of-tweets-may-2026              37      29d 19h  xtracker+live
+elon-musk-of-tweets-may-5-may-12           0      10d 07h  xtracker+live
+------------------------------------------------------------------------------------------------------------------------
+OPEN POSITIONS (all)
+EVENT                              BRACKET SIDE HEDGE ENTRY   MARK  COST$  TRUE_E  P(MONEY) PICK_SIG CUR_CNT
+------------------------------------------------------------------------------------------------------------------------
+elon-musk-of-tweets-may-2-may-4      40-64   NO    NO  0.420  0.415  160.0  0.2021    0.6521   BUY_NO        0
+------------------------------------------------------------------------------------------------------------------------
+LAST_FILL BUY elon-musk-of-tweets-may-2-may-4 40-64 NO px=0.42 true=0.202193
+[H[J========================================================================================================================
+POLYBOT PAPER TRADE | 2026-05-02 08:42:17 UTC | credit_per_model=$1000
+========================================================================================================================
+DATA STREAM HEALTH
+SOURCE                                                 STATUS
+Elon Musk Twitter stream                               YES   
+XTracker stream                                        YES   
+Polymarket prices (all brackets)                       YES   
+Polymarket details: priced=162/162 live=159/162 ws_ok=True
+Costs: fee=0.020 slippage=0.005 uncertainty=0.050 min_trade_cost=25.0 quick_fee<900s=0.010 count_cd=45s ended_cd=900s
+SELL RULES: take_profit>=22.0% | stop_loss<=-14.0% | edge_decay(true_edge<=1.5%) | signal_flip(gap>=0.060, max_loss=3.0%)
+REENTRY GUARDS: key_cd=60s stoploss_cd=7200s flip_key_cd=1800s flip_event_cd=900s stoploss_event_cd=3600s lock=2x/21600s min_hold=600s reentry_edge+=0.020 sl_reentry_edge+=0.060
+------------------------------------------------------------------------------------------------------------------------
+cash=840.00 unreal=-1.90 realized=+0.00 equity=998.10 total_pnl=-1.90 positions=1 closed=0
+tweet_count=102051 source=graphql_user_tweets age=0.83s sentiment=0.0021 density_h=0.5
+entry_gate=OPEN
+latest_tweet_time=n/a tweet_id=None
+latest_tweet_text=n/a
+------------------------------------------------------------------------------------------------------------------------
+BET TWEET COUNTS (ALL EVENTS)
+EVENT                                  COUNT    REMAINING         SOURCE
+------------------------------------------------------------------------------------------------------------------------
+elon-musk-of-tweets-april-28-may-5        78       3d 07h  xtracker+live
+elon-musk-of-tweets-may-1-may-8           27       6d 07h  xtracker+live
+elon-musk-of-tweets-april-30-may-2        50      07h 17m  xtracker+live
+elon-musk-of-tweets-may-2-may-4            0       2d 07h  xtracker+live
+elon-musk-of-tweets-may-2026              37      29d 19h  xtracker+live
+elon-musk-of-tweets-may-5-may-12           0      10d 07h  xtracker+live
+------------------------------------------------------------------------------------------------------------------------
+OPEN POSITIONS (all)
+EVENT                              BRACKET SIDE HEDGE ENTRY   MARK  COST$  TRUE_E  P(MONEY) PICK_SIG CUR_CNT
+------------------------------------------------------------------------------------------------------------------------
+elon-musk-of-tweets-may-2-may-4      40-64   NO    NO  0.420  0.415  160.0  0.2021    0.6521   BUY_NO        0
+------------------------------------------------------------------------------------------------------------------------
+LAST_FILL BUY elon-musk-of-tweets-may-2-may-4 40-64 NO px=0.42 true=0.202193
+[H[J========================================================================================================================
+POLYBOT PAPER TRADE | 2026-05-02 08:42:24 UTC | credit_per_model=$1000
+========================================================================================================================
+DATA STREAM HEALTH
+SOURCE                                                 STATUS
+Elon Musk Twitter stream                               YES   
+XTracker stream                                        YES   
+Polymarket prices (all brackets)                       YES   
+Polymarket details: priced=162/162 live=159/162 ws_ok=True
+Costs: fee=0.020 slippage=0.005 uncertainty=0.050 min_trade_cost=25.0 quick_fee<900s=0.010 count_cd=45s ended_cd=900s
+SELL RULES: take_profit>=22.0% | stop_loss<=-14.0% | edge_decay(true_edge<=1.5%) | signal_flip(gap>=0.060, max_loss=3.0%)
+REENTRY GUARDS: key_cd=60s stoploss_cd=7200s flip_key_cd=1800s flip_event_cd=900s stoploss_event_cd=3600s lock=2x/21600s min_hold=600s reentry_edge+=0.020 sl_reentry_edge+=0.060
+------------------------------------------------------------------------------------------------------------------------
+cash=840.00 unreal=-1.90 realized=+0.00 equity=998.10 total_pnl=-1.90 positions=1 closed=0
+tweet_count=102051 source=graphql_user_tweets age=0.523s sentiment=0.0021 density_h=0.5
+entry_gate=OPEN
+latest_tweet_time=n/a tweet_id=None
+latest_tweet_text=n/a
+------------------------------------------------------------------------------------------------------------------------
+BET TWEET COUNTS (ALL EVENTS)
+EVENT                                  COUNT    REMAINING         SOURCE
+------------------------------------------------------------------------------------------------------------------------
+elon-musk-of-tweets-april-28-may-5        78       3d 07h  xtracker+live
+elon-musk-of-tweets-may-1-may-8           27       6d 07h  xtracker+live
+elon-musk-of-tweets-april-30-may-2        50      07h 17m  xtracker+live
+elon-musk-of-tweets-may-2-may-4            0       2d 07h  xtracker+live
+elon-musk-of-tweets-may-2026              37      29d 19h  xtracker+live
+elon-musk-of-tweets-may-5-may-12           0      10d 07h  xtracker+live
+------------------------------------------------------------------------------------------------------------------------
+OPEN POSITIONS (all)
+EVENT                              BRACKET SIDE HEDGE ENTRY   MARK  COST$  TRUE_E  P(MONEY) PICK_SIG CUR_CNT
+------------------------------------------------------------------------------------------------------------------------
+elon-musk-of-tweets-may-2-may-4      40-64   NO    NO  0.420  0.415  160.0  0.2021    0.6521   BUY_NO        0
+------------------------------------------------------------------------------------------------------------------------
+LAST_FILL BUY elon-musk-of-tweets-may-2-may-4 40-64 NO px=0.42 true=0.202193
+[H[J========================================================================================================================
+POLYBOT PAPER TRADE | 2026-05-02 08:42:32 UTC | credit_per_model=$1000
+========================================================================================================================
+DATA STREAM HEALTH
+SOURCE                                                 STATUS
+Elon Musk Twitter stream                               YES   
+XTracker stream                                        YES   
+Polymarket prices (all brackets)                       YES   
+Polymarket details: priced=162/162 live=159/162 ws_ok=True
+Costs: fee=0.020 slippage=0.005 uncertainty=0.050 min_trade_cost=25.0 quick_fee<900s=0.010 count_cd=45s ended_cd=900s
+SELL RULES: take_profit>=22.0% | stop_loss<=-14.0% | edge_decay(true_edge<=1.5%) | signal_flip(gap>=0.060, max_loss=3.0%)
+REENTRY GUARDS: key_cd=60s stoploss_cd=7200s flip_key_cd=1800s flip_event_cd=900s stoploss_event_cd=3600s lock=2x/21600s min_hold=600s reentry_edge+=0.020 sl_reentry_edge+=0.060
+------------------------------------------------------------------------------------------------------------------------
+cash=840.00 unreal=-1.90 realized=+0.00 equity=998.10 total_pnl=-1.90 positions=1 closed=0
+tweet_count=102051 source=graphql_user_tweets age=0.583s sentiment=0.0021 density_h=0.5
+entry_gate=OPEN
+latest_tweet_time=n/a tweet_id=None
+latest_tweet_text=n/a
+------------------------------------------------------------------------------------------------------------------------
+BET TWEET COUNTS (ALL EVENTS)
+EVENT                                  COUNT    REMAINING         SOURCE
+------------------------------------------------------------------------------------------------------------------------
+elon-musk-of-tweets-april-28-may-5        78       3d 07h  xtracker+live
+elon-musk-of-tweets-may-1-may-8           27       6d 07h  xtracker+live
+elon-musk-of-tweets-april-30-may-2        50      07h 17m  xtracker+live
+elon-musk-of-tweets-may-2-may-4            0       2d 07h  xtracker+live
+elon-musk-of-tweets-may-2026              37      29d 19h  xtracker+live
+elon-musk-of-tweets-may-5-may-12           0      10d 07h  xtracker+live
+------------------------------------------------------------------------------------------------------------------------
+OPEN POSITIONS (all)
+EVENT                              BRACKET SIDE HEDGE ENTRY   MARK  COST$  TRUE_E  P(MONEY) PICK_SIG CUR_CNT
+------------------------------------------------------------------------------------------------------------------------
+elon-musk-of-tweets-may-2-may-4      40-64   NO    NO  0.420  0.415  160.0  0.2021    0.6521   BUY_NO        0
+------------------------------------------------------------------------------------------------------------------------
+LAST_FILL BUY elon-musk-of-tweets-may-2-may-4 40-64 NO px=0.42 true=0.202193
+[H[J========================================================================================================================
+POLYBOT PAPER TRADE | 2026-05-02 08:42:39 UTC | credit_per_model=$1000
+========================================================================================================================
+DATA STREAM HEALTH
+SOURCE                                                 STATUS
+Elon Musk Twitter stream                               YES   
+XTracker stream                                        YES   
+Polymarket prices (all brackets)                       YES   
+Polymarket details: priced=162/162 live=159/162 ws_ok=True
+Costs: fee=0.020 slippage=0.005 uncertainty=0.050 min_trade_cost=25.0 quick_fee<900s=0.010 count_cd=45s ended_cd=900s
+SELL RULES: take_profit>=22.0% | stop_loss<=-14.0% | edge_decay(true_edge<=1.5%) | signal_flip(gap>=0.060, max_loss=3.0%)
+REENTRY GUARDS: key_cd=60s stoploss_cd=7200s flip_key_cd=1800s flip_event_cd=900s stoploss_event_cd=3600s lock=2x/21600s min_hold=600s reentry_edge+=0.020 sl_reentry_edge+=0.060
+------------------------------------------------------------------------------------------------------------------------
+cash=840.00 unreal=-1.90 realized=+0.00 equity=998.10 total_pnl=-1.90 positions=1 closed=0
+tweet_count=102051 source=graphql_user_tweets age=0.553s sentiment=0.0021 density_h=0.5
+entry_gate=OPEN
+latest_tweet_time=n/a tweet_id=None
+latest_tweet_text=n/a
+------------------------------------------------------------------------------------------------------------------------
+BET TWEET COUNTS (ALL EVENTS)
+EVENT                                  COUNT    REMAINING         SOURCE
+------------------------------------------------------------------------------------------------------------------------
+elon-musk-of-tweets-april-28-may-5        78       3d 07h  xtracker+live
+elon-musk-of-tweets-may-1-may-8           27       6d 07h  xtracker+live
+elon-musk-of-tweets-april-30-may-2        50      07h 17m  xtracker+live
+elon-musk-of-tweets-may-2-may-4            0       2d 07h  xtracker+live
+elon-musk-of-tweets-may-2026              37      29d 19h  xtracker+live
+elon-musk-of-tweets-may-5-may-12           0      10d 07h  xtracker+live
+------------------------------------------------------------------------------------------------------------------------
+OPEN POSITIONS (all)
+EVENT                              BRACKET SIDE HEDGE ENTRY   MARK  COST$  TRUE_E  P(MONEY) PICK_SIG CUR_CNT
+------------------------------------------------------------------------------------------------------------------------
+elon-musk-of-tweets-may-2-may-4      40-64   NO    NO  0.420  0.415  160.0  0.2021    0.6521   BUY_NO        0
+------------------------------------------------------------------------------------------------------------------------
+LAST_FILL BUY elon-musk-of-tweets-may-2-may-4 40-64 NO px=0.42 true=0.202193
+[H[J========================================================================================================================
+POLYBOT PAPER TRADE | 2026-05-02 08:42:47 UTC | credit_per_model=$1000
+========================================================================================================================
+DATA STREAM HEALTH
+SOURCE                                                 STATUS
+Elon Musk Twitter stream                               YES   
+XTracker stream                                        YES   
+Polymarket prices (all brackets)                       YES   
+Polymarket details: priced=162/162 live=159/162 ws_ok=True
+Costs: fee=0.020 slippage=0.005 uncertainty=0.050 min_trade_cost=25.0 quick_fee<900s=0.010 count_cd=45s ended_cd=900s
+SELL RULES: take_profit>=22.0% | stop_loss<=-14.0% | edge_decay(true_edge<=1.5%) | signal_flip(gap>=0.060, max_loss=3.0%)
+REENTRY GUARDS: key_cd=60s stoploss_cd=7200s flip_key_cd=1800s flip_event_cd=900s stoploss_event_cd=3600s lock=2x/21600s min_hold=600s reentry_edge+=0.020 sl_reentry_edge+=0.060
+------------------------------------------------------------------------------------------------------------------------
+cash=840.00 unreal=-1.90 realized=+0.00 equity=998.10 total_pnl=-1.90 positions=1 closed=0
+tweet_count=102051 source=graphql_user_tweets age=0.609s sentiment=0.0021 density_h=0.5
+entry_gate=OPEN
+latest_tweet_time=n/a tweet_id=None
+latest_tweet_text=n/a
+------------------------------------------------------------------------------------------------------------------------
+BET TWEET COUNTS (ALL EVENTS)
+EVENT                                  COUNT    REMAINING         SOURCE
+------------------------------------------------------------------------------------------------------------------------
+elon-musk-of-tweets-april-28-may-5        78       3d 07h  xtracker+live
+elon-musk-of-tweets-may-1-may-8           27       6d 07h  xtracker+live
+elon-musk-of-tweets-april-30-may-2        50      07h 17m  xtracker+live
+elon-musk-of-tweets-may-2-may-4            0       2d 07h  xtracker+live
+elon-musk-of-tweets-may-2026              37      29d 19h  xtracker+live
+elon-musk-of-tweets-may-5-may-12           0      10d 07h  xtracker+live
+------------------------------------------------------------------------------------------------------------------------
+OPEN POSITIONS (all)
+EVENT                              BRACKET SIDE HEDGE ENTRY   MARK  COST$  TRUE_E  P(MONEY) PICK_SIG CUR_CNT
+------------------------------------------------------------------------------------------------------------------------
+elon-musk-of-tweets-may-2-may-4      40-64   NO    NO  0.420  0.415  160.0  0.2021    0.6521   BUY_NO        0
+------------------------------------------------------------------------------------------------------------------------
+LAST_FILL BUY elon-musk-of-tweets-may-2-may-4 40-64 NO px=0.42 true=0.202193
+[H[J========================================================================================================================
+POLYBOT PAPER TRADE | 2026-05-02 08:42:56 UTC | credit_per_model=$1000
+========================================================================================================================
+DATA STREAM HEALTH
+SOURCE                                                 STATUS
+Elon Musk Twitter stream                               YES   
+XTracker stream                                        YES   
+Polymarket prices (all brackets)                       YES   
+Polymarket details: priced=162/162 live=159/162 ws_ok=True
+Costs: fee=0.020 slippage=0.005 uncertainty=0.050 min_trade_cost=25.0 quick_fee<900s=0.010 count_cd=45s ended_cd=900s
+SELL RULES: take_profit>=22.0% | stop_loss<=-14.0% | edge_decay(true_edge<=1.5%) | signal_flip(gap>=0.060, max_loss=3.0%)
+REENTRY GUARDS: key_cd=60s stoploss_cd=7200s flip_key_cd=1800s flip_event_cd=900s stoploss_event_cd=3600s lock=2x/21600s min_hold=600s reentry_edge+=0.020 sl_reentry_edge+=0.060
+------------------------------------------------------------------------------------------------------------------------
+cash=840.00 unreal=-1.90 realized=+0.00 equity=998.10 total_pnl=-1.90 positions=1 closed=0
+tweet_count=102051 source=graphql_user_tweets age=0.559s sentiment=0.0021 density_h=0.5
+entry_gate=OPEN
+latest_tweet_time=n/a tweet_id=None
+latest_tweet_text=n/a
+------------------------------------------------------------------------------------------------------------------------
+BET TWEET COUNTS (ALL EVENTS)
+EVENT                                  COUNT    REMAINING         SOURCE
+------------------------------------------------------------------------------------------------------------------------
+elon-musk-of-tweets-april-28-may-5        78       3d 07h  xtracker+live
+elon-musk-of-tweets-may-1-may-8           27       6d 07h  xtracker+live
+elon-musk-of-tweets-april-30-may-2        50      07h 17m  xtracker+live
+elon-musk-of-tweets-may-2-may-4            0       2d 07h  xtracker+live
+elon-musk-of-tweets-may-2026              37      29d 19h  xtracker+live
+elon-musk-of-tweets-may-5-may-12           0      10d 07h  xtracker+live
+------------------------------------------------------------------------------------------------------------------------
+OPEN POSITIONS (all)
+EVENT                              BRACKET SIDE HEDGE ENTRY   MARK  COST$  TRUE_E  P(MONEY) PICK_SIG CUR_CNT
+------------------------------------------------------------------------------------------------------------------------
+elon-musk-of-tweets-may-2-may-4      40-64   NO    NO  0.420  0.415  160.0  0.2021    0.6521   BUY_NO        0
+------------------------------------------------------------------------------------------------------------------------
+LAST_FILL BUY elon-musk-of-tweets-may-2-may-4 40-64 NO px=0.42 true=0.202193
+[H[J========================================================================================================================
+POLYBOT PAPER TRADE | 2026-05-02 08:43:05 UTC | credit_per_model=$1000
+========================================================================================================================
+DATA STREAM HEALTH
+SOURCE                                                 STATUS
+Elon Musk Twitter stream                               YES   
+XTracker stream                                        YES   
+Polymarket prices (all brackets)                       YES   
+Polymarket details: priced=162/162 live=159/162 ws_ok=True
+Costs: fee=0.020 slippage=0.005 uncertainty=0.050 min_trade_cost=25.0 quick_fee<900s=0.010 count_cd=45s ended_cd=900s
+SELL RULES: take_profit>=22.0% | stop_loss<=-14.0% | edge_decay(true_edge<=1.5%) | signal_flip(gap>=0.060, max_loss=3.0%)
+REENTRY GUARDS: key_cd=60s stoploss_cd=7200s flip_key_cd=1800s flip_event_cd=900s stoploss_event_cd=3600s lock=2x/21600s min_hold=600s reentry_edge+=0.020 sl_reentry_edge+=0.060
+------------------------------------------------------------------------------------------------------------------------
+cash=840.00 unreal=-1.90 realized=+0.00 equity=998.10 total_pnl=-1.90 positions=1 closed=0
+tweet_count=102051 source=graphql_user_tweets age=0.527s sentiment=0.0021 density_h=0.5
+entry_gate=OPEN
+latest_tweet_time=n/a tweet_id=None
+latest_tweet_text=n/a
+------------------------------------------------------------------------------------------------------------------------
+BET TWEET COUNTS (ALL EVENTS)
+EVENT                                  COUNT    REMAINING         SOURCE
+------------------------------------------------------------------------------------------------------------------------
+elon-musk-of-tweets-april-28-may-5        78       3d 07h  xtracker+live
+elon-musk-of-tweets-may-1-may-8           27       6d 07h  xtracker+live
+elon-musk-of-tweets-april-30-may-2        50      07h 16m  xtracker+live
+elon-musk-of-tweets-may-2-may-4            0       2d 07h  xtracker+live
+elon-musk-of-tweets-may-2026              37      29d 19h  xtracker+live
+elon-musk-of-tweets-may-5-may-12           0      10d 07h  xtracker+live
+------------------------------------------------------------------------------------------------------------------------
+OPEN POSITIONS (all)
+EVENT                              BRACKET SIDE HEDGE ENTRY   MARK  COST$  TRUE_E  P(MONEY) PICK_SIG CUR_CNT
+------------------------------------------------------------------------------------------------------------------------
+elon-musk-of-tweets-may-2-may-4      40-64   NO    NO  0.420  0.415  160.0  0.2021    0.6521   BUY_NO        0
+------------------------------------------------------------------------------------------------------------------------
+LAST_FILL BUY elon-musk-of-tweets-may-2-may-4 40-64 NO px=0.42 true=0.202193
+[H[J========================================================================================================================
+POLYBOT PAPER TRADE | 2026-05-02 08:43:10 UTC | credit_per_model=$1000
+========================================================================================================================
+DATA STREAM HEALTH
+SOURCE                                                 STATUS
+Elon Musk Twitter stream                               YES   
+XTracker stream                                        YES   
+Polymarket prices (all brackets)                       YES   
+Polymarket details: priced=162/162 live=159/162 ws_ok=True
+Costs: fee=0.020 slippage=0.005 uncertainty=0.050 min_trade_cost=25.0 quick_fee<900s=0.010 count_cd=45s ended_cd=900s
+SELL RULES: take_profit>=22.0% | stop_loss<=-14.0% | edge_decay(true_edge<=1.5%) | signal_flip(gap>=0.060, max_loss=3.0%)
+REENTRY GUARDS: key_cd=60s stoploss_cd=7200s flip_key_cd=1800s flip_event_cd=900s stoploss_event_cd=3600s lock=2x/21600s min_hold=600s reentry_edge+=0.020 sl_reentry_edge+=0.060
+------------------------------------------------------------------------------------------------------------------------
+cash=840.00 unreal=-1.90 realized=+0.00 equity=998.10 total_pnl=-1.90 positions=1 closed=0
+tweet_count=102051 source=graphql_user_tweets age=0.489s sentiment=0.0021 density_h=0.5
+entry_gate=OPEN
+latest_tweet_time=n/a tweet_id=None
+latest_tweet_text=n/a
+------------------------------------------------------------------------------------------------------------------------
+BET TWEET COUNTS (ALL EVENTS)
+EVENT                                  COUNT    REMAINING         SOURCE
+------------------------------------------------------------------------------------------------------------------------
+elon-musk-of-tweets-april-28-may-5        78       3d 07h  xtracker+live
+elon-musk-of-tweets-may-1-may-8           27       6d 07h  xtracker+live
+elon-musk-of-tweets-april-30-may-2        50      07h 16m  xtracker+live
+elon-musk-of-tweets-may-2-may-4            0       2d 07h  xtracker+live
+elon-musk-of-tweets-may-2026              37      29d 19h  xtracker+live
+elon-musk-of-tweets-may-5-may-12           0      10d 07h  xtracker+live
+------------------------------------------------------------------------------------------------------------------------
+OPEN POSITIONS (all)
+EVENT                              BRACKET SIDE HEDGE ENTRY   MARK  COST$  TRUE_E  P(MONEY) PICK_SIG CUR_CNT
+------------------------------------------------------------------------------------------------------------------------
+elon-musk-of-tweets-may-2-may-4      40-64   NO    NO  0.420  0.415  160.0  0.2021    0.6521   BUY_NO        0
+------------------------------------------------------------------------------------------------------------------------
+LAST_FILL BUY elon-musk-of-tweets-may-2-may-4 40-64 NO px=0.42 true=0.202193
+[H[J========================================================================================================================
+POLYBOT PAPER TRADE | 2026-05-02 08:43:19 UTC | credit_per_model=$1000
+========================================================================================================================
+DATA STREAM HEALTH
+SOURCE                                                 STATUS
+Elon Musk Twitter stream                               YES   
+XTracker stream                                        YES   
+Polymarket prices (all brackets)                       YES   
+Polymarket details: priced=162/162 live=159/162 ws_ok=True
+Costs: fee=0.020 slippage=0.005 uncertainty=0.050 min_trade_cost=25.0 quick_fee<900s=0.010 count_cd=45s ended_cd=900s
+SELL RULES: take_profit>=22.0% | stop_loss<=-14.0% | edge_decay(true_edge<=1.5%) | signal_flip(gap>=0.060, max_loss=3.0%)
+REENTRY GUARDS: key_cd=60s stoploss_cd=7200s flip_key_cd=1800s flip_event_cd=900s stoploss_event_cd=3600s lock=2x/21600s min_hold=600s reentry_edge+=0.020 sl_reentry_edge+=0.060
+------------------------------------------------------------------------------------------------------------------------
+cash=840.00 unreal=-1.90 realized=+0.00 equity=998.10 total_pnl=-1.90 positions=1 closed=0
+tweet_count=102051 source=graphql_user_tweets age=0.637s sentiment=0.0021 density_h=0.5
+entry_gate=OPEN
+latest_tweet_time=n/a tweet_id=None
+latest_tweet_text=n/a
+------------------------------------------------------------------------------------------------------------------------
+BET TWEET COUNTS (ALL EVENTS)
+EVENT                                  COUNT    REMAINING         SOURCE
+------------------------------------------------------------------------------------------------------------------------
+elon-musk-of-tweets-april-28-may-5        78       3d 07h  xtracker+live
+elon-musk-of-tweets-may-1-may-8           27       6d 07h  xtracker+live
+elon-musk-of-tweets-april-30-may-2        50      07h 16m  xtracker+live
+elon-musk-of-tweets-may-2-may-4            0       2d 07h  xtracker+live
+elon-musk-of-tweets-may-2026              37      29d 19h  xtracker+live
+elon-musk-of-tweets-may-5-may-12           0      10d 07h  xtracker+live
+------------------------------------------------------------------------------------------------------------------------
+OPEN POSITIONS (all)
+EVENT                              BRACKET SIDE HEDGE ENTRY   MARK  COST$  TRUE_E  P(MONEY) PICK_SIG CUR_CNT
+------------------------------------------------------------------------------------------------------------------------
+elon-musk-of-tweets-may-2-may-4      40-64   NO    NO  0.420  0.415  160.0  0.2021    0.6521   BUY_NO        0
+------------------------------------------------------------------------------------------------------------------------
+LAST_FILL BUY elon-musk-of-tweets-may-2-may-4 40-64 NO px=0.42 true=0.202193
+[H[J========================================================================================================================
+POLYBOT PAPER TRADE | 2026-05-02 08:43:28 UTC | credit_per_model=$1000
+========================================================================================================================
+DATA STREAM HEALTH
+SOURCE                                                 STATUS
+Elon Musk Twitter stream                               YES   
+XTracker stream                                        YES   
+Polymarket prices (all brackets)                       YES   
+Polymarket details: priced=162/162 live=159/162 ws_ok=True
+Costs: fee=0.020 slippage=0.005 uncertainty=0.050 min_trade_cost=25.0 quick_fee<900s=0.010 count_cd=45s ended_cd=900s
+SELL RULES: take_profit>=22.0% | stop_loss<=-14.0% | edge_decay(true_edge<=1.5%) | signal_flip(gap>=0.060, max_loss=3.0%)
+REENTRY GUARDS: key_cd=60s stoploss_cd=7200s flip_key_cd=1800s flip_event_cd=900s stoploss_event_cd=3600s lock=2x/21600s min_hold=600s reentry_edge+=0.020 sl_reentry_edge+=0.060
+------------------------------------------------------------------------------------------------------------------------
+cash=840.00 unreal=-1.90 realized=+0.00 equity=998.10 total_pnl=-1.90 positions=1 closed=0
+tweet_count=102051 source=graphql_user_tweets age=0.853s sentiment=0.0021 density_h=0.5
+entry_gate=OPEN
+latest_tweet_time=n/a tweet_id=None
+latest_tweet_text=n/a
+------------------------------------------------------------------------------------------------------------------------
+BET TWEET COUNTS (ALL EVENTS)
+EVENT                                  COUNT    REMAINING         SOURCE
+------------------------------------------------------------------------------------------------------------------------
+elon-musk-of-tweets-april-28-may-5        78       3d 07h  xtracker+live
+elon-musk-of-tweets-may-1-may-8           27       6d 07h  xtracker+live
+elon-musk-of-tweets-april-30-may-2        50      07h 16m  xtracker+live
+elon-musk-of-tweets-may-2-may-4            0       2d 07h  xtracker+live
+elon-musk-of-tweets-may-2026              37      29d 19h  xtracker+live
+elon-musk-of-tweets-may-5-may-12           0      10d 07h  xtracker+live
+------------------------------------------------------------------------------------------------------------------------
+OPEN POSITIONS (all)
+EVENT                              BRACKET SIDE HEDGE ENTRY   MARK  COST$  TRUE_E  P(MONEY) PICK_SIG CUR_CNT
+------------------------------------------------------------------------------------------------------------------------
+elon-musk-of-tweets-may-2-may-4      40-64   NO    NO  0.420  0.415  160.0  0.2021    0.6521   BUY_NO        0
+------------------------------------------------------------------------------------------------------------------------
+LAST_FILL BUY elon-musk-of-tweets-may-2-may-4 40-64 NO px=0.42 true=0.202193
+[H[J========================================================================================================================
+POLYBOT PAPER TRADE | 2026-05-02 08:43:35 UTC | credit_per_model=$1000
+========================================================================================================================
+DATA STREAM HEALTH
+SOURCE                                                 STATUS
+Elon Musk Twitter stream                               YES   
+XTracker stream                                        YES   
+Polymarket prices (all brackets)                       YES   
+Polymarket details: priced=162/162 live=159/162 ws_ok=True
+Costs: fee=0.020 slippage=0.005 uncertainty=0.050 min_trade_cost=25.0 quick_fee<900s=0.010 count_cd=45s ended_cd=900s
+SELL RULES: take_profit>=22.0% | stop_loss<=-14.0% | edge_decay(true_edge<=1.5%) | signal_flip(gap>=0.060, max_loss=3.0%)
+REENTRY GUARDS: key_cd=60s stoploss_cd=7200s flip_key_cd=1800s flip_event_cd=900s stoploss_event_cd=3600s lock=2x/21600s min_hold=600s reentry_edge+=0.020 sl_reentry_edge+=0.060
+------------------------------------------------------------------------------------------------------------------------
+cash=840.00 unreal=-1.90 realized=+0.00 equity=998.10 total_pnl=-1.90 positions=1 closed=0
+tweet_count=102051 source=graphql_user_tweets age=0.503s sentiment=0.0021 density_h=0.5
+entry_gate=OPEN
+latest_tweet_time=n/a tweet_id=None
+latest_tweet_text=n/a
+------------------------------------------------------------------------------------------------------------------------
+BET TWEET COUNTS (ALL EVENTS)
+EVENT                                  COUNT    REMAINING         SOURCE
+------------------------------------------------------------------------------------------------------------------------
+elon-musk-of-tweets-april-28-may-5        78       3d 07h  xtracker+live
+elon-musk-of-tweets-may-1-may-8           27       6d 07h  xtracker+live
+elon-musk-of-tweets-april-30-may-2        50      07h 16m  xtracker+live
+elon-musk-of-tweets-may-2-may-4            0       2d 07h  xtracker+live
+elon-musk-of-tweets-may-2026              37      29d 19h  xtracker+live
+elon-musk-of-tweets-may-5-may-12           0      10d 07h  xtracker+live
+------------------------------------------------------------------------------------------------------------------------
+OPEN POSITIONS (all)
+EVENT                              BRACKET SIDE HEDGE ENTRY   MARK  COST$  TRUE_E  P(MONEY) PICK_SIG CUR_CNT
+------------------------------------------------------------------------------------------------------------------------
+elon-musk-of-tweets-may-2-may-4      40-64   NO    NO  0.420  0.415  160.0  0.2021    0.6521   BUY_NO        0
+------------------------------------------------------------------------------------------------------------------------
+LAST_FILL BUY elon-musk-of-tweets-may-2-may-4 40-64 NO px=0.42 true=0.202193
+[H[J========================================================================================================================
+POLYBOT PAPER TRADE | 2026-05-02 08:43:43 UTC | credit_per_model=$1000
+========================================================================================================================
+DATA STREAM HEALTH
+SOURCE                                                 STATUS
+Elon Musk Twitter stream                               YES   
+XTracker stream                                        YES   
+Polymarket prices (all brackets)                       YES   
+Polymarket details: priced=162/162 live=159/162 ws_ok=True
+Costs: fee=0.020 slippage=0.005 uncertainty=0.050 min_trade_cost=25.0 quick_fee<900s=0.010 count_cd=45s ended_cd=900s
+SELL RULES: take_profit>=22.0% | stop_loss<=-14.0% | edge_decay(true_edge<=1.5%) | signal_flip(gap>=0.060, max_loss=3.0%)
+REENTRY GUARDS: key_cd=60s stoploss_cd=7200s flip_key_cd=1800s flip_event_cd=900s stoploss_event_cd=3600s lock=2x/21600s min_hold=600s reentry_edge+=0.020 sl_reentry_edge+=0.060
+------------------------------------------------------------------------------------------------------------------------
+cash=840.00 unreal=-1.90 realized=+0.00 equity=998.10 total_pnl=-1.90 positions=1 closed=0
+tweet_count=102051 source=graphql_user_tweets age=0.529s sentiment=0.0021 density_h=0.5
+entry_gate=OPEN
+latest_tweet_time=n/a tweet_id=None
+latest_tweet_text=n/a
+------------------------------------------------------------------------------------------------------------------------
+BET TWEET COUNTS (ALL EVENTS)
+EVENT                                  COUNT    REMAINING         SOURCE
+------------------------------------------------------------------------------------------------------------------------
+elon-musk-of-tweets-april-28-may-5        78       3d 07h  xtracker+live
+elon-musk-of-tweets-may-1-may-8           27       6d 07h  xtracker+live
+elon-musk-of-tweets-april-30-may-2        50      07h 16m  xtracker+live
+elon-musk-of-tweets-may-2-may-4            0       2d 07h  xtracker+live
+elon-musk-of-tweets-may-2026              37      29d 19h  xtracker+live
+elon-musk-of-tweets-may-5-may-12           0      10d 07h  xtracker+live
+------------------------------------------------------------------------------------------------------------------------
+OPEN POSITIONS (all)
+EVENT                              BRACKET SIDE HEDGE ENTRY   MARK  COST$  TRUE_E  P(MONEY) PICK_SIG CUR_CNT
+------------------------------------------------------------------------------------------------------------------------
+elon-musk-of-tweets-may-2-may-4      40-64   NO    NO  0.420  0.415  160.0  0.2021    0.6521   BUY_NO        0
+------------------------------------------------------------------------------------------------------------------------
+LAST_FILL BUY elon-musk-of-tweets-may-2-may-4 40-64 NO px=0.42 true=0.202193
+[H[J========================================================================================================================
+POLYBOT PAPER TRADE | 2026-05-02 08:43:51 UTC | credit_per_model=$1000
+========================================================================================================================
+DATA STREAM HEALTH
+SOURCE                                                 STATUS
+Elon Musk Twitter stream                               YES   
+XTracker stream                                        YES   
+Polymarket prices (all brackets)                       YES   
+Polymarket details: priced=162/162 live=159/162 ws_ok=True
+Costs: fee=0.020 slippage=0.005 uncertainty=0.050 min_trade_cost=25.0 quick_fee<900s=0.010 count_cd=45s ended_cd=900s
+SELL RULES: take_profit>=22.0% | stop_loss<=-14.0% | edge_decay(true_edge<=1.5%) | signal_flip(gap>=0.060, max_loss=3.0%)
+REENTRY GUARDS: key_cd=60s stoploss_cd=7200s flip_key_cd=1800s flip_event_cd=900s stoploss_event_cd=3600s lock=2x/21600s min_hold=600s reentry_edge+=0.020 sl_reentry_edge+=0.060
+------------------------------------------------------------------------------------------------------------------------
+cash=840.00 unreal=-1.90 realized=+0.00 equity=998.10 total_pnl=-1.90 positions=1 closed=0
+tweet_count=102051 source=graphql_user_tweets age=0.698s sentiment=0.0021 density_h=0.5
+entry_gate=OPEN
+latest_tweet_time=n/a tweet_id=None
+latest_tweet_text=n/a
+------------------------------------------------------------------------------------------------------------------------
+BET TWEET COUNTS (ALL EVENTS)
+EVENT                                  COUNT    REMAINING         SOURCE
+------------------------------------------------------------------------------------------------------------------------
+elon-musk-of-tweets-april-28-may-5        78       3d 07h  xtracker+live
+elon-musk-of-tweets-may-1-may-8           27       6d 07h  xtracker+live
+elon-musk-of-tweets-april-30-may-2        50      07h 16m  xtracker+live
+elon-musk-of-tweets-may-2-may-4            0       2d 07h  xtracker+live
+elon-musk-of-tweets-may-2026              37      29d 19h  xtracker+live
+elon-musk-of-tweets-may-5-may-12           0      10d 07h  xtracker+live
+------------------------------------------------------------------------------------------------------------------------
+OPEN POSITIONS (all)
+EVENT                              BRACKET SIDE HEDGE ENTRY   MARK  COST$  TRUE_E  P(MONEY) PICK_SIG CUR_CNT
+------------------------------------------------------------------------------------------------------------------------
+elon-musk-of-tweets-may-2-may-4      40-64   NO    NO  0.420  0.415  160.0  0.2021    0.6521   BUY_NO        0
+------------------------------------------------------------------------------------------------------------------------
+LAST_FILL BUY elon-musk-of-tweets-may-2-may-4 40-64 NO px=0.42 true=0.202193
+[H[J========================================================================================================================
+POLYBOT PAPER TRADE | 2026-05-02 08:43:59 UTC | credit_per_model=$1000
+========================================================================================================================
+DATA STREAM HEALTH
+SOURCE                                                 STATUS
+Elon Musk Twitter stream                               YES   
+XTracker stream                                        YES   
+Polymarket prices (all brackets)                       YES   
+Polymarket details: priced=162/162 live=159/162 ws_ok=True
+Costs: fee=0.020 slippage=0.005 uncertainty=0.050 min_trade_cost=25.0 quick_fee<900s=0.010 count_cd=45s ended_cd=900s
+SELL RULES: take_profit>=22.0% | stop_loss<=-14.0% | edge_decay(true_edge<=1.5%) | signal_flip(gap>=0.060, max_loss=3.0%)
+REENTRY GUARDS: key_cd=60s stoploss_cd=7200s flip_key_cd=1800s flip_event_cd=900s stoploss_event_cd=3600s lock=2x/21600s min_hold=600s reentry_edge+=0.020 sl_reentry_edge+=0.060
+------------------------------------------------------------------------------------------------------------------------
+cash=840.00 unreal=-1.90 realized=+0.00 equity=998.10 total_pnl=-1.90 positions=1 closed=0
+tweet_count=102051 source=graphql_user_tweets age=0.501s sentiment=0.0021 density_h=0.5
+entry_gate=OPEN
+latest_tweet_time=n/a tweet_id=None
+latest_tweet_text=n/a
+------------------------------------------------------------------------------------------------------------------------
+BET TWEET COUNTS (ALL EVENTS)
+EVENT                                  COUNT    REMAINING         SOURCE
+------------------------------------------------------------------------------------------------------------------------
+elon-musk-of-tweets-april-28-may-5        78       3d 07h  xtracker+live
+elon-musk-of-tweets-may-1-may-8           27       6d 07h  xtracker+live
+elon-musk-of-tweets-april-30-may-2        50      07h 15m  xtracker+live
+elon-musk-of-tweets-may-2-may-4            0       2d 07h  xtracker+live
+elon-musk-of-tweets-may-2026              37      29d 19h  xtracker+live
+elon-musk-of-tweets-may-5-may-12           0      10d 07h  xtracker+live
+------------------------------------------------------------------------------------------------------------------------
+OPEN POSITIONS (all)
+EVENT                              BRACKET SIDE HEDGE ENTRY   MARK  COST$  TRUE_E  P(MONEY) PICK_SIG CUR_CNT
+------------------------------------------------------------------------------------------------------------------------
+elon-musk-of-tweets-may-2-may-4      40-64   NO    NO  0.420  0.415  160.0  0.2021    0.6521   BUY_NO        0
+------------------------------------------------------------------------------------------------------------------------
+LAST_FILL BUY elon-musk-of-tweets-may-2-may-4 40-64 NO px=0.42 true=0.202193
+[H[J========================================================================================================================
+POLYBOT PAPER TRADE | 2026-05-02 08:44:09 UTC | credit_per_model=$1000
+========================================================================================================================
+DATA STREAM HEALTH
+SOURCE                                                 STATUS
+Elon Musk Twitter stream                               YES   
+XTracker stream                                        YES   
+Polymarket prices (all brackets)                       YES   
+Polymarket details: priced=162/162 live=159/162 ws_ok=True
+Costs: fee=0.020 slippage=0.005 uncertainty=0.050 min_trade_cost=25.0 quick_fee<900s=0.010 count_cd=45s ended_cd=900s
+SELL RULES: take_profit>=22.0% | stop_loss<=-14.0% | edge_decay(true_edge<=1.5%) | signal_flip(gap>=0.060, max_loss=3.0%)
+REENTRY GUARDS: key_cd=60s stoploss_cd=7200s flip_key_cd=1800s flip_event_cd=900s stoploss_event_cd=3600s lock=2x/21600s min_hold=600s reentry_edge+=0.020 sl_reentry_edge+=0.060
+------------------------------------------------------------------------------------------------------------------------
+cash=840.00 unreal=-1.90 realized=+0.00 equity=998.10 total_pnl=-1.90 positions=1 closed=0
+tweet_count=102051 source=graphql_user_tweets age=0.722s sentiment=0.0021 density_h=0.5
+entry_gate=OPEN
+latest_tweet_time=n/a tweet_id=None
+latest_tweet_text=n/a
+------------------------------------------------------------------------------------------------------------------------
+BET TWEET COUNTS (ALL EVENTS)
+EVENT                                  COUNT    REMAINING         SOURCE
+------------------------------------------------------------------------------------------------------------------------
+elon-musk-of-tweets-april-28-may-5        78       3d 07h  xtracker+live
+elon-musk-of-tweets-may-1-may-8           27       6d 07h  xtracker+live
+elon-musk-of-tweets-april-30-may-2        50      07h 15m  xtracker+live
+elon-musk-of-tweets-may-2-may-4            0       2d 07h  xtracker+live
+elon-musk-of-tweets-may-2026              37      29d 19h  xtracker+live
+elon-musk-of-tweets-may-5-may-12           0      10d 07h  xtracker+live
+------------------------------------------------------------------------------------------------------------------------
+OPEN POSITIONS (all)
+EVENT                              BRACKET SIDE HEDGE ENTRY   MARK  COST$  TRUE_E  P(MONEY) PICK_SIG CUR_CNT
+------------------------------------------------------------------------------------------------------------------------
+elon-musk-of-tweets-may-2-may-4      40-64   NO    NO  0.420  0.415  160.0  0.2021    0.6521   BUY_NO        0
+------------------------------------------------------------------------------------------------------------------------
+LAST_FILL BUY elon-musk-of-tweets-may-2-may-4 40-64 NO px=0.42 true=0.202193
+[H[J========================================================================================================================
+POLYBOT PAPER TRADE | 2026-05-02 08:44:16 UTC | credit_per_model=$1000
+========================================================================================================================
+DATA STREAM HEALTH
+SOURCE                                                 STATUS
+Elon Musk Twitter stream                               YES   
+XTracker stream                                        YES   
+Polymarket prices (all brackets)                       YES   
+Polymarket details: priced=162/162 live=159/162 ws_ok=True
+Costs: fee=0.020 slippage=0.005 uncertainty=0.050 min_trade_cost=25.0 quick_fee<900s=0.010 count_cd=45s ended_cd=900s
+SELL RULES: take_profit>=22.0% | stop_loss<=-14.0% | edge_decay(true_edge<=1.5%) | signal_flip(gap>=0.060, max_loss=3.0%)
+REENTRY GUARDS: key_cd=60s stoploss_cd=7200s flip_key_cd=1800s flip_event_cd=900s stoploss_event_cd=3600s lock=2x/21600s min_hold=600s reentry_edge+=0.020 sl_reentry_edge+=0.060
+------------------------------------------------------------------------------------------------------------------------
+cash=840.00 unreal=-1.90 realized=+0.00 equity=998.10 total_pnl=-1.90 positions=1 closed=0
+tweet_count=102051 source=graphql_user_tweets age=0.732s sentiment=0.0021 density_h=0.5
+entry_gate=OPEN
+latest_tweet_time=n/a tweet_id=None
+latest_tweet_text=n/a
+------------------------------------------------------------------------------------------------------------------------
+BET TWEET COUNTS (ALL EVENTS)
+EVENT                                  COUNT    REMAINING         SOURCE
+------------------------------------------------------------------------------------------------------------------------
+elon-musk-of-tweets-april-28-may-5        78       3d 07h  xtracker+live
+elon-musk-of-tweets-may-1-may-8           27       6d 07h  xtracker+live
+elon-musk-of-tweets-april-30-may-2        50      07h 15m  xtracker+live
+elon-musk-of-tweets-may-2-may-4            0       2d 07h  xtracker+live
+elon-musk-of-tweets-may-2026              37      29d 19h  xtracker+live
+elon-musk-of-tweets-may-5-may-12           0      10d 07h  xtracker+live
+------------------------------------------------------------------------------------------------------------------------
+OPEN POSITIONS (all)
+EVENT                              BRACKET SIDE HEDGE ENTRY   MARK  COST$  TRUE_E  P(MONEY) PICK_SIG CUR_CNT
+------------------------------------------------------------------------------------------------------------------------
+elon-musk-of-tweets-may-2-may-4      40-64   NO    NO  0.420  0.415  160.0  0.2021    0.6521   BUY_NO        0
+------------------------------------------------------------------------------------------------------------------------
+LAST_FILL BUY elon-musk-of-tweets-may-2-may-4 40-64 NO px=0.42 true=0.202193
+[H[J========================================================================================================================
+POLYBOT PAPER TRADE | 2026-05-02 08:44:23 UTC | credit_per_model=$1000
+========================================================================================================================
+DATA STREAM HEALTH
+SOURCE                                                 STATUS
+Elon Musk Twitter stream                               YES   
+XTracker stream                                        YES   
+Polymarket prices (all brackets)                       YES   
+Polymarket details: priced=162/162 live=159/162 ws_ok=True
+Costs: fee=0.020 slippage=0.005 uncertainty=0.050 min_trade_cost=25.0 quick_fee<900s=0.010 count_cd=45s ended_cd=900s
+SELL RULES: take_profit>=22.0% | stop_loss<=-14.0% | edge_decay(true_edge<=1.5%) | signal_flip(gap>=0.060, max_loss=3.0%)
+REENTRY GUARDS: key_cd=60s stoploss_cd=7200s flip_key_cd=1800s flip_event_cd=900s stoploss_event_cd=3600s lock=2x/21600s min_hold=600s reentry_edge+=0.020 sl_reentry_edge+=0.060
+------------------------------------------------------------------------------------------------------------------------
+cash=840.00 unreal=-1.90 realized=+0.00 equity=998.10 total_pnl=-1.90 positions=1 closed=0
+tweet_count=102051 source=graphql_user_tweets age=0.677s sentiment=0.0021 density_h=0.5
+entry_gate=OPEN
+latest_tweet_time=n/a tweet_id=None
+latest_tweet_text=n/a
+------------------------------------------------------------------------------------------------------------------------
+BET TWEET COUNTS (ALL EVENTS)
+EVENT                                  COUNT    REMAINING         SOURCE
+------------------------------------------------------------------------------------------------------------------------
+elon-musk-of-tweets-april-28-may-5        78       3d 07h  xtracker+live
+elon-musk-of-tweets-may-1-may-8           27       6d 07h  xtracker+live
+elon-musk-of-tweets-april-30-may-2        50      07h 15m  xtracker+live
+elon-musk-of-tweets-may-2-may-4            0       2d 07h  xtracker+live
+elon-musk-of-tweets-may-2026              37      29d 19h  xtracker+live
+elon-musk-of-tweets-may-5-may-12           0      10d 07h  xtracker+live
+------------------------------------------------------------------------------------------------------------------------
+OPEN POSITIONS (all)
+EVENT                              BRACKET SIDE HEDGE ENTRY   MARK  COST$  TRUE_E  P(MONEY) PICK_SIG CUR_CNT
+------------------------------------------------------------------------------------------------------------------------
+elon-musk-of-tweets-may-2-may-4      40-64   NO    NO  0.420  0.415  160.0  0.2021    0.6521   BUY_NO        0
+------------------------------------------------------------------------------------------------------------------------
+LAST_FILL BUY elon-musk-of-tweets-may-2-may-4 40-64 NO px=0.42 true=0.202193
+[H[J========================================================================================================================
+POLYBOT PAPER TRADE | 2026-05-02 08:44:32 UTC | credit_per_model=$1000
+========================================================================================================================
+DATA STREAM HEALTH
+SOURCE                                                 STATUS
+Elon Musk Twitter stream                               YES   
+XTracker stream                                        YES   
+Polymarket prices (all brackets)                       YES   
+Polymarket details: priced=162/162 live=159/162 ws_ok=True
+Costs: fee=0.020 slippage=0.005 uncertainty=0.050 min_trade_cost=25.0 quick_fee<900s=0.010 count_cd=45s ended_cd=900s
+SELL RULES: take_profit>=22.0% | stop_loss<=-14.0% | edge_decay(true_edge<=1.5%) | signal_flip(gap>=0.060, max_loss=3.0%)
+REENTRY GUARDS: key_cd=60s stoploss_cd=7200s flip_key_cd=1800s flip_event_cd=900s stoploss_event_cd=3600s lock=2x/21600s min_hold=600s reentry_edge+=0.020 sl_reentry_edge+=0.060
+------------------------------------------------------------------------------------------------------------------------
+cash=840.00 unreal=-1.90 realized=+0.00 equity=998.10 total_pnl=-1.90 positions=1 closed=0
+tweet_count=102051 source=graphql_user_tweets age=0.764s sentiment=0.0021 density_h=0.5
+entry_gate=OPEN
+latest_tweet_time=n/a tweet_id=None
+latest_tweet_text=n/a
+------------------------------------------------------------------------------------------------------------------------
+BET TWEET COUNTS (ALL EVENTS)
+EVENT                                  COUNT    REMAINING         SOURCE
+------------------------------------------------------------------------------------------------------------------------
+elon-musk-of-tweets-april-28-may-5        78       3d 07h  xtracker+live
+elon-musk-of-tweets-may-1-may-8           27       6d 07h  xtracker+live
+elon-musk-of-tweets-april-30-may-2        50      07h 15m  xtracker+live
+elon-musk-of-tweets-may-2-may-4            0       2d 07h  xtracker+live
+elon-musk-of-tweets-may-2026              37      29d 19h  xtracker+live
+elon-musk-of-tweets-may-5-may-12           0      10d 07h  xtracker+live
+------------------------------------------------------------------------------------------------------------------------
+OPEN POSITIONS (all)
+EVENT                              BRACKET SIDE HEDGE ENTRY   MARK  COST$  TRUE_E  P(MONEY) PICK_SIG CUR_CNT
+------------------------------------------------------------------------------------------------------------------------
+elon-musk-of-tweets-may-2-may-4      40-64   NO    NO  0.420  0.415  160.0  0.2021    0.6521   BUY_NO        0
+------------------------------------------------------------------------------------------------------------------------
+LAST_FILL BUY elon-musk-of-tweets-may-2-may-4 40-64 NO px=0.42 true=0.202193
+[H[J========================================================================================================================
+POLYBOT PAPER TRADE | 2026-05-02 08:44:39 UTC | credit_per_model=$1000
+========================================================================================================================
+DATA STREAM HEALTH
+SOURCE                                                 STATUS
+Elon Musk Twitter stream                               YES   
+XTracker stream                                        YES   
+Polymarket prices (all brackets)                       YES   
+Polymarket details: priced=162/162 live=159/162 ws_ok=True
+Costs: fee=0.020 slippage=0.005 uncertainty=0.050 min_trade_cost=25.0 quick_fee<900s=0.010 count_cd=45s ended_cd=900s
+SELL RULES: take_profit>=22.0% | stop_loss<=-14.0% | edge_decay(true_edge<=1.5%) | signal_flip(gap>=0.060, max_loss=3.0%)
+REENTRY GUARDS: key_cd=60s stoploss_cd=7200s flip_key_cd=1800s flip_event_cd=900s stoploss_event_cd=3600s lock=2x/21600s min_hold=600s reentry_edge+=0.020 sl_reentry_edge+=0.060
+------------------------------------------------------------------------------------------------------------------------
+cash=840.00 unreal=-1.90 realized=+0.00 equity=998.10 total_pnl=-1.90 positions=1 closed=0
+tweet_count=102051 source=graphql_user_tweets age=0.63s sentiment=0.0021 density_h=0.5
+entry_gate=OPEN
+latest_tweet_time=n/a tweet_id=None
+latest_tweet_text=n/a
+------------------------------------------------------------------------------------------------------------------------
+BET TWEET COUNTS (ALL EVENTS)
+EVENT                                  COUNT    REMAINING         SOURCE
+------------------------------------------------------------------------------------------------------------------------
+elon-musk-of-tweets-april-28-may-5        78       3d 07h  xtracker+live
+elon-musk-of-tweets-may-1-may-8           27       6d 07h  xtracker+live
+elon-musk-of-tweets-april-30-may-2        50      07h 15m  xtracker+live
+elon-musk-of-tweets-may-2-may-4            0       2d 07h  xtracker+live
+elon-musk-of-tweets-may-2026              37      29d 19h  xtracker+live
+elon-musk-of-tweets-may-5-may-12           0      10d 07h  xtracker+live
+------------------------------------------------------------------------------------------------------------------------
+OPEN POSITIONS (all)
+EVENT                              BRACKET SIDE HEDGE ENTRY   MARK  COST$  TRUE_E  P(MONEY) PICK_SIG CUR_CNT
+------------------------------------------------------------------------------------------------------------------------
+elon-musk-of-tweets-may-2-may-4      40-64   NO    NO  0.420  0.415  160.0  0.2021    0.6521   BUY_NO        0
+------------------------------------------------------------------------------------------------------------------------
+LAST_FILL BUY elon-musk-of-tweets-may-2-may-4 40-64 NO px=0.42 true=0.202193
+[H[J========================================================================================================================
+POLYBOT PAPER TRADE | 2026-05-02 08:44:47 UTC | credit_per_model=$1000
+========================================================================================================================
+DATA STREAM HEALTH
+SOURCE                                                 STATUS
+Elon Musk Twitter stream                               YES   
+XTracker stream                                        YES   
+Polymarket prices (all brackets)                       YES   
+Polymarket details: priced=162/162 live=159/162 ws_ok=True
+Costs: fee=0.020 slippage=0.005 uncertainty=0.050 min_trade_cost=25.0 quick_fee<900s=0.010 count_cd=45s ended_cd=900s
+SELL RULES: take_profit>=22.0% | stop_loss<=-14.0% | edge_decay(true_edge<=1.5%) | signal_flip(gap>=0.060, max_loss=3.0%)
+REENTRY GUARDS: key_cd=60s stoploss_cd=7200s flip_key_cd=1800s flip_event_cd=900s stoploss_event_cd=3600s lock=2x/21600s min_hold=600s reentry_edge+=0.020 sl_reentry_edge+=0.060
+------------------------------------------------------------------------------------------------------------------------
+cash=840.00 unreal=-1.90 realized=+0.00 equity=998.10 total_pnl=-1.90 positions=1 closed=0
+tweet_count=102051 source=graphql_user_tweets age=0.478s sentiment=0.0021 density_h=0.5
+entry_gate=OPEN
+latest_tweet_time=n/a tweet_id=None
+latest_tweet_text=n/a
+------------------------------------------------------------------------------------------------------------------------
+BET TWEET COUNTS (ALL EVENTS)
+EVENT                                  COUNT    REMAINING         SOURCE
+------------------------------------------------------------------------------------------------------------------------
+elon-musk-of-tweets-april-28-may-5        78       3d 07h  xtracker+live
+elon-musk-of-tweets-may-1-may-8           27       6d 07h  xtracker+live
+elon-musk-of-tweets-april-30-may-2        50      07h 15m  xtracker+live
+elon-musk-of-tweets-may-2-may-4            0       2d 07h  xtracker+live
+elon-musk-of-tweets-may-2026              37      29d 19h  xtracker+live
+elon-musk-of-tweets-may-5-may-12           0      10d 07h  xtracker+live
+------------------------------------------------------------------------------------------------------------------------
+OPEN POSITIONS (all)
+EVENT                              BRACKET SIDE HEDGE ENTRY   MARK  COST$  TRUE_E  P(MONEY) PICK_SIG CUR_CNT
+------------------------------------------------------------------------------------------------------------------------
+elon-musk-of-tweets-may-2-may-4      40-64   NO    NO  0.420  0.415  160.0  0.2021    0.6521   BUY_NO        0
+------------------------------------------------------------------------------------------------------------------------
+LAST_FILL BUY elon-musk-of-tweets-may-2-may-4 40-64 NO px=0.42 true=0.202193
+[H[J========================================================================================================================
+POLYBOT PAPER TRADE | 2026-05-02 08:44:55 UTC | credit_per_model=$1000
+========================================================================================================================
+DATA STREAM HEALTH
+SOURCE                                                 STATUS
+Elon Musk Twitter stream                               YES   
+XTracker stream                                        YES   
+Polymarket prices (all brackets)                       YES   
+Polymarket details: priced=162/162 live=159/162 ws_ok=True
+Costs: fee=0.020 slippage=0.005 uncertainty=0.050 min_trade_cost=25.0 quick_fee<900s=0.010 count_cd=45s ended_cd=900s
+SELL RULES: take_profit>=22.0% | stop_loss<=-14.0% | edge_decay(true_edge<=1.5%) | signal_flip(gap>=0.060, max_loss=3.0%)
+REENTRY GUARDS: key_cd=60s stoploss_cd=7200s flip_key_cd=1800s flip_event_cd=900s stoploss_event_cd=3600s lock=2x/21600s min_hold=600s reentry_edge+=0.020 sl_reentry_edge+=0.060
+------------------------------------------------------------------------------------------------------------------------
+cash=840.00 unreal=-1.90 realized=+0.00 equity=998.10 total_pnl=-1.90 positions=1 closed=0
+tweet_count=102051 source=graphql_user_tweets age=0.507s sentiment=0.0021 density_h=0.5
+entry_gate=OPEN
+latest_tweet_time=n/a tweet_id=None
+latest_tweet_text=n/a
+------------------------------------------------------------------------------------------------------------------------
+BET TWEET COUNTS (ALL EVENTS)
+EVENT                                  COUNT    REMAINING         SOURCE
+------------------------------------------------------------------------------------------------------------------------
+elon-musk-of-tweets-april-28-may-5        78       3d 07h  xtracker+live

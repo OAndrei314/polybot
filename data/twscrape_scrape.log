@@ -1,0 +1,15 @@
+Pool: 1/1 accounts active
+Resuming — 0 tweets already on disk
+2026-05-01 23:46:17.375 | ERROR    | twscrape.models:_write_dump:697 - Failed to parse response of tweet, writing dump to /tmp/twscrape/twscrape_parse_error_2026-05-01_21-46-17_ksgef.txt
+2026-05-01 23:46:17.386 | ERROR    | twscrape.models:_write_dump:697 - Failed to parse response of tweet, writing dump to /tmp/twscrape/twscrape_parse_error_2026-05-01_21-46-17_cvunw.txt
+2026-05-01 23:46:17.395 | ERROR    | twscrape.models:_write_dump:697 - Failed to parse response of tweet, writing dump to /tmp/twscrape/twscrape_parse_error_2026-05-01_21-46-17_htfgd.txt
+2026-05-01 23:46:17.407 | ERROR    | twscrape.models:_write_dump:697 - Failed to parse response of tweet, writing dump to /tmp/twscrape/twscrape_parse_error_2026-05-01_21-46-17_nldng.txt
+2026-05-01 23:46:17.416 | ERROR    | twscrape.models:_write_dump:697 - Failed to parse response of tweet, writing dump to /tmp/twscrape/twscrape_parse_error_2026-05-01_21-46-17_buhuc.txt
+2026-05-01 23:46:17.427 | ERROR    | twscrape.models:_write_dump:697 - Failed to parse response of tweet, writing dump to /tmp/twscrape/twscrape_parse_error_2026-05-01_21-46-17_mphir.txt
+2026-05-01 23:46:17.439 | ERROR    | twscrape.models:_write_dump:697 - Failed to parse response of tweet, writing dump to /tmp/twscrape/twscrape_parse_error_2026-05-01_21-46-17_xdkqt.txt
+2026-05-01 23:46:17.448 | ERROR    | twscrape.models:_write_dump:697 - Failed to parse response of tweet, writing dump to /tmp/twscrape/twscrape_parse_error_2026-05-01_21-46-17_gcgwi.txt
+2026-05-01 23:46:17.455 | ERROR    | twscrape.models:_write_dump:697 - Failed to parse response of tweet, writing dump to /tmp/twscrape/twscrape_parse_error_2026-05-01_21-46-17_iammh.txt
+  500 tweets … 2026-04-22
+  1,000 tweets … 2026-04-15
+  1,500 tweets … 2026-04-09
+Done. 1,729 new tweets (33 skipped)

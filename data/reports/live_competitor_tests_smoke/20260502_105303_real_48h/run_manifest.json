@@ -1,0 +1,29 @@
+{
+  "run_dir": "data/reports/live_competitor_tests_smoke/20260502_105303_real_48h",
+  "started_at_utc": "2026-05-02T10:53:03.822605+00:00",
+  "duration_h": 48.0,
+  "tick_s": 1.0,
+  "competitors": [
+    "b_0000",
+    "a_0003",
+    "a_0007",
+    "b_0004",
+    "b_0001",
+    "b_0005",
+    "b_0003",
+    "a_0004",
+    "b_0002",
+    "a_0009",
+    "baseline",
+    "a_0006",
+    "a_0000",
+    "a_0010",
+    "a_0001",
+    "a_0002",
+    "a_0008",
+    "a_0005",
+    "a_0011"
+  ],
+  "real_data_only": true,
+  "input_archive": "data/reports/live_competitor_tests_smoke/20260502_105303_real_48h/real_input_ticks.jsonl.gz"
+}

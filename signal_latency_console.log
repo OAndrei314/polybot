@@ -1,0 +1,34 @@
+2026-05-05 14:26:14,965 INFO latency_bench started DirectSSEClient
+2026-05-05 14:26:14,972 INFO latency_bench [browser_observer] tailing tweet_signal_events.jsonl from offset 2674
+2026-05-05 14:26:14,974 INFO latency_bench latency-bench running. Ctrl-C to stop.  out_dir=data/signal_latency
+2026-05-05 14:26:15,514 INFO latency_bench 
+=== latency-bench tick @ 2026-05-05T12:26:15.513474+00:00  uptime=0.6s tweets_seen=0 ===
+direct_sse alive=True session=no last_frame_age=— seen=0
+  direct_sse             det=0   events=1     lat[mean/p50/min/max]= None/None/None/None ms
+2026-05-05 14:26:15,554 INFO httpx HTTP Request: GET https://api.x.com/live_pipeline/events?topic=%2Fsystem%2Fconfig "HTTP/1.1 200 OK"
+2026-05-05 14:26:15,556 INFO sse_direct session_id=b0cad86c-24cc-46eb-a6fb-83d82928cb61
+2026-05-05 14:26:15,738 INFO httpx HTTP Request: GET https://x.com/elonmusk "HTTP/1.1 401 Unauthorized"
+2026-05-05 14:26:15,738 INFO latency_bench [gql_user_tweets] warmup x.com/elonmusk status=401
+2026-05-05 14:26:15,739 INFO latency_bench [gql_user_tweets] poll every 30.0s -> https://x.com/i/api/graphql/Y59DTUMfcKmUAATiT2SlTw/UserTweets?variables=%7B%22userId%22%3A…
+2026-05-05 14:26:15,879 INFO httpx HTTP Request: POST https://api.x.com/1.1/live_pipeline/update_subscriptions "HTTP/1.1 200 OK"
+2026-05-05 14:26:15,881 INFO sse_direct subscribe url=['live_pipeline', 'update_subscriptions'] status=200 body={"subscriptions" : {"errors" : [{"topic" : "user_timeline:44196397", "code" : 32, "message" : "Unauthorized"}]}}
+2026-05-05 14:26:15,899 INFO httpx HTTP Request: GET https://x.com/i/api/graphql/Y59DTUMfcKmUAATiT2SlTw/UserTweets?variables=%7B%22userId%22%3A%2244196397%22%2C%22count%22%3A1%2C%22includePromotedContent%22%3Atrue%2C%22withQuickPromoteEligibilityTweetFields%22%3Atrue%2C%22withVoice%22%3Atrue%7D&features=%7B%22rweb_video_screen_enabled%22%3Afalse%2C%22responsive_web_graphql_timeline_navigation_enabled%22%3Atrue%2C%22communities_web_enable_tweet_community_results_fetch%22%3Atrue%2C%22articles_preview_enabled%22%3Atrue%2C%22responsive_web_edit_tweet_api_enabled%22%3Atrue%2C%22view_counts_everywhere_api_enabled%22%3Atrue%2C%22longform_notetweets_consumption_enabled%22%3Atrue%2C%22tweet_with_visibility_results_prefer_gql_limited_actions_policy_enabled%22%3Atrue%2C%22longform_notetweets_rich_text_read_enabled%22%3Atrue%7D&fieldToggles=%7B%22withArticlePlainText%22%3Afalse%7D "HTTP/1.1 429 Too Many Requests"
+2026-05-05 14:26:15,900 INFO latency_bench [gql_user_tweets] status=429 Rate limit exceeded
+
+2026-05-05 14:27:15,675 INFO latency_bench 
+=== latency-bench tick @ 2026-05-05T12:27:15.674701+00:00  uptime=60.8s tweets_seen=0 ===
+direct_sse alive=True session=yes last_frame_age=60.1s seen=0
+  direct_sse             det=0   events=5     lat[mean/p50/min/max]= None/None/None/None ms
+  gql_user_tweets        det=0   events=1     lat[mean/p50/min/max]= None/None/None/None ms
+2026-05-05 14:27:15,977 INFO httpx HTTP Request: GET https://x.com/i/api/graphql/Y59DTUMfcKmUAATiT2SlTw/UserTweets?variables=%7B%22userId%22%3A%2244196397%22%2C%22count%22%3A1%2C%22includePromotedContent%22%3Atrue%2C%22withQuickPromoteEligibilityTweetFields%22%3Atrue%2C%22withVoice%22%3Atrue%7D&features=%7B%22rweb_video_screen_enabled%22%3Afalse%2C%22responsive_web_graphql_timeline_navigation_enabled%22%3Atrue%2C%22communities_web_enable_tweet_community_results_fetch%22%3Atrue%2C%22articles_preview_enabled%22%3Atrue%2C%22responsive_web_edit_tweet_api_enabled%22%3Atrue%2C%22view_counts_everywhere_api_enabled%22%3Atrue%2C%22longform_notetweets_consumption_enabled%22%3Atrue%2C%22tweet_with_visibility_results_prefer_gql_limited_actions_policy_enabled%22%3Atrue%2C%22longform_notetweets_rich_text_read_enabled%22%3Atrue%7D&fieldToggles=%7B%22withArticlePlainText%22%3Afalse%7D "HTTP/1.1 429 Too Many Requests"
+2026-05-05 14:27:15,979 INFO latency_bench [gql_user_tweets] status=429 Rate limit exceeded
+
+2026-05-05 14:28:15,794 INFO latency_bench 
+=== latency-bench tick @ 2026-05-05T12:28:15.793395+00:00  uptime=120.9s tweets_seen=0 ===
+direct_sse alive=True session=yes last_frame_age=120.2s seen=0
+  direct_sse             det=0   events=5     lat[mean/p50/min/max]= None/None/None/None ms
+  gql_user_tweets        det=0   events=2     lat[mean/p50/min/max]= None/None/None/None ms
+2026-05-05 14:28:21,812 INFO httpx HTTP Request: GET https://api.x.com/live_pipeline/events?topic=%2Fsystem%2Fconfig "HTTP/1.1 200 OK"
+2026-05-05 14:28:21,814 INFO sse_direct session_id=464e3d43-cac8-4d73-88fb-9a3ce4fd7cc4
+2026-05-05 14:28:22,149 INFO httpx HTTP Request: POST https://api.x.com/1.1/live_pipeline/update_subscriptions "HTTP/1.1 200 OK"
+2026-05-05 14:28:22,150 INFO sse_direct subscribe url=['live_pipeline', 'update_subscriptions'] status=200 body={"subscriptions" : {"errors" : [{"topic" : "user_timeline:44196397", "code" : 32, "message" : "Unauthorized"}]}}

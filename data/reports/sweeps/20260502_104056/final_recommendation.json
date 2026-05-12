@@ -1,0 +1,147 @@
+{
+  "run_dir": "data/reports/sweeps/20260502_104056",
+  "created_at_utc": "2026-05-02T10:41:52.675118+00:00",
+  "inputs": {
+    "tweets": "data/tweets_all.csv",
+    "seed": 7,
+    "stage_a": 8,
+    "stage_b": 4,
+    "finalists": 2,
+    "templates": [
+      {
+        "name": "2d",
+        "horizon_h": 48.0,
+        "stride_h": 24.0,
+        "bracket_set": "2d"
+      },
+      {
+        "name": "weekly",
+        "horizon_h": 168.0,
+        "stride_h": 168.0,
+        "bracket_set": "weekly"
+      }
+    ],
+    "dev_windows": [
+      {
+        "name": "dev_014",
+        "train_start_s": 1748649600.0,
+        "train_end_s": 1764201600.0,
+        "validate_start_s": 1764201600.0,
+        "validate_end_s": 1766016000.0,
+        "regime": "development"
+      },
+      {
+        "name": "dev_015",
+        "train_start_s": 1750464000.0,
+        "train_end_s": 1766016000.0,
+        "validate_start_s": 1766016000.0,
+        "validate_end_s": 1767830400.0,
+        "regime": "development"
+      },
+      {
+        "name": "dev_016",
+        "train_start_s": 1752278400.0,
+        "train_end_s": 1767830400.0,
+        "validate_start_s": 1767830400.0,
+        "validate_end_s": 1769644800.0,
+        "regime": "development"
+      }
+    ],
+    "holdout_windows": [
+      {
+        "name": "holdout_001",
+        "train_start_s": 1756598400.0,
+        "train_end_s": 1772150400.0,
+        "validate_start_s": 1772150400.0,
+        "validate_end_s": 1773964800.0,
+        "regime": "held_out"
+      },
+      {
+        "name": "holdout_002",
+        "train_start_s": 1758412800.0,
+        "train_end_s": 1773964800.0,
+        "validate_start_s": 1773964800.0,
+        "validate_end_s": 1775779200.0,
+        "regime": "held_out"
+      },
+      {
+        "name": "holdout_003",
+        "train_start_s": 1760227200.0,
+        "train_end_s": 1775779200.0,
+        "validate_start_s": 1775779200.0,
+        "validate_end_s": 1777593600.0,
+        "regime": "held_out"
+      }
+    ]
+  },
+  "recommendations": {
+    "best_performer": "a_0003",
+    "most_robust": "a_0003",
+    "best_risk_adjusted": "a_0003",
+    "guardrail": "winner must beat baseline on higher risk-adjusted return and lower/equal drawdown"
+  },
+  "finalist_config_paths": [
+    "data/reports/sweeps/20260502_104056/finalist_configs/rank_01_a_0003.json",
+    "data/reports/sweeps/20260502_104056/finalist_configs/rank_02_b_0000.json"
+  ],
+  "baseline_holdout": {
+    "competitor_id": "baseline",
+    "stage": "C",
+    "net_pnl": 49230.14515067652,
+    "realized_pnl": 49230.14515067661,
+    "gross_pnl_before_fees": 51919.39560067661,
+    "fee_drag": 2689.25045,
+    "max_drawdown": 0.08251278872053845,
+    "sharpe": 4.788062333167764,
+    "sortino": 32.489533281258154,
+    "window_return_std": 2825.38699268893,
+    "worst_window_pnl": 14127.0011419068,
+    "worst_trade_pnl": -160.0000000507252,
+    "trades": 487,
+    "unique_events": 75,
+    "unique_event_brackets": 281,
+    "top_key_pnl_share": 0.04482421328439685,
+    "pnl_hhi": 0.010847662092302701,
+    "stop_loss_churn": 0.31211498973305957,
+    "take_profit_count": 303,
+    "stop_loss_count": 152,
+    "edge_decay_count": 5,
+    "signal_flip_count": 0,
+    "resolution_count": 25,
+    "param_nb_phi": 20.0,
+    "param_hawkes_beta": 0.18,
+    "param_hawkes_alpha": 0.38,
+    "param_rate_prior_strength_h": 24.0,
+    "param_uncertainty": 0.05,
+    "param_entry_edge": 0.08,
+    "param_spread_floor_multiplier": 0.4,
+    "param_min_entry_price": 0.02,
+    "param_stop_loss": 0.14,
+    "param_take_profit": 0.22,
+    "param_exit_edge": 0.015,
+    "param_signal_flip_min_edge_gap": 0.06,
+    "param_signal_flip_max_loss_pct": 0.03,
+    "param_key_stop_loss_cooldown_s": 7200.0,
+    "param_event_stop_loss_cooldown_s": 3600.0,
+    "param_key_lock_streak_count": 2,
+    "param_key_lock_duration_s": 21600.0,
+    "param_risk_per_trade_pct": 0.08,
+    "param_micro_price_max_cost": 80.0,
+    "param_max_event_exposure_pct": 0.45,
+    "param_max_positions": 8,
+    "param_min_trade_cost": 25.0,
+    "param_micro_price_threshold": 0.2,
+    "param_slippage_rate": 0.005,
+    "param_fee_category": "mentions",
+    "param_bankroll": 1000.0
+  },
+  "top10_competitor_ids": [
+    "a_0003",
+    "b_0000"
+  ],
+  "notes": [
+    "Historical mode uses a deterministic synthetic market layer because this repo does not contain historical Polymarket order books.",
+    "Costs use Polymarket's documented taker-fee formula via model.fees.FeeModel.",
+    "Stage C is held out from Stage A/B selection."
+  ]
+}

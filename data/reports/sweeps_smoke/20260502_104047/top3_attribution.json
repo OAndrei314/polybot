@@ -1,0 +1,22 @@
+[
+  {
+    "competitor_id": "b_0000",
+    "net_pnl": 5072.6984839307515,
+    "gross_pnl_before_fees": 5215.168373930749,
+    "fee_drag": 142.46989,
+    "risk_rule_impact_by_reason": {
+      "resolution_loss": -200.9743461873377,
+      "resolution_win": 822.2138702422209,
+      "stop_loss": -234.25868848406677,
+      "take_profit": 4685.717648359932
+    },
+    "pnl_by_market_template": {
+      "2d": 3961.293399938617,
+      "weekly": 1111.405083992132
+    },
+    "concentration": {
+      "top_key_pnl_share": 0.14927815777398934,
+      "unique_event_brackets": 24
+    }
+  }
+]
