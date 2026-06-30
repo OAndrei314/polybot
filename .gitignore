@@ -2,3 +2,36 @@ venv/
 .env
 __pycache__/
 *.pyc
+
+# Credentials / secrets
+accounts.json
+accounts.json.example
+data/chrome_profiles/
+data/revive_accounts.txt
+data/watch_state.json
+data/health.json
+
+# Logs and runtime output
+logs/
+*.log
+watch_stdout.txt
+watch_stderr.txt
+
+# Large data / generated files
+data/reports/
+data/edge_latency/
+data/experiments/
+data/polymarket_alpha/
+*.jsonl.gz
+data/clob_orders.jsonl
+data/new_market_events.jsonl
+
+# Notebook images
+notebooks/png/
+
+# gnhf runner files
+gnhf_objective.md
+gnhf_launch.ps1
+
+# Misc
+shoulder_scissor_grabber.html

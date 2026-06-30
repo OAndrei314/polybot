@@ -1,0 +1,68 @@
+# systemd unit for the polybot tweet-watch process.
+#
+# Install (on Linux VPS):
+#   sudo cp deploy/polybot-watch.service /etc/systemd/system/
+#   sudo systemctl daemon-reload
+#   sudo systemctl enable polybot-watch
+#   sudo systemctl start polybot-watch
+#   sudo systemctl status polybot-watch
+#   journalctl -u polybot-watch -f       # live logs
+#
+# Edit User=, WorkingDirectory=, and ExecStart= to match your VPS paths.
+#
+# Reliability features used here:
+#   Restart=always         — restart on any exit (clean or crash)
+#   RestartSec=10          — wait 10s between restarts (no thrash)
+#   StartLimitBurst/Interval — back off if it crashes too fast
+#   KillSignal=SIGTERM     — gives watch.py a chance to flush checkpoint
+#   TimeoutStopSec=15      — but force-kill after 15s if it hangs
+
+[Unit]
+Description=Polybot tweet watcher (signal pipeline)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=polybot
+Group=polybot
+WorkingDirectory=/home/polybot/polybot
+EnvironmentFile=-/home/polybot/polybot/.env
+# Activate venv inline and run as a module
+ExecStart=/home/polybot/polybot/.venv/bin/python -u -m signals.watch \
+    --username elonmusk \
+    --min-interval-s 7 \
+    --health-file /home/polybot/polybot/data/health.json \
+    --checkpoint-file /home/polybot/polybot/data/watch_state.json \
+    --lockfile /home/polybot/polybot/data/watch.lock
+
+# Logging — stdout/stderr captured by journald
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=polybot-watch
+
+# Restart policy
+Restart=always
+RestartSec=10
+# Allow up to 6 restarts in 5 minutes; then back off (systemd default behavior).
+StartLimitBurst=6
+StartLimitIntervalSec=300
+
+# Graceful shutdown
+KillMode=mixed
+KillSignal=SIGTERM
+TimeoutStopSec=15
+
+# Security hardening — minimal blast radius if compromised
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=read-only
+ReadWritePaths=/home/polybot/polybot/data /home/polybot/polybot/logs
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+LockPersonality=true
+
+[Install]
+WantedBy=multi-user.target

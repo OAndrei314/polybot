@@ -1,0 +1,32 @@
+{
+  "_doc": {
+    "purpose": "Curated calendar of scheduled Elon-Musk tweet-rate catalysts. Each event multiplies the model's expected tweet rate while its [start, end] window is active. The predictor hot-reloads this file (within ~30s) so edits apply to a running bot without a restart.",
+    "curation_principle": "Scheduled, verifiable catalysts ONLY -- earnings calls, rocket launches, keynotes -- from authoritative sources (corporate IR calendars, official launch manifests). Do NOT auto-populate this from social media or news feeds: that is an adversarial-poisoning surface (e.g. a fake 'Elon died' post). Reactive response to UNSCHEDULED bursts is already handled by dynamic phi reading our own tweet feed.",
+    "schema": {
+      "name": "human-readable label",
+      "start": "ISO-8601 UTC window start (elevated-tweeting begins)",
+      "end": "ISO-8601 UTC window end",
+      "rate_multiplier": "tweets/hour multiplier while the window is active (clamped 0.1-10.0 on load)",
+      "source": "where the date came from -- for audit",
+      "estimated": "true if the date is inferred from a pattern, not officially confirmed"
+    }
+  },
+  "events": [
+    {
+      "name": "SpaceX Starship Flight 12 (first Starship V3 flight)",
+      "start": "2026-05-21T18:00:00+00:00",
+      "end": "2026-05-22T14:00:00+00:00",
+      "rate_multiplier": 2.2,
+      "source": "space.com -- Starship Flight 12 NET 2026-05-21 22:30 UTC liftoff from Starbase",
+      "estimated": false
+    },
+    {
+      "name": "Tesla Q2 2026 earnings call",
+      "start": "2026-07-22T18:00:00+00:00",
+      "end": "2026-07-23T06:00:00+00:00",
+      "rate_multiplier": 1.6,
+      "source": "ESTIMATED from Tesla's cadence (Q1 2026 call was 2026-04-22); Q2 2026 date not yet officially announced -- update when confirmed",
+      "estimated": true
+    }
+  ]
+}

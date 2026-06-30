@@ -1,0 +1,18 @@
+# polybot — dependencies for the v5 paper arena (Linux VPS).
+# Pinned to the versions verified working in the development .venv.
+
+requests==2.34.0
+websocket-client==1.9.0
+httpx==0.28.1
+pandas==3.0.3
+pyarrow==24.0.0
+numpy==2.4.4
+scipy==1.17.1
+matplotlib==3.10.9
+orjson==3.11.9
+python-dateutil==2.9.0.post0
+
+# --- optional / not needed for the paper arena -----------------------------
+# vaderSentiment      better tweet sentiment; model falls back to a word-list
+# winotify            Windows-only toast alerts; the watchdog auto-disables it
+# py-clob-client-v2   Gate 4 only (real-money orders) — NOT used by paper mode
