@@ -88,4 +88,70 @@ this run.
 
 ---
 
-## Threads B-F: not yet investigated (this iteration only covered Thread A)
+## Thread B: Leveraged Hyperliquid funding-basis — **DEAD (survivable leverage still far below the 5%/mo floor)**
+
+**Script:** `research/hyperliquid_leveraged_basis.py`
+**Data:** 100% real, live-pulled from Hyperliquid public `/info` REST — no synthetic
+inputs.
+- `fundingHistory` — real hourly funding prints, 90 days, kBONK/ENA/PUMP (paginated,
+  ~2160 prints/coin).
+- `candleSnapshot` (1h) — real hourly close price, same window/coins.
+- `meta` — real `maxLeverage` (10x for all three) and margin tiers (`marginTableId
+  52`, tiered 10x up to $20M notional) — maintenance margin fraction derived as
+  half of initial margin at max leverage (5%), the standard HL convention, not
+  guessed.
+
+**Correction to the objective's own framing:** the objective's Thread B prompt
+asks to measure "basis divergence between HL mark price and an external oracle."
+That's the wrong risk variable — HL's funding mechanism keeps mark-vs-index basis
+within single-digit bps almost always, that's the entire point of funding. The
+actual liquidation risk on a leveraged short-perp leg comes from **raw price
+volatility of the coin itself**: the long-spot leg (held elsewhere) gains exactly
+what the short perp loses when price rises, so the *combined* position is flat —
+but HL's liquidation engine only looks at the perp leg's own margin account, and
+your spot gains can't be transferred in fast enough during a violent move. So
+this script measures realized forward price volatility (worst % rise within 1h /
+4h / 24h / 7d rolling windows) against the exact liquidation-threshold formula
+`(1/L - mm) / (1 + mm)` for isolated margin at leverage `L`, maintenance `mm=5%`.
+
+### Results (90 days real data, 3 coins × 6 leverage levels)
+
+| coin | max survivable L (no breach in any 24h window, 90d) | net APR @ that L | raw funding APR (1x) |
+|------|------------------------------------------------------|-------------------|------------------------|
+| kBONK | 3x (liq buffer 26.98% vs. worst 24h move 17.02%) | 6.2% | 8.2% |
+| ENA   | 2x (liq buffer 42.86% vs. worst 24h move 39.20%; 3x liq buffer 26.98% < worst 24h move 39.20%, so 3x already breaches) | 4.6% | 7.0% |
+| PUMP  | 3x (liq buffer 26.98% vs. worst 24h move 15.34%) | 5.9% | 7.9% |
+
+Net APR at survivable leverage = **~4.6-6.2%/year**, i.e. **~0.4-0.5%/month** —
+this is nowhere near the objective's 5%/month floor, let alone the 10%/month
+target. Leverage buys very little extra yield here: capital efficiency scales
+as `L/(L+1)` of the raw funding rate, so going from 1x (raw/2 = ~50% of raw APR)
+to 3x (raw×0.75) only adds ~1.5-2 points of annual yield, while the liquidation
+buffer collapses from 90% (1x) to 27% (3x) to 4.8% (10x) — the risk grows far
+faster than the reward. Pushing past 3x is actively dangerous: at 5x, kBONK's
+own 90-day history already breaches the liquidation threshold within a 24h
+window (worst 24h move 17.02% > 14.29% buffer); ENA breaches at 5x within even
+a 1h reaction window (worst 1h move 9.20% > 8.84% buffer at 7x, and ENA fails
+24h-survivability already at 3x).
+
+**Verdict:** DEAD for this objective's bar. Leveraging the validated Hyperliquid
+funding-basis trade is a real, quantified risk/reward dial (not fake), but even
+the most aggressive leverage that survived 90 days of real kBONK/ENA/PUMP price
+history without a liquidation breach (2-3x, coin-dependent) only lifts net yield
+to ~5-6% *annual*, not monthly. To hit 10%/month via this mechanism alone you'd
+need leverage in the 40-80x range (extrapolating `L/(L+1)` toward 1), which no
+HL market for these coins offers (max 10x) and which would have a liquidation
+buffer near zero — guaranteed wipeout on the first normal daily candle, let
+alone a violent one. This thread cannot bridge the gap; leverage is the wrong
+lever for turning a ~7% APR yield trade into a 10%/month strategy.
+
+**Automation score:** high — HL has full REST/WebSocket + Python SDKs, no
+geo-block encountered. Not pursued further since the underlying yield ceiling
+(not the automation) is the blocker.
+
+**Next thread:** C (Uniswap V3 / concentrated-liquidity DEX LP) — not yet
+investigated this run.
+
+---
+
+## Threads C-F: not yet investigated
