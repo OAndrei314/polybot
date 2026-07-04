@@ -154,4 +154,72 @@ investigated this run.
 
 ---
 
-## Threads C-F: not yet investigated
+## Thread C: DEX concentrated-liquidity LP (Uniswap V3/V4, Orca) — **DEAD (stablecoin pairs) / NOT VALIDATED (volatile pairs, IL likely erases the edge)**
+
+**Script:** `research/dex_lp_scan.py`
+**Data:** 100% real, live-pulled from the DeFiLlama yields API (`https://yields.llama.fi/pools`,
+15,855 pools total) filtered to `uniswap-v3`, `uniswap-v4`, `orca-dex` projects with
+TVL ≥ $1M; cross-checked with real 30-day Hyperliquid daily candles (ETH/USD, ETH/BTC)
+for the IL calculation below — no synthetic inputs anywhere.
+
+### Stablecoin/stablecoin pairs (the objective's "near-zero IL" sub-thesis)
+
+All 9 stable/stable pools ≥$1M TVL found (DAI-USDT, DAI-USDC, USDC-USDT ×2, PYUSD-USDE,
+USDE-USDC, PYUSD-USDC, FRAX-USDC), current apy range **0.0%–1.9%**, apyMean30d range
+0.2%–6.0%. Best current: DAI-USDT on Ethereum, 1.9% APY = **0.16%/month**. Best 30d-average
+was USDC-USDT/Orca at 6.0% APY = 0.5%/month. **Every single stable/stable pool is at least
+an order of magnitude below the objective's 5%/month floor.** IL is indeed near-zero here as
+the objective predicted — but the fee yield itself is just too small on real, current,
+liquid pools. Verdict: **DEAD**, not a capital/automation problem, a yield-ceiling problem.
+
+### Volatile pairs (fee income only, IL NOT netted by DeFiLlama)
+
+25 pools ≥$1M TVL cleared apy≥5%; best large-TVL ones: `USDC-CBBTC` (Base, $8.3M TVL, 33.8%
+APY = 2.8%/month), `WETH-USDT` (Ethereum, $83.6M TVL, 21.0% APY = 1.75%/month), `USDC-WETH`
+(Ethereum, $3.8M TVL, 19.3% APY = 1.6%/month). **The highest fee-APY pool at ≥$1M TVL found
+in the entire scan was 39.4% (ETH-SYRUP, uniswap-v4, $1.8M TVL) = 3.3%/month — below the
+5%/month floor on fee income ALONE, before any IL is subtracted.** A small number of
+low-TVL (<$1M, down to $200-700k) exotic pairs (ETH-ETHFI 94.7% APY, ZEC-BTCB 60.7%,
+ETH-TORN 52.2%, ETH-PORK 50.8%) nominally clear 5%/month on fees, but:
+- These pools are thin (sub-$1M TVL) — a $500-5,000 position would itself move the pool's
+  price meaningfully on entry/exit (slippage cost not in the apy figure), and thin pools
+  carry materially higher rug-pull/exploit risk than $10M+ pools.
+- DeFiLlama's `apy` field for concentrated-liquidity pools is **fee income only** — it does
+  NOT net out impermanent loss. IL is a real, separate, and potentially large cost that has
+  to be estimated independently.
+
+**IL quantification (real data, not theoretical):** using real Hyperliquid daily closes,
+the last 30 days saw ETH/USD move only +1.3% net but swing **14.6%** high-to-low intramonth
+(a very ordinary month, not a crash). Standard constant-product IL formula
+(`IL = 2√k/(1+k) - 1`, k = price ratio change) gives full-range IL of only -0.23% for that
+swing — but concentrated-liquidity ranges (which is *why* these pools show 15-40% fee APY
+instead of v2's typical 2-5%) amplify both fees AND IL roughly in proportion to how tight the
+range is. For a realistic ±5% active range (needed to earn top-quartile fee APY), the rough
+concentration multiplier (~20x vs full-range) implies **~-4.6% IL from an ordinary 14.6%
+intra-month price swing** — comparable to or larger than an entire month's fee income for
+even the best pools found, and the position would also need active rebalancing (itself a
+cost) once price exits the range. Cross-pair correlation matters too: ETH/BTC-denominated
+pools (WBTC-WETH, $31.9M TVL, 10.6% APY) had a far smaller real 30-day ratio move (9.8%,
+IL ≈ -0.11% full-range) since ETH and BTC are highly correlated — but that pool's fee APY
+(10.6% = 0.9%/month) is itself below the floor even before IL.
+
+**Verdict:** **DEAD** for stablecoin/stablecoin pairs (yield ceiling, not a risk problem).
+**NOT VALIDATED / likely net-negative-to-marginal** for volatile-pair concentrated LP —
+every pool with real $1M+ TVL that clears 5%/month on fees alone was not found (ceiling is
+~3.3%/month at scale); the handful of sub-$1M exotic pools that nominally clear it carry an
+IL cost of comparable magnitude to the fee income from just an *ordinary* month's price
+swing (not even a crash), the same fat-tail/erasure dynamic that killed Thread A, plus
+un-netted slippage and thin-pool exploit risk. Not pursued into a live backtest since the
+fee-vs-IL math already disqualifies it at this objective's bar without needing one.
+
+**Automation score:** high — Uniswap V3/V4 (Ethereum/Arbitrum/Base) and Orca (Solana) both
+have full read/write APIs (web3.py / solders+anchorpy), rebalancing is scriptable. Not
+pursued further since the underlying yield-after-IL ceiling (not the automation) is the
+blocker.
+
+**Next thread:** D (CEX-DEX arbitrage, Hyperliquid vs on-chain spot) — not yet investigated
+this run.
+
+---
+
+## Threads D-F: not yet investigated
