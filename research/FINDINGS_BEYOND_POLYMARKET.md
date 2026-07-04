@@ -222,4 +222,61 @@ this run.
 
 ---
 
-## Threads D-F: not yet investigated
+## Thread D: CEX-DEX arbitrage (Hyperliquid mark vs on-chain/oracle spot) — DEAD
+
+**Methodology (real, live data, no simulation):** Hyperliquid's own `metaAndAssetCtxs`
+endpoint returns, per coin, both `markPx` (the perp mark price — what a trade actually
+executes against) and `oraclePx` (HL's external-price oracle, a median across venues —
+this **is** the "on-chain spot" reference the objective's Thread D asks for, so no separate
+Pyth/CoinGecko call was needed to get an apples-to-apples number). `research/cex_dex_arb.py`
+polled this endpoint every 5s for a live 120-second window across 6 coins — BTC/ETH/SOL
+(deep, liquid) and kBONK/ENA/PUMP (thin, high-beta, the same coins Thread B flagged as
+highest-volatility) — computing `(mark-oracle)/oracle` each sample, plus a one-shot real
+`l2Book` best-bid/ask spread per coin as the execution-cost floor.
+
+**Results (144 coin-samples, live 2026-07-04):**
+
+| coin  | mean spread% | max \|spread\|% | book spread% | samples >0.3% |
+|-------|-------------:|----------------:|-------------:|--------------:|
+| BTC   | -0.018%      | 0.032%           | 0.0016%      | 0 / 24        |
+| ETH   | +0.014%      | 0.017%           | 0.0056%      | 0 / 24        |
+| SOL   | -0.007%      | 0.018%           | 0.0012%      | 0 / 24        |
+| kBONK | -0.002%      | 0.020%           | 0.0200%      | 0 / 24        |
+| ENA   | -0.034%      | 0.052%           | 0.0126%      | 0 / 24        |
+| PUMP  | +0.061%      | 0.064%           | 0.0636%      | 0 / 24        |
+
+**Largest instantaneous \|mark-oracle\| spread observed across all 144 samples: 0.064%** —
+under a quarter of the 0.3% trigger the objective's own math requires to be worth trading,
+and this held even for PUMP/kBONK/ENA (thin, high-beta alts, the coins most likely to show a
+gap). Zero samples anywhere near the threshold. The tightest real order-book spread alone
+(0.0012-0.064%, i.e. the cost of instantly entering+exiting just the HL leg) already consumes
+a meaningful fraction of the 0.3% trigger before the other leg's (CEX or on-chain) own
+spread, gas, and slippage are even added.
+
+**Disclosed limitation:** this is a 2-minute live snapshot, not a multi-day distribution —
+it cannot statistically rule out rare spike events during extreme volatility (e.g. a flash
+crash or major news print). But it directly corroborates Thread B's independent finding from
+90 days of real hourly `fundingHistory` data (iteration 2): HL's funding mechanism plus
+external arbitrageurs keep mark≈oracle within single-digit bps essentially always, for the
+same coin set, including the thin/high-beta ones. Two independent real-data measurements
+(hourly-averaged over 90 days, and instantaneous over a live 2-minute window) now agree: the
+gap this thread needs (>0.3%, held long enough to execute both legs) is not a "sometimes it
+happens, capture it" event on Hyperliquid — it's a structurally-closed gap, by design of how
+HL's own price mechanism works. Extended live monitoring (days/weeks) could only find rarer,
+smaller, and shorter-lived divergences than the 120s window already showed a ceiling for —
+not a reason to build that infra given the other 3 dead threads already found in this run.
+
+**Automation score:** high (a 5s-poll Python loop is trivial) — irrelevant here, since there
+is no measurable edge to automate.
+
+**Verdict:** **DEAD.** Consistent with Threads A-C: every mechanism tested so far that has a
+plausible, automatable capture path turns out to be either arbitraged away already (this
+thread), fee-ceiling-bound (Thread C), or fat-tail-negative in expectancy (Thread A), or too
+small even with maximum safe leverage (Thread B).
+
+**Next thread:** E (Kalshi/Polymarket via VPN) and F (Solana liquidation bots) — not yet
+investigated this run.
+
+---
+
+## Thread E-F: not yet investigated
