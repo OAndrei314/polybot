@@ -279,4 +279,106 @@ investigated this run.
 
 ---
 
-## Thread E-F: not yet investigated
+## Thread E: Kalshi / Polymarket via VPN + prediction-market automation — **DEAD / INFEASIBLE (legal & regulatory risk)**
+
+**Method:** No code — pure legal/technical feasibility check via primary-source and
+news research (Kalshi Member Agreement, Polymarket geoblock docs, Manifold docs, and
+recent EU regulatory-enforcement reporting), per the objective's own instruction that
+this thread only needs a feasibility read, not a backtest.
+
+**Findings (real, current as of 2026-07-04):**
+- **Kalshi**: CFTC-regulated, expanded to 140+ countries as of Oct 2025. Secondary
+  sources list Romania as *not* on its 54-country restricted list (Belgium, France,
+  Italy, Poland, UK, Bulgaria, Hungary, Switzerland, sanctioned states are barred) —
+  but this is second-hand, not confirmed against the primary Member Agreement PDF, and
+  the EU regulatory environment is actively hardening: 9 European regulators (Belgium,
+  France, Germany, Italy, Netherlands, Poland, Portugal, Spain, Switzerland) issued a
+  June 2026 joint statement pledging coordinated enforcement against unlicensed
+  prediction markets (naming Kalshi and Polymarket), and Spain has already blocked both.
+  KYC requires real government ID + declared country of residence (no VPN-friendly
+  path); funding is card/wire/crypto only. Public market-data endpoints are open and
+  unauthenticated globally, but that's data-only, not a trading edge.
+- **Polymarket via Tor/VPN**: no documentation confirms Tor reliably bypasses the
+  geoblock, and it's moot regardless — Romania's gambling regulator (ONJN) has
+  explicitly blacklisted Polymarket (citing $600M+ in election-market trading during
+  Romania's May 2026 elections), Polymarket's ToS explicitly forbids circumvention
+  tools, and real-money trading requires KYC'd wallet verification that VPN/Tor cannot
+  spoof — funds are frozen on detected location mismatch independent of IP.
+- **Manifold Markets**: confirmed play-money only (real-money "sweepcash" sunset March
+  2025) — freely accessible from Romania but irrelevant to a real-yield objective.
+
+**Verdict:** **DEAD.** No option combines "real money," "legally clean," and "low
+regulatory-tail-risk" for a Romanian resident today. Kalshi's Romania eligibility
+rests on unconfirmed secondary sources inside a rapidly-tightening EU enforcement
+climate that could add Romania to the restricted list at any time — not a foundation
+to automate capital against. Even in the best case (Kalshi genuinely open to Romania
+today), this is a market-access question, not a yield source — it doesn't independently
+supply a 5%/month edge, it would only reopen the 31-already-dead Polymarket-style
+threads on a different prediction-market venue with a live account.
+
+**Automation score:** N/A — blocked before the automation question is reached.
+
+**Next thread:** F (Solana MEV / liquidation bots) — last thread in the objective's
+priority list.
+
+---
+
+## Thread F: Solana MEV / liquidation bots (marginfi / Drift / Kamino) — **NOT VALIDATED (data-infeasible + adverse real-world event)**
+
+**Method:** Attempted real-data pulls against every avenue the objective names, no
+synthetic inputs used anywhere in this section:
+1. Drift's documented Data API (`docs.drift.trade/developers/data-api`) — the docs URL
+   redirects (307) to `docs.velocity.exchange/developers/data-api`; that page states
+   Velocity's hosted Data API host is "not yet finalized," so there is currently no
+   live documented endpoint to query for liquidation records.
+2. Drift's known historical-data S3 bucket
+   (`drift-historical-data.s3.eu-west-1.amazonaws.com/program/<programId>/liquidationRecords/...`)
+   — every guessed key path returned `403 AccessDenied` (bucket/prefix requires exact
+   per-user-account keys or is no longer public).
+3. `data.api.drift.trade` (the pre-rebrand host) — returns `403 Forbidden` on the root.
+4. marginfi docs — no documented historical-liquidation-stats REST endpoint found;
+   only a third-party Dune dashboard (`dune.com/danielswiss/marginfi-liquidations`)
+   was located, which 404s on unauthenticated fetch (Dune dashboards are
+   JS-rendered/query-gated, not scrapable without an API key + paid credits).
+
+**Critical real-world finding:** Drift Protocol — the primary venue this thread names
+— has been **offline since April 1, 2026** after a suspected DPRK/Lazarus-linked
+exploit drained **~$285-295M** via a months-long social-engineering attack on its
+multisig Security Council (durable-nonce pre-signed transactions were hijacked to
+grant the attackers admin control, which was then used to whitelist a fake token as
+infinite-borrow collateral). Drift has since rebranded to **Velocity DEX**, backed by
+a $127.5M Tether credit line, and is running only a **private beta** on a freshly
+deployed program with rotated keys — no public relaunch date beyond "coming days" as
+of this research (2026-07-04). A liquidation bot cannot be built against a protocol
+that is not in normal live operation, and the pre-hack historical liquidation pattern
+on the old program is not representative of the rebuilt system's parameters, collateral
+set (USDT replacing USDC), or risk limits.
+
+**Secondary evidence (marginfi/Kamino, still live):** a practitioner writeup
+(baransel.dev) building a real marginfi/Drift liquidation bot reports per-liquidation
+profit in the **$15-500** range (5-10% bonus on the repaid debt, size-dependent), but
+explicitly gives **no aggregate daily/monthly volume or win-rate statistics**, and
+states their own bot **lost ~60% of liquidation races** to faster/better-resourced
+competing bots even after building it, requiring paid staked Jito RPC infrastructure
+and priority fees on every attempt (sunk cost win or lose). No public dashboard
+(Dune/Flipside) was reachable without an API key to establish a real frequency
+baseline.
+
+**Verdict:** **NOT VALIDATED.** This is the only thread in the full A-F set where the
+blocker isn't "the math says no" but "the data needed to do the math isn't obtainable
+for free, and the flagship venue is non-operational right now." What real evidence
+exists points to a bursty, event-driven, latency-competitive MEV race (not a steady
+monthly-yield strategy) where a solo Python retail bot is very plausibly the *slowest*
+participant, not the fastest — the opposite risk profile of the 5-10%/liquidation
+headline number. Cannot responsibly claim this clears 5%/month without a live,
+paid-RPC, multi-week measurement this iteration didn't build (and won't, given Drift's
+outage removes the most liquid named venue and the marginfi/Kamino path still can't be
+quantified from public data).
+
+**Automation score:** technically high (Python + solders/anchorpy can watch oracle
+updates and submit liquidation instructions) — moot without a quantified positive-EV
+signal and while paying for infra to compete against better-capitalized searchers.
+
+**This closes the objective's full A-F priority list.** All six named threads are now
+DEAD or NOT VALIDATED under real-data testing. See the final verdict and best
+candidate in `research/DEPLOY_THIS.md`.
