@@ -17,7 +17,7 @@ the bar. Do not read the presence of this file as validation.
 | Thread | Strategy | Verdict | Real net yield found |
 |---|---|---|---|
 | A | Deribit/Bybit short-put premium selling | DEAD | Net **negative** (fat-tail weeks erase 20+ weeks of premium) |
-| B | Hyperliquid funding basis, leveraged | DEAD (vs. 5%/mo bar) | Best safe case ~**4.6-6.2%/year** (~0.4-0.5%/month) |
+| B | Hyperliquid funding basis, leveraged | DEAD (vs. 5%/mo bar) | Best safe case (full 231-coin universe scan, iter. 7): XMR ~**2.04%/month** (24.5%/year); original 3-coin sample: ~4.6-6.2%/year (~0.4-0.5%/month) |
 | C | Uniswap V3 / Orca concentrated LP | DEAD (stable) / NOT VALIDATED (volatile) | Stable: 0.03-0.5%/month. Volatile: ~3.3%/month fee ceiling, IL from an ordinary month's swing can match/exceed it |
 | D | Hyperliquid mark-vs-oracle CEX-DEX arb | DEAD | Gap never exceeds 0.064%, need >0.3% to be tradable |
 | E | Kalshi/Polymarket via VPN | DEAD/INFEASIBLE | N/A — legal/regulatory risk, not a yield question |
@@ -41,15 +41,24 @@ perps. Collects the funding rate as yield; price risk is hedged out by construct
 residual exposure on the short leg specifically.
 
 **Real numbers (from Thread B, iteration 2, 90 days of real hourly `fundingHistory`
-and `candleSnapshot` data on kBONK/ENA/PUMP):**
-- Unleveraged (1x): ~5-7% net APR (~0.4-0.6%/month) — this is the "prior work"
-  baseline referenced at the top of the findings ledger.
+and `candleSnapshot` data on kBONK/ENA/PUMP; broadened in iteration 7's addendum to
+scan Hyperliquid's full ~231-coin universe):**
+- Unleveraged (1x), original 3-coin sample (kBONK/ENA/PUMP): ~5-7% net APR
+  (~0.4-0.6%/month).
 - Leveraged to the maximum level that survived the full 90-day real price history
-  without a liquidation breach (2-3x, coin-dependent): ~4.6-6.2%/year net
-  (~0.4-0.5%/month) — leverage barely moves the needle because capital efficiency
-  scales as L/(L+1) while the liquidation buffer shrinks as 1/L; going higher than
-  3x starts trading a small yield bump for a real chance of liquidation against
-  realized volatility already observed in the 90-day window.
+  without a liquidation breach (2-3x, coin-dependent), original 3-coin sample:
+  ~4.6-6.2%/year net (~0.4-0.5%/month) — leverage barely moves the needle because
+  capital efficiency scales as L/(L+1) while the liquidation buffer shrinks as 1/L.
+- **Best honest candidate after scanning the full coin universe (iteration 7):**
+  XMR, at 3x leverage sized to its own real 90-day worst-case price moves, nets
+  **~2.04%/month** (24.5%/year) on a *sustained* 90-day-mean funding rate (32.7%/yr,
+  positive in 98% of hourly prints) — this is ~4-5x better than the original 3-coin
+  figure and is now the single best number found across every thread in this
+  objective. A live-snapshot scan found much higher-looking coins (GRASS at
+  168%/yr, ZRO at 70%/yr), but 90-day history showed both were momentary funding
+  spikes (11x and 4x their sustained mean, respectively) — not rates a monthly
+  strategy could count on. Even at this improved number, **2.04%/month still does
+  not clear the 5%/month floor.**
 
 **Risk (quantified, not hidden):**
 - Funding rate can flip negative (pay instead of receive) if market sentiment
@@ -83,12 +92,15 @@ fixed-size opportunity like an arb gap or a liquidation bounty).
 
 ## What this means for the user
 
-At ~0.4-0.6%/month, this does not satisfy "10%+/month" or even the 5%/month floor —
-it satisfies "positive, real, quantified, low-blowup-risk yield," which is a
-different (and much more modest) thing. Sustained 10%/month without proportional
-risk does not exist in any of the six mechanisms this objective named, tested against
-real market data as of 2026-07-04. If the user wants to pursue yield beyond this
-level, it requires either (a) accepting one of the higher-variance, unquantified-EV
-paths already marked dead here (fat-tailed options selling, MEV latency races) with
-eyes open to the disclosed blowup risk, or (b) a fundamentally different strategy
-class not on this objective's list.
+At ~0.4-2.0%/month (best case: XMR funding basis, iteration 7), this does not
+satisfy "10%+/month" or even the 5%/month floor — it satisfies "positive, real,
+quantified, low-blowup-risk yield," which is a different (and much more modest)
+thing. Sustained 10%/month without proportional risk does not exist in any of the
+six mechanisms this objective named, tested against real market data as of
+2026-07-04, nor did broadening the funding-basis coin search to Hyperliquid's full
+~231-coin universe (iteration 7) find a sustained (non-spike) rate that clears
+5%/month. If the user wants to pursue yield beyond this level, it requires either
+(a) accepting one of the higher-variance, unquantified-EV paths already marked dead
+here (fat-tailed options selling, MEV latency races) with eyes open to the disclosed
+blowup risk, or (b) a fundamentally different strategy class not on this
+objective's list.

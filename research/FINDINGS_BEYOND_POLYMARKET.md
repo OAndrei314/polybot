@@ -223,6 +223,72 @@ investigated this run.
 
 ---
 
+### Addendum (iteration 7): broadening the coin universe beyond kBONK/ENA/PUMP — **still DEAD, but improved best-candidate number**
+
+The original Thread B test only checked 3 pre-picked coins with modest raw funding
+APR (7-8%/yr). This addendum asks: across Hyperliquid's **full ~231-coin universe**,
+does any coin currently have sustained funding high enough to change the verdict?
+
+**Method:** `research/hyperliquid_funding_universe_scan.py` — pulled one real live
+`metaAndAssetCtxs` snapshot (current hourly funding rate for all 231 listed coins),
+ranked by annualized current-snapshot APR, then pulled real 90-day `fundingHistory` +
+`candleSnapshot` for the top 8 positive-funding coins (plus BTC/ETH as a liquid
+baseline) to check whether the live snapshot is a **sustained** rate or a
+**momentary spike**, using the same liquidation-survivability method as the original
+Thread B script.
+
+**Live snapshot found a striking outlier:** GRASS at 168%/year annualized current
+funding — 20x higher than anything in the original 3-coin sample, and (before
+leverage) already above the ~72-84%/yr raw-APR bar this trade needs to clear
+5%/month net. ZRO (70%/yr) and HEMI (49%/yr) also stood out.
+
+**But the 90-day real history exposed GRASS and ZRO as spikes, not edges:** GRASS's
+90-day mean funding APR is only 14.7% (the live snapshot was **11.46x** the sustained
+mean); ZRO's 90-day mean is 17.0% (snapshot was **4.11x** the mean). Both are
+momentary funding-rate blips (common after a listing, a narrative pump, or a large
+one-sided positioning event), not a persistent rate a monthly-yield strategy could
+count on. kLUNC and FET's snapshots didn't even match sign with their 90-day mean.
+
+**Real results table (90-day mean funding, survivable leverage from real 90d adverse-move history):**
+
+| coin | snapshot APR | 90d-mean APR | net APR @ safe lev | net %/month | day $ volume |
+|---|---|---|---|---|---|
+| GRASS | 168.4% | 14.7% | 9.8% (2x) | 0.81% | $2.4M |
+| ZRO | 69.9% | 17.0% | 11.3% (2x) | 0.95% | $4.4M |
+| HEMI | 49.2% | 30.9% | 20.6% (2x) | 1.72% | $0.3M |
+| kLUNC | 42.0% | **-26.4%** | -17.6% (2x) | -1.46% | $0.1M |
+| FET | 27.9% | **-3.2%** | -2.4% (3x) | -0.20% | $1.7M |
+| XMR | 23.1% | 32.7% | 24.5% (3x) | **2.04%** | $3.8M |
+| SYRUP | 22.6% | 12.4% | 8.3% (2x) | 0.69% | $0.4M |
+| APEX | 17.8% | 15.3% | 11.4% (3x) | 0.95% | $0.1M |
+| BTC | 11.0% | 3.6% | 3.1% (7x) | 0.26% | $1.46B |
+| ETH | 11.0% | 4.0% | 3.3% (5x) | 0.28% | $470M |
+
+**Verdict:** **DEAD**, but with a materially better honest best-candidate number.
+XMR's 90-day-mean funding (32.7%/yr, positive in 98% of hourly prints) survives 3x
+leverage against its own real 90-day worst-case price moves, netting **2.04%/month**
+— roughly 4-5x the original 3-coin sample's best case (0.4-0.5%/month), and still the
+single best number found across every thread in this entire objective. It still does
+not clear the 5%/month floor. This addendum also hardens the original verdict:
+scanning the *entire* coin universe (not just 3 picks) for the single highest live
+funding print still tops out at ~2%/month once you filter for sustained (not
+spike) rates and size leverage to real historical survivability — broadening the
+coin search was a legitimate follow-up (flagged in iteration 6) and it does not
+change Thread B's DEAD verdict, though it materially improves the disclosed
+best-candidate number that should now replace the original 3-coin figure in
+`DEPLOY_THIS.md`.
+
+**Learning for future work:** a live single-hourly-print funding rate can be up to
+~11x its own 90-day sustained mean — any future funding-rate-based thread MUST
+compare a live snapshot against real historical mean before treating it as a
+tradable rate, or it will systematically overstate the opportunity by an order of
+magnitude on thin/newly-listed/narrative-driven coins.
+
+**Next thread:** C (Uniswap V3 / concentrated-liquidity DEX LP) — not yet
+investigated this run.
+
+---
+
 ## Thread C: DEX concentrated-liquidity LP (Uniswap V3/V4, Orca) — **DEAD (stablecoin pairs) / NOT VALIDATED (volatile pairs, IL likely erases the edge)**
 
 **Script:** `research/dex_lp_scan.py`
