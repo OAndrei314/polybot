@@ -86,6 +86,75 @@ session). Not pursued further since the underlying strategy is dead.
 **Next thread:** B (leveraged Hyperliquid funding basis) — not yet investigated
 this run.
 
+### Thread A follow-up: put credit spreads + trailing IV-rank gating — **still DEAD; apparent "fix" is an overfitting artifact, not an edge**
+
+Since all 6 named threads (A-F) closed dead/infeasible by iteration 5, this follow-up
+tests the two variants Thread A's own writeup flagged as untested: (1) a **put credit
+spread** (short a target-delta put, buy a further-OTM put as protection — caps max
+loss at a known spread width instead of "however far spot falls"), and (2) **trailing
+IV-rank-gated entry** (only enter when current IV is elevated vs. its own trailing
+90-day range — a no-lookahead version of the objective's own Thread A thesis, unlike
+the single whole-sample "current IV rank" print in the original script, which compares
+today against the *entire* historical window including future data).
+
+**Script:** `research/options_credit_spread_scan.py` — reuses the same real DVOL +
+real spot data and Black-Scholes strike-solving from `options_premium_scan.py` (short
+delta 0.10, long delta 0.03, weekly rolls, same disclosed simulation limitations).
+
+**Results (27 weekly rolls, BTC/ETH, same window as Thread A):**
+
+| ccy | IV-rank gate | n trades | n skipped | win rate | avg monthly % | worst trade % |
+|-----|-------------|---------:|----------:|---------:|---------------:|---------------:|
+| BTC | ≥0% (ungated) | 24 | 3 | 91.7% | -6.9% | -93.4% |
+| BTC | ≥50% | 11 | 16 | 100.0% | +29.0% | +5.4% |
+| BTC | ≥70% | 9 | 18 | 100.0% | +29.0% | +5.4% |
+| ETH | ≥0% (ungated) | 24 | 3 | 87.5% | -7.1% | -93.2% |
+| ETH | ≥50% | 11 | 16 | 100.0% | +30.7% | +6.0% |
+| ETH | ≥70% | 8 | 19 | 100.0% | +31.3% | +7.1% |
+
+At first glance the gated rows look like a validated 10%/month+ strategy. **They are
+not — this is a small-sample overfitting artifact, confirmed by inspecting the actual
+per-week entry log**, not just asserted:
+
+- **Defining a spread instead of a naked put does cap the loss, but does not fix
+  expectancy.** The ungated (≥0%) row is still clearly net-negative (-6.9%/-7.1% per
+  month) — same fat-tail dynamic as the naked-put version in the main Thread A result,
+  just with a smaller absolute worst-case (-93% of *spread width*, not of full
+  collateral). Confirms the original Thread A verdict holds for the defined-risk
+  variant too.
+- **The two loss weeks in the whole 27-week sample are 2026-01-25 and 2026-05-31** —
+  the exact same two drawdown weeks Thread A's original writeup identified. Every other
+  week in both BTC and ETH returns a small, similar positive amount (~+6.6% to +7.4%
+  per trade), because in a Black-Scholes simulation with no realized skew, non-crash
+  weeks are almost mechanically profitable by construction — the "edge" in the ungated
+  row is entirely carried by these 2 events out of 27.
+- **Both loss weeks happen to have low trailing IV-rank at entry** (BTC: rank 39 and 7;
+  ETH: rank 22 and 9) — so *any* gate threshold from ~40% to ~90% excludes both events
+  simply because there are only 2 tail events in the whole dataset and both happen to
+  sit in the bottom third of the trailing-rank distribution. This is **not** evidence
+  that "sell only when IV rank is high" is a real predictive filter for tail risk — with
+  n=2 tail events, a gate can trivially be drawn to exclude both by chance, and the
+  win-rate/return numbers above are a direct readout of that exclusion, not of a
+  demonstrated statistical relationship. It would take many more than 2 realized crash
+  events to distinguish "high trailing IV rank predicts safety" from "these two
+  particular crashes happened to follow low-IV weeks." If anything, low-IV-before-a-
+  crash is the opposite of the objective's own Thread A thesis (sell when IV is
+  *elevated*) — it's a "calm before the storm" pattern, which is a well-known but
+  separate phenomenon from vol-risk-premium harvesting, and still only n=2.
+- Practically: gating removes 16-19 of 27 weeks (59-70% of the time no trade is taken
+  at all), which is itself inconsistent with presenting this as a steady 29-31%/month
+  strategy — most months would see zero or one trade, not a monthly-compounding return.
+
+**Verdict:** **DEAD, unchanged.** The credit-spread structure is a real risk-management
+improvement (bounded loss vs. unbounded), but does not flip the sign of a fat-tail-
+negative strategy. The apparent IV-rank-gated "return" is a textbook small-n
+overfitting mirage from a sample with only 2 realized tail events — not a validated
+result, and should not be deployed or re-tested with the same rank-gate thresholds
+without first getting a much longer (multi-year) sample with many more tail events to
+actually test the "avoid entry near tail risk" hypothesis out-of-sample. Recorded here
+specifically so a future iteration doesn't re-derive this same 29%/month-looking number
+and mistake it for a real edge.
+
 ---
 
 ## Thread B: Leveraged Hyperliquid funding-basis — **DEAD (survivable leverage still far below the 5%/mo floor)**
