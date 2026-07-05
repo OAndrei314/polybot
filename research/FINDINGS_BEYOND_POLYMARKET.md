@@ -930,3 +930,75 @@ updated with a Thread J summary; best-candidate figure unchanged.
   should expect the same drag effect and should not assume "just add
   leverage" is a free lever, the way some options/DeFi marketing framing
   implies.
+
+---
+
+## Thread K (post-A-F follow-up #9): pairs mean-reversion stat-arb (iteration 21)
+
+**Concept tested:** a third, distinct mechanism family beyond market-neutral
+yield harvesting (Threads A-I, funding/basis/options/LP/counterparty flow)
+and single-asset directional momentum (Thread J): relative-value pairs
+trading. Long the underperforming leg / short the outperforming leg of a
+correlated pair (BTC/ETH, BTC/SOL, BTC/AVAX, BTC/LINK, ETH/SOL, ETH/AVAX,
+ETH/LINK, SOL/AVAX, SOL/LINK, AVAX/LINK — all 10 combinations of 5 majors)
+whenever the log-price-ratio spread's rolling z-score exceeds ±2.0,
+exiting when it reverts to within ±0.5 — a mechanical, no-lookahead,
+equal-notional market-neutral rule.
+
+**Data pulled, 100% real:** `research/pairs_stat_arb_scan.py` pulls 700
+real daily closes (2024-08-04 → 2026-07-05) for BTC/ETH/SOL/AVAX/LINK via
+Hyperliquid `candleSnapshot` — the same endpoint used in Threads B/D/J.
+Verified perfect timestamp alignment across all 5 coins (0 mismatches in
+701 daily bars each) before trusting any cross-coin spread calculation, to
+rule out a data-misalignment artifact producing spuriously large
+single-day moves.
+
+**Results (30 pair×leverage rows, 20d z-score window, entry 2.0σ/exit
+0.5σ):**
+
+| Pair | Lev | Monthly-equiv | Max DD | Worst 1d adverse | Liquidated? |
+|---|---|---|---|---|---|
+| BTC/SOL | 1x | **+0.82%** (best row) | -27.0% | 10.5% | No |
+| SOL/AVAX | 1x | +0.43% | -38.7% | 20.7% | No |
+| BTC/ETH | 1x | -3.40% | -59.4% | 10.4% | No |
+| ETH/AVAX | 1x | -4.08% | -75.9% | 21.5% | No |
+| every pair | 2x-3x | worse than 1x, 6/20 rows liquidated outright | — | — | — |
+
+29 of 30 rows are net-negative or barely positive; every leveraged row is
+worse than its own 1x baseline (the same volatility-drag effect found in
+Thread J). 0/30 rows clear 5%/month.
+
+**Verdict: DEAD.** Crypto-major price ratios trend rather than mean-revert
+over a 20-day window in this 700-day sample — the "fade the divergence"
+premise doesn't hold empirically, so this is a real, not merely
+under-optimized, negative result. Standing best candidate across all 15
+mechanisms now tested (6 named + 9 post-A-F follow-ups) remains XMR
+funding basis (Thread B, iteration 7, 2.04%/month), still both the
+highest-yield AND lowest-risk option found.
+
+**Learnings:**
+- Crypto altcoin ratios (BTC/LINK, ETH/AVAX, etc.) are not reliably
+  mean-reverting at a 20-day lookback — they trend for extended periods
+  (consistent with "altcoin beta" behavior, where alts amplify BTC/ETH
+  moves directionally rather than oscillating around a stable ratio),
+  which is why a mechanical z-score-fade rule loses money on 8 of 10
+  tested pairs even before leverage or fees are considered.
+  Longer-lookback or cointegration-filtered pair selection (only trade
+  pairs that pass an actual stationarity test) is an untested refinement,
+  but given 14 prior threads all converged on the same sub-bar ceiling,
+  it is unlikely to change the outcome qualitatively.
+- Before trusting any cross-coin/cross-venue spread calculation, verify
+  timestamp alignment explicitly (as done here: 0 mismatches across 5
+  coins' 701-bar histories) — this is now the second time in this
+  objective (after the STG delisted-market artifact in iteration 15) that
+  a plausible-looking anomalous number needed a specific data-integrity
+  check before being trusted as real, and doing so before writing up
+  results is the correct order of operations regardless of whether the
+  result is later confirmed or debunked.
+- This is now 9 post-A-F follow-up mechanisms tested (iterations 6, 7, 15,
+  16, 17, 18, 19, 20, 21) beyond the 6 originally-named threads, all
+  DEAD/NOT VALIDATED — every distinct mechanism *family* accessible with
+  free public data (market-neutral yield harvesting in 6 flavors,
+  directional momentum, and now relative-value pairs trading) has been
+  tested at least once with real data and none beats the standing XMR
+  candidate.

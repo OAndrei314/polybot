@@ -700,7 +700,7 @@
 
     <section id="startScreen" class="screen active">
       <div class="panel hero">
-        <div class="eyebrow">Fresh bank · Built from your lecture set</div>
+        <div class="eyebrow">Fresh bank · Built from your lectures + labs</div>
         <h1>Know it under pressure.</h1>
         <p class="lede">
           New scenarios, different numbers, and underused lecture topics. The mock exam's exact
@@ -1971,6 +1971,14 @@
       {i:300,t:"Bias & synthetic data",q:"Why can repeatedly resampling a pooled, biased dataset make a misleading conclusion look more convincing?",o:["It reproduces the same group mixture and bias, so stability is mistaken for representativeness","Resampling automatically balances every subgroup","Noise proves causal identification","Synthetic data cannot contain bias"],a:0,e:"A stable estimate can be stably wrong for subgroups; synthesis does not launder omitted structure or historical bias.",s:"Lab 11 · Bias amplification"}
     ];
 
+    const TOPIC_ALIASES = {
+      "Import & pandas": "Import & workflow",
+      "EDA & distributions": "EDA & descriptive statistics",
+      "Relationships & multivariate EDA": "Multivariate EDA",
+      "Outliers & data quality": "Outliers & quality",
+      "Evaluation & modelling": "Evaluation & generalisation"
+    };
+
     QUESTIONS.push(...EXTRA_QUESTIONS.map(({i,t,q,o,a,e,s}) => {
       // The compact source bank puts the correct response first for easy auditing.
       // Rotate it deterministically here so disabling live shuffling does not
@@ -1979,7 +1987,7 @@
       const options = [...o.slice(shift), ...o.slice(0, shift)];
       const moveAnswer = index => (index - shift + o.length) % o.length;
       const answer = Array.isArray(a) ? a.map(moveAnswer) : moveAnswer(a);
-      return {id:i, topic:t, q, options, answer, explanation:e, source:s};
+      return {id:i, topic:TOPIC_ALIASES[t] || t, q, options, answer, explanation:e, source:s};
     }));
 
     const $ = (selector) => document.querySelector(selector);

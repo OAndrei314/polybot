@@ -182,3 +182,22 @@ test the objective's "accept high risk if EV is genuinely positive"
 allowance; the real numbers show it is not. Standing best candidate (XMR,
 Thread B, 2.04%/month) is now also the *lowest-risk* candidate found, not
 just the highest-yield one.
+
+**Thread K (iteration 21): pairs mean-reversion stat-arb — a third,
+distinct mechanism family (relative-value, not funding/basis/options/LP nor
+single-asset momentum).** Tests fading z-score divergence in the log-price
+ratio between correlated majors (all 10 combinations of BTC/ETH/SOL/AVAX/
+LINK) on real 700-day Hyperliquid daily closes
+(`research/pairs_stat_arb_scan.py`), with an explicit timestamp-alignment
+check (0 mismatches across all 5 coins' histories) before trusting the
+cross-coin spread math. Result: 29 of 30 pair×leverage rows are net-negative
+or barely positive; best case (BTC/SOL, 1x) reaches only **+0.82%/month**
+with a -27% max drawdown, and leverage makes every pair worse (same
+volatility-drag pattern as Thread J). Crypto altcoin ratios trend rather
+than mean-revert at a 20-day lookback in this sample, so the strategy's
+core premise doesn't hold empirically. This is now 9 post-A-F mechanisms
+tested, all dead — every accessible mechanism *family* (market-neutral
+yield harvesting in 6 flavors, directional momentum, relative-value pairs)
+has now been tested with real data at least once. Standing best candidate
+(XMR, Thread B, 2.04%/month) unchanged and still both highest-yield and
+lowest-risk.
