@@ -1975,3 +1975,102 @@ from Romania like every other on-chain thread in this objective.
   yield anywhere reachable with free public data. Standing best
   *validated* candidate (XMR funding basis, Thread B, iteration 7,
   2.04%/month) unchanged and not superseded.
+
+---
+
+## Thread U (iteration 39, new mechanism beyond A-T): Solana liquid-staking-token (LST) leveraged looping (Kamino)
+
+**Mechanism:** deposit a Solana LST (JitoSOL, mSOL) as collateral on a
+lending market (Kamino), borrow SOL against it, swap the borrowed SOL for
+more LST, redeposit, repeat ("loop"). This is a genuinely distinct
+mechanism family from every prior thread: Thread T (iteration 38) tested
+Ethereum LRT *restaking*; Thread I (iteration 19) tested a *stablecoin*-
+denominated Ethena loop. This is a SOL-denominated liquid-*staking* loop
+that additionally benefits from Jito's MEV-tip kickback on top of base
+validator staking yield — a distinct venue, asset, and yield source from
+both prior loop-family threads.
+
+**Script:** `research/sol_lst_leverage_loop_scan.py` — 100% real, live
+data, no synthetic inputs:
+- Jito's own kobe stake-pool-stats API (`kobe.mainnet.jito.network/api/v1/stake_pool_stats`)
+  as a live sanity-check (5.43-5.51%/yr over its 8 most recent daily
+  snapshots).
+- DeFiLlama `/pools` + `/chart/{pool}` for full real APY history since
+  listing: JitoSOL (`jito-liquid-staking` project) 467 days back to
+  2025-03-26 (full-history mean 6.47%/yr, last-90d mean 5.58%/yr, current
+  5.51%/yr) and mSOL (`marinade-liquid-staking`, current 6.32%/yr,
+  full-history mean 6.99%/yr) — both cross-validated as sustained
+  history, not a live-snapshot spike, same spike-detector technique used
+  in every prior thread.
+- Kamino's own public `reserves/metrics` API (Main Market) for the real,
+  live borrow cost a looper actually pays: SOL `borrowApy` = 16.14%/yr,
+  `supplyApy` = 12.72%/yr; JitoSOL/mSOL max LTV = 0.59 (2.44x max loop
+  leverage).
+- DeFiLlama only exposes historical *supply*-side APY for the SOL
+  reserve (not borrow), so SOL's full 961-day supply-APY history
+  (full-mean 4.93%/yr) was used as a deliberately generous *floor* proxy
+  for historical borrow cost (real borrow is structurally ≥ supply —
+  same proxy technique used for Aave's USDe borrow rate in Thread I).
+
+**Results (real data, pulled 2026-07-05):**
+
+| LST | Max LTV | Max leverage | Live staking APY | Full-hist mean staking APY | Live SOL borrow cost | Net APY (live rates) | Net APY (best-case hist floor) |
+|---|---|---|---|---|---|---|---|
+| JitoSOL | 0.59 | 2.44x | 5.51%/yr | 6.47%/yr | 16.14%/yr | **-9.79%/yr** | +8.70%/yr (0.72%/mo) |
+| mSOL | 0.59 | 2.44x | 6.32%/yr | 6.99%/yr | 16.14%/yr | **-7.80%/yr** | +9.97%/yr (0.83%/mo) |
+
+LTV sensitivity (JitoSOL, live rates): even a conservative LTV=0.30
+(1.43x leverage) only nets +0.95%/yr (+0.08%/month); LTV=0.40 and above
+turns net-negative. Using the single most generous possible historical
+framing (full-history mean staking yield vs. full-history mean SOL
+*supply* APY as a deliberately-understated borrow-cost floor), the best
+result at max LTV (0.59) is still only ~0.7-0.8%/month.
+
+**Verdict: DEAD.** At today's live rates, SOL's borrow cost (16.14%/yr)
+is roughly 3x JitoSOL's live staking yield (5.51%/yr), making the loop
+net-negative at every leverage level tested — the same failure mode
+already found for Ethena's sUSDe loop in Thread I (borrow-cost floor
+exceeding base yield). Even granting the strategy the single most
+favorable historical framing available in the data, the ceiling is only
+~0.7-0.8%/month — an order of magnitude below the 5%/month floor and
+still below the standing XMR funding-basis candidate (2.04%/month).
+`research/DEPLOY_THIS.md`'s best-candidate figure is unchanged.
+
+**Automation:** fully automatable in Python via Kamino's SDK / on-chain
+instructions (deposit, borrow, swap, redeposit loop, monitor health
+factor) — not pursued into a live build given the negative/marginal
+economics.
+
+**Geo-accessibility:** on-chain, permissionless, no geo-block — accessible
+from Romania like every other on-chain thread in this objective.
+
+**Learnings:**
+- Solana LST lending-market "supply APY" (what DeFiLlama's `apyBase`
+  reports for a JITOSOL/MSOL *lending* reserve on Kamino) measures
+  interest paid to *lenders of the LST itself*, which is near-zero
+  (0.001-0.006%/yr) because almost nobody borrows an LST to short it —
+  this is **not** the LST's real yield. The LST's actual staking+MEV
+  yield only shows up in its own dedicated "liquid staking" DeFiLlama
+  project listing (`jito-liquid-staking`, `marinade-liquid-staking`), a
+  completely different pool from the lending-market listing
+  (`kamino-lend`) for the same token symbol — conflating the two would
+  have wrongly concluded the LST yields ~0%. Worth remembering for any
+  future thread touching a Solana lending market for an LST/LRT token.
+- Kamino's own public API
+  (`api.kamino.finance/kamino-market/{market}/reserves/metrics`) gives
+  live, real borrow AND supply APY plus max LTV per reserve with no API
+  key — useful for any future Solana lending-market thread, though it
+  only exposes a live snapshot, not history (DeFiLlama's `/chart/{pool}`
+  endpoint was needed for the historical supply-APY floor proxy).
+- This is the 20th post-A-F follow-up mechanism (27th overall) and the
+  fifth independent real-data source (after Thread B's HL funding,
+  Thread G's Deribit dated futures, Thread I's Ethena loop, Thread T's
+  LRT restaking) confirming the same pattern: any leveraged-loop
+  strategy that borrows a volatile/native asset to lever up a modest
+  staking/yield return gets killed by a borrow cost that structurally
+  exceeds the underlying yield in the current (mid-2026) rate
+  environment — leverage-looping as a mechanism *family* now looks dead
+  across every venue/asset tried (Aave/Ethena stablecoin loop, Kamino/
+  Solana LST loop), not just one unlucky venue. Standing best validated
+  candidate (XMR funding basis, Thread B, iteration 7, 2.04%/month)
+  unchanged and not superseded.

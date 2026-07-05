@@ -383,14 +383,35 @@ the airdrop leg reinforcing rather than improving on Thread Q's NOT
 VALIDATED verdict. Standing best validated candidate (XMR, Thread B,
 2.04%/month) unchanged.
 
+**Thread U (iteration 39): Solana liquid-staking-token (LST) leveraged
+looping (Kamino).** `research/sol_lst_leverage_loop_scan.py` tests
+depositing JitoSOL/mSOL as collateral on Kamino, borrowing SOL against it,
+and looping into more LST — a genuinely distinct mechanism from Thread T
+(Ethereum LRT restaking) and Thread I (Ethena stablecoin loop), since it's
+a SOL-denominated liquid-*staking* loop benefiting from Jito's MEV-tip
+kickback. Real data (Jito's own kobe API, DeFiLlama's 467-day JitoSOL APY
+history, Kamino's own live reserves API): live SOL borrow cost (16.14%/yr)
+is roughly 3x JitoSOL's live staking yield (5.51%/yr), making the loop
+net-negative (**-9.79%/yr**) at every leverage level using live rates.
+Even the single most generous possible historical framing (full-history
+mean staking yield vs. a deliberately-understated borrow-cost floor) only
+reaches ~0.7-0.8%/month at max leverage. **DEAD** — the same
+borrow-cost-exceeds-base-yield failure mode already found for Ethena's
+loop in Thread I, now confirmed on a second venue/asset (Kamino/Solana
+LSTs vs. Aave/Ethena stablecoins), suggesting leverage-looping as a
+mechanism *family* is dead across the board in the current rate
+environment. Standing best candidate (XMR, Thread B, 2.04%/month)
+unchanged.
+
 ---
 
-**Running total: 25 mechanisms tested across this objective (6 named
-threads A-F, plus 19 post-A-F follow-ups/new mechanisms), spanning
+**Running total: 26 mechanisms tested across this objective (6 named
+threads A-F, plus 20 post-A-F follow-ups/new mechanisms), spanning
 market-neutral yield harvesting (6 flavors), directional momentum, pairs
 stat-arb, vault/manager copy-deposit, counterparty-vault yield (2 venues),
 options vaults, legal-risk-gated counterparty capital, points/airdrop
 farming (2 flavors), long-volatility convexity, stablecoin depeg
-mean-reversion, and liquid restaking. None has been promoted above the
-standing best validated candidate: XMR funding basis, Thread B, iteration
-7, 2.04%/month — still well below both the 5%/month and 10%/month bars.**
+mean-reversion, liquid restaking, and leveraged LST looping. None has been
+promoted above the standing best validated candidate: XMR funding basis,
+Thread B, iteration 7, 2.04%/month — still well below both the 5%/month
+and 10%/month bars.**
