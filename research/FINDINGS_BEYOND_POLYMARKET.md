@@ -566,3 +566,47 @@ did not find a materially better opportunity, and surfaced a new data trap (deli
 markets with pinned-zero funding masquerading as extreme opportunities) worth
 remembering for any future funding-differential scan. `research/DEPLOY_THIS.md`'s
 best-candidate section is unchanged (XMR, Thread B, 2.04%/month, still sub-bar).
+
+---
+
+## Thread G (new mechanism, iteration 16): Deribit dated-futures cash-and-carry basis — **DEAD**
+
+**Concept (not in the objective's A-F list; distinct from Thread B):** buy spot
+(or long the perpetual as a spot proxy), short a dated (weekly/monthly/quarterly)
+future at a premium to index, hold to expiry. Unlike Thread B's perpetual-funding
+basis (yield paid/collected periodically at a variable rate), a dated future's
+basis is priced once at entry via the forward curve and converges deterministically
+to zero at settlement — a genuinely different risk/mechanism (no funding-rate
+variability, but capital is locked until expiry, and index/settlement risk applies
+at the specific settlement instant).
+
+**Method (100% real, live data):** `research/deribit_futures_basis.py` —
+`GET /public/get_instruments` (kind=future, expired=false) for BTC and ETH's full
+dated curve out to Jun 2027, `GET /public/get_index_price` for live spot index,
+`GET /public/get_book_summary_by_instrument` for live mark price per contract to
+compute annualized basis at every point on the curve, plus a 90-day historical
+check (`get_tradingview_chart_data` on the front quarterly contract vs the
+perpetual, which Thread D already confirmed tracks index within bps) to see
+whether today's basis is a low snapshot or representative of the recent past.
+
+**Result (live, 2026-07-05):**
+- BTC curve: annualized basis rises smoothly from ~0% (1-week) to only **4.02%/yr**
+  at the farthest listed contract (BTC-25JUN27, 355 days out) → **0.33%/month**.
+- ETH curve: same shape, tops out at **3.18%/yr** (ETH-25JUN27) → **0.27%/month**.
+- 90-day history of the front quarterly (25SEP26) vs perpetual: BTC ranged
+  1.75%-3.73%/yr annualized (mean 2.67%), ETH ranged 0.95%-3.17%/yr (mean 2.13%)
+  — today's snapshot is representative of the last 3 months, not a low outlier.
+  This market is in persistent, thin contango, not the 20-50%/yr contango seen
+  in some past bull-market cycles.
+
+**Verdict:** **DEAD.** Even the longest-dated (1-year-out) contract on either
+coin doesn't clear 1%/month, let alone the 5%/month floor — two orders of
+magnitude short. Locking capital for up to a year to collect ~0.3%/month also
+fails the "capital efficiency" criterion independent of the yield shortfall.
+Confirms (via an independent instrument/mechanism) the same conclusion as
+Thread B: the current market environment (mid-2026) simply does not have a
+material market-neutral crypto basis anywhere on the curve, whether collected
+via periodic perpetual funding or via a dated-futures forward premium.
+`research/DEPLOY_THIS.md`'s best-candidate section is unchanged (XMR, Thread B,
+2.04%/month via perpetual funding, still the best real number found, still
+sub-bar).

@@ -104,3 +104,11 @@ six mechanisms this objective named, tested against real market data as of
 here (fat-tailed options selling, MEV latency races) with eyes open to the disclosed
 blowup risk, or (b) a fundamentally different strategy class not on this
 objective's list.
+
+**Post-A-F follow-up mechanisms tested (all still DEAD, see `FINDINGS_BEYOND_POLYMARKET.md`):**
+options credit spreads + IV-rank gating (iter. 6), full-universe funding scan → XMR
+(iter. 7), cross-exchange HL-vs-Bybit perp-perp funding differential → best real
+candidate STRK 1.25%/month (iter. 15), and Deribit dated-futures cash-and-carry
+basis on BTC/ETH → best 0.33%/month even at the farthest (~1yr) expiry, with 90-day
+history confirming today's thin contango is not a temporary dip (iter. 16). None
+beat the standing XMR figure above.
