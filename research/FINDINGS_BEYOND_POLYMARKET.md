@@ -610,3 +610,73 @@ via periodic perpetual funding or via a dated-futures forward premium.
 `research/DEPLOY_THIS.md`'s best-candidate section is unchanged (XMR, Thread B,
 2.04%/month via perpetual funding, still the best real number found, still
 sub-bar).
+
+---
+
+## Thread F re-test (iteration 17): direct on-chain marginfi liquidation measurement — closes the data gap, hardens NOT VALIDATED
+
+Iteration 5 marked Thread F **NOT VALIDATED** specifically because every named
+data source was blocked (Drift Data API 403/not-finalized, Drift historical-data
+S3 bucket 403, marginfi's Dune dashboard 404 without a paid key) — the verdict
+was "can't quantify," not "quantified and dead." This iteration closes that gap
+by going around all three blocked sources and reading real liquidation activity
+**directly from Solana mainnet** via the public JSON-RPC (`api.mainnet-beta.solana.com`,
+no API key, no paid infra) — a data path not attempted in iteration 5.
+
+**Script:** `research/solana_liquidation_scan.py` — confirmed marginfi-v2's mainnet
+program id (`MFv2hWf31Z9kbCa1snEPYctwafyhdvnV7FZnsebVacA`, via docs.marginfi.com /
+mrgnlabs/marginfi-v2 GitHub), pulled real `getSignaturesForAddress` history for that
+program (2000 signatures spanning a real, measured 2.496-hour window), sampled 140
+real transactions via `getTransaction` (80 successful + 60 failed) and scanned full
+log output for the string "liquidat", then ran a second, differently-biased sample
+(200 transactions, every 4th signature from a fresh 1000-signature pull, classified
+by the top-level `Instruction:` log line only) to cross-check.
+
+**Result — liquidations are a vanishingly small fraction of this program's real
+on-chain traffic:**
+- Sample 1 (140 txs, full-log keyword scan): only **1 transaction** mentioned
+  "liquidat" anywhere in its logs, and that one **failed** (lost the race) —
+  0/80 successful liquidations found.
+- Sample 2 (200 txs, top-level-instruction classification): **0/200** had a
+  liquidation instruction at the top level. The actual dominant instruction was
+  `LendingAccountStartFlashloan` (186/200 = 93%), i.e. flash-loan arbitrage bots,
+  not liquidators.
+- **96.0% of all 2000 sampled signatures failed** (`err != null`) — and per
+  Sample 2's breakdown, this failure-storm is overwhelmingly flash-loan-arb bots
+  reverting (`InsufficientFunds`, custom program errors after a
+  `Borrow`→`Swap`/`SwapV2`→repay sequence), not liquidation races specifically.
+
+**Verdict: NOT VALIDATED, now on hardened real-data grounds instead of blocked
+APIs.** Two things changed from a "no data" verdict to a "the data says no"
+verdict:
+1. **Liquidation events are rare relative to total program traffic** (≤1 in
+   ~340 sampled transactions across two independent samples) — this is not a
+   steady several-times-a-day income source the objective's illustrative math
+   ("5 liquidations/day at $100 profit each") assumed; real frequency looks
+   like at most a handful per day, plausibly less, on marginfi specifically.
+2. **The ecosystem around this exact program is already saturated with
+   automated, latency-sensitive bots** — 93% of all its transaction volume is
+   flash-loan arbitrage attempts, 96% of which fail outright. That failure rate
+   is direct, real, on-chain proof of exactly the "many bots racing the same
+   opportunity, most lose" dynamic iteration 5's secondary source (baransel.dev,
+   a practitioner losing ~60% of liquidation races) only had anecdotal evidence
+   for. If the *lower-value, higher-frequency* adjacent opportunity (flash-loan
+   arb) is already this contested, a new, non-paid-RPC, retail Python bot
+   entering the *rarer, higher-value* liquidation niche should expect to be
+   competing against the same or better-resourced incumbents, not finding an
+   open lane.
+
+This does not reverse Thread B's standing best-candidate figure (XMR,
+2.04%/month) — it closes out the one thread (F) that iteration 5 could not
+fully quantify, converting it from "blocked" to "measured and still dead,"
+with the added finding that the mechanism's competitive intensity is real and
+severe, not merely asserted. `research/DEPLOY_THIS.md` updated to reflect this
+harder verdict on Thread F.
+
+**Learning:** when a target program/protocol's documented data APIs are all
+blocked (403/404/paywalled), the raw public RPC (`getSignaturesForAddress` +
+`getTransaction`, no key needed) is a viable fallback for measuring real
+on-chain event frequency for ANY Solana program — logs expose the human-readable
+`Instruction: <Name>` line, which is enough to classify transaction *type*
+(though not USD profit, which would need pre/post token-balance diffing, not
+attempted here since frequency alone already settles the verdict).

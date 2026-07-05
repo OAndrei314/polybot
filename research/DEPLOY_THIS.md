@@ -21,7 +21,7 @@ the bar. Do not read the presence of this file as validation.
 | C | Uniswap V3 / Orca concentrated LP | DEAD (stable) / NOT VALIDATED (volatile) | Stable: 0.03-0.5%/month. Volatile: ~3.3%/month fee ceiling, IL from an ordinary month's swing can match/exceed it |
 | D | Hyperliquid mark-vs-oracle CEX-DEX arb | DEAD | Gap never exceeds 0.064%, need >0.3% to be tradable |
 | E | Kalshi/Polymarket via VPN | DEAD/INFEASIBLE | N/A — legal/regulatory risk, not a yield question |
-| F | Solana liquidation bots (Drift/marginfi) | NOT VALIDATED | Unquantifiable — Drift (primary venue) offline since a $285M April 2026 exploit; no public frequency data; anecdotal evidence of a bot losing 60% of races to better-resourced competitors |
+| F | Solana liquidation bots (Drift/marginfi) | NOT VALIDATED (hardened, iter. 17) | Drift (primary venue) still offline; **direct on-chain measurement of marginfi mainnet (iter. 17)** found liquidations in ≤1 of ~340 sampled real transactions (rare), while 93% of the program's real traffic is flash-loan-arb bots with a 96% real failure rate — concrete on-chain proof the adjacent niche is already bot-saturated |
 
 ---
 
@@ -112,3 +112,15 @@ candidate STRK 1.25%/month (iter. 15), and Deribit dated-futures cash-and-carry
 basis on BTC/ETH → best 0.33%/month even at the farthest (~1yr) expiry, with 90-day
 history confirming today's thin contango is not a temporary dip (iter. 16). None
 beat the standing XMR figure above.
+
+**Thread F re-test (iteration 17):** the one thread that was previously
+"NOT VALIDATED" only because every documented data source was blocked (Drift API
+403, S3 bucket 403, Dune 404) has now been measured directly on Solana mainnet via
+public RPC (`research/solana_liquidation_scan.py`, no API key needed). Real
+liquidations are rare (≤1 of ~340 sampled marginfi-program transactions), while
+93% of that program's real transaction volume is flash-loan-arbitrage bots that
+fail 96% of the time — direct on-chain evidence that even the adjacent, more
+frequent opportunity on this exact program is already fiercely contested by
+automated competitors. This converts Thread F from "blocked, unquantifiable" to
+"measured, and the measurement itself argues against a new entrant finding an
+open lane." Still does not change the standing best candidate (XMR, 2.04%/month).

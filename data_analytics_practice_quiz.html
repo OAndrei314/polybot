@@ -1,0 +1,2134 @@
+<!doctype html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <title>Data Analytics Practice Lab</title>
+  <style>
+    :root {
+      --ink: #f5f7fb;
+      --muted: #aeb8ca;
+      --panel: rgba(20, 27, 42, 0.9);
+      --panel-2: rgba(29, 38, 57, 0.86);
+      --line: rgba(255, 255, 255, 0.11);
+      --accent: #ff5c5c;
+      --accent-2: #ffb454;
+      --cyan: #56d7d1;
+      --good: #53d68b;
+      --bad: #ff6b7a;
+      --shadow: 0 26px 80px rgba(0, 0, 0, 0.34);
+      --radius: 22px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html {
+      min-height: 100%;
+      overflow-x: hidden;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--ink);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at 12% 10%, rgba(255, 92, 92, 0.16), transparent 31rem),
+        radial-gradient(circle at 88% 18%, rgba(86, 215, 209, 0.12), transparent 28rem),
+        linear-gradient(145deg, #090d16 0%, #111827 48%, #0a101b 100%);
+      background-attachment: fixed;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.32;
+      background-image:
+        linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
+      background-size: 34px 34px;
+      mask-image: linear-gradient(to bottom, black, transparent 75%);
+    }
+
+    button, select, input { font: inherit; }
+
+    button {
+      border: 0;
+      cursor: pointer;
+    }
+
+    .app {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 34px 0 56px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      margin-bottom: 24px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 13px;
+      letter-spacing: -0.02em;
+      font-weight: 800;
+    }
+
+    .brand-mark {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      border-radius: 14px;
+      color: #121621;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      box-shadow: 0 12px 30px rgba(255, 92, 92, 0.25);
+    }
+
+    .bank-count {
+      color: var(--muted);
+      font-size: 0.9rem;
+      padding: 8px 12px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255,255,255,.035);
+    }
+
+    .panel {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: linear-gradient(145deg, var(--panel), rgba(13, 19, 31, 0.94));
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(18px);
+    }
+
+    .screen { display: none; }
+    .screen.active { display: block; animation: rise .35s ease both; }
+
+    @keyframes rise {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero {
+      overflow: hidden;
+      padding: clamp(28px, 5vw, 58px);
+      position: relative;
+      min-width: 0;
+    }
+
+    .hero::after {
+      content: "100";
+      position: absolute;
+      right: -18px;
+      top: -62px;
+      font-size: clamp(11rem, 25vw, 20rem);
+      line-height: 1;
+      font-weight: 900;
+      letter-spacing: -0.1em;
+      color: rgba(255,255,255,.025);
+      pointer-events: none;
+    }
+
+    .eyebrow {
+      color: var(--cyan);
+      font-size: 0.76rem;
+      font-weight: 800;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      max-width: 760px;
+      margin: 12px 0 14px;
+      font-size: clamp(2.25rem, 6vw, 5rem);
+      line-height: 0.98;
+      letter-spacing: -0.055em;
+    }
+
+    .lede {
+      max-width: 720px;
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.65;
+      font-size: clamp(1rem, 2vw, 1.14rem);
+    }
+
+    .setup-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 18px;
+      margin-top: 34px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .setup-card {
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: rgba(255,255,255,.035);
+      min-width: 0;
+    }
+
+    .label {
+      display: block;
+      margin-bottom: 10px;
+      color: var(--muted);
+      font-size: 0.78rem;
+      font-weight: 750;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .length-options {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 9px;
+    }
+
+    .length-option input {
+      position: absolute;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .length-option span {
+      min-height: 68px;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      color: var(--muted);
+      background: rgba(0,0,0,.16);
+      font-weight: 800;
+      transition: .2s ease;
+    }
+
+    .length-option input:checked + span {
+      color: white;
+      border-color: rgba(255, 92, 92, .65);
+      background: linear-gradient(135deg, rgba(255,92,92,.24), rgba(255,180,84,.12));
+      transform: translateY(-2px);
+    }
+
+    select {
+      width: 100%;
+      height: 48px;
+      padding: 0 42px 0 14px;
+      color: var(--ink);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      outline: none;
+      background: #131b2b;
+    }
+
+    select:focus { border-color: var(--cyan); }
+
+    .switch-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      margin-top: 18px;
+      color: var(--muted);
+    }
+
+    .switch {
+      width: 48px;
+      height: 28px;
+      position: relative;
+      flex: 0 0 auto;
+    }
+
+    .switch input { opacity: 0; width: 0; height: 0; }
+
+    .slider {
+      position: absolute;
+      inset: 0;
+      border-radius: 999px;
+      background: #303a4d;
+      transition: .2s ease;
+    }
+
+    .slider::before {
+      content: "";
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      left: 4px;
+      top: 4px;
+      border-radius: 50%;
+      background: white;
+      transition: .2s ease;
+    }
+
+    .switch input:checked + .slider {
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+    }
+
+    .switch input:checked + .slider::before { transform: translateX(20px); }
+
+    .primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      min-height: 50px;
+      padding: 0 20px;
+      color: #10141d;
+      border-radius: 14px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      box-shadow: 0 14px 30px rgba(255, 92, 92, .2);
+      font-weight: 850;
+      transition: transform .18s ease, filter .18s ease;
+    }
+
+    .primary:hover { transform: translateY(-2px); filter: brightness(1.06); }
+    .primary:disabled { cursor: not-allowed; filter: grayscale(.65); opacity: .55; transform: none; }
+
+    .secondary {
+      min-height: 46px;
+      padding: 0 17px;
+      color: var(--ink);
+      border: 1px solid var(--line);
+      border-radius: 13px;
+      background: rgba(255,255,255,.055);
+      font-weight: 750;
+    }
+
+    .secondary:hover { background: rgba(255,255,255,.09); }
+
+    .start-row {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-top: 22px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .available-note {
+      color: var(--muted);
+      font-size: .9rem;
+    }
+
+    .history-line {
+      margin-top: 26px;
+      color: var(--muted);
+      font-size: .88rem;
+    }
+
+    .quiz-shell { padding: clamp(20px, 4vw, 38px); }
+
+    .quiz-status {
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: center;
+      gap: 18px;
+      margin-bottom: 28px;
+    }
+
+    .status-number, .live-score {
+      color: var(--muted);
+      font-weight: 750;
+      white-space: nowrap;
+    }
+
+    .progress-track {
+      height: 8px;
+      overflow: hidden;
+      border-radius: 999px;
+      background: rgba(255,255,255,.08);
+    }
+
+    .progress-fill {
+      width: 0;
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+      transition: width .35s ease;
+    }
+
+    .question-meta {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .topic-pill, .type-pill {
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-size: .74rem;
+      font-weight: 800;
+    }
+
+    .topic-pill { color: var(--cyan); background: rgba(86,215,209,.11); }
+    .type-pill { color: var(--accent-2); background: rgba(255,180,84,.11); }
+
+    .question {
+      max-width: 900px;
+      margin: 0 0 24px;
+      font-size: clamp(1.35rem, 3vw, 2.15rem);
+      line-height: 1.28;
+      letter-spacing: -0.025em;
+    }
+
+    code {
+      padding: .08em .35em;
+      border: 1px solid rgba(86,215,209,.18);
+      border-radius: 6px;
+      color: #8eece7;
+      background: rgba(86,215,209,.08);
+      font-family: "SFMono-Regular", Consolas, monospace;
+      font-size: .9em;
+    }
+
+    .answers {
+      display: grid;
+      gap: 11px;
+    }
+
+    .answer {
+      display: grid;
+      grid-template-columns: 34px 1fr;
+      align-items: center;
+      gap: 13px;
+      min-height: 62px;
+      padding: 10px 16px;
+      border: 1px solid var(--line);
+      border-radius: 15px;
+      color: #dce3ef;
+      background: rgba(255,255,255,.032);
+      cursor: pointer;
+      transition: transform .16s ease, border-color .16s ease, background .16s ease;
+    }
+
+    .answer:hover {
+      transform: translateX(3px);
+      border-color: rgba(255,255,255,.24);
+      background: rgba(255,255,255,.06);
+    }
+
+    .answer input { position: absolute; opacity: 0; }
+
+    .key {
+      width: 30px;
+      height: 30px;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--line);
+      border-radius: 9px;
+      color: var(--muted);
+      background: rgba(0,0,0,.18);
+      font-size: .78rem;
+      font-weight: 850;
+    }
+
+    .answer.selected {
+      border-color: rgba(255,180,84,.7);
+      background: rgba(255,180,84,.09);
+    }
+
+    .answer.selected .key {
+      color: #161a22;
+      border-color: transparent;
+      background: var(--accent-2);
+    }
+
+    .answer.correct {
+      border-color: rgba(83,214,139,.72);
+      background: rgba(83,214,139,.11);
+    }
+
+    .answer.correct .key { color: #07170e; background: var(--good); border-color: transparent; }
+
+    .answer.wrong {
+      border-color: rgba(255,107,122,.75);
+      background: rgba(255,107,122,.11);
+    }
+
+    .answer.wrong .key { color: #1c080b; background: var(--bad); border-color: transparent; }
+
+    .answer.locked { cursor: default; }
+    .answer.locked:hover { transform: none; }
+
+    .action-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 15px;
+      margin-top: 22px;
+    }
+
+    .keyboard-hint {
+      color: #7f899c;
+      font-size: .8rem;
+    }
+
+    .feedback {
+      display: none;
+      margin-top: 22px;
+      padding: 19px;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: rgba(255,255,255,.035);
+      line-height: 1.58;
+    }
+
+    .feedback.visible { display: block; animation: rise .25s ease both; }
+    .feedback.good { border-color: rgba(83,214,139,.35); }
+    .feedback.bad { border-color: rgba(255,107,122,.35); }
+
+    .feedback-title {
+      margin-bottom: 6px;
+      font-weight: 900;
+      font-size: 1.06rem;
+    }
+
+    .feedback.good .feedback-title { color: var(--good); }
+    .feedback.bad .feedback-title { color: var(--bad); }
+
+    .correct-line { margin: 9px 0; color: #dfe6f2; }
+    .explanation { color: var(--muted); }
+    .source { margin-top: 10px; color: #7d8aa0; font-size: .82rem; }
+
+    .summary { padding: clamp(28px, 5vw, 54px); }
+
+    .summary-grid {
+      display: grid;
+      grid-template-columns: .72fr 1.28fr;
+      gap: 28px;
+      align-items: start;
+    }
+
+    .score-ring {
+      width: min(260px, 70vw);
+      aspect-ratio: 1;
+      display: grid;
+      place-items: center;
+      margin: 8px auto 0;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle closest-side, #111827 77%, transparent 79% 100%),
+        conic-gradient(var(--good) var(--score-angle, 0deg), rgba(255,255,255,.08) 0);
+      box-shadow: inset 0 0 40px rgba(0,0,0,.28);
+    }
+
+    .score-ring strong {
+      display: block;
+      font-size: clamp(2.6rem, 7vw, 4.8rem);
+      line-height: 1;
+      letter-spacing: -.06em;
+      text-align: center;
+    }
+
+    .score-ring span {
+      display: block;
+      margin-top: 6px;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    .summary h2 {
+      margin: 8px 0 8px;
+      font-size: clamp(2rem, 4vw, 3.4rem);
+      letter-spacing: -.045em;
+    }
+
+    .summary-copy {
+      margin: 0 0 22px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .breakdown {
+      display: grid;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .breakdown-row {
+      display: grid;
+      grid-template-columns: minmax(130px, 1fr) 1.5fr auto;
+      align-items: center;
+      gap: 12px;
+      font-size: .9rem;
+    }
+
+    .mini-track {
+      height: 7px;
+      overflow: hidden;
+      border-radius: 999px;
+      background: rgba(255,255,255,.08);
+    }
+
+    .mini-fill {
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, var(--cyan), var(--good));
+    }
+
+    .summary-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 26px;
+    }
+
+    .footer-note {
+      margin-top: 18px;
+      color: #768196;
+      font-size: .78rem;
+      line-height: 1.55;
+    }
+
+    .mistakes {
+      padding: clamp(24px, 5vw, 52px);
+    }
+
+    .mistakes-head {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 20px;
+      margin-bottom: 24px;
+    }
+
+    .mistakes h2 {
+      margin: 8px 0 0;
+      font-size: clamp(2rem, 5vw, 3.6rem);
+      letter-spacing: -.045em;
+    }
+
+    .mistake-list {
+      display: grid;
+      gap: 14px;
+    }
+
+    .mistake-card {
+      padding: 20px;
+      border: 1px solid var(--line);
+      border-radius: 17px;
+      background: rgba(255,255,255,.035);
+    }
+
+    .mistake-number {
+      color: var(--cyan);
+      font-size: .76rem;
+      font-weight: 850;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .mistake-question {
+      margin: 8px 0 15px;
+      font-size: 1.08rem;
+      font-weight: 760;
+      line-height: 1.45;
+    }
+
+    .review-answer {
+      margin-top: 8px;
+      padding: 11px 13px;
+      border-radius: 11px;
+      line-height: 1.45;
+    }
+
+    .review-answer.yours {
+      color: #ffc2c8;
+      background: rgba(255,107,122,.10);
+    }
+
+    .review-answer.correct-answer {
+      color: #bff4d3;
+      background: rgba(83,214,139,.10);
+    }
+
+    .mistake-explanation {
+      margin-top: 13px;
+      color: var(--muted);
+      line-height: 1.55;
+    }
+
+    @media (max-width: 760px) {
+      .app { width: min(100% - 20px, 1120px); padding-top: 16px; }
+      .topbar { align-items: flex-start; }
+      .bank-count { display: none; }
+      .setup-grid, .summary-grid { grid-template-columns: 1fr; }
+      .quiz-status { grid-template-columns: auto 1fr; }
+      .live-score { grid-column: 1 / -1; }
+      .keyboard-hint { display: none; }
+      .action-row { justify-content: flex-end; }
+      .start-row { flex-wrap: wrap; }
+      .answer { grid-template-columns: 30px 1fr; padding-inline: 12px; }
+      .breakdown-row { grid-template-columns: 1fr auto; }
+      .mini-track { grid-column: 1 / -1; grid-row: 2; }
+      .mistakes-head { align-items: flex-start; flex-direction: column; }
+    }
+
+    @media (max-width: 430px) {
+      .hero { padding: 26px 20px; }
+      h1 { font-size: 2.25rem; overflow-wrap: anywhere; }
+      .eyebrow { line-height: 1.5; }
+      .setup-card { padding: 16px; }
+      .length-option span { min-height: 58px; }
+      .start-row { align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+  <main class="app">
+    <header class="topbar">
+      <div class="brand">
+        <div class="brand-mark">DA</div>
+        <div>Practice Lab</div>
+      </div>
+      <div class="bank-count"><span id="bankCount">100</span> lecture-based questions</div>
+    </header>
+
+    <section id="startScreen" class="screen active">
+      <div class="panel hero">
+        <div class="eyebrow">Fresh bank · Built from your lecture set</div>
+        <h1>Know it under pressure.</h1>
+        <p class="lede">
+          New scenarios, different numbers, and underused lecture topics. The mock exam's exact
+          prompts are deliberately avoided so you practise the concepts rather than memorising its answers.
+        </p>
+
+        <div class="setup-grid">
+          <div class="setup-card">
+            <span class="label">Session length</span>
+            <div class="length-options">
+              <label class="length-option">
+                <input type="radio" name="length" value="20" checked="">
+                <span>20</span>
+              </label>
+              <label class="length-option">
+                <input type="radio" name="length" value="50">
+                <span>50</span>
+              </label>
+              <label class="length-option">
+                <input type="radio" name="length" value="100">
+                <span>100</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="setup-card">
+            <label class="label" for="topicSelect">Topic focus</label>
+            <select id="topicSelect"><option value="all">All topics (100)</option><option value="Import &amp; workflow">Import &amp; workflow (12)</option><option value="EDA &amp; descriptive statistics">EDA &amp; descriptive statistics (15)</option><option value="Multivariate EDA">Multivariate EDA (12)</option><option value="Missing data">Missing data (10)</option><option value="Outliers &amp; quality">Outliers &amp; quality (10)</option><option value="Interactive visualisation">Interactive visualisation (6)</option><option value="Features &amp; leakage">Features &amp; leakage (12)</option><option value="Inference &amp; regression">Inference &amp; regression (12)</option><option value="Evaluation &amp; generalisation">Evaluation &amp; generalisation (11)</option></select>
+            <div class="switch-row">
+              <span>Shuffle answer order</span>
+              <label class="switch">
+                <input id="shuffleAnswers" type="checkbox" checked="">
+                <span class="slider"></span>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div class="start-row">
+          <button id="startButton" class="primary">Start practice <span aria-hidden="true">→</span></button>
+          <button id="lastMistakesButton" class="secondary" hidden>View last mistakes</button>
+          <span id="availableNote" class="available-note">20 questions will be used</span>
+        </div>
+
+        <div id="historyLine" class="history-line">No attempts stored yet. Time to put a number on it.</div>
+      </div>
+    </section>
+
+    <section id="quizScreen" class="screen">
+      <div class="panel quiz-shell">
+        <div class="quiz-status">
+          <div id="statusNumber" class="status-number">1 / 20</div>
+          <div class="progress-track" aria-label="Quiz progress">
+            <div id="progressFill" class="progress-fill"></div>
+          </div>
+          <div id="liveScore" class="live-score">0 correct</div>
+        </div>
+
+        <div class="question-meta">
+          <span id="topicPill" class="topic-pill"></span>
+          <span id="typePill" class="type-pill"></span>
+        </div>
+        <h2 id="questionText" class="question"></h2>
+        <div id="answers" class="answers"></div>
+
+        <div id="feedback" class="feedback" aria-live="polite"></div>
+
+        <div class="action-row">
+          <span class="keyboard-hint">Keys 1–4 select · Enter confirms</span>
+          <button id="checkButton" class="primary" disabled="">Check answer</button>
+          <button id="nextButton" class="primary" hidden="">Next question <span aria-hidden="true">→</span></button>
+        </div>
+      </div>
+    </section>
+
+    <section id="summaryScreen" class="screen">
+      <div class="panel summary">
+        <div class="summary-grid">
+          <div>
+            <div id="scoreRing" class="score-ring">
+              <div>
+                <strong id="scorePercent">0%</strong>
+                <span id="scoreFraction">0 / 0</span>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div class="eyebrow">Session complete</div>
+            <h2 id="summaryTitle">Result</h2>
+            <p id="summaryCopy" class="summary-copy"></p>
+            <div id="breakdown" class="breakdown"></div>
+            <div class="summary-actions">
+              <button id="reviewButton" class="primary">Review missed questions</button>
+              <button id="viewMistakesButton" class="secondary">View answers</button>
+              <button id="newQuizButton" class="secondary">Build another quiz</button>
+            </div>
+            <div class="footer-note">
+              Sources point to the local lecture deck or notebook used for the concept.
+              The “Synthetic Data &amp; Bias” lecture was not present in the supplied folder, so this bank does not invent material for it.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="mistakesScreen" class="screen">
+      <div class="panel mistakes">
+        <div class="mistakes-head">
+          <div>
+            <div class="eyebrow">Mistake review</div>
+            <h2 id="mistakesTitle">Questions to revisit</h2>
+          </div>
+          <button id="mistakesBackButton" class="secondary">Back to setup</button>
+        </div>
+        <div id="mistakeList" class="mistake-list"></div>
+        <div class="summary-actions">
+          <button id="practiceMistakesButton" class="primary">Practise these questions</button>
+          <button id="mistakesBackButtonBottom" class="secondary">Back to setup</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const QUESTIONS = [
+      {
+        id: 1,
+        topic: "Import & workflow",
+        q: "A team has collected raw sensor logs but has not yet corrected formats, handled missing values, or transformed units. Which project phase should happen next?",
+        options: ["Postprocessing", "Preprocessing", "Deployment", "Causal inference"],
+        answer: 1,
+        explanation: "Preprocessing turns collected raw data into usable data through cleaning, completion, correction, standardisation, transformation, and integration.",
+        source: "Lecture 02 · pp. 4, 8–9"
+      },
+      {
+        id: 2,
+        topic: "Import & workflow",
+        q: "A temperature sensor is miscalibrated and adds exactly 2°C to every reading. What kind of error is this?",
+        options: ["Stochastic error", "Deterministic error", "Sampling variability", "Missing-at-random error"],
+        answer: 1,
+        explanation: "The error follows a known systematic rule, so it is deterministic and can be corrected once its mechanism is known.",
+        source: "Lecture 02 · pp. 8–9"
+      },
+      {
+        id: 3,
+        topic: "Import & workflow",
+        q: "Occasional random bit flips during wireless transmission cause unpredictable small changes in measurements. How should this error be classified?",
+        options: ["Deterministic", "Stochastic", "Administrative", "Structural"],
+        answer: 1,
+        explanation: "Random measurement or transmission errors are stochastic and are commonly represented as noise.",
+        source: "Lecture 02 · pp. 8–9"
+      },
+      {
+        id: 4,
+        topic: "Import & workflow",
+        q: "Which situation best illustrates <em>data downtime</em>?",
+        options: [
+          "A dashboard contains stale and inaccurate values for several hours",
+          "A model takes two minutes to train",
+          "A report uses a serif font",
+          "A dataset contains many useful columns"
+        ],
+        answer: 0,
+        explanation: "Data downtime describes periods in which data is missing, stale, inaccurate, or otherwise erroneous, making reports and decisions unreliable.",
+        source: "Lecture 02 · p. 7"
+      },
+      {
+        id: 5,
+        topic: "Import & workflow",
+        q: "Which file format is most suitable for efficient analytical scans of selected columns in a very large table?",
+        options: ["Plain-text CSV", "HTML", "Parquet", "PNG"],
+        answer: 2,
+        explanation: "Parquet is a column-oriented format designed for efficient storage and analytical access to large datasets.",
+        source: "Lecture 02 · p. 11"
+      },
+      {
+        id: 6,
+        topic: "Import & workflow",
+        q: "Which properties are normally stored in Parquet metadata? <strong>Select all that apply.</strong>",
+        options: ["Column data types", "Nullability", "Compression method", "The business meaning of every column"],
+        answer: [0, 1, 2],
+        explanation: "Parquet metadata contains structural information such as types, nullability, encoding, and compression. Business semantics generally require external documentation.",
+        source: "Lecture 02 · p. 12"
+      },
+      {
+        id: 7,
+        topic: "Import & workflow",
+        q: "What is a major practical advantage of CSV compared with Parquet?",
+        options: ["CSV always enforces primary keys", "CSV is human-readable and widely supported", "CSV stores nested schemas", "CSV is columnar and compressed by definition"],
+        answer: 1,
+        explanation: "CSV is simple, widely used, and human-readable, although it does not carry the rich schema metadata of Parquet.",
+        source: "Lecture 02 · p. 11"
+      },
+      {
+        id: 8,
+        topic: "Import & workflow",
+        q: "Which information is <em>not</em> guaranteed merely because a table is stored as Parquet?",
+        options: ["Column order", "Primitive data types", "Whether nulls are allowed", "That <code>revenue</code> is measured in euros"],
+        answer: 3,
+        explanation: "Units and business meaning are semantic constraints and are not guaranteed by the physical Parquet schema.",
+        source: "Lecture 02 · p. 12"
+      },
+      {
+        id: 9,
+        topic: "Import & workflow",
+        q: "A data file represents records using nested key–value pairs and ordered lists. Which format is the most likely?",
+        options: ["CSV", "JSON", "TIFF", "Parquet only"],
+        answer: 1,
+        explanation: "JSON is a human-readable semi-structured format based on key–value pairs and lists.",
+        source: "Lecture 02 · p. 13"
+      },
+      {
+        id: 10,
+        topic: "Import & workflow",
+        q: "An unauthenticated API URL directly returns a CSV file. What is the simplest suitable pandas approach?",
+        options: ["Pass the URL to <code>pd.read_csv()</code>", "Use <code>pd.merge()</code>", "Convert the URL to Parquet manually first", "Use a confusion matrix"],
+        answer: 0,
+        explanation: "When an API directly returns a readable tabular file without authentication, pandas can often read the URL directly.",
+        source: "Lecture 02 · p. 14"
+      },
+      {
+        id: 11,
+        topic: "Import & workflow",
+        q: "You have January and February tables with identical columns and want February's observations below January's. Which operation is appropriate?",
+        options: ["Concatenate along rows", "Left join on every column", "Concatenate along columns", "Compute a correlation matrix"],
+        answer: 0,
+        explanation: "Row-wise concatenation stacks observations from compatible tables. In pandas this is the default <code>axis=0</code> behaviour.",
+        source: "Lecture 02 · p. 15"
+      },
+      {
+        id: 12,
+        topic: "Import & workflow",
+        q: "A customer table must retain every customer even when no matching purchase exists. Which join should be used with customers on the left?",
+        options: ["Inner join", "Left join", "Right join", "Intersection-only concatenation"],
+        answer: 1,
+        explanation: "A left join retains all keys from the left table and fills unmatched right-side fields with missing values.",
+        source: "Lecture 02 · p. 16"
+      },
+      {
+        id: 13,
+        topic: "EDA & descriptive statistics",
+        q: "What is the primary purpose of exploratory data analysis?",
+        options: ["Deploy a final model", "Summarise and understand structure, patterns, and data quality", "Prove causation", "Encrypt the dataset"],
+        answer: 1,
+        explanation: "EDA is used to understand content, structure, quality, patterns, trends, relationships, limitations, and plausible next analyses.",
+        source: "Lecture 03 · pp. 3–4"
+      },
+      {
+        id: 14,
+        topic: "EDA & descriptive statistics",
+        q: "Which characteristics describe good EDA? <strong>Select all that apply.</strong>",
+        options: ["Iterative", "Visual", "Flexible", "Guaranteed to prove the initial hypothesis"],
+        answer: [0, 1, 2],
+        explanation: "EDA is iterative, visual, and flexible. It explores evidence rather than guaranteeing a preferred conclusion.",
+        source: "Lecture 03 · p. 4"
+      },
+      {
+        id: 15,
+        topic: "EDA & descriptive statistics",
+        q: "A variable stores citizenship as labels such as German, French, and Brazilian. What is its measurement scale?",
+        options: ["Nominal", "Ordinal", "Interval", "Ratio"],
+        answer: 0,
+        explanation: "Citizenship consists of categories without an inherent ordering, so it is nominal.",
+        source: "Lecture 03 · p. 6"
+      },
+      {
+        id: 16,
+        topic: "EDA & descriptive statistics",
+        q: "A fault severity variable has the levels minor, moderate, severe, and critical. What is its scale?",
+        options: ["Nominal", "Ordinal", "Interval", "Ratio"],
+        answer: 1,
+        explanation: "The categories have a meaningful order, but distances between adjacent levels are not quantitatively defined.",
+        source: "Lecture 03 · pp. 6–8"
+      },
+      {
+        id: 17,
+        topic: "EDA & descriptive statistics",
+        q: "Calendar year is treated numerically. Why is it usually an interval rather than a ratio variable?",
+        options: ["Years cannot be ordered", "Differences are meaningful, but year zero is not a true absence of time", "It contains text", "Its values cannot be subtracted"],
+        answer: 1,
+        explanation: "Interval scales support meaningful differences, but their zero is arbitrary; saying 2000 is twice 1000 is not meaningful.",
+        source: "Lecture 03 · pp. 6, 8"
+      },
+      {
+        id: 18,
+        topic: "EDA & descriptive statistics",
+        q: "A cable length measured in metres is on which scale?",
+        options: ["Nominal", "Ordinal", "Interval", "Ratio"],
+        answer: 3,
+        explanation: "Length has a true zero and meaningful ratios: a 4 m cable is twice as long as a 2 m cable.",
+        source: "Lecture 03 · pp. 6, 8"
+      },
+      {
+        id: 19,
+        topic: "EDA & descriptive statistics",
+        q: "Which measure of central tendency is always meaningful for a purely nominal variable?",
+        options: ["Mean", "Median", "Mode", "Standard deviation"],
+        answer: 2,
+        explanation: "For unordered categories, the most frequent category—the mode—is meaningful. A mean or median requires stronger scale properties.",
+        source: "Lecture 03 · p. 8"
+      },
+      {
+        id: 20,
+        topic: "EDA & descriptive statistics",
+        q: "Which additional measure becomes meaningful once categories have a natural order?",
+        options: ["Median", "Variance in squared units", "Geometric mean", "Pearson slope"],
+        answer: 0,
+        explanation: "Ordering allows a middle category to be identified, so the median becomes meaningful for ordinal data.",
+        source: "Lecture 03 · p. 8"
+      },
+      {
+        id: 21,
+        topic: "EDA & descriptive statistics",
+        q: "On which scale is the statement “A is twice as large as B” inherently meaningful?",
+        options: ["Nominal only", "Ordinal", "Interval", "Ratio"],
+        answer: 3,
+        explanation: "Meaningful multiplication and division require a true zero, which is the defining property of a ratio scale.",
+        source: "Lecture 03 · p. 8"
+      },
+      {
+        id: 22,
+        topic: "EDA & descriptive statistics",
+        q: "A five-level response from “strongly disagree” to “strongly agree” should normally be treated as:",
+        options: ["Nominal", "Ordinal", "Ratio", "A binary variable"],
+        answer: 1,
+        explanation: "Likert responses have a natural order, but equal numerical spacing between levels is not guaranteed.",
+        source: "Lecture 03 · p. 7"
+      },
+      {
+        id: 23,
+        topic: "EDA & descriptive statistics",
+        q: "What is the median of the ordered data <code>[2, 2, 5, 9, 20]</code>?",
+        options: ["2", "5", "7.6", "9"],
+        answer: 1,
+        explanation: "With five observations, the median is the third—the middle—value, which is 5.",
+        source: "Lecture 03 · p. 9"
+      },
+      {
+        id: 24,
+        topic: "EDA & descriptive statistics",
+        q: "What is the median of <code>[1, 3, 7, 11]</code>?",
+        options: ["3", "5", "7", "5.5"],
+        answer: 1,
+        explanation: "For an even number of observations, average the two middle values: (3 + 7) / 2 = 5.",
+        source: "Lecture 03 · p. 9"
+      },
+      {
+        id: 25,
+        topic: "EDA & descriptive statistics",
+        q: "A dataset has <code>Q1 = 10</code> and <code>Q3 = 26</code>. What is its interquartile range?",
+        options: ["8", "16", "18", "36"],
+        answer: 1,
+        explanation: "The IQR is Q3 − Q1, so 26 − 10 = 16.",
+        source: "Lecture 03 · p. 10"
+      },
+      {
+        id: 26,
+        topic: "EDA & descriptive statistics",
+        q: "Which statistic describes how heavy a distribution's tails are relative to a normal distribution?",
+        options: ["Skewness", "Kurtosis", "Median", "Frequency"],
+        answer: 1,
+        explanation: "Kurtosis concerns tail heaviness; skewness concerns asymmetry.",
+        source: "Lecture 03 · p. 9"
+      },
+      {
+        id: 27,
+        topic: "EDA & descriptive statistics",
+        q: "In a normal Q–Q plot, points lie close to the reference line. What does that suggest?",
+        options: ["The data approximately agree with a normal distribution", "The variables are causal", "There are no missing values", "The sample mean is zero"],
+        answer: 0,
+        explanation: "A Q–Q plot compares observed and theoretical quantiles. Close agreement with the line supports the proposed distributional shape.",
+        source: "Lecture 03 · p. 12"
+      },
+      {
+        id: 28,
+        topic: "Multivariate EDA",
+        q: "When does multivariate EDA specifically become <em>bivariate</em> EDA?",
+        options: ["When exactly two variables are studied", "When all variables are binary", "When the sample size is two", "When two models are trained"],
+        answer: 0,
+        explanation: "Bivariate analysis is the two-variable special case of multivariate EDA.",
+        source: "Lecture 04 · p. 3"
+      },
+      {
+        id: 29,
+        topic: "Multivariate EDA",
+        q: "You want to quantify a linear relationship between two ratio-scale variables with few outliers. Which coefficient is the standard choice?",
+        options: ["Pearson's r", "Cramér's V", "Phi", "Kendall's tau only"],
+        answer: 0,
+        explanation: "Pearson's r measures linear association between interval/ratio variables, but it is sensitive to outliers.",
+        source: "Lecture 04 · pp. 4–5"
+      },
+      {
+        id: 30,
+        topic: "Multivariate EDA",
+        q: "Two variables have a strong monotonic but curved relationship, and several outliers are present. Which coefficient is preferable?",
+        options: ["Pearson's r", "Spearman's rho", "Cramér's V", "Point-biserial correlation"],
+        answer: 1,
+        explanation: "Spearman correlation is rank-based, captures monotonic relationships, and is more robust to outliers than Pearson correlation.",
+        source: "Lecture 04 · p. 5"
+      },
+      {
+        id: 31,
+        topic: "Multivariate EDA",
+        q: "Which coefficient is designed for rank agreement between ordinal variables?",
+        options: ["Kendall's tau", "Pearson's r", "Point-biserial", "R²"],
+        answer: 0,
+        explanation: "Kendall's tau measures ordinal rank agreement and is robust to outliers.",
+        source: "Lecture 04 · p. 5"
+      },
+      {
+        id: 32,
+        topic: "Multivariate EDA",
+        q: "One variable is continuous motor temperature and the other is binary maintenance-needed (0/1). Which correlation is appropriate?",
+        options: ["Point-biserial", "Cramér's V", "Kendall's tau", "A ratio of means only"],
+        answer: 0,
+        explanation: "Point-biserial correlation is designed for one interval/ratio variable and one binary variable.",
+        source: "Lecture 04 · p. 5"
+      },
+      {
+        id: 33,
+        topic: "Multivariate EDA",
+        q: "Which coefficient measures association between two binary variables and is equivalent to Pearson correlation for binary coding?",
+        options: ["Phi", "Cramér's V only", "Spearman's rho", "Adjusted R²"],
+        answer: 0,
+        explanation: "The phi coefficient measures association between two binary variables.",
+        source: "Lecture 04 · p. 5"
+      },
+      {
+        id: 34,
+        topic: "Multivariate EDA",
+        q: "You need the strength of association between department (six categories) and device type (four categories), without a direction. What should you use?",
+        options: ["Pearson's r", "Cramér's V", "Point-biserial", "A z-score"],
+        answer: 1,
+        explanation: "Cramér's V is based on chi-square and measures association strength between categorical variables on a 0–1 scale.",
+        source: "Lecture 04 · p. 5"
+      },
+      {
+        id: 35,
+        topic: "Multivariate EDA",
+        q: "What normally appears on the diagonal of a pair plot?",
+        options: ["Univariate distributions", "Only missingness indicators", "Confusion matrices", "Regression coefficients"],
+        answer: 0,
+        explanation: "Pair plots show pairwise scatterplots off the diagonal and each variable's univariate distribution on the diagonal.",
+        source: "Lecture 04 · p. 6"
+      },
+      {
+        id: 36,
+        topic: "Multivariate EDA",
+        q: "Why add colour (<code>hue</code>) for a categorical variable to a pair plot?",
+        options: ["To reveal group-wise differences", "To convert every relationship into a causal one", "To remove outliers", "To guarantee normality"],
+        answer: 0,
+        explanation: "Colouring by category helps reveal whether relationships or clusters differ between groups.",
+        source: "Lecture 04 · p. 6"
+      },
+      {
+        id: 37,
+        topic: "Multivariate EDA",
+        q: "A scatter around a fitted relationship has roughly the same vertical spread across all predictor values. This property is called:",
+        options: ["Multicollinearity", "Homoscedasticity", "Skewness", "Target leakage"],
+        answer: 1,
+        explanation: "Homoscedasticity means approximately constant variability around the model across the predictor range.",
+        source: "Lecture 04 · p. 7"
+      },
+      {
+        id: 38,
+        topic: "Multivariate EDA",
+        q: "A treatment looks beneficial within both age groups but harmful when the groups are combined. Which phenomenon should you suspect?",
+        options: ["Simpson's paradox", "Standardisation", "MCAR", "Overfitting"],
+        answer: 0,
+        explanation: "Simpson's paradox occurs when a trend differs—or reverses—between grouped and aggregated analyses.",
+        source: "Lecture 04 · p. 9"
+      },
+      {
+        id: 39,
+        topic: "Multivariate EDA",
+        q: "Ice-cream sales and sunburn cases are strongly correlated. What is the safest conclusion?",
+        options: [
+          "Ice cream definitely causes sunburn",
+          "Sunburn definitely causes ice-cream sales",
+          "A third factor such as hot weather may influence both",
+          "The correlation must be a calculation error"
+        ],
+        answer: 2,
+        explanation: "Correlation alone cannot establish causation. Coincidence, confounding variables, or either causal direction may explain an association.",
+        source: "Lecture 04 · pp. 10–11"
+      },
+      {
+        id: 40,
+        topic: "Missing data",
+        q: "Which question concerns a missingness <em>pattern</em> rather than a missingness mechanism?",
+        options: ["Which columns tend to be missing together?", "Why do high earners omit income?", "Does missingness depend on an observed variable?", "Is the missing value itself driving nonresponse?"],
+        answer: 0,
+        explanation: "Patterns describe where missing values occur; mechanisms describe the processes that cause them.",
+        source: "Lectures 05 and 07 · patterns vs mechanisms"
+      },
+      {
+        id: 41,
+        topic: "Missing data",
+        q: "A random router failure drops 3% of survey submissions independently of every respondent characteristic and answer. Which mechanism is most plausible?",
+        options: ["MCAR", "MAR", "MNAR", "Target leakage"],
+        answer: 0,
+        explanation: "Under MCAR, missingness is unrelated to the values of any observed or unobserved variables.",
+        source: "Lecture 05 · pp. 9–10"
+      },
+      {
+        id: 42,
+        topic: "Missing data",
+        q: "Satisfaction ratings are more often missing for customers in a particular recorded region, but within each region missingness does not depend on the unreported rating. Which mechanism fits?",
+        options: ["MCAR", "MAR", "MNAR", "Administrative censoring only"],
+        answer: 1,
+        explanation: "The missingness depends on another observed variable (region), not on the missing satisfaction value itself, which is MAR.",
+        source: "Lecture 05 · p. 11"
+      },
+      {
+        id: 43,
+        topic: "Missing data",
+        q: "Borrowers with the largest debts are especially likely to hide the debt amount. Which mechanism fits?",
+        options: ["MCAR", "MAR", "MNAR", "Data contamination"],
+        answer: 2,
+        explanation: "The probability of missingness depends directly on the unobserved debt value, which is MNAR.",
+        source: "Lecture 05 · p. 12"
+      },
+      {
+        id: 44,
+        topic: "Missing data",
+        q: "What are risks of complete-case analysis? <strong>Select all that apply.</strong>",
+        options: ["Loss of precision", "Bias when missingness is not MCAR", "It always increases sample size", "It can discard a large amount of information"],
+        answer: [0, 1, 3],
+        explanation: "Dropping incomplete rows reduces information and precision, and it can introduce bias when the missingness mechanism is not MCAR.",
+        source: "Lecture 05 · p. 14"
+      },
+      {
+        id: 45,
+        topic: "Missing data",
+        q: "What is a typical consequence of replacing every missing value with one fixed mean?",
+        options: ["Variance is underestimated", "Variance is guaranteed to increase", "MNAR becomes MCAR", "All confidence intervals become wider"],
+        answer: 0,
+        explanation: "Single imputation creates too many identical central values, understating variance and often making standard errors and intervals too small.",
+        source: "Lecture 05 · p. 15"
+      },
+      {
+        id: 46,
+        topic: "Missing data",
+        q: "Why can multiple imputation be preferable to one deterministic replacement?",
+        options: ["It reflects uncertainty using multiple plausible completed datasets", "It proves the missingness is MCAR", "It removes the need for assumptions", "It always reproduces the exact missing values"],
+        answer: 0,
+        explanation: "Multiple imputation propagates uncertainty by creating multiple plausible replacements and combining the resulting analyses.",
+        source: "Lecture 05 · p. 15"
+      },
+      {
+        id: 47,
+        topic: "Missing data",
+        q: "How does available-case analysis differ from complete-case analysis?",
+        options: [
+          "Available-case analysis drops a unit only from analyses involving its missing variables",
+          "Available-case analysis removes every incomplete unit from every analysis",
+          "Available-case analysis replaces everything with zero",
+          "There is no difference"
+        ],
+        answer: 0,
+        explanation: "Complete-case analysis globally drops incomplete units; available-case analysis uses each unit where the required variables are observed.",
+        source: "Lecture 05 · p. 14"
+      },
+      {
+        id: 48,
+        topic: "Missing data",
+        q: "Participants in a longitudinal study who drop out never return, so all later waves are missing. What pattern is this?",
+        options: ["Monotone missingness", "Completely random scatter", "A perfect outer join", "Homoscedasticity"],
+        answer: 0,
+        explanation: "Once missingness begins and continues for all later measurements, the pattern is monotone.",
+        source: "Lecture 05 · p. 8"
+      },
+      {
+        id: 49,
+        topic: "Missing data",
+        q: "Which method replaces a missing survey response with an observed response from a sufficiently similar participant?",
+        options: ["Hot-deck imputation", "Cold-deck imputation", "Complete-case analysis", "Min–max scaling"],
+        answer: 0,
+        explanation: "Hot-deck imputation draws replacement values from similar responding units. Cold-deck values come from an external source.",
+        source: "Lecture 05 · p. 16"
+      },
+      {
+        id: 50,
+        topic: "Outliers & quality",
+        q: "A measurement is rare but confirmed as a genuine extreme operating condition. What is the best first response?",
+        options: ["Delete it automatically", "Investigate and retain or model it appropriately", "Replace the whole column with its mean", "Call it a typo without checking"],
+        answer: 1,
+        explanation: "Outliers can be valid and informative. Removal is justified when observations are clearly invalid, not merely inconvenient.",
+        source: "Lecture 06 · p. 17"
+      },
+      {
+        id: 51,
+        topic: "Outliers & quality",
+        q: "For which distribution does a z-score threshold have the clearest interpretation?",
+        options: ["A close-to-normal unimodal distribution", "Any multimodal distribution", "A nominal variable", "An arbitrary time series with a trend"],
+        answer: 0,
+        explanation: "Z-scores work best for distributions reasonably close to normal; skewness, multimodality, and outliers weaken their usefulness.",
+        source: "Lecture 06 · pp. 7–8"
+      },
+      {
+        id: 52,
+        topic: "Outliers & quality",
+        q: "Why can one enormous observation make z-score detection miss a second, moderately extreme observation?",
+        options: ["It inflates the mean and standard deviation, masking the second point", "It reduces the sample size to zero", "It changes numeric data to categories", "It forces the IQR to zero"],
+        answer: 0,
+        explanation: "Because the mean and standard deviation are sensitive to extremes, one huge value can expand the z-score reference scale and mask others.",
+        source: "Lecture 06 · p. 8"
+      },
+      {
+        id: 53,
+        topic: "Outliers & quality",
+        q: "Why is the IQR useful for robust outlier screening?",
+        options: ["It is based on quartiles and ignores much of the tails", "It uses the maximum twice", "It assumes every value is normal", "It is calculated only from the mean"],
+        answer: 0,
+        explanation: "Q1 and Q3 are resistant to extreme observations, so the IQR is less sensitive to outliers than the range or standard deviation.",
+        source: "Descriptive Statistics · pp. 36–39"
+      },
+      {
+        id: 54,
+        topic: "Outliers & quality",
+        q: "Two sensor readings are individually common, but their combination is almost never observed. What kind of anomaly is this?",
+        options: ["A multivariate outlier", "Necessarily a univariate outlier", "MCAR", "A valid primary key"],
+        answer: 0,
+        explanation: "Multivariate outliers can be unusual combinations of otherwise ordinary individual values.",
+        source: "Lecture 06 · pp. 11–14"
+      },
+      {
+        id: 55,
+        topic: "Outliers & quality",
+        q: "A value lies between two dense clusters in a multimodal distribution. It is not extreme on the overall number line but is locally isolated. This is best described as:",
+        options: ["An internal outlier", "A missing value", "An interval scale", "A left join"],
+        answer: 0,
+        explanation: "Internal outliers can occur in low-density gaps inside a multimodal distribution.",
+        source: "Lecture 06 · p. 9"
+      },
+      {
+        id: 56,
+        topic: "Outliers & quality",
+        q: "A temperature of 30°C is normal at noon but extraordinary at midnight. What type of anomaly is this?",
+        options: ["Contextual point outlier", "Global schema error", "Target leakage", "Duplicate row"],
+        answer: 0,
+        explanation: "A contextual outlier is unusual only given its context, here the time of day.",
+        source: "Lecture 06 · p. 15"
+      },
+      {
+        id: 57,
+        topic: "Outliers & quality",
+        q: "A machine signal abruptly shifts to a new stable mean and remains there. Which time-series anomaly is this?",
+        options: ["Rupture or breakpoint", "Single random missing cell", "Right skewness only", "Label encoding"],
+        answer: 0,
+        explanation: "A rupture marks the start of a new section with changed statistical properties.",
+        source: "Lecture 06 · p. 15"
+      },
+      {
+        id: 58,
+        topic: "Outliers & quality",
+        q: "Before searching for anomalous spikes in a strongly seasonal time series, what should generally be done?",
+        options: ["Remove trend and seasonality", "Shuffle the time order", "Convert every value to a category", "Fit preprocessing on the future"],
+        answer: 0,
+        explanation: "Time-series anomalies should be assessed relative to expected trend and seasonal structure.",
+        source: "Lecture 06 · p. 16"
+      },
+      {
+        id: 59,
+        topic: "Outliers & quality",
+        q: "Replacing every value above the 99th percentile with the 99th-percentile value is called:",
+        options: ["Winsorising or capping", "Complete-case analysis", "One-hot encoding", "Cross-validation"],
+        answer: 0,
+        explanation: "Capping, clipping, or Winsorising limits extremes without deleting the observations.",
+        source: "Lecture 06 · p. 17"
+      },
+      {
+        id: 60,
+        topic: "Interactive visualisation",
+        q: "Which are genuine advantages of interactive visualisations? <strong>Select all that apply.</strong>",
+        options: ["Zooming and filtering", "Hover details", "Potentially higher information density", "Guaranteed preservation in printed reports"],
+        answer: [0, 1, 2],
+        explanation: "Interaction supports exploration and tooltips can add detail without clutter. Print cannot preserve interactive state.",
+        source: "Lecture 07 · p. 6"
+      },
+      {
+        id: 61,
+        topic: "Interactive visualisation",
+        q: "How can tooltips increase information density?",
+        options: ["They reveal extra variables on demand without permanently cluttering the chart", "They remove all axes", "They guarantee causal interpretation", "They compress the source dataset"],
+        answer: 0,
+        explanation: "Hover information can expose additional detail only when requested, allowing the base figure to stay readable.",
+        source: "Lecture 07 · p. 6"
+      },
+      {
+        id: 62,
+        topic: "Interactive visualisation",
+        q: "A colleague filters a dashboard but does not record the chosen filters. What scientific problem does this create?",
+        options: ["The viewed state may not be reproducible", "The sample size automatically doubles", "The plot becomes nominal", "The API becomes authenticated"],
+        answer: 0,
+        explanation: "Interactive views depend on user state; without recording it, another reader may not be able to reconstruct the same evidence.",
+        source: "Lecture 07 · p. 6"
+      },
+      {
+        id: 63,
+        topic: "Interactive visualisation",
+        q: "What practical disadvantage becomes especially relevant for interactive plots of very large datasets?",
+        options: ["Performance limitations", "An inability to use colours", "No support for numeric axes", "They always lose all labels"],
+        answer: 0,
+        explanation: "Rendering and interaction can become slow or resource-intensive with large datasets.",
+        source: "Lecture 07 · p. 6"
+      },
+      {
+        id: 64,
+        topic: "Interactive visualisation",
+        q: "Which export format can preserve a Plotly figure's browser-based interactivity?",
+        options: ["Interactive HTML", "Plain printed paper", "A CSV with no code", "A static text paragraph"],
+        answer: 0,
+        explanation: "Plotly figures can be exported as interactive HTML that preserves browser interactions.",
+        source: "Lecture 07 · p. 7"
+      },
+      {
+        id: 65,
+        topic: "Interactive visualisation",
+        q: "When moving an interactive dashboard into a static report, what should the author do?",
+        options: ["Explicitly select and document a meaningful static state", "Assume readers can access hidden hover values", "Remove all captions", "Randomise the filters"],
+        answer: 0,
+        explanation: "A static report must deliberately preserve the relevant view and document filters or selections that shaped it.",
+        source: "Lecture 07 · p. 6"
+      },
+      {
+        id: 66,
+        topic: "Features & leakage",
+        q: "A raw timestamp is transformed into <code>day_of_week</code> and <code>is_weekend</code>. What has happened?",
+        options: ["Feature engineering", "Complete-case analysis", "Target leakage by definition", "Outlier removal"],
+        answer: 0,
+        explanation: "Feature engineering converts raw data into representations that expose useful information to a model.",
+        source: "Lecture 08 · pp. 1–2, 6"
+      },
+      {
+        id: 67,
+        topic: "Features & leakage",
+        q: "For predicting today's energy demand, yesterday's demand is added as a feature. What type of feature is it?",
+        options: ["Lag feature", "Target label", "One-hot column", "Principal component"],
+        answer: 0,
+        explanation: "Lag features shift a time series backward so past values can be used for current predictions.",
+        source: "Lecture 08 · p. 6"
+      },
+      {
+        id: 68,
+        topic: "Features & leakage",
+        q: "Which rolling feature is safe for predicting a value at time <code>t</code>?",
+        options: [
+          "An average using only observations available before or at t",
+          "A centred average containing observations after t",
+          "An average fitted on the complete future test period",
+          "The final outcome recorded next week"
+        ],
+        answer: 0,
+        explanation: "A live prediction feature may use only information that would genuinely be available at that point in time.",
+        source: "Lecture 08 · pp. 6, 9–10"
+      },
+      {
+        id: 69,
+        topic: "Features & leakage",
+        q: "Why is one-hot encoding suitable for unordered categories?",
+        options: ["It avoids imposing a numeric ranking", "It guarantees low dimensionality", "It converts categories into a single continuous scale", "It removes rare categories automatically"],
+        answer: 0,
+        explanation: "Separate indicator columns represent category membership without claiming that one category is larger than another.",
+        source: "Lecture 08 · pp. 3–4"
+      },
+      {
+        id: 70,
+        topic: "Features & leakage",
+        q: "What is the main cost of one-hot encoding a variable with thousands of unique values?",
+        options: ["Very high dimensionality and sparse features", "Loss of every category", "Automatic data leakage", "A forced normal distribution"],
+        answer: 0,
+        explanation: "High-cardinality one-hot encoding creates many mostly empty columns, contributing to the curse of dimensionality.",
+        source: "Lecture 08 · p. 4"
+      },
+      {
+        id: 71,
+        topic: "Features & leakage",
+        q: "Which statements about PCA are correct? <strong>Select all that apply.</strong>",
+        options: ["It can reduce dimensionality", "It constructs new uncorrelated components", "It may reduce interpretability", "It always keeps the original feature meanings unchanged"],
+        answer: [0, 1, 2],
+        explanation: "PCA compresses correlated information into fewer components, but each component is a blend of original features and can be hard to explain.",
+        source: "Lecture 08 · pp. 6–7"
+      },
+      {
+        id: 72,
+        topic: "Features & leakage",
+        q: "Which statement correctly distinguishes feature selection from feature engineering?",
+        options: ["Selection keeps a subset; engineering creates transformed or derived features", "Selection creates labels; engineering deletes rows", "They are exact synonyms", "Engineering can only be performed after deployment"],
+        answer: 0,
+        explanation: "Selection chooses among existing features; engineering constructs new representations from raw or existing data.",
+        source: "Lecture 08 · pp. 7–8"
+      },
+      {
+        id: 73,
+        topic: "Features & leakage",
+        q: "A method removes features using correlation scores before any model is fitted. Which selection category is this?",
+        options: ["Filter method", "Wrapper method", "Embedded method", "Hot-deck method"],
+        answer: 0,
+        explanation: "Filter methods use model-independent criteria such as correlations, mutual information, or statistical tests.",
+        source: "Lecture 08 · p. 7"
+      },
+      {
+        id: 74,
+        topic: "Features & leakage",
+        q: "A search repeatedly trains a model on different feature subsets and retains the best-performing subset. Which method is this?",
+        options: ["Wrapper selection", "Filter selection", "Simple scaling", "Cold-deck imputation"],
+        answer: 0,
+        explanation: "Wrapper methods evaluate candidate subsets using the model itself, often producing good subsets at high computational cost.",
+        source: "Lecture 08 · pp. 7–8"
+      },
+      {
+        id: 75,
+        topic: "Features & leakage",
+        q: "L1 regularisation drives some coefficients to zero while the model is being trained. Which selection category does this illustrate?",
+        options: ["Embedded selection", "Wrapper selection", "Available-case analysis", "Manual concatenation"],
+        answer: 0,
+        explanation: "Embedded methods perform feature selection inside the training algorithm; L1/Lasso is a standard example.",
+        source: "Lecture 08 · p. 8"
+      },
+      {
+        id: 76,
+        topic: "Features & leakage",
+        q: "Why should preprocessing be placed inside a cross-validation pipeline?",
+        options: ["Each fold learns preprocessing parameters only from its training portion", "It lets the test fold choose the model", "It removes the need for evaluation", "It guarantees every feature is useful"],
+        answer: 0,
+        explanation: "A pipeline prevents validation-fold information from leaking into learned imputations, scaling parameters, or other transformations.",
+        source: "Lecture 08 · pp. 10–11"
+      },
+      {
+        id: 77,
+        topic: "Features & leakage",
+        q: "A fraud model uses an investigation outcome field created three days after the transaction. What is the problem?",
+        options: ["Target leakage", "A harmless lag feature", "MCAR", "Underfitting"],
+        answer: 0,
+        explanation: "The field contains post-outcome information that would not exist when a live fraud decision must be made.",
+        source: "Lecture 08 · pp. 8–10"
+      },
+      {
+        id: 78,
+        topic: "Inference & regression",
+        q: "A survey contains 800 Pittsburgh residents, but the research question concerns all relevant Pittsburgh residents. The 800 respondents are the:",
+        options: ["Sample", "Population parameter", "Residuals", "Prediction interval"],
+        answer: 0,
+        explanation: "The observed respondents form a finite sample used to reason about a larger target population.",
+        source: "Lecture 09 · pp. 8–10"
+      },
+      {
+        id: 79,
+        topic: "Inference & regression",
+        q: "Different random samples from the same population produce slightly different estimates. This phenomenon is called:",
+        options: ["Sampling variability", "Target leakage", "Multicollinearity", "Winsorisation"],
+        answer: 0,
+        explanation: "Sampling variability is the across-sample variation that statistical inference tries to quantify.",
+        source: "Lecture 09 · pp. 10–13"
+      },
+      {
+        id: 80,
+        topic: "Inference & regression",
+        q: "What does the standard error of an estimated mean describe?",
+        options: ["How the estimated mean would vary across repeated samples", "The largest raw observation", "The number of missing columns", "The training error of a classifier"],
+        answer: 0,
+        explanation: "Standard error concerns estimator uncertainty across hypothetical repeated samples, not raw-data spread itself.",
+        source: "Lecture 09 · pp. 13–15"
+      },
+      {
+        id: 81,
+        topic: "Inference & regression",
+        q: "With sample size fixed, the estimated raw-data standard deviation doubles. What happens to the standard error of the mean?",
+        options: ["It doubles", "It halves", "It remains unchanged", "It becomes zero"],
+        answer: 0,
+        explanation: "Because SE = s/√n, doubling s while holding n fixed doubles the standard error.",
+        source: "Lecture 09 · pp. 14–15"
+      },
+      {
+        id: 82,
+        topic: "Inference & regression",
+        q: "What is the best interpretation of a 95% confidence interval for a model coefficient?",
+        options: [
+          "A range of parameter values reasonably consistent with the data and model assumptions",
+          "A range containing exactly 95% of all raw observations",
+          "A guarantee that the coefficient changes every sample",
+          "The interval in which every future outcome must fall"
+        ],
+        answer: 0,
+        explanation: "A confidence interval expresses uncertainty about an estimated parameter under the assumed model.",
+        source: "Lecture 09 · p. 16"
+      },
+      {
+        id: 83,
+        topic: "Inference & regression",
+        q: "Which interval is normally wider: uncertainty for the mean response at a predictor value, or uncertainty for one future observation?",
+        options: ["The prediction interval for one future observation", "The confidence interval for the mean response", "They must be identical", "Neither uses uncertainty"],
+        answer: 0,
+        explanation: "A prediction interval includes uncertainty about both the estimated mean and an individual future observation, so it is wider.",
+        source: "Lecture 09 · p. 17"
+      },
+      {
+        id: 84,
+        topic: "Inference & regression",
+        q: "A test returns <code>p = 0.20</code>. At a 5% significance threshold, what is the appropriate conclusion?",
+        options: ["Do not reject the null hypothesis", "The null hypothesis is proven true", "Reject the null because 0.20 is positive", "The effect is practically important"],
+        answer: 0,
+        explanation: "A p-value of 0.20 is not unusually small under the null at α = 0.05, so there is insufficient evidence to reject it.",
+        source: "Lecture 09 · p. 18"
+      },
+      {
+        id: 85,
+        topic: "Inference & regression",
+        q: "Which claim cannot be obtained from a p-value alone?",
+        options: ["The effect is large enough to matter operationally", "The data would be unusual under a stated null", "Evidence can be compared with a chosen threshold", "Sample size affects significance"],
+        answer: 0,
+        explanation: "Practical importance requires an effect size and domain context. A p-value alone does not measure usefulness or magnitude.",
+        source: "Lecture 09 · pp. 19–20"
+      },
+      {
+        id: 86,
+        topic: "Inference & regression",
+        q: "What criterion does ordinary least squares minimise?",
+        options: ["The sum of squared residuals", "The number of predictors", "The p-values", "The maximum category frequency"],
+        answer: 0,
+        explanation: "OLS chooses coefficients that minimise the total squared vertical differences between observed and fitted outcomes.",
+        source: "Lecture 09 · pp. 25–26"
+      },
+      {
+        id: 87,
+        topic: "Inference & regression",
+        q: "A fitted model is <code>Energy = 120 + 3.4 × Runtime</code>, with energy in kWh and runtime in hours. How should 3.4 be interpreted?",
+        options: ["Each additional runtime hour is associated with 3.4 kWh higher energy use on average", "Energy causes runtime to increase by 120", "Runtime explains exactly 3.4% of variance", "Every prediction is wrong by 3.4"],
+        answer: 0,
+        explanation: "The slope is the expected outcome change, in outcome units, associated with a one-unit predictor increase.",
+        source: "Lecture 09 · pp. 24, 27"
+      },
+      {
+        id: 88,
+        topic: "Inference & regression",
+        q: "Why can a regression intercept be mathematically valid but scientifically unhelpful?",
+        options: ["The value x = 0 may be impossible or far outside the observed range", "Intercepts never have units", "OLS does not estimate intercepts", "An intercept always proves causality"],
+        answer: 0,
+        explanation: "The intercept is the expected outcome when all predictors equal zero, which may have no realistic interpretation.",
+        source: "Lecture 09 · p. 24"
+      },
+      {
+        id: 89,
+        topic: "Inference & regression",
+        q: "In a multiple regression, what does a coefficient describe?",
+        options: ["The predictor–outcome relationship while the other included predictors are held fixed", "An unconditional causal effect", "The correlation among all residuals", "The test-set baseline"],
+        answer: 0,
+        explanation: "Multiple-regression coefficients have a conditional, all-else-held-fixed interpretation. Causation still requires stronger design assumptions.",
+        source: "Lecture 09 · pp. 29–30"
+      },
+      {
+        id: 90,
+        topic: "Evaluation & generalisation",
+        q: "Why must final performance be evaluated on data not used to fit the model?",
+        options: ["Training performance measures memorisation as well as generalisation", "Test data always has fewer rows", "Training data cannot contain outcomes", "Evaluation metrics require missing values"],
+        answer: 0,
+        explanation: "A model can fit idiosyncrasies of its training set. Unseen data estimates how well it generalises.",
+        source: "Lecture 10 · pp. 5–6"
+      },
+      {
+        id: 91,
+        topic: "Evaluation & generalisation",
+        q: "What is the purpose of a validation set?",
+        options: ["Compare models and tune choices without consuming the final test set", "Replace the outcome variable", "Guarantee zero error", "Store only missing rows"],
+        answer: 0,
+        explanation: "Validation data guides modelling decisions, while the untouched test set is reserved for one final evaluation.",
+        source: "Lecture 10 · p. 7"
+      },
+      {
+        id: 92,
+        topic: "Evaluation & generalisation",
+        q: "What is a key benefit of k-fold cross-validation for a small or medium dataset?",
+        options: ["Every observation is used for evaluation once across the folds", "It evaluates only on training predictions", "It removes the need for a test strategy", "It preserves chronological order automatically"],
+        answer: 0,
+        explanation: "K-fold CV repeatedly rotates the evaluation fold, using data efficiently and revealing variation across splits.",
+        source: "Lecture 10 · pp. 8, 10"
+      },
+      {
+        id: 93,
+        topic: "Evaluation & generalisation",
+        q: "What split is usually appropriate when observations are time-ordered?",
+        options: ["A chronological split with future observations after past observations", "A random split that freely mixes past and future", "No split at all", "Sort by the target and alternate rows"],
+        answer: 0,
+        explanation: "Chronological splitting preserves the real prediction direction and prevents future information from entering training.",
+        source: "Lecture 10 · pp. 9–10"
+      },
+      {
+        id: 94,
+        topic: "Evaluation & generalisation",
+        q: "A regression baseline predicts the same value for every test observation. Which value should it learn from the training outcomes?",
+        options: ["The training-set mean", "The largest test outcome", "Zero in every problem", "The test-set residual"],
+        answer: 0,
+        explanation: "The standard regression baseline predicts the training-outcome mean and establishes a minimum comparison point.",
+        source: "Lecture 10 · pp. 12–13"
+      },
+      {
+        id: 95,
+        topic: "Evaluation & generalisation",
+        q: "Which regression metric is <em>not</em> expressed in the target's original unit?",
+        options: ["MSE", "MAE", "RMSE", "Both MAE and RMSE"],
+        answer: 0,
+        explanation: "MSE is measured in squared target units. MAE and RMSE return to the target's original unit.",
+        source: "Lecture 10 · pp. 15–16"
+      },
+      {
+        id: 96,
+        topic: "Evaluation & generalisation",
+        q: "Two models have similar typical errors, but one occasionally makes enormous mistakes. Which metric will emphasise those failures more strongly?",
+        options: ["RMSE", "MAE", "Median category", "Accuracy"],
+        answer: 0,
+        explanation: "RMSE squares residuals before averaging, giving disproportionately high weight to large errors.",
+        source: "Lecture 10 · pp. 15–16"
+      },
+      {
+        id: 97,
+        topic: "Evaluation & generalisation",
+        q: "A test-set regression has <code>R² = -0.18</code>. What does that mean?",
+        options: ["It performs worse than the mean baseline", "It explains 18% of the variance", "It is a perfect fit", "R² cannot be negative on test data"],
+        answer: 0,
+        explanation: "Negative test R² means the model's squared error exceeds that of simply predicting the training mean.",
+        source: "Lecture 10 · p. 18"
+      },
+      {
+        id: 98,
+        topic: "Evaluation & generalisation",
+        q: "A classifier is 99.9% accurate because it always predicts the dominant class. What should you inspect next?",
+        options: ["Class balance and class-specific metrics", "Only a larger font", "The regression intercept", "Parquet compression"],
+        answer: 0,
+        explanation: "Accuracy can conceal complete failure on a rare but important class, so inspect the confusion matrix, precision, recall, and imbalance.",
+        source: "Lecture 10 · pp. 23–29"
+      },
+      {
+        id: 99,
+        topic: "Evaluation & generalisation",
+        q: "A classifier has TP = 45, FP = 15, and FN = 5. Which pair is correct?",
+        options: ["Precision = 0.75; recall = 0.90", "Precision = 0.90; recall = 0.75", "Precision = 0.50; recall = 0.50", "Precision = 0.80; recall = 0.80"],
+        answer: 0,
+        explanation: "Precision = 45/(45+15) = 0.75. Recall = 45/(45+5) = 0.90.",
+        source: "Lecture 10 · pp. 24, 28–29"
+      },
+      {
+        id: 100,
+        topic: "Evaluation & generalisation",
+        q: "A model fits training data extremely well but performs much worse on unseen data. Which actions can help? <strong>Select all that apply.</strong>",
+        options: ["Collect more training data", "Reduce the number of features or parameters", "Use regularisation", "Use cross-validation to detect the problem during model selection"],
+        answer: [0, 1, 2, 3],
+        explanation: "Overfitting can be mitigated with more data, lower model capacity, regularisation, and better model-selection procedures such as cross-validation.",
+        source: "Lecture 10 · pp. 33–36"
+      }
+    ];
+
+    const $ = (selector) => document.querySelector(selector);
+    const screens = {
+      start: $("#startScreen"),
+      quiz: $("#quizScreen"),
+      summary: $("#summaryScreen"),
+      mistakes: $("#mistakesScreen")
+    };
+
+    const state = {
+      questions: [],
+      index: 0,
+      score: 0,
+      results: [],
+      locked: false,
+      reviewing: false,
+      savedMistakeIds: []
+    };
+
+    function shuffle(items) {
+      const copy = [...items];
+      for (let i = copy.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [copy[i], copy[j]] = [copy[j], copy[i]];
+      }
+      return copy;
+    }
+
+    function showScreen(name) {
+      Object.entries(screens).forEach(([key, element]) => {
+        element.classList.toggle("active", key === name);
+      });
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    function prepareQuestion(question) {
+      const correctIndices = new Set(Array.isArray(question.answer) ? question.answer : [question.answer]);
+      let choices = question.options.map((text, originalIndex) => ({
+        text,
+        correct: correctIndices.has(originalIndex)
+      }));
+      if ($("#shuffleAnswers").checked) choices = shuffle(choices);
+      return { ...question, choices };
+    }
+
+    function populateTopics() {
+      const topics = [...new Set(QUESTIONS.map(q => q.topic))];
+      $("#topicSelect").innerHTML =
+        `<option value="all">All topics (${QUESTIONS.length})</option>` +
+        topics.map(topic => {
+          const count = QUESTIONS.filter(q => q.topic === topic).length;
+          return `<option value="${topic}">${topic} (${count})</option>`;
+        }).join("");
+    }
+
+    function requestedLength() {
+      return Number(document.querySelector('input[name="length"]:checked').value);
+    }
+
+    function updateAvailableNote() {
+      const topic = $("#topicSelect").value;
+      const available = topic === "all"
+        ? QUESTIONS.length
+        : QUESTIONS.filter(q => q.topic === topic).length;
+      const selected = Math.min(requestedLength(), available);
+      $("#availableNote").textContent = `${selected} question${selected === 1 ? "" : "s"} will be used`;
+    }
+
+    function loadHistory() {
+      try {
+        const history = JSON.parse(localStorage.getItem("daPracticeHistory") || "null");
+        const button = $("#lastMistakesButton");
+        if (!history) {
+          button.hidden = true;
+          return;
+        }
+        $("#historyLine").textContent =
+          `Best score: ${history.best}% · ${history.sessions} session${history.sessions === 1 ? "" : "s"} completed · ${history.answered} answers checked`;
+        const count = history.lastMistakes?.length || 0;
+        button.hidden = count === 0;
+        if (count) button.textContent = `View last ${count} mistake${count === 1 ? "" : "s"}`;
+      } catch (_) {
+        // Local storage is optional.
+      }
+    }
+
+    function saveHistory(percent, answered, lastMistakes) {
+      try {
+        const previous = JSON.parse(localStorage.getItem("daPracticeHistory") || "null") || {
+          best: 0,
+          sessions: 0,
+          answered: 0
+        };
+        const next = {
+          best: Math.max(previous.best, percent),
+          sessions: previous.sessions + 1,
+          answered: previous.answered + answered,
+          lastScore: percent,
+          lastMistakes
+        };
+        localStorage.setItem("daPracticeHistory", JSON.stringify(next));
+      } catch (_) {
+        // Local storage is optional.
+      }
+    }
+
+    function startQuiz(questionSet = null, reviewing = false) {
+      let selected;
+      if (questionSet) {
+        selected = questionSet;
+      } else {
+        const topic = $("#topicSelect").value;
+        const available = topic === "all"
+          ? QUESTIONS
+          : QUESTIONS.filter(q => q.topic === topic);
+        selected = shuffle(available).slice(0, Math.min(requestedLength(), available.length));
+      }
+
+      state.questions = selected.map(prepareQuestion);
+      state.index = 0;
+      state.score = 0;
+      state.results = [];
+      state.locked = false;
+      state.reviewing = reviewing;
+      showScreen("quiz");
+      renderQuestion();
+    }
+
+    function renderQuestion() {
+      const question = state.questions[state.index];
+      state.locked = false;
+      $("#statusNumber").textContent = `${state.index + 1} / ${state.questions.length}`;
+      $("#liveScore").textContent = `${state.score} correct`;
+      $("#progressFill").style.width = `${(state.index / state.questions.length) * 100}%`;
+      $("#topicPill").textContent = question.topic;
+      $("#typePill").textContent = Array.isArray(question.answer) ? "Select all that apply" : "Choose one";
+      $("#questionText").innerHTML = question.q;
+      $("#feedback").className = "feedback";
+      $("#feedback").innerHTML = "";
+      $("#checkButton").hidden = false;
+      $("#checkButton").disabled = true;
+      $("#nextButton").hidden = true;
+
+      const multi = Array.isArray(question.answer);
+      $("#answers").innerHTML = question.choices.map((choice, index) => `
+        <label class="answer" data-index="${index}">
+          <input type="${multi ? "checkbox" : "radio"}" name="answer" value="${index}">
+          <span class="key">${index + 1}</span>
+          <span>${choice.text}</span>
+        </label>
+      `).join("");
+
+      document.querySelectorAll(".answer input").forEach(input => {
+        input.addEventListener("change", () => {
+          document.querySelectorAll(".answer").forEach(label => {
+            const ownInput = label.querySelector("input");
+            label.classList.toggle("selected", ownInput.checked);
+          });
+          $("#checkButton").disabled = selectedIndices().length === 0;
+        });
+      });
+    }
+
+    function selectedIndices() {
+      return [...document.querySelectorAll(".answer input:checked")].map(input => Number(input.value));
+    }
+
+    function sameSet(a, b) {
+      return a.length === b.length && [...a].sort().every((value, index) => value === [...b].sort()[index]);
+    }
+
+    function checkAnswer() {
+      if (state.locked) return;
+      const question = state.questions[state.index];
+      const selected = selectedIndices();
+      if (!selected.length) return;
+      const correct = question.choices
+        .map((choice, index) => choice.correct ? index : -1)
+        .filter(index => index >= 0);
+      const isCorrect = sameSet(selected, correct);
+      const selectedAnswers = selected.map(index => question.choices[index].text);
+      const correctAnswers = correct.map(index => question.choices[index].text);
+
+      state.locked = true;
+      if (isCorrect) state.score += 1;
+      state.results.push({
+        id: question.id,
+        topic: question.topic,
+        correct: isCorrect,
+        selectedAnswers,
+        correctAnswers
+      });
+
+      document.querySelectorAll(".answer").forEach((label, index) => {
+        const input = label.querySelector("input");
+        input.disabled = true;
+        label.classList.add("locked");
+        label.classList.remove("selected");
+        if (question.choices[index].correct) label.classList.add("correct");
+        else if (selected.includes(index)) label.classList.add("wrong");
+      });
+
+      const correctText = correct.map(index => question.choices[index].text).join("; ");
+      const feedback = $("#feedback");
+      feedback.className = `feedback visible ${isCorrect ? "good" : "bad"}`;
+      feedback.innerHTML = `
+        <div class="feedback-title">${isCorrect ? "Correct." : "Not quite."}</div>
+        ${isCorrect ? "" : `<div class="correct-line"><strong>Correct answer:</strong> ${correctText}</div>`}
+        <div class="explanation">${question.explanation}</div>
+        <div class="source">${question.source}</div>
+      `;
+
+      $("#liveScore").textContent = `${state.score} correct`;
+      $("#progressFill").style.width = `${((state.index + 1) / state.questions.length) * 100}%`;
+      $("#checkButton").hidden = true;
+      $("#nextButton").hidden = false;
+      $("#nextButton").innerHTML = state.index === state.questions.length - 1
+        ? `See results <span aria-hidden="true">→</span>`
+        : `Next question <span aria-hidden="true">→</span>`;
+      $("#nextButton").focus();
+    }
+
+    function nextQuestion() {
+      if (!state.locked) return;
+      if (state.index < state.questions.length - 1) {
+        state.index += 1;
+        renderQuestion();
+      } else {
+        renderSummary();
+      }
+    }
+
+    function renderSummary() {
+      const total = state.results.length;
+      const percent = Math.round((state.score / total) * 100);
+      $("#scorePercent").textContent = `${percent}%`;
+      $("#scoreFraction").textContent = `${state.score} / ${total}`;
+      $("#scoreRing").style.setProperty("--score-angle", `${percent * 3.6}deg`);
+
+      let title = "Good diagnostic run.";
+      let copy = "You have a useful map of what to revisit. Review the misses, then run a fresh mixed set.";
+      if (percent >= 85) {
+        title = "That is exam-ready territory.";
+        copy = "Strong result. Keep the edge by reviewing misses and testing yourself again with shuffled wording.";
+      } else if (percent >= 70) {
+        title = "Solid—and very fixable.";
+        copy = "The foundation is there. Your topic breakdown shows where a focused pass will return the most marks.";
+      } else if (percent < 50) {
+        title = "Useful pain, zero mystery.";
+        copy = "This is exactly what practice is for. Review the missed explanations before taking another short set.";
+      }
+      $("#summaryTitle").textContent = title;
+      $("#summaryCopy").textContent = copy;
+
+      const topicMap = new Map();
+      state.results.forEach(result => {
+        if (!topicMap.has(result.topic)) topicMap.set(result.topic, { correct: 0, total: 0 });
+        const row = topicMap.get(result.topic);
+        row.total += 1;
+        if (result.correct) row.correct += 1;
+      });
+
+      $("#breakdown").innerHTML = [...topicMap.entries()].map(([topic, values]) => {
+        const topicPercent = Math.round((values.correct / values.total) * 100);
+        return `
+          <div class="breakdown-row">
+            <span>${topic}</span>
+            <div class="mini-track"><div class="mini-fill" style="width:${topicPercent}%"></div></div>
+            <strong>${values.correct}/${values.total}</strong>
+          </div>
+        `;
+      }).join("");
+
+      const misses = state.results.filter(result => !result.correct);
+      $("#reviewButton").hidden = misses.length === 0;
+      $("#viewMistakesButton").hidden = misses.length === 0;
+      $("#reviewButton").textContent = `Review ${misses.length} missed question${misses.length === 1 ? "" : "s"}`;
+      if (!state.reviewing) saveHistory(percent, total, misses);
+      loadHistory();
+      showScreen("summary");
+    }
+
+    function renderMistakeReview(mistakes) {
+      state.savedMistakeIds = mistakes.map(result => result.id);
+      $("#mistakesTitle").textContent =
+        `${mistakes.length} question${mistakes.length === 1 ? "" : "s"} to revisit`;
+      $("#mistakeList").innerHTML = mistakes.map((result, index) => {
+        const question = QUESTIONS.find(item => item.id === result.id);
+        if (!question) return "";
+        const selected = result.selectedAnswers?.length
+          ? result.selectedAnswers.join("; ")
+          : "Your previous choice was not stored by the older version.";
+        const correct = result.correctAnswers?.length
+          ? result.correctAnswers.join("; ")
+          : (Array.isArray(question.answer) ? question.answer : [question.answer])
+              .map(answerIndex => question.options[answerIndex])
+              .join("; ");
+        return `
+          <article class="mistake-card">
+            <div class="mistake-number">${question.topic} · Question ${index + 1}</div>
+            <div class="mistake-question">${question.q}</div>
+            <div class="review-answer yours"><strong>Your answer:</strong> ${selected}</div>
+            <div class="review-answer correct-answer"><strong>Correct answer:</strong> ${correct}</div>
+            <div class="mistake-explanation">${question.explanation}</div>
+            <div class="source">${question.source}</div>
+          </article>
+        `;
+      }).join("");
+      showScreen("mistakes");
+    }
+
+    function showCurrentMistakes() {
+      renderMistakeReview(state.results.filter(result => !result.correct));
+    }
+
+    function showLastMistakes() {
+      try {
+        const history = JSON.parse(localStorage.getItem("daPracticeHistory") || "null");
+        if (history?.lastMistakes?.length) renderMistakeReview(history.lastMistakes);
+      } catch (_) {
+        // Local storage is optional.
+      }
+    }
+
+    function practiceSavedMistakes() {
+      const ids = new Set(state.savedMistakeIds);
+      const questions = QUESTIONS.filter(question => ids.has(question.id));
+      if (questions.length) startQuiz(questions, true);
+    }
+
+    function reviewMisses() {
+      const missedIds = new Set(state.results.filter(result => !result.correct).map(result => result.id));
+      const missed = QUESTIONS.filter(question => missedIds.has(question.id));
+      if (missed.length) startQuiz(missed, true);
+    }
+
+    $("#startButton").addEventListener("click", () => startQuiz());
+    $("#checkButton").addEventListener("click", checkAnswer);
+    $("#nextButton").addEventListener("click", nextQuestion);
+    $("#reviewButton").addEventListener("click", reviewMisses);
+    $("#viewMistakesButton").addEventListener("click", showCurrentMistakes);
+    $("#lastMistakesButton").addEventListener("click", showLastMistakes);
+    $("#practiceMistakesButton").addEventListener("click", practiceSavedMistakes);
+    $("#mistakesBackButton").addEventListener("click", () => showScreen("start"));
+    $("#mistakesBackButtonBottom").addEventListener("click", () => showScreen("start"));
+    $("#newQuizButton").addEventListener("click", () => {
+      loadHistory();
+      showScreen("start");
+    });
+    $("#topicSelect").addEventListener("change", updateAvailableNote);
+    document.querySelectorAll('input[name="length"]').forEach(input => {
+      input.addEventListener("change", updateAvailableNote);
+    });
+
+    document.addEventListener("keydown", event => {
+      if (!screens.quiz.classList.contains("active")) return;
+      if (!state.locked && ["1", "2", "3", "4"].includes(event.key)) {
+        const input = document.querySelectorAll(".answer input")[Number(event.key) - 1];
+        if (!input) return;
+        if (input.type === "radio") {
+          input.checked = true;
+        } else {
+          input.checked = !input.checked;
+        }
+        input.dispatchEvent(new Event("change", { bubbles: true }));
+      } else if (event.key === "Enter") {
+        event.preventDefault();
+        if (state.locked) nextQuestion();
+        else if (!$("#checkButton").disabled) checkAnswer();
+      }
+    });
+
+    $("#bankCount").textContent = QUESTIONS.length;
+    populateTopics();
+    updateAvailableNote();
+    loadHistory();
+  </script>
+
+
+</body></html>
