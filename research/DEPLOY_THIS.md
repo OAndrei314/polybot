@@ -262,3 +262,24 @@ visibly fleeing this mechanism. This is real depositor money, not a
 simulation, independently corroborating Thread A's DEAD verdict. This is
 now 12 post-A-F mechanisms tested, all dead. Standing best candidate (XMR,
 Thread B, 2.04%/month) unchanged.
+
+**Thread O (iteration 25): Decentralized sports-betting AMM "house"
+liquidity (Azuro, Overtime Markets) — a new mechanism family (being the
+counterparty/bookmaker's capital, not a bettor).** Real DeFiLlama TVL history
+(`research/sports_betting_amm_scan.py`) shows both platforms in the same
+capital-flight collapse already seen with Thread N's DOVs: Azuro down
+62-99.9% from peak across every chain (Polygon $9.4M->$1.24M), Overtime down
+41-92.5% across every chain (Optimism $2.95M->$790k). The one historical
+number that would plausibly clear 5%/month — Overtime's Arbitrum Single LP
+vault, +106% over its first year (DL News, May 2024, not script-reproducible
+from a live API) — is 2+ years stale and the *same product* on Base went
+**net-negative (-9%)** over the identical period, a small-sample/high-variance
+trap already flagged elsewhere in this objective. More importantly, this
+thread is disqualified on **legal risk, not yield**: providing capital as the
+sportsbook's counterparty is a plausible functional equivalent of operating a
+gambling business, arguably a clearer ONJN licensing trigger for this
+Romania-based user than merely betting (which already got Polymarket
+blacklisted per iteration 5) — no legal source was found suggesting LP-side
+exposure is safer. NOT VALIDATED/INFEASIBLE. This is now 13 post-A-F
+mechanisms tested, all dead/infeasible. Standing best candidate (XMR, Thread
+B, 2.04%/month) unchanged.

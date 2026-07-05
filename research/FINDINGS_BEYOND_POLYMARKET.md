@@ -1292,3 +1292,115 @@ promoted to `DEPLOY_THIS.md`.
   value pairs, manager/agency-risk vaults, counterparty vaults in 2 venues,
   and now automated options vaults) converges on the same sub-2.1%/month
   ceiling, with XMR (Thread B) still the standing best validated candidate.
+
+## Thread O: Decentralized sports-betting AMM "house" liquidity (Azuro, Overtime Markets) (Iteration 25)
+
+**Concept:** Instead of trying to find mispriced bets (Polymarket — already
+DEAD/geo-blocked per every prior thread in this objective), be the
+counterparty. Deposit into a decentralized sports-betting AMM's liquidity
+pool, which acts as the sportsbook itself and captures the house edge across
+many bets. This is a genuinely new mechanism family (underwriting/manager
+risk via pooled counterparty capital, distinct from market-neutral yield,
+directional momentum, relative-value trading, or copy-deposit vaults already
+tested in Threads B/G/I/J/K/L).
+
+**Method:** Used a general-purpose research agent (web search) to establish
+which decentralized sports-betting AMMs exist and whether real, checkable
+performance data is public, then independently verified/quantified with real
+API pulls: `research/sports_betting_amm_scan.py` hits DeFiLlama's
+`/protocol/{slug}` (real chain-level TVL history, all-time) for both `azuro`
+and `overtime`, plus `yields.llama.fi/pools` for Azuro's LP-pool APY
+snapshots. No free API exposes a per-share NAV / historical-return time
+series for either protocol's actual sportsbook vault (Azuro's DeFiLlama pool
+entries have `pricePerShare: None`; Overtime's vault-level returns aren't in
+DeFiLlama's `chainTvls` at all, which only has protocol-wide TVL) — so
+historical *return* figures for Overtime are taken from a secondary, dated
+source (DL News, May 2024, reporting Overtime's own on-chain dashboard) and
+explicitly disclosed as such rather than presented as a live pull.
+
+**Results (real data, pulled live 2026-07-05):**
+
+*Azuro Protocol TVL collapse, all chains:*
+
+| Chain | Peak TVL | Peak date | Current TVL | Collapse |
+|---|---|---|---|---|
+| Polygon | $9.41M | 2024-11-01 | $1.24M | -86.8% |
+| xDai/Gnosis | $5.53M | 2022-11-13 | $4.8k | -99.9% |
+| Chiliz | $274k | 2024-05 | $629 | -99.8% |
+| Base | $365k | 2025-10-07 | $138k | -62.0% |
+
+Azuro's own live DeFiLlama LP-pool "APY" (Polygon USDT, Base WETH) reads
+0.00% at the current snapshot, with only 24 noisy daily samples going back
+to 2026-06-12 (day-to-day range 0-66%/yr annualized) — DeFiLlama itself flags
+the Polygon pool `outlier: True`. This confirms the mechanism's real
+data-generating process (lumpy, episodic bet-settlement payouts, not smooth
+continuous fees) cannot be reliably measured by a fee-APR-style API; Azuro's
+own marketing states an unsourced "historically 15-20% APY" figure with no
+downloadable dataset behind it.
+
+*Overtime Markets (Thales) TVL collapse, all chains:*
+
+| Chain | Peak TVL | Current TVL | Collapse |
+|---|---|---|---|
+| Optimism | $2.95M | $790k | -73.3% |
+| Arbitrum | $2.07M | $533k | -74.3% |
+| Polygon | $182k | $14k | -92.5% |
+| Base | $779k | $453k | -41.8% |
+
+*Overtime historical LP returns (DL News, May 2024, ~1yr since mid-2023
+inception, NOT reproducible via free API):* Arbitrum Single LP +106%
+(~6-9%/month compounded — the only figure in this entire 16-mechanism
+objective search that plausibly clears 5%/month), Optimism Single LP +59%,
+Optimism Parlay LP +33%, but **Base Single LP -9%, Base Parlay LP -7%** on
+the exact same product — DL News attributes Base's negative return directly
+to thin volume, where one large bettor's win dominated the whole pool.
+Weekly range across vaults was -6% to +23%. No performance update found for
+2025-2026.
+
+**Verdict: NOT VALIDATED / INFEASIBLE.** Three independent disqualifiers,
+any one of which would be sufficient alone:
+
+1. **Legal risk is equal-or-worse than Polymarket, not better.** The research
+   agent found no legal source distinguishing "LP to a betting AMM" from
+   "bettor" under Romanian/EU law. Providing capital that is deployed as the
+   counterparty to bets is a plausible functional equivalent of
+   *operating/underwriting* a sportsbook — arguably a clearer trigger for
+   ONJN licensing than merely placing bets, since Polymarket's own Romania
+   block was as a bettor, not as house capital. This objective already
+   established (iteration 5) that Polymarket carries real ONJN blacklist
+   risk for this user; nothing here suggests LP-side exposure is safer.
+2. **Both platforms are in the same real, capital-voting-with-its-feet
+   collapse pattern as Thread N's DOV protocols** (iteration 24): TVL down
+   41-100% from peak on every chain of both venues, confirming depositors
+   are net exiting, not accumulating.
+3. **The one number that would clear 5%/month (Overtime Arbitrum, +106%/yr)
+   is 2+ years stale, drawn from a single ~1-year sample, and the identical
+   product configuration on a different chain (Base) went net-negative in
+   the same period** — this is the same small-sample/high-variance pattern
+   already flagged as a trap in iterations 6 and 21 (a striking result from
+   one thin-liquidity venue is not evidence of a repeatable edge when a
+   sibling venue with the same mechanism shows the opposite sign).
+
+Not promoted to `DEPLOY_THIS.md`. Standing best validated candidate remains
+XMR funding basis (Thread B, 2.04%/month).
+
+**Learnings:**
+- This is the first thread in the objective disqualified primarily on
+  **legal risk** rather than yield or drawdown — worth distinguishing from
+  a mechanical DEAD verdict: the Overtime Arbitrum historical number is the
+  single best headline figure found across all 16 mechanisms tested, but it
+  fails on a non-quantitative axis (regulatory exposure) the objective's
+  own "quantify return AND max loss" framework doesn't fully capture, so it
+  needed explicit separate treatment rather than being silently dropped.
+- DeFiLlama's chain-level `/protocol/{slug}` TVL history is a fast,
+  reusable way to sanity-check whether *any* candidate DeFi/GameFi
+  protocol's capital base is growing or collapsing before investing time in
+  a deeper backtest — this is the third thread (after Thread N's DOVs and
+  now this one) where a simple TVL-trend pull alone was sufficient to
+  strongly corroborate a dead/declining verdict before a single dollar of
+  hypothetical yield was computed.
+- This is the 13th post-A-F follow-up mechanism tested (after iterations 6,
+  7, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24) and the first to introduce
+  legal/regulatory risk as a primary disqualifier rather than yield or
+  volatility — every named thread (A-F) plus every follow-up mechanism
+  family reachable with free public data has now been tested at least once.
