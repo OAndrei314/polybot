@@ -831,3 +831,102 @@ XMR on Hyperliquid) is an exploitable inefficiency or just noise riding a
 temporarily-elevated coin-specific rate — here it confirms the broader
 regime (thin basis yield market-wide) rather than suggesting our XMR figure
 is somehow leaving money on the table elsewhere.
+
+---
+
+## Thread J (iteration 20, first directional mechanism beyond A-I): Leveraged trend-following / momentum on Hyperliquid perps
+
+**Why this thread:** every prior thread (A-I, 13 mechanisms total across 6
+named threads + 7 post-A-F follow-ups) tried to harvest a MARKET-NEUTRAL
+spread and all landed below 5%/month — the current regime has thin basis
+almost everywhere. The objective explicitly permits high-risk directional
+strategies ("do not filter out high-risk strategies, just disclose risk
+clearly"), and no prior thread had tested a directional bet. This is the
+first genuinely directional mechanism tested in this objective.
+
+**Method (100% real data):** `research/momentum_trend_scan.py` pulls real
+Hyperliquid daily `candleSnapshot` closes for BTC/ETH/SOL (700 days, the
+full available HL perp history back to inception, 701 daily closes each)
+and backtests a fully mechanical, always-in-market EMA-crossover
+trend-following rule (long when fast EMA > slow EMA, short otherwise, flip
+position on cross) with a 3.5bps taker fee charged on each flip. No
+per-coin curve-fitting — one fixed rule tested identically on all three
+coins, then re-run at 3 different EMA window pairs (10/30, 20/50, 5/20) to
+check robustness rather than reporting only the best-looking
+parameterization. Leverage (1x/2x/3x/5x) applied by directly multiplying
+daily returns before compounding, with liquidation checked against each
+leverage's exact isolated-margin threshold (same formula as Thread B) vs.
+the real worst single-day adverse move in the window.
+
+**Results (real data, 2026-07-05, EMA 10/30 base case):**
+
+| Coin | Lev | CAGR | Monthly-equiv | Max drawdown | Sharpe | Liquidated? |
+|---|---|---|---|---|---|---|
+| BTC | 1x | 30.7% | 2.22%/mo | -33.5% | 0.82 | No |
+| BTC | 2x | 39.6% | 2.78%/mo | -59.4% | 0.82 | No |
+| BTC | 3x | 21.5% | 1.62%/mo | -83.0% | 0.82 | No |
+| BTC | 5x | -52.5% | -5.94%/mo | -98.9% | 0.82 | No |
+| ETH | 1x | 18.0% | 1.37%/mo | -47.2% | 0.59 | No |
+| ETH | 2x-5x | negative | negative | -77% to -100% | 0.59 | No |
+| SOL | 1x | -32.5% | -3.17%/mo | -71.5% | -0.09 | No |
+| SOL | 5x | ruin | ruin | -100.1% | -0.09 | Yes |
+
+Robustness check across EMA(20/50) and EMA(5/20) (1x/2x only): best 1x
+monthly-equivalent across all three parameterizations and three coins never
+exceeded 2.47%/month (ETH, EMA 5/20), and BTC/SOL were frequently negative
+or near-zero (e.g. BTC EMA 20/50 at 1x: only 0.29%/month). 0/24 total
+(coin × leverage × parameterization) rows across all three runs cleared
+5%/month while surviving their own worst historical day.
+
+**Verdict: DEAD.** Two independent, compounding findings:
+1. Even the *best* case found (BTC, 1x, EMA 10/30) only reaches
+   2.22%/month — below the 5%/month floor, and roughly comparable to (not
+   better than) the standing XMR market-neutral candidate (2.04%/month),
+   but with vastly worse risk (-33.5% max drawdown vs. XMR's bounded
+   liquidation-buffer math).
+2. **Leverage makes a leveraged, daily-rebalanced directional strategy
+   WORSE, not better**, beyond a low threshold (2x on BTC, and already
+   net-negative by 2x on ETH/SOL) — this is volatility drag/compounding
+   decay: daily-rebalancing a leveraged position on a volatile asset erodes
+   the geometric return even when the underlying trend signal is
+   directionally correct, because variance costs compound every day while
+   the raw directional edge only pays off net of that drag. SOL at 5x hit
+   outright ruin (equity toward zero) within the 700-day window in the
+   base-case run.
+
+**Risk disclosure:** max drawdowns of -33% to -100% at every leverage level
+tested (including 1x) make this categorically higher-risk than every
+market-neutral thread tested so far, for a return that doesn't even clear
+the bar those threads also missed. This is a genuine "high risk, still not
+enough reward" result, not merely "high risk, high reward you might not
+want" — the objective's directional-risk door was open, and the real
+numbers walked through it and still came up short. Automation would be
+straightforward (Python + HL API, same infra as Thread B), but there is no
+tested parameterization of this rule worth deploying at any leverage.
+
+**Verdict summary:** DEAD. Standing best candidate across all 14
+mechanisms now tested (6 named + 8 post-A-F follow-ups) remains XMR
+funding basis (Thread B, iteration 7, 2.04%/month) — it is not just the
+highest-yield candidate found, it is now also demonstrably lower-risk
+(bounded liquidation math, no historical drawdowns anywhere near -30%+)
+than the one directional alternative tested. `research/DEPLOY_THIS.md`
+updated with a Thread J summary; best-candidate figure unchanged.
+
+**Learnings:**
+- This objective's search had an implicit blind spot: 13 straight
+  mechanisms (A-I) were all market-neutral yield-harvesting variants.
+  Testing a genuinely different mechanism *family* (directional
+  trend-following) was more informative than testing yet another
+  basis-yield venue, even though it also came up dead — it rules out an
+  entire adjacent strategy category rather than one more instance of the
+  same one.
+- Leverage does not scale a mechanical trend-following backtest's return
+  the way it scales a market-neutral funding trade's return (Thread B): in
+  Thread B, leverage just dials capital-efficiency (`L/(L+1)` of a fixed
+  rate) with a shrinking liquidation buffer; here, leverage actively
+  *destroys* expected return past a low threshold via volatility drag on a
+  directionally-risky (unhedged) position, on top of shrinking the
+  liquidation buffer the same way. Any future directional-strategy thread
+  should expect the same drag effect and should not assume "just add
+  leverage" is a free lever, the way some options/DeFi marketing framing
+  implies.

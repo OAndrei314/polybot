@@ -162,3 +162,23 @@ crypto-market-wide delta-neutral basis yield is thin almost everywhere right
 now, not just on the specific venues tested earlier. Standing best candidate
 (XMR, 2.04%/month) unchanged; this is now 7 post-A-F mechanisms tested, all
 dead.
+
+**Thread J (iteration 20): leveraged trend-following/momentum on Hyperliquid
+perps — the first DIRECTIONAL (not market-neutral) mechanism tested in this
+objective.** All 13 prior mechanisms (A-I) harvested a market-neutral
+spread; this one tests a fully mechanical EMA-crossover trend rule on real
+700-day BTC/ETH/SOL daily closes (`research/momentum_trend_scan.py`),
+leveraged 1x-5x, checked for robustness across three EMA parameterizations.
+Best case found (BTC, 1x): **2.22%/month CAGR-equivalent, but with a -33.5%
+max historical drawdown** — sub-bar on return, and far higher risk than
+every market-neutral thread already tested. Leverage makes it *worse*, not
+better, past 2x (volatility drag from daily-rebalancing a leveraged
+directional position erodes geometric returns faster than the raw trend
+edge pays for it) — SOL at 5x hit outright ruin within the 700-day window.
+0/24 (coin × leverage × EMA-window) rows across three robustness runs
+cleared 5%/month while surviving their own worst historical day. This is
+now 8 post-A-F mechanisms tested, all dead — and the first to directly
+test the objective's "accept high risk if EV is genuinely positive"
+allowance; the real numbers show it is not. Standing best candidate (XMR,
+Thread B, 2.04%/month) is now also the *lowest-risk* candidate found, not
+just the highest-yield one.
