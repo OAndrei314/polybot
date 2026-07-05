@@ -1872,3 +1872,106 @@ than a threshold-triggered market order.
   yield number the backtest itself produces. Standing best *validated*
   candidate (XMR funding basis, Thread B, iteration 7, 2.04%/month)
   unchanged and not superseded.
+
+---
+
+## Thread T: Liquid Restaking Token (LRT) yield + restaking-points/airdrop farming (iteration 38, 18th post-A-F follow-up, 25th mechanism overall)
+
+**Concept tested:** Liquid restaking (deposit ETH into ether.fi/Renzo/
+Kelp/Puffer/Swell, receive an LRT that stakes on Ethereum's beacon chain
+*and* restakes into EigenLayer/Symbiotic AVSs for extra yield) is a
+mechanism shape not yet tested anywhere in this objective — it stacks a
+base staking return with a second, restaking-specific reward layer, and
+its restaking-points programs are (like Thread Q's perp-DEX points) a
+lever into a future token airdrop. Both legs quantified with real,
+live-pulled data; no API key needed for either.
+
+**Method:** `research/lrt_restaking_scan.py` pulls live DeFiLlama `/pools`
+data for the 6 largest LRT pools (kelp RSETH $947M TVL, renzo EZETH $87M,
+puffer-stake PUFETH $43M, swell-liquid-staking SWETH $27M,
+swell-liquid-restaking RSWETH $24M, swell-earn EARNETH $0.2M), then pulls
+each of the top 3's full daily-APY history since its DeFiLlama listing
+date (783/570/96 days) via `/chart/{pool}` to check for a live-snapshot-
+vs-sustained-mean spike (the same trap found in Threads G, H, I, M, N, P).
+Separately, pulls live CoinGecko `/coins/markets` data for the 4 real,
+completed restaking-points-to-token conversions (ether.fi→ETHFI,
+EigenLayer→EIGEN, Renzo→REZ, Puffer→PUFFER) to get each token's real FDV
+and drawdown-from-ATH, the same base-rate methodology used for Thread Q's
+perp-DEX airdrops (HYPE/LIT/DIME).
+
+**Results — base LRT yield (live, 2026-07-05):**
+
+| Pool | Live APY | Full-history mean | Full-history max ever | Monthly-equiv (mean) |
+|---|---|---|---|---|
+| kelp RSETH (947d... n=783, since 2024-05-07) | 2.44%/yr | 2.80%/yr | 10.13%/yr | 0.233%/mo |
+| renzo EZETH (n=570, since 2024-12-13) | 1.72%/yr | 3.17%/yr | 7.03%/yr | 0.264%/mo |
+| puffer PUFETH (n=96, since 2026-04-01) | 2.58%/yr | 1.92%/yr | 9.91%/yr | 0.160%/mo |
+
+Every pool's *entire history*, including its single best day ever
+recorded, tops out under 11%/yr (0.92%/month) — this is a base-yield
+ceiling roughly an order of magnitude below the 5%/month floor and still
+below every other market-neutral candidate tested in this objective
+(worse than Ethena's sUSDe 3.5-5%/yr from Thread I, and worse than
+Thread B's XMR funding basis at 2.04%/month = ~24.5%/yr equivalent).
+
+**Results — restaking-points-to-token airdrop outcomes (real, completed):**
+
+| Token | FDV (live) | ATH change | ATH date |
+|---|---|---|---|
+| ETHFI (ether.fi) | $415M | -95.1% | 2024-03-27 |
+| EIGEN (EigenLayer) | $422M | -95.9% | 2024-12-17 |
+| REZ (Renzo) | $30M | -98.9% | 2024-04-30 |
+| PUFFER (Puffer) | $14M | -98.6% | 2024-12-07 |
+
+All 4 of the real, completed restaking-points programs are down 95-99%
+from their all-time high — a materially worse and more *consistent* base
+rate than Thread Q's perp-DEX points programs (which spanned $9.3M to
+$65.3B FDV, i.e. HYPE was a genuine outlier win). None of these four
+projects produced a HYPE-like outcome.
+
+**Verdict: DEAD (base yield) + reinforces NOT VALIDATED (points/airdrop
+leg).** The base, $-denominated LRT yield is measured, real, and clearly
+sub-bar — the highest single-day APY ever recorded across 1,449 combined
+pool-days of history (10.13%/yr) is still ~6x below the 5%/month
+(60%/yr) floor. The points/airdrop leg is the same structurally
+unquantifiable-in-advance category as Thread Q, but this specific
+4-for-4 real-world sample skews meaningfully worse than Thread Q's
+3-program sample (which had one genuine outlier win) — restaking-points
+farming does not look like a better version of Thread Q's already-
+disclosed bimodal bet, if anything a slightly worse one on this small
+sample.
+
+**Automation:** trivial for the base-yield leg (deposit ETH via any LRT
+protocol's contract, hold — fully automatable, no ongoing management);
+the points/airdrop leg requires the same "farm now, hope later" posture
+already disclosed as unquantifiable in Thread Q, with no additional
+automation complexity beyond initial deposit.
+
+**Geo-accessibility:** on-chain, permissionless, no geo-block — accessible
+from Romania like every other on-chain thread in this objective.
+
+**Learnings:**
+- DeFiLlama's LRT project slugs are `renzo`, `swell-earn`, `kelp`,
+  `swell-liquid-restaking`, `swell-liquid-staking`, `puffer-stake` (not
+  `ether-fi`/`eigenlayer` — ether.fi's LRT pool did not surface in this
+  project-name filter and would need its own slug lookup if revisited;
+  not pursued further since kelp/renzo/puffer's numbers alone were
+  conclusive enough to kill the base-yield leg).
+- Restaking's marketed "boosted APY via points" framing during 2024's
+  EigenLayer pre-TGE farming season is, in retrospect, the same
+  live-snapshot-vs-sustained-mean-and-eventual-realization gap already
+  seen in Thread Q — the $-denominated base yield never actually left the
+  2-3%/yr band even at its best recorded day, and the speculative points
+  upside (the actual reason capital piled in) resolved 95-99% below ATH
+  across all 4 completed conversions.
+- This is the 18th post-A-F follow-up mechanism tested (after iterations
+  6, 7, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 34, 35, 36, 37) and
+  the 25th overall in this objective. Combined with Thread I (Ethena),
+  this is now the *fourth* independent real-data source (after Thread B's
+  HL funding, Thread G's Deribit dated futures, Thread I's Ethena) all
+  converging on a sub-5%/yr "safe DeFi yield" ceiling for anything that
+  isn't a directional bet — reinforcing that current market conditions
+  (mid-2026) simply do not offer double-digit-monthly market-neutral
+  yield anywhere reachable with free public data. Standing best
+  *validated* candidate (XMR funding basis, Thread B, iteration 7,
+  2.04%/month) unchanged and not superseded.

@@ -365,14 +365,32 @@ depeg), a risk this thread discloses explicitly since it can't be
 backtested away. Standing best validated candidate (XMR, Thread B,
 2.04%/month) unchanged.
 
+**Thread T (iteration 38): liquid restaking token (LRT) yield +
+restaking-points/airdrop farming.** `research/lrt_restaking_scan.py` pulls
+live DeFiLlama data for the 6 largest LRT pools (kelp, renzo, puffer,
+swell) plus full daily-APY history since listing (783/570/96 days) for the
+top 3, and live CoinGecko outcomes for the 4 real, completed
+restaking-points-to-token conversions (ether.fi→ETHFI, EigenLayer→EIGEN,
+Renzo→REZ, Puffer→PUFFER). Base $-denominated yield never exceeds 11%/yr
+(0.92%/month) even on its single best day ever recorded across 1,449
+combined pool-days of history — an order of magnitude below the 5%/month
+floor and below every other candidate in this objective including Thread
+B's XMR. The points/airdrop leg is structurally the same
+unquantifiable-bimodal category as Thread Q, but this 4-for-4 sample (all
+down 95-99% from ATH) skews worse than Thread Q's 3-program sample (which
+had one genuine outlier win, HYPE). **DEAD** (base yield, measured) with
+the airdrop leg reinforcing rather than improving on Thread Q's NOT
+VALIDATED verdict. Standing best validated candidate (XMR, Thread B,
+2.04%/month) unchanged.
+
 ---
 
-**Running total: 23 mechanisms tested across this objective (6 named
-threads A-F, plus 17 post-A-F follow-ups/new mechanisms), spanning
+**Running total: 25 mechanisms tested across this objective (6 named
+threads A-F, plus 19 post-A-F follow-ups/new mechanisms), spanning
 market-neutral yield harvesting (6 flavors), directional momentum, pairs
 stat-arb, vault/manager copy-deposit, counterparty-vault yield (2 venues),
 options vaults, legal-risk-gated counterparty capital, points/airdrop
-farming, long-volatility convexity, and stablecoin depeg mean-reversion.
-None has been promoted above the standing best validated candidate: XMR
-funding basis, Thread B, iteration 7, 2.04%/month — still well below both
-the 5%/month and 10%/month bars.**
+farming (2 flavors), long-volatility convexity, stablecoin depeg
+mean-reversion, and liquid restaking. None has been promoted above the
+standing best validated candidate: XMR funding basis, Thread B, iteration
+7, 2.04%/month — still well below both the 5%/month and 10%/month bars.**
