@@ -299,3 +299,32 @@ risk that PT's fixed-rate structure does not protect against (PT redeems in
 the underlying asset, not USD). DEAD. This is now 14 post-A-F mechanisms
 tested, all dead/infeasible, across 20 total mechanisms in this objective.
 Standing best candidate (XMR, Thread B, 2.04%/month) unchanged.
+
+**Thread Q (iteration 35): perp-DEX points/airdrop farming — a
+structurally different category, not another "measured-but-sub-bar"
+mechanism.** Unlike every prior thread, this one's payoff (a not-yet-issued
+token's future price) has no live, pullable number to backtest — so
+instead of a yield estimate, `research/perp_dex_points_farming_scan.py`
+pulls **live CoinGecko data on the 3 most recent completed perp-DEX
+points-to-token conversions** (Hyperliquid HYPE, Lighter LIT, Paradex DIME),
+all farmed at near-zero fee cost via the same delta-neutral/zero-fee
+mechanics. Realized outcomes span roughly **4 orders of magnitude**: HYPE's
+FDV is $65.3B (still only -10.9% off ATH, 19 months post-TGE); LIT's is
+$2.2B (but already -72% off its TGE-day ATH); DIME's is just $9.3M — about
+97-98% *below* the $260-520M analyst FDV range that was being cited
+pre-launch, and -87.1% off its own ATH within 4 months of launching. Cost
+was near-identical (~$0) across all three; the outcome variance is 100%
+about which specific project you picked, not farming technique. **NOT
+VALIDATED** — this is not "dead" like Threads A-P (which were measured and
+found sub-bar); it's a real mechanism with a demonstrated genuine home-run
+case, but one whose expected value cannot be estimated from any live
+data source before a token launches, so no honest %/month figure can be
+assigned to it the way every other thread produced one. Downside is capped
+(near-zero farming cost, no leverage/liquidation risk); upside is uncapped
+but the realized 3-sample base rate argues against treating it as a
+reliable plan. Geo-accessibility for the specific currently-open programs
+was not confirmed against primary ToS documents in this pass and needs
+re-verification before any deployment. Standing best *validated* candidate
+(XMR, Thread B, 2.04%/month) unchanged; this is the 15th post-A-F
+mechanism tested and the first disqualified because the return side is
+unquantifiable in advance rather than measured-and-insufficient.

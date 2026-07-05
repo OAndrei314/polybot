@@ -1479,3 +1479,109 @@ best validated candidate remains XMR funding basis (Thread B, 2.04%/month).
   has converged on the same sub-2.1%/month practical ceiling, with XMR
   (Thread B, 2.04%/month) still the single best validated candidate found
   across 20 total mechanisms tested in this objective.
+
+## Thread Q (post-A-F follow-up #15, iteration 35): Perp-DEX points/airdrop farming — a genuinely different risk shape (speculative token distribution, not a measurable rate) — **NOT VALIDATED (bimodal, unquantifiable in advance)**
+
+**Concept:** New perpetual-DEX venues launched in 2025-2026 (Hyperliquid's
+successors: Paradex, Lighter, Extended, Aster, edgeX, Pacifica, etc.) run
+"points"/XP programs that pre-commit 15-50% of a not-yet-issued token's
+supply to whoever generates the most real trading volume before the
+Token Generation Event (TGE). Several run **zero (or near-zero) maker/taker
+fees** specifically to make volume-farming costless, and farmers commonly
+run a delta-neutral hedge (long on one venue, short an equal notional on
+another) to earn points/rebates on both sides while avoiding directional
+market risk — a fully automatable, Python-scriptable mechanism distinct from
+every prior thread (it is a claim on a future token distribution, not a
+harvestable rate).
+
+**Why this needed a different evaluation method:** every one of the 20
+prior mechanisms in this objective had a *live, currently-observable* rate
+(funding, APY, implied vol, fee income) that could be pulled from an API and
+backtested. A pre-TGE points program has no such number — the token doesn't
+exist yet, so "expected monthly return" cannot be computed from live data
+the way it was for Threads A-P. The only real-data-driven way to evaluate
+this thread is to look at the **realized, now-checkable outcome of the last
+few completed programs** and treat that as a base rate, which is what
+`research/perp_dex_points_farming_scan.py` does (live CoinGecko
+`/coins/markets` pull, no API key, run 2026-07-05).
+
+**Real, live-pulled results (3 completed perp-DEX points-to-token
+conversions, all farmed at near-zero cost):**
+
+| Program | TGE | Airdrop size | Farming cost | Pre-launch expectation | REALIZED (live, 2026-07-05) |
+|---|---|---|---|---|---|
+| Hyperliquid (HYPE) | 2024-11-29 | ~31% of supply, no VC allocation | near-zero (ordinary trading fees) | not modeled in advance; positive surprise | FDV **$65.3B**, only -10.9% off its own ATH (set 2026-06-16, 19 months post-TGE) |
+| Lighter (LIT) | 2025-12-30 | 25% of supply, no vesting | ~$0 (zero-fee seasons) | community chatter: $60-100+/point | FDV **$2.2B**, but already -72.0% off its own TGE-day ATH |
+| Paradex (DIME) | ~2026-01 | 20% of supply (~15% of supply actually distributed as XP) | ~$0 ("Zero Fee Perps" program) | analyst pre-TGE FDV estimates: **$260M-$520M** (bull case $1B) | FDV **$9.3M** — roughly **97-98% below** its own pre-launch analyst estimates, and -87.1% off its own ATH (set only 4 months post-launch) |
+
+**Verdict: NOT VALIDATED — bimodal and unquantifiable in advance, not a
+sub-bar-but-safe yield like Threads A-P.** This is not a "dead" mechanism in
+the same sense as the others (net-negative or fee-capped); it is a real
+mechanism with a *demonstrated* multi-billion-dollar payout for early
+Hyperliquid farmers, a still-substantial (if badly-retraced) payout for
+Lighter farmers, and a near-total bust for Paradex farmers who followed
+exactly the same near-zero-cost playbook. The realized FDV spans roughly
+**4 orders of magnitude** ($9.3M to $65.3B) across just 3 real, completed,
+same-cycle examples, with cost held constant (near-zero) across all three —
+meaning the entire expected value of this thread lives in a token-launch
+outcome that cannot be estimated from any live, pullable number before the
+fact. Per the objective's own standard ("pull real live data, no theoretical
+speculation"), there is no live data source for a not-yet-issued token's
+future price — flagging this honestly rather than fabricating a point
+estimate is the correct call here, in contrast to Thread L's disclosed (but
+similarly not-promoted) vault outlier.
+
+**Risk (quantified where possible):**
+- Downside is bounded and small in dollar terms (fees are ~$0, so a "bust"
+  outcome like Paradex costs little more than time and capital lockup —
+  unlike every leveraged/directional thread in this objective, there is no
+  liquidation or leverage-driven blowup risk here).
+- Upside is uncapped in principle (Hyperliquid) but the realized sample
+  shows it is not the base case — 1 spectacular win, 1 solid-but-badly-
+  retraced win, 1 near-total miss, out of 3 real examples from the same
+  2025-2026 farming cohort.
+- Regulatory/anti-sybil risk is real and asymmetric: LayerZero's 2024 ZRO
+  airdrop manually removed 59% of wallets (803,273) as suspected sybils
+  before distribution, and required a forced $0.10/token donation to claim
+  — a farmer who over-optimizes for points can end up with materially less
+  (or nothing) versus a naive linear read of the public points leaderboard.
+- Geo-accessibility for a Romania-based user is **unverified for the
+  currently-open programs** (Lighter's ToS lists only OFAC/EU-sanctions-list
+  exclusions, not a blanket EU block, but Paradex and others' exact
+  geo-restriction lists were not confirmed against primary ToS documents in
+  this pass) — this would need explicit re-verification per venue before
+  any deployment, the same caveat Thread E already established for
+  prediction markets.
+
+**Automation:** the volume-generation/hedging mechanics are fully
+automatable in Python (open/close small hedged positions across two venues
+on a schedule) — the same category of infrastructure already built for
+Threads B/D/G. What is NOT automatable is the outcome: no amount of
+engineering effort narrows the HYPE-vs-DIME variance, since that variance
+is set by each project's own token-economics and market reception at TGE,
+not by farming skill.
+
+**Learnings:**
+- CoinGecko's `/coins/markets` endpoint gives current price, FDV, market
+  cap, and all-time-high (with date) for any listed token in one free,
+  keyless call — a fast way to get a live, checkable "how did this actually
+  turn out" number for any already-launched token, reusable for any future
+  airdrop/points thread.
+- The single biggest determinant of this mechanism's real-world payout is
+  not farming technique (all 3 precedents were near-zero-cost to farm) but
+  which specific project you picked — a variable that is fundamentally a
+  bet on the project's future token economics and market reception, not
+  something a script can de-risk or predict in advance. This makes points
+  farming closer in character to Thread L's vault-manager-risk finding
+  (unbounded by historical data) than to any of the market-neutral threads,
+  except the "manager" here is an entire project's tokenomics/market
+  outcome rather than one wallet's trading discretion.
+- This is the 15th post-A-F follow-up mechanism tested and the first to be
+  disqualified specifically because the return side of the equation cannot
+  be pulled from live data at all (as opposed to being pulled and found
+  sub-bar, which was every other thread's disqualifier) — worth treating as
+  a structurally different category in any future scorecard, not lumped in
+  as "DEAD" alongside the measurable-but-insufficient mechanisms.
+- Standing best *validated* (mechanically backtestable, quantified EV)
+  candidate remains XMR funding basis (Thread B, iteration 7, 2.04%/month),
+  unchanged by this thread.
