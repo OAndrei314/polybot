@@ -517,3 +517,52 @@ signal and while paying for infra to compete against better-capitalized searcher
 **This closes the objective's full A-F priority list.** All six named threads are now
 DEAD or NOT VALIDATED under real-data testing. See the final verdict and best
 candidate in `research/DEPLOY_THIS.md`.
+
+---
+
+## Thread B addendum #3: cross-exchange perp-perp funding arbitrage (iteration 15)
+
+**Concept (new mechanism, flagged as a follow-up in iteration 6, not in the objective's
+original A-F list):** instead of Thread B's spot-long + Hyperliquid-perp-short
+construction, go perp-vs-perp on the SAME coin across TWO exchanges (Hyperliquid and
+Bybit) — long whichever side has the lower/negative funding, short the side with the
+higher funding. This collects the funding-rate *differential* between venues rather
+than a single venue's absolute rate, and swaps Thread B's specific risk (spot leg
+sitting in a different wallet from margin, unable to be transferred fast enough during
+a violent move) for a different one (both legs are now leveraged/marginable positions,
+each independently liquidatable, though tracking each other tightly since both are
+perps arbitraged against a similar spot).
+
+**Method (100% real data):** `research/cross_exchange_funding_arb.py` — pulls live
+current funding for HL's full ~231-coin universe (`metaAndAssetCtxs`) and Bybit's full
+~610-base linear-perp universe (`/v5/market/tickers`, annualized per-symbol using each
+coin's own `fundingIntervalHour`, which varies 1h-8h), matches coins across both naming
+schemes (handling HL's `k`-prefix vs Bybit's `1000`-prefix multiplier convention), then
+validates the top live-differential candidates against 30 real days of funding history
+from both venues (HL `fundingHistory`, Bybit `/v5/market/funding/history`, both
+cursor-paginated) using the same spike-detector methodology validated in iteration 7.
+
+**Result:** the live snapshot scan's #1 hit (STG, apparently -466%/yr sustained
+30d-mean differential, which would have been ~38.9%/month) was a **data artifact, not
+an opportunity** — Hyperliquid's `metaAndAssetCtxs` confirmed `STG` carries
+`isDelisted: True` and `openInterest: 0.0`, meaning its funding rate is permanently
+pinned at `0.0` because the market is untradeable, not because it's a real yield.
+Added an explicit delisted/zero-open-interest filter (55 of 231 HL "coins" were
+filtered out on this basis) before re-running. After that fix, every one of the top-10
+live-differential candidates was flagged as a spike (live snapshot 3x+ its own 30-day
+mean, same trap as GRASS/ZRO in iteration 7) **except STRK**, whose real 30-day-mean
+differential (15.0%/yr) nets **1.25%/month unlevered** — below even Thread B's
+single-venue XMR figure (2.04%/month). Cross-exchange price-tracking risk for STRK was
+also measured directly (720 real aligned hourly price samples from both venues over
+30 days): mean spread 0.068%, p99 0.266%, max 0.445% — tight enough that this specific
+risk (both legs diverging in value during a violent move) is not the binding
+constraint; the yield itself is.
+
+**Verdict:** **DEAD.** Cross-exchange perp-perp funding arb does not clear 5%/month
+(best real, non-spike, non-delisted candidate: 1.25%/month) and does not even beat the
+already-disclosed single-venue XMR candidate from Thread B's iteration-7 addendum
+(2.04%/month) — broadening from one venue to two, and from spot+perp to perp+perp,
+did not find a materially better opportunity, and surfaced a new data trap (delisted
+markets with pinned-zero funding masquerading as extreme opportunities) worth
+remembering for any future funding-differential scan. `research/DEPLOY_THIS.md`'s
+best-candidate section is unchanged (XMR, Thread B, 2.04%/month, still sub-bar).
