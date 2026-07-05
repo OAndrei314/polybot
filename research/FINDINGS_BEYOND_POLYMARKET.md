@@ -1219,3 +1219,76 @@ below both the 5%/month floor and the standing best validated candidate
   sub-1.5%/month conclusion, making it unlikely a third counterparty-vault
   venue (e.g. Gains Network gDAI, Level Finance) would find something
   materially different without a change in market volatility regime.
+
+## Thread N (post-A-F follow-up #12, iteration 24): DeFi Options Vaults (DOVs) — real, automated, crowd-priced options-selling — **DEAD**
+
+**Concept.** Thread A (iteration 1) tested options-premium-selling via a
+Black-Scholes *simulation* of manually selling Deribit puts, since Deribit's
+public REST does not expose historical option order-books. DOVs (DeFi
+Options Vaults — Ribbon Finance popularized the model in 2021-2022) are a
+genuinely different real-data source for the same underlying mechanism:
+these are live, automated, on-chain vaults that actually auto-roll weekly
+covered calls/puts and pay depositors real, already-realized returns (not
+a model's output). If real DOV depositors were clearing >5%/month, that
+would falsify Thread A's DEAD verdict as a simulation artifact. If not, it
+independently corroborates Thread A with a second, real-money data source.
+
+**Method.** `research/dov_scan.py` scans DeFiLlama's live `/pools` list for
+any project whose name contains "option" or "vault" (broader "vault" search
+also catches non-DOV vaults, filtered manually), pulls each live TVL/APY,
+and pulls the full real daily-APY history since listing via `/chart/{pool}`
+to distinguish a spike from a sustained rate — same methodology as every
+prior thread.
+
+**Result (live scan, 2026-07-05).** Every well-known 2021-2023-era DOV
+protocol (Ribbon Finance, Dopex/Stryke, Lyra/Derive, Friktion, ThetaNuts)
+has **zero live pools on DeFiLlama today** — Ribbon shut down its retail
+Theta Vaults in 2023-2024 and pivoted to the Aevo exchange; Friktion (the
+Solana equivalent) shut down entirely in Nov 2023. Only two smaller/newer
+DOV-like projects remain listed:
+
+| Project/Symbol | TVL now | TVL trend (full history) | Trailing-30d APY | Trailing-30d %/mo |
+|---|---|---|---|---|
+| bracket-vaults / USDC | $2,645,648 | **-72%** (from $9.6M, 257d) | 9.95%/yr | **0.79%** |
+| bracket-vaults / WETH | $112,088 | **-95%** (from $2.3M, 257d) | 4.69%/yr | **0.38%** |
+| 3jane-options / ETH-X-C | $92,959 | **-96%** (from $2.3M, 741d) | 25.22%/yr | **1.89%** |
+
+3jane-options' headline 25%/yr figure is also flagged as data-quality-
+suspect: its reported APY has been frozen at exactly 25.23463 for every
+daily sample since 2026-06-11 (24+ consecutive identical prints), which is
+inconsistent with a live options-vault feed that should vary week to week
+as options are re-struck — treated as unreliable rather than a real
+sustained number, and its $93k TVL is in any case too thin to deploy
+meaningful capital into.
+
+**Verdict: DEAD.** Best trustworthy candidate (bracket-vaults/USDC,
+0.79%/month) is far below the 5%/month floor and below the standing best
+validated candidate (XMR funding basis, Thread B, 2.04%/month). Not
+promoted to `DEPLOY_THIS.md`.
+
+**Learnings:**
+- The entire DOV (DeFi Options Vault) product category has contracted
+  sharply since its 2021-2022 peak: none of the five best-known protocols
+  named in options-strategy research from that era have any live pool left
+  on DeFiLlama, and the two surviving smaller projects both show massive
+  TVL collapse (-72% to -96%) over their own listed history — capital is
+  visibly fleeing this mechanism, not just failing to find it attractive
+  from the outside.
+- This is a second, independent, *real-money* (not simulated) confirmation
+  of Thread A's DEAD verdict on options-premium-selling: real depositors in
+  real automated vaults are earning under 1%/month on the surviving
+  trustworthy candidate, consistent with Thread A's own BS-simulated result
+  that this mechanism does not clear the 5%/month floor in the current
+  crypto-vol regime.
+- General reminder reinforced: a metric that's identical across 24+
+  consecutive daily samples (here, 3jane-options' APY) is a data-staleness
+  red flag, not a real "stable yield" — worth checking before reporting any
+  headline number, same category of trap as the sentinel-timestamp bug
+  (iteration 16) and the delisted-market artifact (iteration 15).
+- This is the 12th post-A-F follow-up mechanism tested (after iterations 6,
+  7, 15, 16, 17, 18, 19, 20, 21, 22, 23) — every accessible real-data source
+  for every mechanism family reachable with free public APIs (market-
+  neutral yield harvesting in 6 flavors, directional momentum, relative-
+  value pairs, manager/agency-risk vaults, counterparty vaults in 2 venues,
+  and now automated options vaults) converges on the same sub-2.1%/month
+  ceiling, with XMR (Thread B) still the standing best validated candidate.

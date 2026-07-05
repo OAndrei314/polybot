@@ -247,3 +247,18 @@ counterparty-vault venue on a different chain: this whole mechanism family
 is currently capped well under 2%/month. This is now 11 post-A-F mechanisms
 tested, all dead. Standing best candidate (XMR, Thread B, 2.04%/month)
 unchanged.
+
+**Thread N (iteration 24): DeFi Options Vaults (DOVs) — real, automated,
+crowd-priced options-selling, a second real-data source for Thread A's
+mechanism.** Every well-known 2021-2023-era DOV protocol (Ribbon Finance,
+Dopex/Stryke, Lyra/Derive, Friktion, ThetaNuts) has zero live pools left on
+DeFiLlama — the whole product category has contracted sharply since its
+peak. Of the two smaller surviving DOV-like projects found
+(`research/dov_scan.py`), both show real, sustained sub-2%/month yield
+(bracket-vaults/USDC: 0.79%/month on $2.6M TVL; 3jane-options: a
+data-quality-suspect frozen 1.89%/month on only $93k TVL) and both have
+seen their own TVL collapse 72-96% over their listed history — capital is
+visibly fleeing this mechanism. This is real depositor money, not a
+simulation, independently corroborating Thread A's DEAD verdict. This is
+now 12 post-A-F mechanisms tested, all dead. Standing best candidate (XMR,
+Thread B, 2.04%/month) unchanged.
