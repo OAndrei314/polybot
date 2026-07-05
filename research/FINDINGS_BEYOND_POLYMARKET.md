@@ -1143,3 +1143,79 @@ promoted to `DEPLOY_THIS.md`.
   is reported as a disclosed outlier rather than promoted to a validated
   deploy target. Standing best *validated* (mechanical, backtestable)
   candidate remains XMR funding basis (Thread B, iteration 7, 2.04%/month).
+
+---
+
+## Thread M (post-A-F follow-up #11, iteration 23): GMX V2 "GM pool" counterparty-vault yield
+
+**Concept:** GMX V2 GM pools (Arbitrum/Avalanche) are the GMX-ecosystem
+equivalent of Thread H's JLP (Jupiter Perpetuals) — a pool of a long token
+(e.g. ETH, WBTC.B, SOL, AVAX, LINK) plus USDC that takes the other side of
+every leveraged perp trade on GMX, earning trading/borrow/price-impact fees.
+This was explicitly flagged as an untested follow-up in iteration 18's
+learnings ("GMX GM pools, which showed 0-27% fee-only APY in this iteration's
+DeFiLlama pull... must decompose against a no-mechanism basket benchmark
+before trusting the headline number") and had not been picked up until now.
+It is a genuinely distinct venue from JLP (different chain, different fee/OI
+mechanics, different underlying-asset mix per pool) within the same
+"counterparty vault" mechanism family as Thread H.
+
+**Method:** `research/gmx_gm_pool_scan.py` pulls real, live DeFiLlama
+`gmx-v2-perps` project pool data (fee-only `apy` + `tvlUsd`) for the
+highest-TVL pool per underlying asset (ETH-USDC, WBTC.B-USDC, SOL-USDC,
+AVAX-USDC, LINK-USDC — all with $2.7M-$42M real TVL), pulls each pool's real
+988-day daily history (back to 2023-10-09 launch) to compute live-snapshot
+vs 7d/30d/90d/180d/full-history mean fee-APY (the same spike-vs-sustained
+check used for funding rates in iteration 7 and Ethena in iteration 19), and
+estimates impermanent loss for each pool's volatile constituent using real
+Hyperliquid daily closes fed into the standard full-range (non-concentrated)
+constant-product IL formula `2*sqrt(r)/(1+r) - 1`. This IL estimate is
+disclosed as an approximation of GM pools' actual internal accounting (which
+also depends on open-interest imbalance/skew between longs and shorts, not
+obtainable from free public APIs) rather than a literal reconstruction —
+consistent with the same disclosed-approximation standard used for Thread C's
+concentrated-LP IL estimate in iteration 3.
+
+**Results (real data, pulled 2026-07-05):**
+
+| Pool | Live APY | 30d mean | 90d mean | 180d mean | Full-hist mean (988d) | 30d IL | Net monthly (30d fee/12 + 30d IL) |
+|---|---|---|---|---|---|---|---|
+| AVAX-USDC | 11.05% | 11.09% | 10.28% | 10.48% | 19.00% | -0.01% | **0.91%** |
+| WBTC.B-USDC | 14.37% | 10.33% | 8.54% | 9.58% | 15.50% | -0.01% | **0.85%** |
+| ETH-USDC | 16.93% | 11.19% | 8.87% | 11.31% | 17.40% | -0.16% | **0.77%** |
+| LINK-USDC | 14.81% | 7.90% | 6.28% | 7.11% | 20.33% | -0.08% | **0.58%** |
+| SOL-USDC | 7.59% | 13.73% | 14.17% | 14.63% | 24.11% | -0.75% | **0.39%** |
+
+All five pools show the now-familiar spike/decay pattern: full-history mean
+fee-APY (15-24%/yr, weighted toward the 2023-2024 lower-TVL launch period) is
+roughly 1.5-2.5x the trailing 30-180d mean (6-14%/yr), consistent with TVL
+having grown 4-10x since launch and diluting per-dollar fee yield — the same
+pattern already seen in Hyperliquid funding snapshots (iteration 7) and
+Ethena sUSDe (iteration 19). IL over 30 days is small (<1%) for all five
+pools at current volatility, so it is not the binding constraint — the fee
+yield itself, even before netting IL, tops out at 0.9-1.1%/month net.
+
+**Verdict: DEAD.** Best candidate (AVAX-USDC, ~0.91%/month) is below every
+other post-A-F candidate tested except Thread I's Ethena figure, and far
+below both the 5%/month floor and the standing best validated candidate
+(XMR funding basis, Thread B, 2.04%/month). Not promoted to `DEPLOY_THIS.md`.
+
+**Learnings:**
+- DeFiLlama's project slug for GMX V2 pools is `gmx-v2-perps` (not `gmx-v2`
+  or `gmx`) — same "wrong-slug silently returns zero results" trap flagged
+  for Uniswap/Orca in iteration 3; verified against real returned data
+  before trusting the count.
+- Confirms the same conclusion as Thread H (JLP) from a second, independent
+  counterparty-vault venue on a different chain: current fee-generation
+  rates on perp-DEX counterparty vaults, across both Solana (JLP) and
+  Arbitrum/Avalanche (GMX GM pools), sit well under 2%/month once measured
+  against a trailing window instead of a live snapshot — this now looks
+  like a market-regime fact about the counterparty-vault mechanism family
+  as a whole (low realized/implied vol → few large trader losses → thin
+  vault fee/PnL income), not a venue-specific quirk of either JLP or GMX.
+- This is the 11th post-A-F follow-up mechanism tested (after iterations 6,
+  7, 15, 16, 17, 18, 19, 20, 21, 22), and the 2nd within the counterparty-
+  vault family specifically (after Thread H) — both converge on the same
+  sub-1.5%/month conclusion, making it unlikely a third counterparty-vault
+  venue (e.g. Gains Network gDAI, Level Finance) would find something
+  materially different without a change in market volatility regime.

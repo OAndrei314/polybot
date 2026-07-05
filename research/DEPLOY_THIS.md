@@ -228,3 +228,22 @@ profitable a year from now is well under 50%. Standing best *validated*
 (mechanical, backtestable) candidate remains XMR funding basis (Thread B,
 iteration 7, 2.04%/month); this Thread L outlier is disclosed for
 completeness, not recommended for capital.
+
+**Thread M (iteration 23): GMX V2 "GM pool" counterparty-vault yield — a
+second venue in the same mechanism family as Thread H (JLP), explicitly
+flagged as untested in iteration 18.** Real DeFiLlama data
+(`research/gmx_gm_pool_scan.py`) for the five highest-TVL GM pools
+(ETH-USDC, WBTC.B-USDC, SOL-USDC, AVAX-USDC, LINK-USDC; $2.7M-$42M TVL each,
+988 days of real history back to the 2023-10-09 launch) shows the same
+live-snapshot-vs-sustained-mean spike pattern found repeatedly elsewhere:
+full-history mean fee-APY (15-24%/yr) is 1.5-2.5x the trailing 30-180d mean
+(6-14%/yr) as TVL has grown 4-10x and diluted per-dollar yield. Netting a
+real Hyperliquid-price-based impermanent-loss estimate (small, <1%/month at
+current volatility) against the 30-day mean fee-APY, the best candidate
+(AVAX-USDC) nets only **~0.91%/month** — below every post-A-F thread except
+Ethena, and well below both the 5%/month floor and the standing XMR
+candidate. Confirms Thread H's conclusion from a second, independent
+counterparty-vault venue on a different chain: this whole mechanism family
+is currently capped well under 2%/month. This is now 11 post-A-F mechanisms
+tested, all dead. Standing best candidate (XMR, Thread B, 2.04%/month)
+unchanged.
