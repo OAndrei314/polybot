@@ -1,0 +1,997 @@
+{
+  "USDC": {
+    "start": "2019-01-01",
+    "end": "2026-07-05",
+    "events": [
+      {
+        "start": "2019-01-01",
+        "trough": 0.9728,
+        "trough_date": "2019-01-12",
+        "recovered": true,
+        "recovery_days": 8,
+        "trade_return": 0.02796052631578938
+      },
+      {
+        "start": "2019-04-02",
+        "trough": 0.9731,
+        "trough_date": "2019-04-02",
+        "recovered": true,
+        "recovery_days": 4,
+        "trade_return": 0.027643613194944017
+      },
+      {
+        "start": "2019-04-20",
+        "trough": 0.9912,
+        "trough_date": "2019-04-21",
+        "recovered": true,
+        "recovery_days": 27,
+        "trade_return": 0.008878127522195411
+      },
+      {
+        "start": "2019-05-13",
+        "trough": 0.9887,
+        "trough_date": "2019-05-13",
+        "recovered": true,
+        "recovery_days": 5,
+        "trade_return": 0.011429149388085369
+      },
+      {
+        "start": "2019-05-18",
+        "trough": 0.99,
+        "trough_date": "2019-05-19",
+        "recovered": true,
+        "recovery_days": 3,
+        "trade_return": 0.010101010101010166
+      },
+      {
+        "start": "2019-05-24",
+        "trough": 0.9852,
+        "trough_date": "2019-05-26",
+        "recovered": true,
+        "recovery_days": 2,
+        "trade_return": 0.015022330491270885
+      },
+      {
+        "start": "2019-06-07",
+        "trough": 0.9925,
+        "trough_date": "2019-06-12",
+        "recovered": true,
+        "recovery_days": 6,
+        "trade_return": 0.007556675062972307
+      },
+      {
+        "start": "2019-06-20",
+        "trough": 0.9947,
+        "trough_date": "2019-06-20",
+        "recovered": true,
+        "recovery_days": 9,
+        "trade_return": 0.0053282396702523105
+      },
+      {
+        "start": "2019-06-22",
+        "trough": 0.99,
+        "trough_date": "2019-06-22",
+        "recovered": true,
+        "recovery_days": 7,
+        "trade_return": 0.010101010101010166
+      },
+      {
+        "start": "2019-07-03",
+        "trough": 0.9942,
+        "trough_date": "2019-07-04",
+        "recovered": true,
+        "recovery_days": 1,
+        "trade_return": 0.005833836250251467
+      },
+      {
+        "start": "2019-07-06",
+        "trough": 0.9911,
+        "trough_date": "2019-07-09",
+        "recovered": true,
+        "recovery_days": 1,
+        "trade_return": 0.008979921299566263
+      },
+      {
+        "start": "2019-09-19",
+        "trough": 0.9942,
+        "trough_date": "2019-09-19",
+        "recovered": true,
+        "recovery_days": 1,
+        "trade_return": 0.005833836250251467
+      },
+      {
+        "start": "2019-09-24",
+        "trough": 0.9879,
+        "trough_date": "2019-09-24",
+        "recovered": true,
+        "recovery_days": 1,
+        "trade_return": 0.012248203259439316
+      },
+      {
+        "start": "2019-10-25",
+        "trough": 0.985,
+        "trough_date": "2019-10-25",
+        "recovered": true,
+        "recovery_days": 5,
+        "trade_return": 0.015228426395939021
+      },
+      {
+        "start": "2019-11-04",
+        "trough": 0.9921,
+        "trough_date": "2019-11-04",
+        "recovered": true,
+        "recovery_days": 1,
+        "trade_return": 0.007962906965023775
+      },
+      {
+        "start": "2020-02-11",
+        "trough": 0.9934,
+        "trough_date": "2020-02-11",
+        "recovered": true,
+        "recovery_days": 2,
+        "trade_return": 0.0066438494060800934
+      },
+      {
+        "start": "2020-03-13",
+        "trough": 0.98,
+        "trough_date": "2020-03-13",
+        "recovered": true,
+        "recovery_days": 7,
+        "trade_return": 0.020408163265306145
+      },
+      {
+        "start": "2020-03-17",
+        "trough": 0.993,
+        "trough_date": "2020-03-19",
+        "recovered": true,
+        "recovery_days": 1,
+        "trade_return": 0.007049345417925457
+      },
+      {
+        "start": "2020-03-23",
+        "trough": 0.9921,
+        "trough_date": "2020-03-23",
+        "recovered": true,
+        "recovery_days": 6,
+        "trade_return": 0.007962906965023775
+      },
+      {
+        "start": "2020-06-01",
+        "trough": 0.989,
+        "trough_date": "2020-06-01",
+        "recovered": true,
+        "recovery_days": 1,
+        "trade_return": 0.011122345803842304
+      },
+      {
+        "start": "2020-07-26",
+        "trough": 0.9764,
+        "trough_date": "2020-07-27",
+        "recovered": true,
+        "recovery_days": 2,
+        "trade_return": 0.024170421958213728
+      },
+      {
+        "start": "2020-07-29",
+        "trough": 0.991,
+        "trough_date": "2020-07-29",
+        "recovered": true,
+        "recovery_days": 4,
+        "trade_return": 0.00908173562058523
+      },
+      {
+        "start": "2020-08-02",
+        "trough": 0.992,
+        "trough_date": "2020-08-02",
+        "recovered": true,
+        "recovery_days": 2,
+        "trade_return": 0.008064516129032251
+      },
+      {
+        "start": "2020-08-05",
+        "trough": 0.99,
+        "trough_date": "2020-08-05",
+        "recovered": true,
+        "recovery_days": 1,
+        "trade_return": 0.010101010101010166
+      },
+      {
+        "start": "2020-09-06",
+        "trough": 0.9946,
+        "trough_date": "2020-09-06",
+        "recovered": true,
+        "recovery_days": 1,
+        "trade_return": 0.005429318318922238
+      },
+      {
+        "start": "2021-01-03",
+        "trough": 0.9891,
+        "trough_date": "2021-01-04",
+        "recovered": true,
+        "recovery_days": 4,
+        "trade_return": 0.011020119300374054
+      },
+      {
+        "start": "2021-01-29",
+        "trough": 0.9367,
+        "trough_date": "2021-01-29",
+        "recovered": true,
+        "recovery_days": 2,
+        "trade_return": 0.06757766627522166
+      },
+      {
+        "start": "2021-04-18",
+        "trough": 0.9747,
+        "trough_date": "2021-04-18",
+        "recovered": true,
+        "recovery_days": 1,
+        "trade_return": 0.025956704627064786
+      },
+      {
+        "start": "2021-04-26",
+        "trough": 0.99,
+        "trough_date": "2021-04-26",
+        "recovered": true,
+        "recovery_days": 2,
+        "trade_return": 0.010101010101010166
+      },
+      {
+        "start": "2021-05-19",
+        "trough": 0.99,
+        "trough_date": "2021-05-19",
+        "recovered": true,
+        "recovery_days": 3,
+        "trade_return": 0.010101010101010166
+      },
+      {
+        "start": "2021-12-04",
+        "trough": 0.2,
+        "trough_date": "2021-12-04",
+        "recovered": true,
+        "recovery_days": 3,
+        "trade_return": 4.0
+      },
+      {
+        "start": "2023-03-11",
+        "trough": 0.882,
+        "trough_date": "2023-03-11",
+        "recovered": true,
+        "recovery_days": 15,
+        "trade_return": 0.13378684807256236
+      },
+      {
+        "start": "2024-01-03",
+        "trough": 0.76,
+        "trough_date": "2024-01-03",
+        "recovered": true,
+        "recovery_days": 1,
+        "trade_return": 0.3157894736842106
+      },
+      {
+        "start": "2024-03-08",
+        "trough": 0.9913,
+        "trough_date": "2024-03-08",
+        "recovered": true,
+        "recovery_days": 3,
+        "trade_return": 0.00877635428225565
+      },
+      {
+        "start": "2025-10-10",
+        "trough": 0.985,
+        "trough_date": "2025-10-10",
+        "recovered": true,
+        "recovery_days": 3,
+        "trade_return": 0.015228426395939021
+      }
+    ]
+  },
+  "DAI": {
+    "start": "2020-07-23",
+    "end": "2020-08-12",
+    "events": []
+  },
+  "TUSD": {
+    "start": "2019-01-01",
+    "end": "2026-07-05",
+    "events": [
+      {
+        "start": "2019-01-01",
+        "trough": 0.9806,
+        "trough_date": "2019-01-10",
+        "recovered": true,
+        "recovery_days": 10,
+        "trade_return": 0.019783805833163415
+      },
+      {
+        "start": "2019-04-02",
+        "trough": 0.9675,
+        "trough_date": "2019-04-02",
+        "recovered": true,
+        "recovery_days": 4,
+        "trade_return": 0.03359173126614978
+      },
+      {
+        "start": "2019-05-12",
+        "trough": 0.989,
+        "trough_date": "2019-05-13",
+        "recovered": true,
+        "recovery_days": 3,
+        "trade_return": 0.011122345803842304
+      },
+      {
+        "start": "2019-05-19",
+        "trough": 0.9843,
+        "trough_date": "2019-05-26",
+        "recovered": true,
+        "recovery_days": 8,
+        "trade_return": 0.01595042161942506
+      },
+      {
+        "start": "2019-06-08",
+        "trough": 0.9921,
+        "trough_date": "2019-06-10",
+        "recovered": true,
+        "recovery_days": 8,
+        "trade_return": 0.007962906965023775
+      },
+      {
+        "start": "2019-06-21",
+        "trough": 0.9887,
+        "trough_date": "2019-06-22",
+        "recovered": true,
+        "recovery_days": 10,
+        "trade_return": 0.011429149388085369
+      },
+      {
+        "start": "2019-07-03",
+        "trough": 0.9938,
+        "trough_date": "2019-07-04",
+        "recovered": true,
+        "recovery_days": 2,
+        "trade_return": 0.006238679814852155
+      },
+      {
+        "start": "2019-07-06",
+        "trough": 0.9906,
+        "trough_date": "2019-07-08",
+        "recovered": true,
+        "recovery_days": 3,
+        "trade_return": 0.009489198465576276
+      },
+      {
+        "start": "2019-09-24",
+        "trough": 0.973,
+        "trough_date": "2019-09-24",
+        "recovered": true,
+        "recovery_days": 1,
+        "trade_return": 0.027749229188078095
+      },
+      {
+        "start": "2019-10-25",
+        "trough": 0.9903,
+        "trough_date": "2019-10-26",
+        "recovered": true,
+        "recovery_days": 4,
+        "trade_return": 0.009795011612642623
+      },
+      {
+        "start": "2020-02-11",
+        "trough": 0.9937,
+        "trough_date": "2020-02-11",
+        "recovered": true,
+        "recovery_days": 2,
+        "trade_return": 0.006339941632283352
+      },
+      {
+        "start": "2020-03-12",
+        "trough": 0.95,
+        "trough_date": "2020-03-12",
+        "recovered": true,
+        "recovery_days": 8,
+        "trade_return": 0.05263157894736836
+      },
+      {
+        "start": "2020-03-17",
+        "trough": 0.9922,
+        "trough_date": "2020-03-19",
+        "recovered": true,
+        "recovery_days": 1,
+        "trade_return": 0.00786131828260439
+      },
+      {
+        "start": "2020-03-23",
+        "trough": 0.9937,
+        "trough_date": "2020-03-23",
+        "recovered": true,
+        "recovery_days": 6,
+        "trade_return": 0.006339941632283352
+      },
+      {
+        "start": "2020-07-26",
+        "trough": 0.9948,
+        "trough_date": "2020-07-26",
+        "recovered": true,
+        "recovery_days": 3,
+        "trade_return": 0.005227181342983389
+      },
+      {
+        "start": "2020-07-28",
+        "trough": 0.9822,
+        "trough_date": "2020-07-28",
+        "recovered": true,
+        "recovery_days": 1,
+        "trade_return": 0.018122581958867956
+      },
+      {
+        "start": "2020-08-01",
+        "trough": 0.99,
+        "trough_date": "2020-08-01",
+        "recovered": true,
+        "recovery_days": 1,
+        "trade_return": 0.010101010101010166
+      },
+      {
+        "start": "2021-01-04",
+        "trough": 0.9902,
+        "trough_date": "2021-01-04",
+        "recovered": true,
+        "recovery_days": 4,
+        "trade_return": 0.00989699050696835
+      },
+      {
+        "start": "2021-01-29",
+        "trough": 0.4654,
+        "trough_date": "2021-01-29",
+        "recovered": true,
+        "recovery_days": 2,
+        "trade_return": 1.1486892995272884
+      },
+      {
+        "start": "2021-02-03",
+        "trough": 0.9546,
+        "trough_date": "2021-02-04",
+        "recovered": true,
+        "recovery_days": 6,
+        "trade_return": 0.04755918709407081
+      },
+      {
+        "start": "2021-02-07",
+        "trough": 0.9923,
+        "trough_date": "2021-02-07",
+        "recovered": true,
+        "recovery_days": 3,
+        "trade_return": 0.007759750075581939
+      },
+      {
+        "start": "2021-02-12",
+        "trough": 0.9678,
+        "trough_date": "2021-02-12",
+        "recovered": true,
+        "recovery_days": 3,
+        "trade_return": 0.03327133705311014
+      },
+      {
+        "start": "2021-02-18",
+        "trough": 0.994,
+        "trough_date": "2021-02-18",
+        "recovered": true,
+        "recovery_days": 1,
+        "trade_return": 0.006036217303822866
+      },
+      {
+        "start": "2021-02-20",
+        "trough": 0.97,
+        "trough_date": "2021-02-20",
+        "recovered": true,
+        "recovery_days": 2,
+        "trade_return": 0.030927835051546504
+      },
+      {
+        "start": "2021-02-24",
+        "trough": 0.9851,
+        "trough_date": "2021-02-24",
+        "recovered": true,
+        "recovery_days": 1,
+        "trade_return": 0.015125367982945948
+      },
+      {
+        "start": "2021-02-27",
+        "trough": 0.98,
+        "trough_date": "2021-02-28",
+        "recovered": true,
+        "recovery_days": 2,
+        "trade_return": 0.020408163265306145
+      },
+      {
+        "start": "2021-03-03",
+        "trough": 0.9949,
+        "trough_date": "2021-03-03",
+        "recovered": true,
+        "recovery_days": 1,
+        "trade_return": 0.005126143330987931
+      },
+      {
+        "start": "2021-03-29",
+        "trough": 0.9945,
+        "trough_date": "2021-03-29",
+        "recovered": true,
+        "recovery_days": 1,
+        "trade_return": 0.005530417295123158
+      },
+      {
+        "start": "2021-04-04",
+        "trough": 0.993,
+        "trough_date": "2021-04-04",
+        "recovered": true,
+        "recovery_days": 1,
+        "trade_return": 0.007049345417925457
+      },
+      {
+        "start": "2021-04-18",
+        "trough": 0.983,
+        "trough_date": "2021-04-18",
+        "recovered": true,
+        "recovery_days": 1,
+        "trade_return": 0.01729399796541209
+      },
+      {
+        "start": "2021-04-30",
+        "trough": 0.99,
+        "trough_date": "2021-04-30",
+        "recovered": true,
+        "recovery_days": 1,
+        "trade_return": 0.010101010101010166
+      },
+      {
+        "start": "2021-05-03",
+        "trough": 0.988,
+        "trough_date": "2021-05-04",
+        "recovered": true,
+        "recovery_days": 2,
+        "trade_return": 0.012145748987854255
+      },
+      {
+        "start": "2021-05-08",
+        "trough": 0.9905,
+        "trough_date": "2021-05-08",
+        "recovered": true,
+        "recovery_days": 2,
+        "trade_return": 0.009591115598182709
+      },
+      {
+        "start": "2021-05-17",
+        "trough": 0.9911,
+        "trough_date": "2021-05-17",
+        "recovered": true,
+        "recovery_days": 1,
+        "trade_return": 0.008979921299566263
+      },
+      {
+        "start": "2021-05-19",
+        "trough": 0.986,
+        "trough_date": "2021-05-19",
+        "recovered": true,
+        "recovery_days": 6,
+        "trade_return": 0.014198782961460488
+      },
+      {
+        "start": "2021-12-04",
+        "trough": 0.991,
+        "trough_date": "2021-12-04",
+        "recovered": true,
+        "recovery_days": 3,
+        "trade_return": 0.00908173562058523
+      },
+      {
+        "start": "2023-03-11",
+        "trough": 0.9612,
+        "trough_date": "2023-03-11",
+        "recovered": true,
+        "recovery_days": 16,
+        "trade_return": 0.04036620890553477
+      },
+      {
+        "start": "2023-06-10",
+        "trough": 0.9906,
+        "trough_date": "2023-06-10",
+        "recovered": true,
+        "recovery_days": 3,
+        "trade_return": 0.009489198465576276
+      },
+      {
+        "start": "2023-12-25",
+        "trough": 0.9947,
+        "trough_date": "2023-12-25",
+        "recovered": true,
+        "recovery_days": 2,
+        "trade_return": 0.0053282396702523105
+      },
+      {
+        "start": "2024-01-10",
+        "trough": 0.9949,
+        "trough_date": "2024-01-10",
+        "recovered": true,
+        "recovery_days": 50,
+        "trade_return": 0.005126143330987931
+      },
+      {
+        "start": "2024-01-12",
+        "trough": 0.947,
+        "trough_date": "2024-02-28",
+        "recovered": true,
+        "recovery_days": 1,
+        "trade_return": 0.05596620908130956
+      },
+      {
+        "start": "2024-04-14",
+        "trough": 0.9931,
+        "trough_date": "2024-04-14",
+        "recovered": true,
+        "recovery_days": 3,
+        "trade_return": 0.006947940791460994
+      },
+      {
+        "start": "2024-07-15",
+        "trough": 0.9902,
+        "trough_date": "2024-07-15",
+        "recovered": true,
+        "recovery_days": 1,
+        "trade_return": 0.00989699050696835
+      },
+      {
+        "start": "2024-10-03",
+        "trough": 0.9945,
+        "trough_date": "2024-10-03",
+        "recovered": true,
+        "recovery_days": 38,
+        "trade_return": 0.005530417295123158
+      },
+      {
+        "start": "2024-10-30",
+        "trough": 0.9926,
+        "trough_date": "2024-11-01",
+        "recovered": true,
+        "recovery_days": 9,
+        "trade_return": 0.007455168245013022
+      },
+      {
+        "start": "2024-11-05",
+        "trough": 0.9923,
+        "trough_date": "2024-11-07",
+        "recovered": true,
+        "recovery_days": 3,
+        "trade_return": 0.007759750075581939
+      },
+      {
+        "start": "2024-11-13",
+        "trough": 0.9909,
+        "trough_date": "2024-11-14",
+        "recovered": true,
+        "recovery_days": 5,
+        "trade_return": 0.009183570491472448
+      },
+      {
+        "start": "2025-06-10",
+        "trough": 0.9107,
+        "trough_date": "2025-06-13",
+        "recovered": true,
+        "recovery_days": 194,
+        "trade_return": 0.09805644010102132
+      },
+      {
+        "start": "2025-06-17",
+        "trough": 0.9941,
+        "trough_date": "2025-06-17",
+        "recovered": true,
+        "recovery_days": 190,
+        "trade_return": 0.0059350165979277225
+      },
+      {
+        "start": "2025-11-23",
+        "trough": 0.994,
+        "trough_date": "2025-11-23",
+        "recovered": true,
+        "recovery_days": 31,
+        "trade_return": 0.006036217303822866
+      }
+    ]
+  },
+  "FDUSD": {
+    "start": "2023-07-26",
+    "end": "2026-07-05",
+    "events": [
+      {
+        "start": "2024-02-29",
+        "trough": 0.9942,
+        "trough_date": "2024-02-29",
+        "recovered": true,
+        "recovery_days": 8,
+        "trade_return": 0.005833836250251467
+      },
+      {
+        "start": "2024-03-04",
+        "trough": 0.92,
+        "trough_date": "2024-03-05",
+        "recovered": true,
+        "recovery_days": 3,
+        "trade_return": 0.08695652173913038
+      },
+      {
+        "start": "2024-08-05",
+        "trough": 0.9924,
+        "trough_date": "2024-08-05",
+        "recovered": true,
+        "recovery_days": 2,
+        "trade_return": 0.00765820233776715
+      },
+      {
+        "start": "2024-11-12",
+        "trough": 0.9922,
+        "trough_date": "2024-11-12",
+        "recovered": true,
+        "recovery_days": 3,
+        "trade_return": 0.00786131828260439
+      },
+      {
+        "start": "2024-12-05",
+        "trough": 0.9902,
+        "trough_date": "2024-12-05",
+        "recovered": true,
+        "recovery_days": 6,
+        "trade_return": 0.00989699050696835
+      },
+      {
+        "start": "2024-12-09",
+        "trough": 0.9916,
+        "trough_date": "2024-12-09",
+        "recovered": true,
+        "recovery_days": 2,
+        "trade_return": 0.008471157724889045
+      },
+      {
+        "start": "2025-02-03",
+        "trough": 0.9914,
+        "trough_date": "2025-02-03",
+        "recovered": true,
+        "recovery_days": 1,
+        "trade_return": 0.008674601573532392
+      },
+      {
+        "start": "2025-04-02",
+        "trough": 0.8726,
+        "trough_date": "2025-04-02",
+        "recovered": true,
+        "recovery_days": 8,
+        "trade_return": 0.14600045840018328
+      },
+      {
+        "start": "2025-08-21",
+        "trough": 0.9939,
+        "trough_date": "2025-08-21",
+        "recovered": true,
+        "recovery_days": 71,
+        "trade_return": 0.006137438374081983
+      },
+      {
+        "start": "2025-08-28",
+        "trough": 0.9901,
+        "trough_date": "2025-08-28",
+        "recovered": true,
+        "recovery_days": 64,
+        "trade_return": 0.00999899000101001
+      },
+      {
+        "start": "2025-09-24",
+        "trough": 0.9642,
+        "trough_date": "2025-09-24",
+        "recovered": true,
+        "recovery_days": 37,
+        "trade_return": 0.03712922630159721
+      },
+      {
+        "start": "2025-10-10",
+        "trough": 0.9801,
+        "trough_date": "2025-10-10",
+        "recovered": true,
+        "recovery_days": 21,
+        "trade_return": 0.020304050607080848
+      }
+    ]
+  },
+  "USDP": {
+    "start": "2021-09-10",
+    "end": "2026-07-05",
+    "events": [
+      {
+        "start": "2021-12-04",
+        "trough": 0.9892,
+        "trough_date": "2021-12-04",
+        "recovered": true,
+        "recovery_days": 2,
+        "trade_return": 0.010917913465426698
+      },
+      {
+        "start": "2023-03-11",
+        "trough": 0.9402,
+        "trough_date": "2023-03-11",
+        "recovered": true,
+        "recovery_days": 10,
+        "trade_return": 0.06360348861944254
+      },
+      {
+        "start": "2023-05-07",
+        "trough": 0.99,
+        "trough_date": "2023-05-08",
+        "recovered": true,
+        "recovery_days": 2,
+        "trade_return": 0.010101010101010166
+      },
+      {
+        "start": "2023-06-06",
+        "trough": 0.9916,
+        "trough_date": "2023-06-06",
+        "recovered": true,
+        "recovery_days": 1,
+        "trade_return": 0.008471157724889045
+      },
+      {
+        "start": "2023-09-20",
+        "trough": 0.9921,
+        "trough_date": "2023-09-20",
+        "recovered": true,
+        "recovery_days": 1,
+        "trade_return": 0.007962906965023775
+      },
+      {
+        "start": "2023-11-06",
+        "trough": 0.9447,
+        "trough_date": "2023-11-06",
+        "recovered": true,
+        "recovery_days": 3,
+        "trade_return": 0.058537101725415486
+      },
+      {
+        "start": "2023-11-09",
+        "trough": 0.9512,
+        "trough_date": "2023-11-10",
+        "recovered": true,
+        "recovery_days": 1,
+        "trade_return": 0.051303616484440706
+      },
+      {
+        "start": "2023-11-15",
+        "trough": 0.9909,
+        "trough_date": "2023-11-15",
+        "recovered": true,
+        "recovery_days": 1,
+        "trade_return": 0.009183570491472448
+      },
+      {
+        "start": "2023-11-19",
+        "trough": 0.9949,
+        "trough_date": "2023-11-19",
+        "recovered": true,
+        "recovery_days": 1,
+        "trade_return": 0.005126143330987931
+      },
+      {
+        "start": "2023-11-21",
+        "trough": 0.9949,
+        "trough_date": "2023-11-21",
+        "recovered": true,
+        "recovery_days": 1,
+        "trade_return": 0.005126143330987931
+      },
+      {
+        "start": "2023-12-03",
+        "trough": 0.9874,
+        "trough_date": "2023-12-03",
+        "recovered": true,
+        "recovery_days": 1,
+        "trade_return": 0.012760785902369731
+      },
+      {
+        "start": "2024-01-03",
+        "trough": 0.962,
+        "trough_date": "2024-01-03",
+        "recovered": true,
+        "recovery_days": 2,
+        "trade_return": 0.03950103950103956
+      },
+      {
+        "start": "2024-01-05",
+        "trough": 0.9865,
+        "trough_date": "2024-01-05",
+        "recovered": true,
+        "recovery_days": 1,
+        "trade_return": 0.013684744044602182
+      },
+      {
+        "start": "2024-03-05",
+        "trough": 0.993,
+        "trough_date": "2024-03-05",
+        "recovered": true,
+        "recovery_days": 1,
+        "trade_return": 0.007049345417925457
+      },
+      {
+        "start": "2024-11-12",
+        "trough": 0.9933,
+        "trough_date": "2024-11-12",
+        "recovered": true,
+        "recovery_days": 2,
+        "trade_return": 0.00674519279170438
+      },
+      {
+        "start": "2024-11-20",
+        "trough": 0.994,
+        "trough_date": "2024-11-20",
+        "recovered": true,
+        "recovery_days": 1,
+        "trade_return": 0.006036217303822866
+      },
+      {
+        "start": "2025-11-14",
+        "trough": 0.98,
+        "trough_date": "2025-11-14",
+        "recovered": true,
+        "recovery_days": 1,
+        "trade_return": 0.020408163265306145
+      },
+      {
+        "start": "2025-11-16",
+        "trough": 0.9911,
+        "trough_date": "2025-11-16",
+        "recovered": true,
+        "recovery_days": 2,
+        "trade_return": 0.008979921299566263
+      },
+      {
+        "start": "2025-11-25",
+        "trough": 0.9938,
+        "trough_date": "2025-11-26",
+        "recovered": true,
+        "recovery_days": 1,
+        "trade_return": 0.006238679814852155
+      },
+      {
+        "start": "2025-12-02",
+        "trough": 0.9945,
+        "trough_date": "2025-12-02",
+        "recovered": true,
+        "recovery_days": 1,
+        "trade_return": 0.005530417295123158
+      }
+    ]
+  },
+  "USDe": {
+    "start": "2025-09-09",
+    "end": "2026-07-05",
+    "events": [
+      {
+        "start": "2025-09-21",
+        "trough": 0.9886,
+        "trough_date": "2025-09-21",
+        "recovered": true,
+        "recovery_days": 1,
+        "trade_return": 0.011531458628363245
+      },
+      {
+        "start": "2025-10-10",
+        "trough": 0.65,
+        "trough_date": "2025-10-10",
+        "recovered": true,
+        "recovery_days": 1,
+        "trade_return": 0.5384615384615383
+      },
+      {
+        "start": "2026-02-11",
+        "trough": 0.9941,
+        "trough_date": "2026-02-11",
+        "recovered": true,
+        "recovery_days": 1,
+        "trade_return": 0.0059350165979277225
+      }
+    ]
+  }
+}

@@ -1719,3 +1719,156 @@ by automation is the tail-dependency itself.
   generated it. Standing best *validated* (mechanically backtestable,
   low-variance, quantified EV) candidate remains XMR funding basis
   (Thread B, iteration 7, 2.04%/month), unchanged by this thread.
+
+## Thread S (post-A-F follow-up #17, iteration 37): Stablecoin depeg mean-reversion trading — **DEAD**
+
+**Concept:** Buy a major "stable" coin (USDC, DAI, TUSD, FDUSD, USDP, USDe)
+when it trades meaningfully below $1.00 on a real exchange, hold until it
+reverts to ~$1.00, sell/redeem, capture the spread. A genuinely new
+mechanism family (23rd overall, 17th post-A-F follow-up) — every prior
+market-neutral thread harvested a *rate* (funding, APY, IV, fee income);
+this one harvests a *discrete event* (a temporary price dislocation away
+from a hard peg).
+
+**Data:** `research/stablecoin_depeg_scan.py`. CoinGecko's free-tier
+`market_chart` endpoint was rate-limited (401/429) throughout this run, so
+the script uses Binance public `klines` (no key, no auth) for daily
+OHLC since 2019-01-01 on six stablecoins' USDT pairs — deep enough history
+to capture the real 2023-03-11 USDC/SVB depeg (low $0.882 that day) that
+neither CoinGecko's rate-limited response nor Kraken's public OHLC (capped
+at ~720 daily candles, ~2 years back) could reach. Binance.com itself is a
+possibly-restricted *execution* venue for this Romania-based user per the
+objective's own guidance — it is used here strictly as a historical-data
+source. A cross-check against Kraken's own USDCUSD/DAIUSD OHLC over their
+shared ~2-year overlap window confirmed the two venues track the same peg
+(Kraken min low $0.9858 vs Binance min trough $0.9850 for USDC in the same
+window), so Binance's deeper history is a valid proxy for what a
+Kraken-based bot would have seen. Real execution, if ever pursued, should
+happen on a Romania-accessible venue (Kraken/OKX/Bybit), not Binance.com.
+
+**Method:** flag every day where the daily LOW closes >0.5% below $1.00,
+group consecutive flagged days into discrete events, find the first later
+day whose CLOSE is back within 0.1% of $1.00, and compute the simple
+buy-at-trough/sell-at-recovery return. Aggregate into an annualized
+"monthly-equivalent" return assuming perfect fills at every historical
+trough (an explicit upper bound).
+
+**Results (naive, all events, monthly-equivalent):**
+
+| Coin  | History | Events (recovered) | Events/yr | Naive monthly-equiv |
+|-------|---------|---------------------|-----------|----------------------|
+| USDC  | 2019-01→2026-07 (7.5y) | 35 | 4.96 | 5.77%/mo |
+| TUSD  | 2019-01→2026-07 (7.5y) | 50 | 7.08 | 2.30%/mo |
+| USDe  | 2025-09→2026-07 (0.8y) | 3  | 3.65 | 5.64%/mo |
+| FDUSD | 2023-07→2026-07 (3.0y) | 12 | 4.07 | 1.00%/mo |
+| USDP  | 2021-09→2026-07 (4.8y) | 20 | 4.58 | 0.68%/mo |
+| DAI   | delisted on Binance after 2020-08 (21 candles only) | — | — | no usable history |
+
+At face value, USDC (5.77%/month) and USDe (5.64%/month) look like they
+clear the 5%/month bar. **They do not survive inspection.** Per-event
+breakdown shows both figures are almost entirely produced by a single
+one-hour flash-wick candle, not a multi-day depeg:
+
+- USDC: 2021-12-04, one 1-hour candle prints a low of **$0.20** (volume
+  $28.9M that hour) then closes the same hour at $0.998 — a 400% trade
+  return if bought at the exact tick, contributing 431.6 of the 488.8
+  cumulative percentage points behind USDC's headline number (2 of 35
+  events — 2021-12-04 and a second $0.76 wick on 2024-01-03 — supply 88% of
+  USDC's *entire* 7.5-year cumulative return).
+- USDe: 2025-10-10, one 1-hour candle on Binance prints a low of **$0.65**
+  during that day's broad market-wide liquidation cascade, closing back
+  near $1.00 within the same day — a real, widely-reported incident
+  (Binance-specific oracle/liquidation-pricing dislocation during the
+  2025-10-10 crash, while USDe traded closer to peg on other venues), but
+  a single-event, single-venue artifact, not a repeatable rate — it alone
+  supplies 53.8 of USDe's 55.6 total cumulative percentage points (3
+  events, only 0.8 years of listed history).
+- TUSD has the same pattern: one 2021-01-29 wick to $0.4654 (1-hour candle,
+  114.9% return) supplies 115 of its 195 cumulative percentage points.
+
+**Excluding these three single-hour flash-wick artifacts** (defined as
+>10% trade return with ≤3-day recovery — i.e., events that require a
+resting limit order already sitting at that exact extreme tick to have
+captured them, indistinguishable in real time from a genuine
+still-in-progress collapse) drops every coin's realistic, multi-day-depeg
+monthly-equivalent to well under the 5%/month floor:
+
+| Coin  | Normal-event cumulative return | Normal monthly-equiv |
+|-------|-------------------------------|------------------------|
+| FDUSD | 35.5% / 3.0y  | 1.005%/mo |
+| TUSD  | 80.3% / 7.5y  | 0.891%/mo |
+| USDC  | 57.3% / 7.5y  | 0.636%/mo |
+| USDP  | 35.7% / 4.8y  | 0.618%/mo |
+| USDe  | 1.75% / 0.8y  | 0.178%/mo |
+
+Even the best realistic candidate (FDUSD, 1.00%/month) sits well below
+both Thread B's standing 2.04%/month XMR candidate and the 5%/month floor.
+
+**Verdict: DEAD.** The naive headline numbers for USDC/USDe nominally
+clear 5%/month, but — like Threads Q, R, and the vault-outlier case in
+Thread L before it — the entire excess is produced by 1-2 single-hour
+events out of 35-120 sampled days, not a repeatable rate. Once those flash
+wicks are excluded as artifacts a real bot could not reliably have caught
+(and should not have wanted to chase, since a genuine collapsing peg looks
+identical in its first candle), every coin's sustained, multi-day-recovery
+depeg-trading return is sub-1.1%/month.
+
+**Risk (quantified, not hidden):** this thread's coin list (USDC, USDT,
+DAI, TUSD, FDUSD, USDP, USDe) is, by construction, the set of major
+stablecoins that recovered from every depeg *so far*. It excludes
+algorithmic stablecoins that depegged and never recovered — most notably
+TerraUSD/UST, which collapsed from $1.00 to near-zero in May 2022, a
+-100% permanent loss for anyone "buying the dip." A live automated version
+of this strategy has no mechanical way to distinguish "temporary
+liquidity-driven depeg, will revert" from "the collateral/mechanism has
+actually failed, will not revert" at the moment of entry — the reasoning
+that makes any given depeg buyable (issuer solvency, redeemability, dollar
+reserves) is exactly the judgment a backtest of price data alone cannot
+supply.
+
+**Automation:** the *slow* multi-day depegs (SVB, 2023-03-11, 15-day
+recovery) are straightforward to automate (poll price every few seconds,
+buy below a -0.5%/-1% threshold, sell at a recovery threshold) with no new
+infrastructure. The *flash-wick* events that produce the striking headline
+numbers, by contrast, require a permanently-resting deep-discount limit
+order (e.g., a standing bid at $0.85-$0.95) sitting on the book at all
+times, competing for fill priority against market makers and other bots
+doing the same thing, with no guarantee of size or fill even if the wick
+occurs — a materially different (and less controllable) automation problem
+than a threshold-triggered market order.
+
+**Learnings:**
+- CoinGecko's free public API (`api.coingecko.com`) returned 401 on
+  `market_chart` calls at the very start of this run and 429 (rate-limited)
+  on retries even after backoff — a tightening from iteration 18-19's
+  experience earlier in this same objective, where 15-20s backoffs were
+  sufficient. Binance's public `klines` endpoint (no key, no auth) was a
+  reliable, deeper-history (2019+) substitute for this specific asset
+  class, and Kraken's public `OHLC` endpoint (also no key) served as an
+  independent cross-check, though Kraken's daily-interval history is
+  capped at ~720 candles (~2 years) regardless of the `since` parameter
+  supplied — a real platform limitation, not a pagination bug, discovered
+  by testing `since=2023-01-01` and getting back the same most-recent-720
+  window regardless.
+- A stablecoin's daily LOW (not just its close) can print a single-hour,
+  extreme, high-volume flash-wick (USDC to $0.20, TUSD to $0.4654, USDe to
+  $0.65) that reverts within the same hour or day — these look identical
+  in a naive daily-bar backtest to a "real" multi-day depeg event but
+  require a fundamentally different (pre-resting, always-on limit order)
+  automation approach to actually capture, and 2-3 such single-hour events
+  out of 35-120 sampled days can supply 85-95% of a coin's entire
+  multi-year cumulative "buy the depeg" return — the same
+  small-number-of-outlier-events trap already documented in Threads A, K,
+  Q, and R, now confirmed in a fourth, structurally distinct mechanism
+  family.
+- This is the 17th post-A-F follow-up mechanism tested (after iterations
+  6, 7, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 34, 35, 36) and the
+  24th overall in this objective, and the first thread whose *disclosed*
+  worst-case risk (a Terra/UST-style permanent depeg) is a real, already-
+  realized historical event for a *different* stablecoin than any tested
+  here — worth treating this as a standing reminder that any future thread
+  touching "buy this dip because it always came back before" mechanisms
+  carries survivorship bias by construction, independent of whatever
+  yield number the backtest itself produces. Standing best *validated*
+  candidate (XMR funding basis, Thread B, iteration 7, 2.04%/month)
+  unchanged and not superseded.

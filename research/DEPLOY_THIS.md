@@ -348,13 +348,31 @@ promoted to deploy. Standing best *validated* candidate (XMR, Thread B,
 second (after Thread Q) disqualified for a reason other than
 measured-and-insufficient.
 
+**Thread S (iteration 37): stablecoin depeg mean-reversion trading.**
+`research/stablecoin_depeg_scan.py` pulls 2019-2026 daily OHLC (Binance
+public klines, cross-checked against Kraken) for USDC/DAI/TUSD/FDUSD/USDP/
+USDe and backtests buying below-peg dips and selling at recovery. Naive
+headline numbers for USDC (5.77%/month) and USDe (5.64%/month) nominally
+clear the 5%/month bar, but per-event inspection shows both are 85-95%
+produced by a single one-hour flash-wick candle (USDC to $0.20 on
+2021-12-04, USDe to $0.65 during the 2025-10-10 crash) — a Binance-specific
+liquidity/oracle dislocation reverting within the same hour, not a
+capturable multi-day depeg. Excluding these 3 flash-wick artifacts across
+all 5 coins with usable history drops every realistic monthly-equivalent
+to 0.18-1.00%/month. **DEAD** — and the coin universe itself is
+survivorship-biased (excludes TerraUSD/UST's real, permanent -100% May-2022
+depeg), a risk this thread discloses explicitly since it can't be
+backtested away. Standing best validated candidate (XMR, Thread B,
+2.04%/month) unchanged.
+
 ---
 
-**Running total: 22 mechanisms tested across this objective (6 named
-threads A-F, plus 16 post-A-F follow-ups/new mechanisms), spanning
+**Running total: 23 mechanisms tested across this objective (6 named
+threads A-F, plus 17 post-A-F follow-ups/new mechanisms), spanning
 market-neutral yield harvesting (6 flavors), directional momentum, pairs
 stat-arb, vault/manager copy-deposit, counterparty-vault yield (2 venues),
 options vaults, legal-risk-gated counterparty capital, points/airdrop
-farming, and long-volatility convexity. None has been promoted above the
-standing best validated candidate: XMR funding basis, Thread B, iteration 7,
-2.04%/month — still well below both the 5%/month and 10%/month bars.**
+farming, long-volatility convexity, and stablecoin depeg mean-reversion.
+None has been promoted above the standing best validated candidate: XMR
+funding basis, Thread B, iteration 7, 2.04%/month — still well below both
+the 5%/month and 10%/month bars.**
