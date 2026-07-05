@@ -328,3 +328,33 @@ re-verification before any deployment. Standing best *validated* candidate
 (XMR, Thread B, 2.04%/month) unchanged; this is the 15th post-A-F
 mechanism tested and the first disqualified because the return side is
 unquantifiable in advance rather than measured-and-insufficient.
+
+**Thread R (iteration 36): long volatility (buy weekly OTM strangles) — the
+mirror image of Thread A.** `research/long_volatility_scan.py` reuses
+Thread A's real Deribit DVOL + spot data to test the opposite trade: buying
+(not selling) weekly 5/10/20-delta OTM puts+calls. Raw pooled numbers over
+the same 27-week/195-day window look striking at the 5-delta level (BTC
+~3.4%/month, ETH ~10.1%/month, nominally clearing the objective's target),
+but inspecting the per-week log shows the entire positive return at every
+delta level comes from just 2-4 of 27 weeks — the *same* two crash weeks
+Thread A already identified — while the other 23-25 weeks (74-93% of the
+time) lose 100% of premium with zero exceptions. A live order-book check
+also found real 5-delta bid-ask spreads of 13-17% of mid, a cost not
+modeled above and paid on both legs every week regardless of outcome.
+**NOT VALIDATED** — a real payoff, but tail-dependent on a 27-sample window
+containing 2-4 known outlier events, not a forward-estimable edge; not
+promoted to deploy. Standing best *validated* candidate (XMR, Thread B,
+2.04%/month) unchanged. This is the 16th post-A-F mechanism tested and the
+second (after Thread Q) disqualified for a reason other than
+measured-and-insufficient.
+
+---
+
+**Running total: 22 mechanisms tested across this objective (6 named
+threads A-F, plus 16 post-A-F follow-ups/new mechanisms), spanning
+market-neutral yield harvesting (6 flavors), directional momentum, pairs
+stat-arb, vault/manager copy-deposit, counterparty-vault yield (2 venues),
+options vaults, legal-risk-gated counterparty capital, points/airdrop
+farming, and long-volatility convexity. None has been promoted above the
+standing best validated candidate: XMR funding basis, Thread B, iteration 7,
+2.04%/month — still well below both the 5%/month and 10%/month bars.**

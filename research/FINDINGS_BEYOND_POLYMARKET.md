@@ -1585,3 +1585,137 @@ not by farming skill.
 - Standing best *validated* (mechanically backtestable, quantified EV)
   candidate remains XMR funding basis (Thread B, iteration 7, 2.04%/month),
   unchanged by this thread.
+
+---
+
+## Thread R (post-A-F follow-up #16, iteration 36): Long volatility (buy weekly OTM strangles) — the mirror image of Thread A — **NOT VALIDATED (tail-dependent, small-sample, real-friction-vulnerable)**
+
+**Concept:** Thread A (iteration 1) found that SELLING weekly 5/10/20-delta
+OTM puts on BTC/ETH was net-negative because two single crash weeks
+(2026-01-25, 2026-05-31) each wiped out 20+ weeks of collected premium. The
+natural, previously-untested mirror-image question: if the seller lost
+money on those weeks, did the BUYER of optionality make money on them, and
+does that make systematically buying a weekly OTM strangle (long put + long
+call, same target delta) a positive-EV long-vol harvesting strategy over
+the same real 6-month window?
+
+**Methodology:** `research/long_volatility_scan.py` reuses Thread A's exact
+real data sources and Black-Scholes machinery (real Deribit DVOL history +
+real BTC/ETH-PERPETUAL daily closes, strike solved for a target delta) —
+only the position (long instead of short) and payoff (two-sided instead of
+one-sided) differ. Capital base is the premium paid (small, defined,
+100%-loss-at-worst per week), not a strike-sized collateral pool, so
+"return on premium" figures are on a much smaller base than Thread A's
+return-on-collateral and are not apples-to-apples with it.
+
+**Real, live-pulled results (27 weekly rolls, 195 days, same window as
+Thread A, run 2026-07-05):**
+
+| ccy | delta | n | win% | pooled return over 195d | implied ~%/month | worst week | best week |
+|---|---|---|---|---|---|---|---|
+| BTC | 0.05 | 27 | 14.8% | +22.0% | ~3.4%/mo | -100% | +1004.8% |
+| BTC | 0.10 | 27 | 14.8% | +1.4% | ~0.2%/mo | -100% | +742.6% |
+| BTC | 0.20 | 27 | 25.9% | -8.6% | negative | -100% | +443.6% |
+| ETH | 0.05 | 27 | 7.4% | +65.8% | ~10.1%/mo | -100% | +2869.6% |
+| ETH | 0.10 | 27 | 11.1% | +8.7% | ~1.3%/mo | -100% | +1554.8% |
+| ETH | 0.20 | 27 | 18.5% | -13.7% | negative | -100% | -- |
+
+(`pooled return` = total P&L / total premium paid across all 27 weeks,
+which is the honest aggregate figure — averaging the per-week percentage
+returns instead, as Thread A did, is misleading here because a handful of
+>1000% weeks distort a simple average far more than they distort the
+pooled-capital figure.)
+
+**Why the headline ETH 5-delta number (~10%/month, nominally clearing the
+objective's target) is NOT a validated edge:** inspecting the per-week P&L
+log directly (not just the summary stats) shows the entire positive pooled
+return, at every delta level, comes from exactly 2-4 of the 27 weeks — and
+those weeks are the *same* two real crash events already identified in
+Thread A (the ~10-20% BTC/ETH drawdown weeks around late January and late
+May/June 2026). The other 23-25 of 27 weeks (74-93% of the time) lose 100%
+of the premium paid, every single time, with zero exceptions in this
+sample. This is the identical small-sample trap already documented in
+iteration 6 (a dramatic result driven by n=2-4 tail events in a ~27-sample
+window is not evidence of a repeatable edge) — here it appears as the
+mirror image of that same finding rather than a new one. A 6-month window
+that happened not to contain a crash week would show close to a 100% loss
+rate with no offsetting payoff at all.
+
+**Additional real-world friction not modeled in the backtest:** a live
+order-book check on a currently-listed ~5-delta BTC put
+(BTC-10JUL26-57000-P) shows a real bid/ask spread of **13.3% of mid**;
+the ETH equivalent (ETH-10JUL26-1525-P) shows **17.1% of mid**. Deep-OTM
+options are the least liquid part of the chain, and this spread must be
+paid (as the ask, buying) on **both legs, every single week**, whether the
+week wins or loses — a cost of roughly 13-17%+ of the modeled premium per
+leg per week that is not deducted anywhere in the table above. Given 23-25
+of 27 weeks already lose 100% of premium in the frictionless model, adding
+a mandatory ~15%+ round-trip tax on every single roll only widens the gap
+between the rare tail win and the much larger number of totally-forfeited
+weeks.
+
+**Verdict: NOT VALIDATED.** Not "dead" in Thread A's sense (net-negative on
+average) — the raw pooled numbers are genuinely positive at the 5/10-delta
+level over this specific 195-day window — but this is a structurally
+tail-dependent payoff (feast almost entirely on 2-4 rare crash weeks,
+famine >85% of the rest of the time) whose realized sign and magnitude over
+any given 6-month window is dominated by whether a crash happens to fall
+inside that specific window, not by a systematic, forward-estimable
+mispricing of implied vs. realized vol. Real bid-ask friction (13-17% of
+mid, both legs, every week) further erodes what's left. This is the same
+category of finding as Thread L's vault outlier and Thread Q's points
+farming: a real, disclosed, sometimes-large payoff whose *forward*
+expected value cannot be estimated with any confidence from 27 historical
+samples dominated by 2-4 tail events, so it is not promoted to
+`DEPLOY_THIS.md`.
+
+**Risk (quantified):**
+- Downside per week is capped and fully known in advance (100% of premium
+  paid, a small dollar amount relative to any short-premium collateral
+  requirement) — genuinely lower blowup risk than every leveraged/
+  directional thread in this objective.
+- Upside is uncapped in principle but realized only in the rare weeks a
+  large price move actually occurs within the 7-day holding window — 74-93%
+  of weeks in this real sample returned exactly -100%.
+- A systematic weekly-roll version of this strategy would need to survive
+  dozens of consecutive -100% weeks (psychologically and in position-sizing
+  terms) while waiting for a rare payoff week — a real behavioral/practical
+  barrier for an automated strategy sized to be meaningful, even though the
+  max per-week dollar loss is small and known.
+
+**Automation:** fully automatable in Python (same Deribit REST/WS
+infrastructure as Thread A) — solving for a target-delta strike and
+submitting two limit orders (put + call) on a weekly schedule requires no
+new infrastructure beyond what Thread A already built. What is NOT solved
+by automation is the tail-dependency itself.
+
+**Learnings:**
+- The mirror image of a discovered fat-tail-negative short-vol result is
+  not automatically a validated positive-EV long-vol result — it inherits
+  the same small-sample tail-event dependency, just with the sign flipped.
+  Before promoting any "buy convexity" backtest, explicitly check what
+  fraction of the sample's realized weeks actually paid off and whether
+  those winning weeks cluster around the exact same handful of known
+  extreme-move events already flagged in a prior, related thread.
+- Deep-OTM (5-delta) option bid-ask spreads on Deribit are real and large
+  (13-17% of mid, live-checked) — any backtest of a deep-OTM options
+  strategy (short or long) that doesn't deduct this is silently overstating
+  the strategy's real-world return, and the distortion is proportionally
+  worse for long-premium (buyer) strategies than for short-premium (seller)
+  strategies, since the premium base itself is small.
+- Reporting "pooled return over the total capital committed" (sum of P&L /
+  sum of premium) rather than "average of the per-week percentage returns"
+  materially changes the headline number when a handful of outlier weeks
+  (500-2800% single-week returns) are present in the sample — the pooled
+  figure is the more honest aggregate statistic for this kind of
+  convexity-heavy payoff distribution, and future threads with similarly
+  skewed per-period returns should default to reporting it alongside (not
+  instead of) a simple average.
+- This is the 16th post-A-F follow-up mechanism tested (after iterations 6,
+  7, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 34, 35) and the second
+  (after Thread Q) to be disqualified for a reason other than "measured and
+  found sub-bar" — it is a real, sometimes-large payoff that cannot be
+  trusted as a forward edge given how few independent tail events actually
+  generated it. Standing best *validated* (mechanically backtestable,
+  low-variance, quantified EV) candidate remains XMR funding basis
+  (Thread B, iteration 7, 2.04%/month), unchanged by this thread.
