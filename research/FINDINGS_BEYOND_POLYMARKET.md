@@ -680,3 +680,86 @@ on-chain event frequency for ANY Solana program — logs expose the human-readab
 `Instruction: <Name>` line, which is enough to classify transaction *type*
 (though not USD profit, which would need pre/post token-balance diffing, not
 attempted here since frequency alone already settles the verdict).
+
+---
+
+## Thread H (iteration 18, new mechanism beyond A-F): Jupiter Perpetuals (JLP) counterparty-vault yield
+
+**Concept:** JLP is a single Solana token representing a pooled vault that takes
+the *other side* of every leveraged trade on Jupiter Perpetuals. This is a
+genuinely different mechanism from every prior thread: not funding, not basis,
+not options premium, not LP fees on a spot AMM — it's a real counterparty
+position against traders (LPs profit when traders lose, which they mostly do
+over time), paying out ~75% of trading + borrow fees. It's widely marketed
+(Jupiter's own materials, multiple secondary sources) as "30-60% APY," and is
+fully automatable (buy-and-hold or DCA via any Solana wallet/RPC, no active
+management required) and accessible from Romania (on-chain, no geo-block).
+
+**Critical wrinkle the marketing figure hides:** JLP's disclosed target
+composition is only ~64% stablecoins-equivalent-free — it's roughly 44% SOL,
+11% BTC, 9% ETH, and 36% USDC/USDT (per Jupiter's own station page and
+cross-checked secondary sources). That means JLP's USD price carries real,
+large, undiversified long-crypto beta on top of whatever fee/counterparty
+yield it earns. The advertised "30-60% APY" is a fee-generation-rate figure
+(fees collected / AUM, annualized) — it is **not** the total return a real
+USD-denominated holder experiences, because it doesn't net out the vault's own
+asset-price exposure or its P&L as counterparty to traders.
+
+**Script:** `research/jlp_perps_vault_scan.py` — pulls real 180-day daily USD
+price history (CoinGecko) for JLP itself and for its three volatile
+constituents (SOL, BTC, ETH), builds a static-weight synthetic "hold the raw
+basket, no vault mechanics" benchmark using the disclosed target weights, and
+computes JLP's real total return vs. the benchmark's return at 30/90/180-day
+windows. The gap between the two (`excess`) isolates the actual fee-vs-trader-PnL
+yield component from pure crypto-beta.
+
+**Result (real data, pulled 2026-07-05, cached in `data/jlp_vault_scan_cache.json`):**
+
+| Window | JLP total return | SOL | BTC | ETH | Basket (44/11/9 wtd) | Excess (JLP − basket) |
+|---|---|---|---|---|---|---|
+| 30d | +9.21% | +18.10% | -1.30% | +0.15% | +7.83% | **+1.38%** |
+| 90d | +0.28% | -0.72% | -8.73% | -15.99% | -2.71% | **+3.00%** |
+| 180d | **-23.50%** | -42.44% | -32.78% | -46.23% | -26.44% | **+2.94%** |
+
+- Over the last 6 months, a real USD-denominated JLP holder **lost 23.5% of
+  their capital** — not because the vault mechanism failed, but because SOL/BTC/ETH
+  each fell 33-46% over the same window (a real broad crypto downturn) and JLP's
+  ~64% exposure to that basket dominates the return.
+- Netting out that beta (JLP return minus the static basket's return) gives the
+  actual "yield" the counterparty/fee mechanism contributed: **+1.38%, +3.00%,
+  +2.94%** at the 30/90/180-day windows respectively — consistent across all
+  three windows at roughly **0.5-1.4%/month additive**, i.e. materially below
+  both the 5%/month floor and Thread B's standing XMR figure (2.04%/month).
+- The 30-60% "APY" marketing figure and this scan's measured excess are not
+  contradictory — the marketing figure is a fee-side annualization (real fees
+  collected, annualized, at a point in time) while this scan measures what a
+  holder's wallet balance actually did in USD, net of the vault's own directional
+  exposure. Both can be true simultaneously; only the latter matters for
+  answering "did holding JLP make money net of crypto beta."
+- A fully-hedged variant (long JLP, short SOL/BTC/ETH perps in the disclosed
+  target proportions to strip the beta) is theoretically possible and would
+  isolate the ~0.5-1.4%/month excess — but that's already sub-bar before
+  accounting for perp funding/borrow costs on the hedge legs, which would likely
+  consume most or all of the thin excess. Not built, since the un-hedged ceiling
+  already fails to clear the floor.
+
+**Verdict: DEAD (as an unhedged buy-and-hold), and NOT WORTH HEDGING.** The
+un-hedged JLP position is a real, live, automatable, Romania-accessible asset,
+but its true 180-day performance (-23.5%) was a large real loss driven by
+crypto beta, not a 30-60%/year yield. The isolated non-beta "yield" component
+(~0.5-1.4%/month across three independent windows) is consistent but still
+below Thread B's existing best candidate (XMR, 2.04%/month), and hedging away
+the beta to actually capture it would add cost/complexity likely exceeding the
+excess itself. `research/DEPLOY_THIS.md` best-candidate figure (XMR,
+2.04%/month) is unchanged.
+
+**Learning:** any DeFi "real yield" or vault-token product that holds a mix of
+volatile assets (not just stablecoins) has its headline "APY" computed from fee
+generation alone, not from what a USD holder's balance actually did — these two
+numbers can diverge by 20+ percentage points in either direction depending on
+whether the underlying basket had a good or bad few months. Any future thread
+evaluating a similar counterparty-vault or "real yield" token (e.g. GMX
+GM pools, which showed 0-27% *fee-only* APY per pool in this iteration's
+DeFiLlama pull and carry the same caveat) must decompose total USD return
+against a no-mechanism benchmark before treating the advertised APY as
+investable, exactly as done here.

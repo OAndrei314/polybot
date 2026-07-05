@@ -124,3 +124,21 @@ frequent opportunity on this exact program is already fiercely contested by
 automated competitors. This converts Thread F from "blocked, unquantifiable" to
 "measured, and the measurement itself argues against a new entrant finding an
 open lane." Still does not change the standing best candidate (XMR, 2.04%/month).
+
+**Thread H (iteration 18): Jupiter Perpetuals (JLP) counterparty-vault "real
+yield" token.** A genuinely new mechanism (LP takes the other side of leveraged
+trader P&L, not funding/basis/options/AMM-fees) marketed at "30-60% APY." Real
+180-day CoinGecko price data (`research/jlp_perps_vault_scan.py`) shows a real
+USD holder actually **lost 23.5%** over the last 6 months — driven almost
+entirely by JLP's ~64% embedded long exposure to SOL/BTC/ETH (each -33% to -46%
+over the window), not a mechanism failure. Netting out that beta against a
+static-weight benchmark isolates the actual counterparty/fee yield at a
+consistent **~0.5-1.4%/month** across the 30/90/180-day windows — sub-bar, and
+below the standing XMR candidate. A beta-hedged variant is theoretically
+possible but the perp-funding cost of the hedge legs would likely consume the
+already-thin excess, so it wasn't built. Key general lesson: any "real yield"
+vault token's advertised APY is a fee-generation-rate figure, not a real
+holder's total-return figure, and the two can diverge by 20+ points depending
+on whether the underlying basket had a good or bad run — always decompose
+before trusting a headline APY on this class of product. Standing best
+candidate (XMR, 2.04%/month) unchanged.

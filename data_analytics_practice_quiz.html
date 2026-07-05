@@ -128,7 +128,7 @@
     }
 
     .hero::after {
-      content: "100";
+      content: "300";
       position: absolute;
       right: -18px;
       top: -62px;
@@ -193,7 +193,7 @@
 
     .length-options {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(4, 1fr);
       gap: 9px;
     }
 
@@ -695,7 +695,7 @@
         <div class="brand-mark">DA</div>
         <div>Practice Lab</div>
       </div>
-      <div class="bank-count"><span id="bankCount">100</span> lecture-based questions</div>
+      <div class="bank-count"><span id="bankCount">300</span> lecture-and-lab questions</div>
     </header>
 
     <section id="startScreen" class="screen active">
@@ -716,12 +716,16 @@
                 <span>20</span>
               </label>
               <label class="length-option">
-                <input type="radio" name="length" value="50">
-                <span>50</span>
-              </label>
-              <label class="length-option">
                 <input type="radio" name="length" value="100">
                 <span>100</span>
+              </label>
+              <label class="length-option">
+                <input type="radio" name="length" value="200">
+                <span>200</span>
+              </label>
+              <label class="length-option">
+                <input type="radio" name="length" value="300">
+                <span>300</span>
               </label>
             </div>
           </div>
