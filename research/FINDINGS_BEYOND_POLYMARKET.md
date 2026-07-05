@@ -2074,3 +2074,104 @@ from Romania like every other on-chain thread in this objective.
   Solana LST loop), not just one unlucky venue. Standing best validated
   candidate (XMR funding basis, Thread B, iteration 7, 2.04%/month)
   unchanged and not superseded.
+
+## Thread V (iteration 40, 21st post-A-F follow-up, 27th mechanism overall): Hyperliquid leaderboard trader copy-mirroring (direct wallet copy, not vault deposit)
+
+**Mechanism:** pick a top-performing individual trader from Hyperliquid's
+public leaderboard and mirror their positions directly by polling their
+wallet's live position state — no vault smart contract, no manager
+profit fee, no lockup (unlike Thread L's vault-copy-deposit product from
+iteration 22). This is a genuinely different risk/cost structure from
+Thread L: zero platform fee and instant exit, but zero enforced pro-rata
+allocation and real execution-lag risk since a follower only observes a
+leader's position after it is already open.
+
+**Script:** `research/hyperliquid_trader_copy_scan.py` — 100% real, live
+data, no synthetic inputs:
+- `stats-data.hyperliquid.xyz/Mainnet/leaderboard` (no API key): full
+  live snapshot of all 40,161 Hyperliquid traders ever tracked, each with
+  current `accountValue` and day/week/month/allTime `{pnl, roi, vlm}`.
+- `api.hyperliquid.xyz/info` `{"type":"portfolio","user":<address>}` (no
+  API key): real per-window `accountValueHistory` + `pnlHistory` time
+  series for any individual wallet address — the same data shape as
+  Thread L's `vaultDetails`, but for any trader, not just vault managers.
+
+**Method:** (1) naive approach — rank retail-sized accounts ($10k-$5M)
+by month ROI, the obvious "just copy whoever's on top" strategy; (2)
+filtered approach — restrict to accounts with real ongoing weekly
+turnover (weekly volume ≥ 0.5x account value, to exclude dormant
+one-shot accounts) and positive allTime PnL, ranked by allTime ROI; (3)
+for the top 12 candidates from (2), pull real 30-day portfolio equity
+curves and compute the actual start-to-end multiple and max intra-month
+drawdown, to distinguish a smooth active compounder from a lottery-
+ticket account sampled at a lucky moment.
+
+**Results (real data, pulled 2026-07-05):**
+
+Naive top-10-by-month-ROI accounts range from 1,482% to 101,144%
+*monthly* ROI. Pulling their real 30-day equity curves shows why: the two
+most extreme (0xd04f97…, 0x33893d58…) started the month at $6,507 and
+$59.16 respectively and are now at $212k and $220k (32.6x and 3,721.6x),
+with 98.85% and 99.97% max intra-month drawdowns baked into their own
+track record — i.e. each nearly went to zero before recovering, and a
+copier joining today has no way to know whether the snapshot is
+post-recovery or mid-collapse.
+
+Filtering for real weekly turnover + positive allTime PnL (3,520 of
+16,095 retail-sized accounts survive) still does not isolate a clean
+"skilled, sustainable" bucket: of the top 12 by allTime ROI, 5/12 show
+lottery-ticket signatures (>10x monthly multiple and/or >50% intra-month
+drawdown) and the remaining 7/12 "plausible" candidates still span
+**-9.2% to +178.8%/month** with 12.6-44.8% max intra-month drawdowns.
+The two lowest-drawdown members of even this filtered bucket are +5.6%/
+month at -20.7% DD and +14.9%/month at -18.3% DD — plausibly real active
+traders, but with drawdown risk (18-21% in a single month) that is large
+relative to the modest return, and selected post-hoc from one live
+snapshot with no independent forward test.
+
+| Approach | Result | Verdict |
+|---|---|---|
+| Naive: top-10 by month ROI | 1,482%-101,144%/month, but 98.85-99.97% intra-month DD on the top 2 | **DEAD** (lottery-ticket, not copyable) |
+| Filtered: active + allTime-profitable, top 12 by allTime ROI | 5/12 still lottery-ticket; 7/12 "plausible" span -9.2% to +178.8%/month, 12.6-44.8% DD | **NOT VALIDATED** (high variance persists even after filtering) |
+| Best 2 low-drawdown "plausible" candidates | +5.6%/mo @ -20.7% DD; +14.9%/mo @ -18.3% DD | Plausible but unvalidated (single snapshot, no forward test) |
+
+**Verdict: DEAD (naive approach) / NOT VALIDATED (filtered approach)** —
+standing best validated candidate (XMR funding basis, Thread B,
+iteration 7, 2.04%/month) unchanged and not superseded.
+
+**Learnings:**
+- Hyperliquid's public leaderboard (`stats-data.hyperliquid.xyz/Mainnet/leaderboard`)
+  and per-wallet `portfolio` info-endpoint (real accountValueHistory +
+  pnlHistory for ANY address, not just vaults) together make direct
+  trader-copying fully backtestable with free, keyless, real data — no
+  gap here, unlike Thread F's blocked Drift/Dune APIs.
+- The live-snapshot-vs-sustained-track-record trap that has now appeared
+  in funding rates (iteration 7), vault APY (iteration 22), DOV APY
+  (iteration 24), and LRT points (iteration 38) reappears here in its
+  starkest form yet: "top of the leaderboard right now" is dominated by
+  accounts that turned $59-$6,507 into $200k+ within a single month via
+  extreme leverage, with 98.85-99.97% max drawdowns already realized
+  inside that same month — these are not traders with an edge, they are
+  survivors of a coin-flip cascade, visible only because they're the
+  ones who didn't bust.
+- Filtering for "real, sustained, sane" trading activity (weekly
+  turnover + allTime profitability) meaningfully shrinks the candidate
+  pool (16,095 → 3,520) but does NOT produce a low-variance bucket —
+  the survivors still span a -9.2% to +178.8%/month range, meaning
+  leverage-driven variance is the dominant feature of this venue's
+  active-trader population generally, not just its most-extreme outliers.
+- This mechanism has a structural problem beyond variance that Thread L
+  (vault copy-deposit) does not share: a vault's smart contract enforces
+  pro-rata allocation and the manager's real historical PnL already
+  reflects the vault's own execution; a direct wallet-copier only learns
+  of a leader's new position after polling their `clearinghouseState`
+  post-hoc, so the leader's reported PnL overstates what a lagged
+  follower could actually capture, and no position-sizing/leverage ratio
+  is enforced — the follower must guess both.
+- This is the 21st post-A-F follow-up mechanism (27th overall) tested in
+  this objective, and the second (after Thread L) to test a
+  manager/agency-risk-style mechanism rather than a market-neutral
+  yield, directional, or relative-value one — like Thread L, it does not
+  cleanly resolve to DEAD (a nominal outlier clears the bar) but also
+  cannot be promoted to VALIDATED given the total absence of any
+  historical-leaderboard-snapshot archive to test forward persistence.

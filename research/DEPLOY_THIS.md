@@ -403,15 +403,41 @@ mechanism *family* is dead across the board in the current rate
 environment. Standing best candidate (XMR, Thread B, 2.04%/month)
 unchanged.
 
+**Thread V (iteration 40): Hyperliquid leaderboard trader copy-mirroring
+(direct wallet copy, not vault deposit).**
+`research/hyperliquid_trader_copy_scan.py` tests whether picking a top
+individual trader off Hyperliquid's public leaderboard and mirroring
+their positions directly (no vault fee, no lockup — distinct from Thread
+L's vault-copy-deposit product) beats Thread B's XMR candidate. Real data
+(the full 40,161-trader leaderboard + real 30-day portfolio equity curves
+for any address, both free/keyless): the naive "copy whoever's on top by
+month ROI" approach is **DEAD** — the top accounts turned $59-$6,507 into
+$200k+ within a single month via extreme leverage, with 98.85-99.97%
+intra-month drawdowns already realized (a near-wipeout survivor, not a
+skilled trader). Filtering for real sustained weekly activity + positive
+allTime PnL (3,520 of 16,095 retail-sized accounts) still does not find a
+clean low-variance bucket: the 7 candidates that pass a lottery-ticket
+filter still span -9.2% to +178.8%/month with 12.6-44.8% drawdowns; the
+two lowest-drawdown members are +5.6%/month at -20.7% DD and +14.9%/month
+at -18.3% DD — plausible but selected post-hoc from one live snapshot
+with zero forward-persistence test available (Hyperliquid's leaderboard
+has no historical archive). **NOT VALIDATED** (same un-backtestable
+manager/agency-risk category as Thread L, now confirmed for direct
+wallet-copying too — and with an added structural problem Thread L
+doesn't have: no enforced pro-rata allocation, and a follower only sees a
+leader's position after it's already open). Standing best candidate
+(XMR, Thread B, 2.04%/month) unchanged.
+
 ---
 
-**Running total: 26 mechanisms tested across this objective (6 named
-threads A-F, plus 20 post-A-F follow-ups/new mechanisms), spanning
+**Running total: 27 mechanisms tested across this objective (6 named
+threads A-F, plus 21 post-A-F follow-ups/new mechanisms), spanning
 market-neutral yield harvesting (6 flavors), directional momentum, pairs
-stat-arb, vault/manager copy-deposit, counterparty-vault yield (2 venues),
-options vaults, legal-risk-gated counterparty capital, points/airdrop
-farming (2 flavors), long-volatility convexity, stablecoin depeg
-mean-reversion, liquid restaking, and leveraged LST looping. None has been
-promoted above the standing best validated candidate: XMR funding basis,
-Thread B, iteration 7, 2.04%/month — still well below both the 5%/month
-and 10%/month bars.**
+stat-arb, vault/manager copy-deposit (2 flavors: vault deposit and direct
+wallet mirroring), counterparty-vault yield (2 venues), options vaults,
+legal-risk-gated counterparty capital, points/airdrop farming (2
+flavors), long-volatility convexity, stablecoin depeg mean-reversion,
+liquid restaking, and leveraged LST looping. None has been promoted above
+the standing best validated candidate: XMR funding basis, Thread B,
+iteration 7, 2.04%/month — still well below both the 5%/month and
+10%/month bars.**
