@@ -201,3 +201,30 @@ yield harvesting in 6 flavors, directional momentum, relative-value pairs)
 has now been tested with real data at least once. Standing best candidate
 (XMR, Thread B, 2.04%/month) unchanged and still both highest-yield and
 lowest-risk.
+
+**Thread L (iteration 22): Hyperliquid public-vault copy-deposit — a 4th
+mechanism family (manager/agency risk, not market/basis risk).** Instead of
+running our own strategy, this tests passively depositing into an existing
+live Hyperliquid vault (`research/hyperliquid_vault_scan.py`, real data from
+Hyperliquid's own vault-universe and per-vault PnL-history APIs). Headline
+finding: of 9,463 vaults ever created on Hyperliquid, **66% are already
+closed, and 55% of those closed at a loss** — a strong base-rate warning
+before trusting any single "hot vault." Every vault with a spectacular live
+APR snapshot (up to 344%/yr) had already suffered a -168% to -3,107%
+PnL-based drawdown (relative to its own contemporaneous equity) at some
+point in its history, the same live-snapshot-vs-sustained-mean spike trap
+found repeatedly elsewhere in this objective. One vault ([Systemic
+Strategies] HyperGrowth, $12.8M TVL) is disclosed as a genuine outlier: a
+rocky first 5 months (-68% drawdown) followed by ~5 months of materially
+smoother compounding that annualizes to **~10-12%/month** — the single
+highest sustained number found across all 16 mechanisms tested in this
+objective. **Not promoted to deployable status**: it is one anonymous
+manager's 5-month track record with only 5.7% leader skin-in-the-game, a
+10% profit fee, ~30-day per-deposit lockups, and a risk type (manager
+discretion/agency risk) that cannot be bounded from historical data the way
+market-neutral basis risk can — the platform's own 66%-closure/55%-loss
+base rate means the prior that this specific vault is still open and
+profitable a year from now is well under 50%. Standing best *validated*
+(mechanical, backtestable) candidate remains XMR funding basis (Thread B,
+iteration 7, 2.04%/month); this Thread L outlier is disclosed for
+completeness, not recommended for capital.

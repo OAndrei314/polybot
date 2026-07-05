@@ -1002,3 +1002,144 @@ highest-yield AND lowest-risk option found.
   directional momentum, and now relative-value pairs trading) has been
   tested at least once with real data and none beats the standing XMR
   candidate.
+
+---
+
+## Thread L: Hyperliquid public-vault copy-deposit — **NOT VALIDATED (best candidate is a single-manager outlier, not a deployable edge)**
+
+**Script:** `research/hyperliquid_vault_scan.py`
+
+A 4th distinct mechanism family beyond market-neutral yield-harvesting,
+directional momentum, and relative-value pairs trading (all of which we ran
+ourselves): passively depositing into an existing, already-live Hyperliquid
+vault (HLP itself, or a "protocol" vault run by an anonymous third-party
+trader). Deposit/withdraw is a single scriptable on-chain action, so this is
+still "automatable" per the objective, but the return stream itself is
+opaque and controlled by someone else — a genuinely new risk axis (manager/
+agency risk) that none of the prior 15 mechanisms carried.
+
+**Method:** pulled the full live Hyperliquid vault universe (real data, no
+API key) from `stats-data.hyperliquid.xyz/Mainnet/vaults` — 9,463 vaults ever
+created — to get a platform-wide survivorship base rate, then pulled real
+per-vault `vaultDetails` (daily-resampled account-value + cumulative-PnL
+history since inception) for all 36 currently-open vaults with TVL ≥
+$500k. For each, computed the live "apr" snapshot field, the last-30-day
+return, a flow-blind "sustained" all-time monthly return (all-time PnL ÷
+average all-time equity ÷ months elapsed, which ignores deposit/withdrawal
+noise in the raw TVL curve), and the max PnL-based drawdown expressed as %
+of the vault's contemporaneous equity.
+
+**Platform-wide survivorship base rate (real, n=9,463 vaults ever created):**
+
+| Metric | Value |
+|---|---|
+| Total vaults ever created | 9,463 |
+| Already closed | 6,275 (66.3%) |
+| Of closed: ended with negative all-time cumulative PnL | 3,476 (55.4% of closed) |
+| Of closed: ended with positive all-time cumulative PnL | 1,433 (22.8% of closed) |
+| Of closed: flat/dust (never real capital) | 1,366 |
+
+Two out of every three vaults ever launched on Hyperliquid are already
+closed, and more than half of those closed at a loss — this is the base
+rate against which any single "hot" vault must be judged.
+
+**Top open vaults by TVL ≥ $500k, live-snapshot APR vs. real sustained history (2026-07-05):**
+
+| Vault | TVL | Live APR | Last 30d | Days live | Sustained %/mo | Max PnL drawdown (% of eq) | Leader skin-in-game |
+|---|---|---|---|---|---|---|---|
+| Hyperrr | $1.75M | 241%/yr | +40.3% | 556 | 9.4%/mo | **-509%** | 20.7% |
+| [Systemic Strategies] HyperGrowth | $12.8M | 14%/yr | +1.2% | 304 | **9.1%/mo** | -67.9% | 5.7% |
+| Long HYPE & BTC \| Short Garbage | $2.75M | 46%/yr | +3.8% | 451 | 8.5%/mo | -190% | 46.6% |
+| Satori Quantum HF Vault | $0.52M | 111%/yr | +9.2% | 486 | 4.1%/mo | -47.7% | 12.3% |
+| Growi HF | $9.24M | 120%/yr | +10.3% | 724 | 2.7%/mo | -12.0% | 5.0% |
+| drkmttr | $5.89M | 234%/yr | +25.7% | 206 | 1.0%/mo | **-168%** | 40.4% |
+| Hyperliquidity Provider (HLP) | $261M | -0.02%/yr | -0.0% | 1,151 | 1.6%/mo | -6.9% | 0.1% |
+
+(Full 36-vault table in `data/hyperliquid_vault_scan_results.json`.)
+
+Every vault whose **live** APR looks spectacular (Hyperrr 241%/yr, drkmttr
+234%/yr, AILAB TEST ULTRA 344%/yr, Hyperliquidity Trader 114%/yr) turns out,
+once the full since-inception history is examined, to have already
+suffered a PnL-based drawdown of -168% to -3,107% of its own contemporaneous
+equity at some point — i.e. it would have wiped out (and in a real fund,
+liquidated/closed) any depositor who was in during that window, multiple
+times over. This is the same live-snapshot-vs-sustained-mean spike trap
+already found for funding rates (iteration 7) and vault-token "real yield"
+(iterations 18/19), now confirmed a third time in a structurally different
+data source (discretionary trader PnL, not a market rate).
+
+**drkmttr case study** (deep-dived because it had the single highest
+snapshot APR among vaults with real TVL and >100 days of history): its
+all-time cumulative PnL is only **+$290k** on capital that has ranged
+$0.6M-$6.7M over 7 months — i.e. essentially break-even after 7 months —
+despite a current 30-day snapshot of +25.7%. The equity curve shows a
+-$2.6M cumulative-PnL trough on 2026-06-06 that was worse than -100% of
+the vault's equity at that moment, followed by a sharp recent recovery that
+is entirely responsible for the attractive live APR figure.
+
+**The one candidate that survives scrutiny, with important caveats:**
+[Systemic Strategies] HyperGrowth ($12.8M TVL, 100 followers, live since
+2025-09) had a rocky first ~5 months (drawdowns to -68% of equity,
+Sep 2025-Jan 2026) but has shown a materially smoother, consistently
+compounding equity curve since 2026-02 — cumulative PnL grew from ~$1.3M
+to ~$6.9M over the following ~5.3 months with drawdowns confined to
+single digits (worst -18.7%), which on its own annualizes to roughly
+**10-12%/month** over that recent window. This is the single best
+sustained-return number found in this entire objective, across all 16
+mechanisms tested.
+
+**Why this is NOT written up as a validated deploy target:**
+- It is one anonymous discretionary manager's track record, not a
+  mechanical/backtestable edge — nothing prevents the strategy, leverage,
+  or manager discipline from reverting to the -68%-drawdown regime seen in
+  its own first 5 months.
+- The leader's own skin-in-the-game is only 5.7% of the vault's equity —
+  low alignment between manager risk and depositor risk.
+- The "good" regime is only ~5 months old; the platform-wide base rate
+  (66% of all vaults eventually close, 55% of those at a loss) means the
+  prior probability that any single currently-hot vault is still open and
+  profitable a year from now is well under 50%.
+- A 10% depositor-side fee (leaderCommission) applies on profits, and
+  vault deposits carry a real, per-follower lockup (observed ~30 days from
+  each entry in this vault's own follower list) that prevents fast exit if
+  the drawdown regime returns.
+- This risk is fundamentally different in kind from every prior thread in
+  this objective (market/basis/volatility risk, which can be bounded from
+  price history) — it is manager/agency risk, which cannot be bounded from
+  historical data at all; a manager can always change behavior, take on
+  more risk, or the vault can simply be a slow rug.
+
+**Verdict: NOT VALIDATED.** No open, real-TVL, >100-day-history Hyperliquid
+vault combines a sustained (not live-snapshot) return above 5%/month with a
+drawdown history that would count as "survivable" by this objective's own
+standard (a strategy that blows up even 1-in-10 periods has negative EV).
+The best candidate (Systemic Strategies HyperGrowth, ~10-12%/month over its
+recent 5-month regime) is disclosed here as the single highest-yield
+number found across all 16 tested mechanisms, but it fails the
+"quantified drawdown, not hidden" test on its own first-5-month history,
+and manager/agency risk is not something backtesting can bound the way it
+can for the market-neutral trades tested elsewhere in this objective. Not
+promoted to `DEPLOY_THIS.md`.
+
+**Learnings:**
+- Hyperliquid's `stats-data.hyperliquid.xyz/Mainnet/vaults` endpoint (no
+  API key) returns the FULL universe of every vault ever created, including
+  closed ones with their final PnL — this is a rare case in this objective
+  of a venue voluntarily exposing its own base-rate failure statistics
+  (66% closed, 55% of those at a loss), which should be treated as a strong
+  prior before trusting any single live "hot vault" result.
+- `vaultDetails`'s `accountValueHistory` (raw TVL) is contaminated by
+  deposit/withdrawal flows and cannot be used directly to compute a
+  return-on-capital drawdown; `pnlHistory` (cumulative dollar trading PnL,
+  which flows do not affect) divided by contemporaneous equity is the
+  correct flow-blind way to measure a vault's real drawdown, the same
+  distinction that mattered for JLP's vault-token APY-vs-total-return
+  decomposition in iteration 18.
+- This is the 10th post-A-F follow-up mechanism tested (after iterations 6,
+  7, 15, 16, 17, 18, 19, 20, 21) and the first to surface a single number
+  that nominally clears the 10%/month target — but it is also the first
+  thread where the disqualifying risk is un-backtestable manager/agency
+  risk rather than a quantifiable market/volatility risk, which is why it
+  is reported as a disclosed outlier rather than promoted to a validated
+  deploy target. Standing best *validated* (mechanical, backtestable)
+  candidate remains XMR funding basis (Thread B, iteration 7, 2.04%/month).
