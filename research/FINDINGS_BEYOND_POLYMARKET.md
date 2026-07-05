@@ -1404,3 +1404,78 @@ XMR funding basis (Thread B, 2.04%/month).
   legal/regulatory risk as a primary disqualifier rather than yield or
   volatility — every named thread (A-F) plus every follow-up mechanism
   family reachable with free public data has now been tested at least once.
+
+## Thread P (post-A-F follow-up #14, iteration 26): Pendle Finance fixed-yield PT-token markets — **DEAD**
+
+**Concept:** Pendle splits a yield-bearing token into a Principal Token (PT,
+redeemable 1:1 for the underlying at a fixed maturity date) and a Yield
+Token (YT, which captures all yield until maturity). Buying PT at a discount
+to the underlying and holding to maturity locks in a FIXED annualized rate
+("impliedApy") today — a genuinely different mechanism than every prior
+thread in this objective, all of which harvest a *variable* rate. This is a
+zero-coupon-bond-style rate lock-in, quotable and tradable right now with a
+known payoff at a known date (assuming no de-peg/exploit of the underlying
+asset before maturity). Not previously tested in this objective.
+
+**Method:** `research/pendle_fixed_yield_scan.py` pulls every currently
+active PT/YT market (live `impliedApy`, USD liquidity, expiry) from
+Pendle's public v1 API across the 4 chains that had active markets
+(Ethereum: 57, Arbitrum: 4, Base: 4, BSC: 5 = 70 total, no API key), filters
+to liquidity ≥ $200k (56 markets survive), ranks by live `impliedApy`, then
+pulls each top candidate's full daily `impliedApy` history since market
+creation (Pendle's v2 apy-history endpoint) to distinguish a sustained fixed
+rate from a momentary snapshot spike — the same spike-detector methodology
+used in iterations 7, 15, 19, 23, 24.
+
+**Results (live 2026-07-05, top candidates by live snapshot):**
+
+| Market | Chain | Days to expiry | Live impliedAPY | 90d-mean impliedAPY | Sustained/month |
+|---|---|---|---|---|---|
+| jrUSDat | Ethereum | 52 | 30.0% | 17.8% | 1.37% |
+| STRCx | Ethereum | 52 | 23.6% | 15.6% | 1.22% |
+| sUSD3 | Ethereum | 164 | 20.9% | 18.1% (14d hist only) | 1.40% |
+| sKAITO | Base | 24 | 20.3% | 24.1% | **1.82%** |
+| jrRoyAPYUSD | Ethereum | 122 | 19.0% | 19.3% | 1.48% |
+| reUSDe | Ethereum | 157 | 16.8% | 15.4% | 1.20% |
+| apyUSD | Ethereum | 52 | 16.4% | 16.6% | 1.29% |
+| sUSDat | BSC | 52 | 15.7% | 14.7% | 1.15% |
+
+Best sustained candidate (sKAITO, 1.82%/month) is below Thread B's standing
+XMR figure (2.04%/month) and far below the 5%/month floor. Unlike prior
+funding-rate spikes (iteration 7's GRASS/ZRO), most of these markets show
+their live snapshot *understating* rather than overstating the 90-day mean
+(spike ratios 0.84x-1.15x for 5 of 8), except jrUSDat/STRCx which are
+currently elevated 1.5-1.7x their own 90-day mean — i.e. even picking the
+best live snapshot on the day of the scan does not get anywhere near the
+objective's floor.
+
+**Verdict: DEAD.** No PT market across the entire liquid Pendle universe
+(70 markets, 4 chains) clears even the softer 5%/month bar, let alone
+10%/month, on a sustained basis. Not promoted to `DEPLOY_THIS.md`. Standing
+best validated candidate remains XMR funding basis (Thread B, 2.04%/month).
+
+**Learnings:**
+- Pendle's fixed-rate mechanism is a genuinely new risk/return shape (locked
+  annualized rate vs. a variable one) but converges on the exact same
+  market-regime ceiling every variable-rate thread in this objective has
+  already found — reinforces that current crypto yield conditions (mid-2026)
+  are structurally thin across every mechanism shape tried (variable
+  funding, dated-futures basis, multi-venue vaults, and now fixed-rate
+  zero-coupon structuring), not just a property of the *variable*-rate
+  mechanisms tested earlier.
+- The highest-impliedApy PT markets are NOT plain stablecoins — they wrap
+  exotic, newer, lower-TVL structured-yield products (leveraged basis
+  vaults, restaking-points farms, e.g. jrUSDat/STRCx/reUSDe/sUSDat) whose
+  elevated rate compensates for real smart-contract and de-peg risk PT
+  redemption does not protect against (PT pays out in units of the
+  *underlying* asset at maturity, not USD — if the underlying itself
+  de-pegs or its protocol is exploited before expiry, the "fixed yield"
+  guarantee is worthless).
+- This is the 14th post-A-F follow-up mechanism tested (after iterations 6,
+  7, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25) — every reachable mechanism
+  family (6 flavors of market-neutral yield harvesting, directional
+  momentum, pairs stat-arb, 2 manager/agency-risk families, options vaults,
+  legal-risk-gated counterparty capital, and now fixed-rate PT structuring)
+  has converged on the same sub-2.1%/month practical ceiling, with XMR
+  (Thread B, 2.04%/month) still the single best validated candidate found
+  across 20 total mechanisms tested in this objective.

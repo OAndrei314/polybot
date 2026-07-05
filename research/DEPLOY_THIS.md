@@ -283,3 +283,19 @@ blacklisted per iteration 5) — no legal source was found suggesting LP-side
 exposure is safer. NOT VALIDATED/INFEASIBLE. This is now 13 post-A-F
 mechanisms tested, all dead/infeasible. Standing best candidate (XMR, Thread
 B, 2.04%/month) unchanged.
+
+**Thread P (iteration 26): Pendle Finance fixed-yield PT-token markets — a
+new mechanism shape (locked fixed rate via zero-coupon-bond-style
+structuring, not a variable rate).** Real live Pendle API data
+(`research/pendle_fixed_yield_scan.py`) across all 70 active PT/YT markets
+on the 4 chains with liquidity (Ethereum/Arbitrum/Base/BSC), cross-checked
+against each top candidate's full daily impliedAPY history to separate a
+sustained rate from a live-snapshot spike: the best sustained candidate
+(sKAITO on Base) locks in only ~1.82%/month, still below the standing XMR
+figure and far below the 5%/month floor. The highest live snapshots
+(jrUSDat 30%/yr, STRCx 23.6%/yr) wrap exotic leveraged/restaking-points
+stablecoin vaults whose elevated rate compensates for de-peg/smart-contract
+risk that PT's fixed-rate structure does not protect against (PT redeems in
+the underlying asset, not USD). DEAD. This is now 14 post-A-F mechanisms
+tested, all dead/infeasible, across 20 total mechanisms in this objective.
+Standing best candidate (XMR, Thread B, 2.04%/month) unchanged.
