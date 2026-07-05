@@ -142,3 +142,23 @@ holder's total-return figure, and the two can diverge by 20+ points depending
 on whether the underlying basket had a good or bad run — always decompose
 before trusting a headline APY on this class of product. Standing best
 candidate (XMR, 2.04%/month) unchanged.
+
+**Thread I (iteration 19): Ethena sUSDe multi-venue delta-neutral basis
+yield.** A diversified, professionally-run version of the same basis-yield
+mechanism family (Thread B/G), but harvested across many CEXs at once plus
+collateral staking yield, at $1.6B+ TVL — tests whether buying someone else's
+already-diversified basis book beats our own single-venue findings. Real full
+history since 2024-02 (`research/ethena_susde_scan.py`, DeFiLlama, 871 daily
+samples) shows the eye-catching 24-55%/yr readings were confined to the
+2024-02→06 launch/incentive window; every month since 2025-01 (18 straight
+months) has been steady at 3.5-5%/yr (~0.3-0.4%/month) — below both the
+5%/month floor and the standing XMR candidate. Loop-leverage via Aave doesn't
+help either: the USDe borrow-cost floor (4.93%/yr, proxied by Aave's own USDe
+supply APY) already exceeds the 3.82%/yr base yield being levered, so every
+loop iteration is net-negative (5x leverage models to **-0.62%/yr**). This is
+a third independent data source (after HL funding history and Deribit's
+forward curve) confirming the same regime fact from a different angle:
+crypto-market-wide delta-neutral basis yield is thin almost everywhere right
+now, not just on the specific venues tested earlier. Standing best candidate
+(XMR, 2.04%/month) unchanged; this is now 7 post-A-F mechanisms tested, all
+dead.

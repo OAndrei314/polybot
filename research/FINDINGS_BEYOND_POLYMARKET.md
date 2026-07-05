@@ -763,3 +763,71 @@ GM pools, which showed 0-27% *fee-only* APY per pool in this iteration's
 DeFiLlama pull and carry the same caveat) must decompose total USD return
 against a no-mechanism benchmark before treating the advertised APY as
 investable, exactly as done here.
+
+---
+
+## Thread I (iteration 19, new mechanism beyond A-H): Ethena sUSDe multi-venue delta-neutral basis yield
+
+**Concept:** Ethena's USDe is a synthetic dollar backed by a delta-neutral
+basis book: long staked-ETH/BTC/stablecoin collateral, short equal-notional
+perps spread across *multiple* centralized exchanges simultaneously (Binance,
+Bybit, OKX, Deribit, etc), plus collateral staking yield. Staking USDe as
+sUSDe passively earns that combined income stream. This is a distinct
+mechanism from Thread B (single-venue Hyperliquid funding) and Thread B's
+addendum #3 (HL-vs-Bybit cross-exchange arb) because it is a *diversified,
+professionally-run* basis book across many venues at once, plus a staking-yield
+component on the collateral — it tests "can we just buy someone else's
+already-diversified basis yield" rather than "can we replicate/beat a
+single-venue basis trade ourselves."
+
+**Script:** `research/ethena_susde_scan.py` — 100% real, live DeFiLlama public
+yields API (no key needed): live snapshot of the `ethena-usde` SUSDE pool +
+Aave v3 USDE/SUSDE lending markets (for loop-leverage economics), plus the
+**full real daily history since the pool's 2024-02-16 DeFiLlama listing**
+(871 samples) via `/chart/{pool}`.
+
+**Result (real data, pulled 2026-07-05):**
+
+| Window | n | mean APY | mean %/mo | range |
+|---|---|---|---|---|
+| 30d | 31 | 3.86%/yr | 0.32%/mo | [3.52%, 4.58%] |
+| 90d | 91 | 3.96%/yr | 0.33%/mo | [3.16%, 5.71%] |
+| 180d | 181 | 3.95%/yr | 0.33%/mo | [3.16%, 5.71%] |
+| 365d | 366 | 4.90%/yr | 0.41%/mo | [0.13%, 10.29%] |
+| full history (since 2024-02) | 871 | 10.00%/yr | — | [0.00%, 55.87%] |
+
+- The eye-catching 24-55%/yr readings are all clustered in the 2024-02→2024-06
+  launch window (novelty period + heavy points/incentive farming demand for
+  USDe supply, which pushed short-side funding rates up market-wide). Since
+  2025-01 (18 straight months), the rate has been steady and structurally low,
+  **3.5-5%/yr (~0.3-0.4%/month)** — materially below both the 5%/month
+  objective floor and Thread B's standing best candidate (XMR, 2.04%/month
+  ≈ 24.5%/yr).
+- **Loop-leverage does not rescue this trade.** Live sUSDe base yield is
+  3.82%/yr; the live Aave USDe *supply* APY (4.93%/yr) is a floor/proxy for
+  the real *borrow* cost of USDe (Aave borrow rates are structurally ≥ same-asset
+  supply rates) — since even this generous floor already exceeds the base
+  yield being levered, every loop iteration is net-negative before even
+  counting DEX-swap fees/slippage per loop. Modeled leverage: 1x = 3.82%/yr,
+  2x = 2.71%/yr, 3x = 1.60%/yr, 5x = **-0.62%/yr**. Leverage makes it worse,
+  not better, because the spread (base yield − borrow cost) is already
+  negative at the margin.
+
+**Verdict: DEAD.** A third independent real-data source (after HL's own
+funding history in Thread B, and Deribit's forward curve in Thread G) now
+confirms the same market-regime fact from yet another angle: crypto-market-wide
+delta-neutral basis yield (however it's harvested — single-venue perp funding,
+cross-venue perp funding, dated-futures cash-and-carry, or a diversified
+multi-CEX vault like Ethena) is currently thin (~4-5%/yr) almost everywhere,
+not just on the specific venues/coins tested in earlier threads. This is now
+7 post-A-F follow-up mechanisms tested (iterations 6, 7, 15, 16, 17, 18, 19),
+all DEAD/NOT VALIDATED; standing best candidate remains XMR funding basis
+(Thread B, 2.04%/month) — unchanged by this result.
+
+**Learning:** buying a large, already-diversified "real yield" product
+(Ethena/sUSDe, $1.6B+ TVL, professionally hedged across many CEXs) is a
+legitimate way to sanity-check whether a niche single-venue finding (e.g.
+XMR on Hyperliquid) is an exploitable inefficiency or just noise riding a
+temporarily-elevated coin-specific rate — here it confirms the broader
+regime (thin basis yield market-wide) rather than suggesting our XMR figure
+is somehow leaving money on the table elsewhere.
