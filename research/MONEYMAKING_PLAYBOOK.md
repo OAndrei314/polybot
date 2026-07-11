@@ -21,16 +21,19 @@ sources are flagged. Thin evidence ⇒ NOT VALIDATED, never "promising."
 |---|-----------|--------------------|-----------------|----------|-----------------|---------|
 | 1 | **Skills income — data analytics (employment route)** | €0 (p25, not yet hired) → €800–1,100/mo net once hired (junior, Bucharest/remote-RO) | ~€0 | 40 (it's a job) + ~5–10 now (portfolio/applications) | ~2–6 mo (hire lag) | **VIABLE — strongest evidenced direction so far.** Career income, not side yield. See §1. |
 | 1b | Skills income — freelance data work (cold start, while studying) | €0 (p25) – ~€450/mo (p75, ~10 h/wk at entry rates, IF clients land) | ~€30–60 (Upwork connects) + PFA setup ~€100 | 5–15 | Unknown; no verifiable base rate | **NOT VALIDATED** — entry rates real ($20/hr), cold-start success rate unverifiable. See §1. |
-| 2 | AI-augmented / productized services | — | — | — | — | PENDING (not yet examined) |
+| 2 | AI-augmented / productized services (scraping, automation, dashboards, Excel rescue via marketplaces) | €0 (p25) – ~€400–500/mo (p75, ~10 h/wk, IF gigs land) | ~€30–100 (bids/connects + PFA) | 5–15 | Unknown; no verifiable base rate | **NOT VALIDATED** — demand is real & current (438 live projects counted 2026-07-12) but commodity segment clears at $2–7/hr and median ~60–100 bids/project; premium directories gate out Romania cold-starts. See §2. |
 | 3 | Digital products / micro-SaaS | — | — | — | — | PENDING (not yet examined) |
 | 4 | Local/EU capital-light business (adjacent to diaspora baskets) | — | — | — | — | PENDING (not yet examined) |
 | 5 | Markets — re-check of 2 surviving candidates | prior-run figures: ~€10–100/mo at $5k | $500–5,000 | ~1–2 | days | PENDING live re-check (no new scans — per objective) |
 
-**Bottom line so far (iteration 1):** the only direction with hard, current,
+**Bottom line so far (iteration 2):** the only direction with hard, current,
 verifiable numbers is boring: a junior data-analytics *job* pays ~€800–1,100/mo
 net in Romania and real junior openings exist right now (Deloitte, ING, SocGén
 posted within the last 2 weeks). That single outcome is worth 8–100× the monthly
-income of every validated market strategy in this repo combined.
+income of every validated market strategy in this repo combined. The
+services-marketplace route (§2) has real, current demand but the accessible
+segment clears at $2–7/hr against 60–300 bidders per job — its main value is as
+a *portfolio/reference feeder* for Direction 1, not as standalone income.
 
 ---
 
@@ -129,11 +132,84 @@ if this direction stays top-ranked.
 
 ---
 
-## §2. AI-augmented / productized services — PENDING
+## §2. AI-augmented / productized services (automation, scraping, dashboards, spreadsheet rescue)
 
-Not yet examined (iteration 1 covered §1). Requires: real listings with real
-prices, recent, for automation builds / scraping / dashboards / spreadsheet
-rescue deliverable solo from Romania.
+All data pulled 2026-07-12. Access map: **Freelancer.com fully readable**
+(live budgets, bid counts, ages); **Fiverr 403, PeoplePerHour bot-blocked,
+Upwork 403** (as in §1) — so gig-side (seller-listed) prices could not be
+sampled this run; everything below is *buyer-side* (posted projects), which is
+the honest demand signal anyway.
+
+### 2.1 Demand is real and current (Freelancer.com live boards)
+
+| Category (board) | Live projects | Typical budgets seen | Bids/project (range) |
+|---|---|---|---|
+| Web scraping | 50 | $20–500 fixed; $7–36/hr | 8–338, median ~60 |
+| Excel / spreadsheet rescue | **369** | $5–18/hr; $16–163 fixed | ~10–45 |
+| Power BI / dashboards | 11 | $37–532 typical; one $5,241 outlier | 9–108 |
+| Zapier / n8n / automation | 8 | $22–711 fixed; $3–17/hr | 10–315 |
+
+Sample real listings (2026-07-12): "Xero Data PowerBI Dashboard Integration"
+$325 avg bid / 108 bids; "N8N Developer for Real Estate Platform" $36/hr / 60
+bids; "Bulk Public PDF Text Extraction" $949 avg bid / 199 bids; "Python
+Scraper Engineer – Cloudflare" **$7/hr** / 115 bids; "Manual Data Entry"
+**$2/hr**. Sources: freelancer.com/jobs/{web-scraping, excel, power-bi, zapier}.
+
+**Read:** volume demand concentrates in the commodity tier (Excel: 369 live
+projects). The AI-adjacent tier exists and is growing ("AI Voice Agent" $445
+avg bid / 140 bids; n8n tutoring $246 / 48 bids) but is thin — 8–11 live
+listings per specialist board.
+
+### 2.2 The competition math the gig narrative omits
+
+Median ~60–100 bids per project across the scraping/automation sample ⇒ naive
+per-bid win probability ~1–2% for a history-less profile (realistically lower:
+buyers filter on review history first). Visible clearing prices at the
+commodity end — $2/hr, $3/hr, $5/hr, $7/hr on live listings — sit **at or
+below the Romanian minimum wage** (4,050 RON gross/mo ≈ $5.4/hr). A Romania
+cost basis confers no price advantage here; the marginal competitor bids from
+a lower-cost base.
+
+### 2.3 Survivorship correction from real platform financials
+
+Freelancer Ltd (ASX: FLN), Q1 2026: group GMV **A$263.3M (US$146.3M)** for the
+quarter (+14% YoY), against **"over 60 million registered users."**
+Annualized ≈ US$585M of *gross* volume across 60M+ accounts ≈ **~$10 per
+registered user per year — median $0**. Caveats both ways: group GMV includes
+Escrow.com and Loadshift (marketplace-only volume is *smaller*); active
+bidders are a small fraction of registered accounts (conditional-on-active
+median is higher but unobservable). Either way, every public earnings
+anecdote sits in the extreme right tail of this distribution.
+Source: staffingindustry.com news summary of FLN Q1 2026 report.
+
+### 2.4 Premium/productized routes are gated against cold starts
+
+- **n8n Experts directory** (n8n.io/experts, fetched live): listing requires
+  consultancy as your **main revenue stream**, **≥3 customers actively using
+  n8n**, and operating in **UK & Ireland, Northern Europe, or North America —
+  Romania is not in the listed regions** — plus a waitlist. Not a cold-start
+  or even warm-start option from Romania today.
+- **Zapier Experts directory**: could not be verified this run (fetch
+  blocked); treat as unexamined, not as open.
+- Gig-side premium pricing (Fiverr Pro etc.): unverifiable this run (403s).
+
+### 2.5 Verdict
+
+**NOT VALIDATED as standalone income; commodity tier effectively DEAD for a
+Romania cost basis.** Demand is real, current, and larger in volume than §1's
+job market — but the accessible segment clears at $2–7/hr against 60–300
+bidders, and the premium tier (dashboards $300–5,000, automation retainers)
+is thin (8–11 live listings) and won by profiles with review history. Same
+missing number as §1b: no verifiable cold-start first-contract base rate
+exists, so **p25 = €0**; p75 ≈ €400–500/mo net at ~10 h/wk *conditional on*
+winning recurring work at $15–20/hr (post ~10% fees, ~30–35% PFA tax).
+
+**Highest-value use of this direction:** not income — *portfolio and
+references for §1*. Two or three delivered scraping/dashboard gigs (even at
+commodity prices) are exactly the "portfolio assets that close the gap"
+identified in §1.6, and they generate verifiable work history. Suggested kill
+criterion if attempted for income: 30 bids / 1 month with zero contracts ⇒
+stop bidding, keep the portfolio pieces.
 
 ## §3. Digital products / micro-SaaS — PENDING
 
