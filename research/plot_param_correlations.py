@@ -10,6 +10,8 @@ import numpy as np
 import pandas as pd
 import seaborn as sns
 
+from research import jsonl_io
+
 
 # Parameters that are constant across all competitors or non-numeric -- skip them
 _SKIP_PARAMS = {"bankroll", "fee_category", "fee_rate", "competitor_id"}
@@ -195,7 +197,9 @@ def print_data_health(run_dir: Path, merged: pd.DataFrame) -> None:
         print("  -> No synthetic data. Feed was clean throughout.")
 
     # PnL jump analysis
-    snap = pd.read_json(run_dir / "portfolio_snapshots.jsonl", lines=True)
+    snap = pd.read_json(
+        jsonl_io.resolve(run_dir / "portfolio_snapshots.jsonl"), lines=True
+    )
     snap["ts"] = pd.to_datetime(snap["ts"], utc=True)
     snap = snap.sort_values(["competitor_id", "ts"])
     snap["pnl_delta"] = snap.groupby("competitor_id")["total_pnl"].diff()

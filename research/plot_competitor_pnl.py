@@ -10,6 +10,8 @@ import matplotlib.dates as mdates
 import matplotlib.pyplot as plt
 import pandas as pd
 
+from research import jsonl_io
+
 
 def _latest_run(base_dir: Path) -> Path:
     runs = sorted(base_dir.glob("*_real_48h"), key=lambda p: p.stat().st_mtime)
@@ -20,7 +22,7 @@ def _latest_run(base_dir: Path) -> Path:
 
 def _read_jsonl(path: Path) -> list[dict[str, Any]]:
     rows: list[dict[str, Any]] = []
-    with path.open() as f:
+    with jsonl_io.open_text(path) as f:
         for line in f:
             if line.strip():
                 rows.append(json.loads(line))

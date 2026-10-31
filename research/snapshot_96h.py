@@ -42,6 +42,8 @@ from datetime import datetime, timezone
 from pathlib import Path
 from statistics import median, quantiles
 
+from research import jsonl_io
+
 OUT_DIR = Path("data/experiments/96h_snapshots")
 LIVE_TESTS_DIR = Path("data/reports/live_competitor_tests")
 
@@ -166,14 +168,13 @@ def calibration_sample(run_dir: Path, max_per_competitor: int = 500) -> dict:
 
 def signal_budget_tail(run_dir: Path) -> dict:
     path = run_dir / "loop_metrics.jsonl"
-    if not path.exists():
+    if not jsonl_io.exists(path):
         return {}
     try:
-        with path.open() as f:
-            lines = f.readlines()[-1:]
-        if not lines:
+        tail = jsonl_io.last_line(path)
+        if not tail:
             return {}
-        d = json.loads(lines[0])
+        d = json.loads(tail)
         return {
             "ts": d.get("ts"),
             "loop_elapsed_s": d.get("loop_elapsed_s"),

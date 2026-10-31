@@ -27,6 +27,7 @@ matplotlib.use("Agg")
 import matplotlib.dates as mdates
 import matplotlib.pyplot as plt
 
+from research import jsonl_io
 from research.run_select import latest_run
 
 try:
@@ -82,10 +83,10 @@ def parse_status(s: str) -> tuple[int | None, float | None, str]:
 
 def load_metrics(run_dir: Path) -> list[dict]:
     path = run_dir / "loop_metrics.jsonl"
-    if not path.exists():
+    if not jsonl_io.exists(path):
         raise SystemExit(f"missing {path}")
     rows: list[dict] = []
-    with path.open("rb") as f:
+    with jsonl_io.open_binary(path) as f:
         for raw in f:
             if not raw.strip():
                 continue

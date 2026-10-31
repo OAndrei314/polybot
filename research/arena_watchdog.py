@@ -37,6 +37,7 @@ import time
 from datetime import datetime, timezone
 from pathlib import Path
 
+from research import jsonl_io
 from research.run_select import latest_run as select_latest_run
 
 try:
@@ -127,13 +128,10 @@ def tick_age_seconds() -> float | None:
     if not rd:
         return None
     lm = rd / "loop_metrics.jsonl"
-    if not lm.exists():
+    ts = jsonl_io.mtime(lm)
+    if ts is None:
         return None
-    try:
-        age = time.time() - lm.stat().st_mtime
-        return age
-    except Exception:
-        return None
+    return time.time() - ts
 
 
 def gql_account_health() -> tuple[int, int] | None:
@@ -142,18 +140,13 @@ def gql_account_health() -> tuple[int, int] | None:
     if not rd:
         return None
     lm = rd / "loop_metrics.jsonl"
-    if not lm.exists():
+    if not jsonl_io.exists(lm):
         return None
     try:
-        with lm.open("rb") as f:
-            # Read last line efficiently
-            f.seek(0, 2)
-            size = f.tell()
-            chunk = min(8192, size)
-            f.seek(size - chunk)
-            tail = f.read().decode("utf-8", errors="ignore")
-        last_line = tail.strip().split("\n")[-1]
-        d = json.loads(last_line)
+        tail = jsonl_io.last_line(lm)
+        if not tail:
+            return None
+        d = json.loads(tail)
         sb = d.get("signal_budget") or {}
         total = int(sb.get("gql_total") or 0)
         dead = int(sb.get("gql_dead") or 0)

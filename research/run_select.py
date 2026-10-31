@@ -3,6 +3,8 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
+from research import jsonl_io
+
 
 def read_manifest(run_dir: Path) -> dict:
     path = run_dir / "run_manifest.json"
@@ -79,10 +81,9 @@ def run_activity_mtime(run_dir: Path) -> float:
     ]
     mtimes: list[float] = []
     for path in candidates:
-        try:
-            mtimes.append(path.stat().st_mtime)
-        except OSError:
-            pass
+        ts = jsonl_io.mtime(path)
+        if ts is not None:
+            mtimes.append(ts)
     try:
         mtimes.append(run_dir.stat().st_mtime)
     except OSError:

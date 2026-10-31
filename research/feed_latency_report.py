@@ -12,6 +12,8 @@ import matplotlib.dates as mdates
 import matplotlib.pyplot as plt
 import pandas as pd
 
+from research import jsonl_io
+
 
 PRICE_KEYS = ("yes_buy", "yes_sell", "no_buy", "no_sell")
 
@@ -33,10 +35,10 @@ def _read_gzip_jsonl(path: Path) -> list[dict[str, Any]]:
 
 
 def _read_jsonl(path: Path) -> list[dict[str, Any]]:
-    if not path.exists():
+    if not jsonl_io.exists(path):
         return []
     rows: list[dict[str, Any]] = []
-    with path.open() as f:
+    with jsonl_io.open_text(path) as f:
         for line in f:
             if line.strip():
                 rows.append(json.loads(line))
